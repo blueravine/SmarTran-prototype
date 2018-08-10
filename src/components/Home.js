@@ -185,7 +185,7 @@ export default class Home extends Component {
         this.state.selected2 = pickertext;
     }
     render() {
-        
+
         return (
 
             <View style={styles.container}>
