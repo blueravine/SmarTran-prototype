@@ -75,7 +75,7 @@ export default class Home extends Component {
 
         this.state= {
             active:'search',
-    };
+        };
         // this.state = {
         //     selected: "Je",
         //
@@ -132,7 +132,7 @@ export default class Home extends Component {
 
             <Image source={imgsource} style={{height: 30, width: 30,alignItems:'center'}}/>
 
-            );
+        );
     }
     changebottomLogo() {
         var imgsourcesearch = this.state.showasearchimage ? search_magnifier_blue : search_magnifier_black;
@@ -179,6 +179,11 @@ export default class Home extends Component {
         this.state=true;
     }
 
+    _SwapPickerText(){
+        var pickertext = this.state.selected1;
+        this.state.selected1 = this.state.selected2;
+        this.state.selected2 = pickertext;
+    }
     render() {
 
 
@@ -195,405 +200,407 @@ export default class Home extends Component {
                 <View style={[styles.headerview]}>
 
 
-                        {/*<Card>*/}
-                            {/*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 100, width: 100, flex: 1,*/}
-                                {/*marginLeft:125,justifyContent: "center"}}/>*/}
-                        {/*</Card>*/}
-                        {/*<Text note style={{fontSize:18,color:'#FFFFFF',fontWeight:'bold'}} > Plan your trip here !</Text>*/}
-                        {/*<Header />*/}
+                    {/*<Card>*/}
+                    {/*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 100, width: 100, flex: 1,*/}
+                    {/*marginLeft:125,justifyContent: "center"}}/>*/}
+                    {/*</Card>*/}
+                    {/*<Text note style={{fontSize:18,color:'#FFFFFF',fontWeight:'bold'}} > Plan your trip here !</Text>*/}
+                    {/*<Header />*/}
 
-                        {/*<Content>*/}
+                    {/*<Content>*/}
 
-                            <Card styles={card}>
+                    <Card styles={card}>
 
-                                {/*<CardItem cardBody styles={cardItem}>*/}
-                                <View style={{flexDirection:"row",marginTop:10}}>
-                                {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                    {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > From</Text>*/}
-                                    {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > To</Text>*/}
-                                {/*</View>*/}
-
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                    {/*<Select*/}
-                                        {/*width={250}*/}
-                                        {/*ref="SELECT1"*/}
-                                        {/*optionListRef={this._getOptionList.bind(this)}*/}
-                                        {/*defaultValue="From ..."*/}
-                                        {/*onSelect={this._canada.bind(this)}>*/}
-                                        {/*<Option value = {{id : "Je"}}>Jedimetla</Option>*/}
-                                        {/*<Option>Gachibowli</Option>*/}
-                                        {/*<Option>Koti</Option>*/}
-                                        {/*<Option>JublieeHills</Option>*/}
-                                        {/*<Option>Mehdipatnam</Option>*/}
-                                        {/*<Option>Raheja IT Park</Option>*/}
-                                        {/*<Option>Miyapur</Option>*/}
-                                    {/*</Select>*/}
-
-                                    {/*<OptionList ref="OPTIONLIST"/>*/}
-
-                                    {/*<Select*/}
-                                        {/*width={250}*/}
-                                        {/*ref="SELECT1"*/}
-                                        {/*optionListRef={this._getOptionList.bind(this)}*/}
-                                        {/*defaultValue="From ..."*/}
-                                        {/*onSelect={this._canada.bind(this)}>*/}
-                                        {/*<Option value = {{id : "Me"}}>Mehdipatnam</Option>*/}
-                                        {/*<Option>Gachibowli</Option>*/}
-                                        {/*<Option>Koti</Option>*/}
-                                        {/*<Option>JublieeHills</Option>*/}
-                                        {/*<Option>Mehdipatnam</Option>*/}
-                                        {/*<Option>Raheja IT Park</Option>*/}
-                                        {/*<Option>Miyapur</Option>*/}
-                                    {/*</Select>*/}
-
-                                    {/*<OptionList ref="OPTIONLIST"/>*/}
-                                    {/*<View style={{*/}
-                                        {/*borderBottomColor: 'black',*/}
-                                        {/*borderBottomWidth: 1,*/}
-                                        {/*height: height - 20,}}>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={{*/}
-                                        {/*flex: 1,*/}
-                                        {/*borderBottomColor: 'black',*/}
-                                        {/*borderBottomWidth: 1,*/}
-                                        {/*height: height - 420,}}>*/}
-                                    {/*</View>*/}
-                                    {/*<Select*/}
-                                        {/*name="university"*/}
-                                        {/*value="one"*/}
-                                        {/*options={options}*/}
-                                        {/*filterOptions={filterOptions}*/}
-                                        {/*onChange={val => console.log(val)}*/}
-                                    {/*/>*/}
-                                    <Picker
-                                        placeholder="Select One"
-                                        mode="dropdown"
-                                        style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde',justifyContent:'flex-end'}}
-                                        selectedValue={this.state.selected1}
-                                        onValueChange={this.onValueChange.bind(this)}>
-                                        {/*<View style={{flexDirection: 'row'}}>*/}
-                                            {/*<Text note style={{fontSize:12,textAlign:'center',backgroundColor:'#2eacde',*/}
-                                                {/*color:'#FFFFFF'}} >JED</Text>*/}
-                                        {/*</View>*/}
-                                        <Item label="From Location" value=" " />
-                                        <Item label="Jedimetla" value="Je" />
-                                        <Item label="Koti" value="Ko" />
-                                        <Item label="Gachibowli" value="GA" />
-                                        <Item label="JublieeHills" value="Jub" />
-                                        <Item label="Mehdipatnam" value="Meh" />
-                                        <Item label="Raheja IT Park" value="Ra" />
-                                        <Item label="Miyapur" value="Mi" />
-                                    </Picker>
-                                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                    <View style={{
-                                        flex: 1,
-                                        borderBottomColor: 'black',
-                                        borderBottomWidth: 1,
-                                        width: width - 20,}}>
-                                    </View>
-                                    <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}
-                                    />
-                                    <View style={{
-                                        flex: 1,
-                                        borderBottomColor: 'black',
-                                        borderBottomWidth: 1,
-                                        width: width - 20,}}>
-                                    </View>
-                                    </View>
-                                    <Picker
-                                        placeholder="Select One"
-                                        mode="dropdown"
-                                        style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde'}}
-                                        selectedValue={this.state.selected2}
-                                        onValueChange={this.onChangeValue.bind(this)}>
-
-                                        <Item label="To Location" value=" " />
-                                        <Item label="Mehdipatnam" value="Meh" />
-                                        <Item label="Miyapur" value="Mi" />
-                                        <Item label="JublieeHills" value="Jub" />
-                                        <Item label="Vanastalipuram" value="Va" />
-                                        <Item label="Raheja IT Park" value="Ra" />
-                                        <Item label="Gachibowli" value="GA" />
-                                    </Picker>
-
-                                </View>
-                                </View>
-                                <View style={{
-                                    borderBottomColor: 'black',
-                                    borderBottomWidth: 1,
-                                    width: width - 20,}}>
-                                </View>
-                                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-
-                                {/*<View style={{flex:.5}}>*/}
-
-                                {/*</View>*/}
-                                    {/*</View>*/}
-                                        {/*<View style={{flex:.1}}>*/}
-                                        {/*<Image source={require('../Images/arrow.png')} style = {{ width: 20, height: 20,alignItems:'center',marginTop:10 }}/>*/}
-                                        {/*</View>*/}
-
-                                        {/*<View style={{flex:.5}}>*/}
-                                        {/*<Picker*/}
-                                            {/*selectedValue='Meh'*/}
-                                            {/*style={{height:35,width:50}}*/}
-                                              {/*// label='To'*/}
-                                            {/*onValueChange={() => {this.handleChange}}*/}
-                                        {/*>*/}
-                                            {/*<Item label="Vanastalipuram" value="Va" />*/}
-                                            {/*<Item label="Miyapur" value="Mi" />*/}
-                                            {/*<Item label="JublieeHills" value="Jub" />*/}
-                                            {/*<Item label="Mehdipatnam" value="Meh" />*/}
-                                            {/*<Item label="Raheja IT Park" value="Ra" />*/}
-                                            {/*<Item label="Gachibowli" value="GA" />*/}
-                                        {/*</Picker>*/}
-                                        {/*</View>*/}
-                                    {/*</View>*/}
-
-                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-
-                                    {/*<View style={{flex:.5}}>*/}
-
-                                    {/*</View>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={{flex:.1}}>*/}
-                                    {/*<Image source={require('../Images/arrow.png')} style = {{ width: 20, height: 20,alignItems:'center',marginTop:10 }}/>*/}
-                                    {/*</View>*/}
-
-                                    {/*<View style={{flex:.5}}>*/}
-
-                                    {/*</View>*/}
-                                {/*</View>*/}
-
-                                {/*</CardItem>*/}
-
-                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>*/}
-                                {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                    {/*<Text note style={{fontSize:12,textAlign:'center'}} >Tap icon to change date/time</Text>*/}
-                                    {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
-                                        {/*<Image source={require('../Images/event.png')} style={{height: 30, width: 30}}*/}
-                                        {/*/>*/}
-                                    {/*</TouchableOpacity>*/}
-                                    {/*<DateTimePicker*/}
-                                        {/*isVisible={this.state.isDateTimePickerVisible}*/}
-                                        {/*mode={'datetime'}*/}
-                                        {/*onConfirm={this._handleDatePicked}*/}
-                                        {/*onCancel={this._hideDateTimePicker}*/}
-                                    {/*/>*/}
-
-                                {/*</View>*/}
-                                {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
-                                {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-
-                                    {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
-                                        {/*Moment(this.state.date).format('DD-MMM-YYYY')} </Text>*/}
-                                    {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
-                                        {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
-
-                                {/*</View>*/}
-                                {/*</TouchableOpacity>*/}
+                        {/*<CardItem cardBody styles={cardItem}>*/}
+                        <View style={{flexDirection:"row",marginTop:10}}>
+                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                            {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > From</Text>*/}
+                            {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > To</Text>*/}
                             {/*</View>*/}
-                                <View style={{flexDirection:"row",justifyContent:'flex-start',marginTop:10}}>
 
-                                <TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>
-                                    <Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25}}
-                                    />
-                                </TouchableOpacity>
-                                    <Text note style={{fontSize:12,textAlign:'center'}} >Journey Date</Text>
-                                </View>
-                                    {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
-                                                       {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
-                                        {/*{this.changeACLogo()}*/}
-                                    {/*</TouchableOpacity>*/}
-                                    {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
-                                                         {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
-                                        {/*{this.changeNonACLogo()}*/}
+                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                {/*<Select*/}
+                                {/*width={250}*/}
+                                {/*ref="SELECT1"*/}
+                                {/*optionListRef={this._getOptionList.bind(this)}*/}
+                                {/*defaultValue="From ..."*/}
+                                {/*onSelect={this._canada.bind(this)}>*/}
+                                {/*<Option value = {{id : "Je"}}>Jedimetla</Option>*/}
+                                {/*<Option>Gachibowli</Option>*/}
+                                {/*<Option>Koti</Option>*/}
+                                {/*<Option>JublieeHills</Option>*/}
+                                {/*<Option>Mehdipatnam</Option>*/}
+                                {/*<Option>Raheja IT Park</Option>*/}
+                                {/*<Option>Miyapur</Option>*/}
+                                {/*</Select>*/}
 
-                                    {/*</TouchableOpacity>*/}
-                                <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
-                                    <TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>
-                                        <DateTimePicker
-                                            isVisible={this.state.isDateTimePickerVisible}
-                                            mode={'date'}
-                                            minimumDate={Moment().toDate()}
-                                            onConfirm={this._handleDatePicked}
-                                            onCancel={this._hideDateTimePicker}
-                                        />
+                                {/*<OptionList ref="OPTIONLIST"/>*/}
 
-                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                {/*<Select*/}
+                                {/*width={250}*/}
+                                {/*ref="SELECT1"*/}
+                                {/*optionListRef={this._getOptionList.bind(this)}*/}
+                                {/*defaultValue="From ..."*/}
+                                {/*onSelect={this._canada.bind(this)}>*/}
+                                {/*<Option value = {{id : "Me"}}>Mehdipatnam</Option>*/}
+                                {/*<Option>Gachibowli</Option>*/}
+                                {/*<Option>Koti</Option>*/}
+                                {/*<Option>JublieeHills</Option>*/}
+                                {/*<Option>Mehdipatnam</Option>*/}
+                                {/*<Option>Raheja IT Park</Option>*/}
+                                {/*<Option>Miyapur</Option>*/}
+                                {/*</Select>*/}
 
-                                            {/*<Text note style={{fontSize:16,color:'#000',textAlign:'center'}} > {*/}
-                                                {/*Moment(this.state.date).format('DD MMM YYYY')} </Text>*/}
-                                            {/*/!*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*!/*/}
-                                                {/*/!*Moment(this.state.date).format('h:mm A')} </Text>*!/*/}
-                                            {/*<Text note style={{fontSize:16,color:'#000',textAlign:'right'}} > {*/}
-                                                {/*Moment(this.state.date).format('  ')} </Text>*/}
-                                        {/*</View>*/}
-                                    </TouchableOpacity>
-
-                                    {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
-                                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                        {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
-                                               {/*/>*/}
-                                        {/*</View>*/}
-                                        {/*</TouchableOpacity>*/}
-
-                                </View>
-                                <TouchableOpacity onPress={this._showDateTimePicker}>
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}
-                                      onPress={this._showDateTimePicker}>
-
-                                    <Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {
-                                        Moment(this.state.date).format('DD ')} </Text>
-
-                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
-                                          onPress={this._showDateTimePicker}>
-                                        <Text note style={{fontSize:10,color:'#000'}}
-                                              onPress={this._showDateTimePicker}> {
-                                            Moment(this.state.date).format(' ddd ')} </Text>
-                                        <Text note style={{fontSize:10,color:'#000'}}
-                                              onPress={this._showDateTimePicker}> {
-                                            Moment(this.state.date).format(' MMMM ')} </Text>
-                                    </View>
-                                    {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
-                                    {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
-                                    <Text note style={{fontSize:25,color:'#000',marginLeft:120,justifyContent: 'flex-end'}}
-                                          onPress={this._showDateTimePicker}> {
-                                        Moment(this.state.date).format(' dddd ')} </Text>
-                                </View>
-                                </TouchableOpacity>
-                                <View style={{
-                                    borderBottomColor: '#917cb7',
-                                    borderBottomWidth: 1,
-                                    marginTop:10,
-                                    width: width - 20,}}>
-                                </View>
-                                {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
-                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                        {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
-                                        {/*/>*/}
+                                {/*<OptionList ref="OPTIONLIST"/>*/}
+                                {/*<View style={{*/}
+                                {/*borderBottomColor: 'black',*/}
+                                {/*borderBottomWidth: 1,*/}
+                                {/*height: height - 20,}}>*/}
+                                {/*</View>*/}
+                                {/*<View style={{*/}
+                                {/*flex: 1,*/}
+                                {/*borderBottomColor: 'black',*/}
+                                {/*borderBottomWidth: 1,*/}
+                                {/*height: height - 420,}}>*/}
+                                {/*</View>*/}
+                                {/*<Select*/}
+                                {/*name="university"*/}
+                                {/*value="one"*/}
+                                {/*options={options}*/}
+                                {/*filterOptions={filterOptions}*/}
+                                {/*onChange={val => console.log(val)}*/}
+                                {/*/>*/}
+                                <Picker
+                                    placeholder="Select One"
+                                    mode="dropdown"
+                                    style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde',justifyContent:'flex-end'}}
+                                    selectedValue={this.state.selected1}
+                                    onValueChange={this.onValueChange.bind(this)}>
+                                    {/*<View style={{flexDirection: 'row'}}>*/}
+                                    {/*<Text note style={{fontSize:12,textAlign:'center',backgroundColor:'#2eacde',*/}
+                                    {/*color:'#FFFFFF'}} >JED</Text>*/}
                                     {/*</View>*/}
-                                {/*</TouchableOpacity>*/}
-
-                                <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
-                                    marginTop:30,justifyContent:'space-evenly'}}
-                                        onPress={() => Actions.searchScreen()}>
-                                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,
-                                        height: 25,alignItems:'center'}}/>
-                                        <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
-                                            ,textAlign:'center',paddingRight:15}}>Search</Text>
+                                    <Item label="From Location" value=" " />
+                                    <Item label="Jedimetla" value="Je" />
+                                    <Item label="Koti" value="Ko" />
+                                    <Item label="Gachibowli" value="GA" />
+                                    <Item label="JublieeHills" value="Jub" />
+                                    <Item label="Mehdipatnam" value="Meh" />
+                                    <Item label="Raheja IT Park" value="Ra" />
+                                    <Item label="Miyapur" value="Mi" />
+                                </Picker>
+                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                    <View style={{
+                                        flex: 1,
+                                        borderBottomColor: 'black',
+                                        borderBottomWidth: 1,
+                                        width: width - 20,}}>
                                     </View>
-                                    </Button>
+                                    <TouchableOpacity onPress={this._SwapPickerText} style={{alignItems:'center'}}>
+                                        <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}
+                                        />
+                                    </TouchableOpacity>
+                                    <View style={{
+                                        flex: 1,
+                                        borderBottomColor: 'black',
+                                        borderBottomWidth: 1,
+                                        width: width - 20,}}>
+                                    </View>
+                                </View>
+                                <Picker
+                                    placeholder="Select One"
+                                    mode="dropdown"
+                                    style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde'}}
+                                    selectedValue={this.state.selected2}
+                                    onValueChange={this.onChangeValue.bind(this)}>
+
+                                    <Item label="To Location" value=" " />
+                                    <Item label="Mehdipatnam" value="Meh" />
+                                    <Item label="Miyapur" value="Mi" />
+                                    <Item label="JublieeHills" value="Jub" />
+                                    <Item label="Vanastalipuram" value="Va" />
+                                    <Item label="Raheja IT Park" value="Ra" />
+                                    <Item label="Gachibowli" value="GA" />
+                                </Picker>
+
+                            </View>
+                        </View>
+                        <View style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                            width: width - 20,}}>
+                        </View>
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+
+                        {/*<View style={{flex:.5}}>*/}
+
+                        {/*</View>*/}
+                        {/*</View>*/}
+                        {/*<View style={{flex:.1}}>*/}
+                        {/*<Image source={require('../Images/arrow.png')} style = {{ width: 20, height: 20,alignItems:'center',marginTop:10 }}/>*/}
+                        {/*</View>*/}
+
+                        {/*<View style={{flex:.5}}>*/}
+                        {/*<Picker*/}
+                        {/*selectedValue='Meh'*/}
+                        {/*style={{height:35,width:50}}*/}
+                        {/*// label='To'*/}
+                        {/*onValueChange={() => {this.handleChange}}*/}
+                        {/*>*/}
+                        {/*<Item label="Vanastalipuram" value="Va" />*/}
+                        {/*<Item label="Miyapur" value="Mi" />*/}
+                        {/*<Item label="JublieeHills" value="Jub" />*/}
+                        {/*<Item label="Mehdipatnam" value="Meh" />*/}
+                        {/*<Item label="Raheja IT Park" value="Ra" />*/}
+                        {/*<Item label="Gachibowli" value="GA" />*/}
+                        {/*</Picker>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+
+                        {/*<View style={{flex:.5}}>*/}
+
+                        {/*</View>*/}
+                        {/*</View>*/}
+                        {/*<View style={{flex:.1}}>*/}
+                        {/*<Image source={require('../Images/arrow.png')} style = {{ width: 20, height: 20,alignItems:'center',marginTop:10 }}/>*/}
+                        {/*</View>*/}
+
+                        {/*<View style={{flex:.5}}>*/}
+
+                        {/*</View>*/}
+                        {/*</View>*/}
+
+                        {/*</CardItem>*/}
+
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        {/*<Text note style={{fontSize:12,textAlign:'center'}} >Tap icon to change date/time</Text>*/}
+                        {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
+                        {/*<Image source={require('../Images/event.png')} style={{height: 30, width: 30}}*/}
+                        {/*/>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*<DateTimePicker*/}
+                        {/*isVisible={this.state.isDateTimePickerVisible}*/}
+                        {/*mode={'datetime'}*/}
+                        {/*onConfirm={this._handleDatePicked}*/}
+                        {/*onCancel={this._hideDateTimePicker}*/}
+                        {/*/>*/}
+
+                        {/*</View>*/}
+                        {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+
+                        {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
+                        {/*Moment(this.state.date).format('DD-MMM-YYYY')} </Text>*/}
+                        {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
+                        {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
+
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*</View>*/}
+                        <View style={{flexDirection:"row",justifyContent:'flex-start',marginTop:10}}>
+
+                            <TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>
+                                <Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25}}
+                                />
+                            </TouchableOpacity>
+                            <Text note style={{fontSize:12,textAlign:'center'}} >Journey Date</Text>
+                        </View>
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                        {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
+                        {/*{this.changeACLogo()}*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                        {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
+                        {/*{this.changeNonACLogo()}*/}
+
+                        {/*</TouchableOpacity>*/}
+                        <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
+                            <TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>
+                                <DateTimePicker
+                                    isVisible={this.state.isDateTimePickerVisible}
+                                    mode={'date'}
+                                    minimumDate={Moment().toDate()}
+                                    onConfirm={this._handleDatePicked}
+                                    onCancel={this._hideDateTimePicker}
+                                />
+
                                 {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
 
-
-                                    {/*<Text note style={{fontSize:14,textAlign:'center'}} > Time</Text>*/}
-                                    {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
-                                    {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
-                                    {/*<Text note style={{fontSize:14,textAlign:'center'}} >  Date/Time</Text>*/}
-                                    {/*<Text note style={{fontSize:16,textAlign:'center',color:'#0c71b7',fontWeight:'bold'}} >  Search</Text>*/}
-
-
-
+                                {/*<Text note style={{fontSize:16,color:'#000',textAlign:'center'}} > {*/}
+                                {/*Moment(this.state.date).format('DD MMM YYYY')} </Text>*/}
+                                {/*/!*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*!/*/}
+                                {/*/!*Moment(this.state.date).format('h:mm A')} </Text>*!/*/}
+                                {/*<Text note style={{fontSize:16,color:'#000',textAlign:'right'}} > {*/}
+                                {/*Moment(this.state.date).format('  ')} </Text>*/}
                                 {/*</View>*/}
+                            </TouchableOpacity>
 
-                                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                        {/*/!*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 200, width: null, flex: 1}}/>*!/*/}
-                                        {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > Selected Date Time: {*/}
-                                            {/*Moment(this.state.date).format('DD-MM-YYYY h:mm a')} </Text>*/}
+                            {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
+                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                            {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
+                            {/*/>*/}
+                            {/*</View>*/}
+                            {/*</TouchableOpacity>*/}
+
+                        </View>
+                        <TouchableOpacity onPress={this._showDateTimePicker}>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}
+                                  onPress={this._showDateTimePicker}>
+
+                                <Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {
+                                    Moment(this.state.date).format('DD ')} </Text>
+
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
+                                      onPress={this._showDateTimePicker}>
+                                    <Text note style={{fontSize:10,color:'#000'}}
+                                          onPress={this._showDateTimePicker}> {
+                                        Moment(this.state.date).format(' ddd ')} </Text>
+                                    <Text note style={{fontSize:10,color:'#000'}}
+                                          onPress={this._showDateTimePicker}> {
+                                        Moment(this.state.date).format(' MMMM ')} </Text>
+                                </View>
+                                {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
+                                {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
+                                <Text note style={{fontSize:25,color:'#000',marginLeft:120,justifyContent: 'flex-end'}}
+                                      onPress={this._showDateTimePicker}> {
+                                    Moment(this.state.date).format(' dddd ')} </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <View style={{
+                            borderBottomColor: '#917cb7',
+                            borderBottomWidth: 1,
+                            marginTop:10,
+                            width: width - 20,}}>
+                        </View>
+                        {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+
+                        <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
+                            marginTop:30,justifyContent:'space-evenly'}}
+                                onPress={() => Actions.searchScreen()}>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                                <Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,
+                                    height: 25,alignItems:'center'}}/>
+                                <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
+                                    ,textAlign:'center',paddingRight:15}}>Search</Text>
+                            </View>
+                        </Button>
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
 
 
-                                        {/*/!*<Text style={{paddingLeft:12,fontSize:18}} >My details</Text>*!/*/}
-                                    {/*</View>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} > Time</Text>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >  Date/Time</Text>*/}
+                        {/*<Text note style={{fontSize:16,textAlign:'center',color:'#0c71b7',fontWeight:'bold'}} >  Search</Text>*/}
 
 
-                            </Card>
 
-    {/*<Text note style={{fontSize:18,color:'#FFFFFF',fontWeight:'bold'}} > SmarTran-Your travel made easier ...</Text>*/}
-    {/*<Card>*/}
-        {/*<Swiper style={styles.wrapper} height={200} showsButtons={true} >*/}
-            {/*<View style={styles.slide1}>*/}
-                {/*<Image resizeMode='stretch' style={styles.image} source={require('../Images/sliderimage.jpg')}*/}
-                {/*/>*/}
-                {/*<Text style={styles.text} numberOfLines={1}>Waiting at bus stop is a thing of the past</Text>*/}
-            {/*</View>*/}
-            {/*<View style={styles.slide2}>*/}
-                {/*<Image resizeMode='stretch' style={styles.image} source={require('../Images/sliderimage1.jpg')}*/}
-                {/*/>*/}
-                {/*<Text style={styles.text} numberOfLines={1}>No more indefinite wait at bus stop</Text>*/}
+                        {/*</View>*/}
 
-            {/*</View>*/}
-            {/*<View style={styles.slide3}>*/}
-                {/*<Image resizeMode='stretch' style={styles.image} source={require('../Images/imageslide2.jpg')}*/}
-                {/*/>*/}
-                {/*<Text style={styles.text} numberOfLines={1}>Happy commute is here !</Text>*/}
-            {/*</View>*/}
-        {/*</Swiper>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*/!*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 200, width: null, flex: 1}}/>*!/*/}
+                        {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > Selected Date Time: {*/}
+                        {/*Moment(this.state.date).format('DD-MM-YYYY h:mm a')} </Text>*/}
 
-    {/*</Card>*/}
+
+                        {/*/!*<Text style={{paddingLeft:12,fontSize:18}} >My details</Text>*!/*/}
+                        {/*</View>*/}
+
+
+                    </Card>
+
+                    {/*<Text note style={{fontSize:18,color:'#FFFFFF',fontWeight:'bold'}} > SmarTran-Your travel made easier ...</Text>*/}
+                    {/*<Card>*/}
+                    {/*<Swiper style={styles.wrapper} height={200} showsButtons={true} >*/}
+                    {/*<View style={styles.slide1}>*/}
+                    {/*<Image resizeMode='stretch' style={styles.image} source={require('../Images/sliderimage.jpg')}*/}
+                    {/*/>*/}
+                    {/*<Text style={styles.text} numberOfLines={1}>Waiting at bus stop is a thing of the past</Text>*/}
+                    {/*</View>*/}
+                    {/*<View style={styles.slide2}>*/}
+                    {/*<Image resizeMode='stretch' style={styles.image} source={require('../Images/sliderimage1.jpg')}*/}
+                    {/*/>*/}
+                    {/*<Text style={styles.text} numberOfLines={1}>No more indefinite wait at bus stop</Text>*/}
+
+                    {/*</View>*/}
+                    {/*<View style={styles.slide3}>*/}
+                    {/*<Image resizeMode='stretch' style={styles.image} source={require('../Images/imageslide2.jpg')}*/}
+                    {/*/>*/}
+                    {/*<Text style={styles.text} numberOfLines={1}>Happy commute is here !</Text>*/}
+                    {/*</View>*/}
+                    {/*</Swiper>*/}
+
+                    {/*</Card>*/}
 
                     {/*<Text note style={{fontSize:18,color:'#FFFFFF',fontWeight:'bold'}} > Favourites</Text>*/}
 
-                        {/*<TouchableOpacity onPress={() => Actions.searchScreen()}>*/}
-                        {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
-                            {/*borderColor: '#999999', alignItems: 'center',*/}
-                            {/*borderRadius: 5,*/}
-                            {/*overflow: 'hidden',*/}
+                    {/*<TouchableOpacity onPress={() => Actions.searchScreen()}>*/}
+                    {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
+                    {/*borderColor: '#999999', alignItems: 'center',*/}
+                    {/*borderRadius: 5,*/}
+                    {/*overflow: 'hidden',*/}
 
-                            {/*elevation: 1,*/}
-                            {/*padding: 10}}>*/}
+                    {/*elevation: 1,*/}
+                    {/*padding: 10}}>*/}
 
-                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                    {/*/!*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 200, width: null, flex: 1}}/>*!/*/}
-                                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Jedimetla.....</Text>*/}
-                                    {/*<Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>*/}
-                                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Mehdipatna...</Text>*/}
+                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                    {/*/!*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 200, width: null, flex: 1}}/>*!/*/}
+                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Jedimetla.....</Text>*/}
+                    {/*<Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>*/}
+                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Mehdipatna...</Text>*/}
 
-                                {/*</View>*/}
+                    {/*</View>*/}
 
-                        {/*</Card>*/}
+                    {/*</Card>*/}
 
                     {/*</TouchableOpacity>*/}
-                        {/*<TouchableOpacity onPress={() => Actions.searchScreen()}>*/}
-                            {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
-                                {/*borderColor: '#999999', alignItems: 'center',*/}
-                                {/*borderRadius: 5,*/}
-                                {/*overflow: 'hidden',*/}
+                    {/*<TouchableOpacity onPress={() => Actions.searchScreen()}>*/}
+                    {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
+                    {/*borderColor: '#999999', alignItems: 'center',*/}
+                    {/*borderRadius: 5,*/}
+                    {/*overflow: 'hidden',*/}
 
-                                {/*elevation: 1,*/}
-                                {/*padding: 10}}>*/}
+                    {/*elevation: 1,*/}
+                    {/*padding: 10}}>*/}
 
-                                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                        {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Kothaguda...</Text>*/}
-                                        {/*<Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>*/}
-                                        {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Uppal Bus....</Text>*/}
+                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Kothaguda...</Text>*/}
+                    {/*<Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>*/}
+                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Uppal Bus....</Text>*/}
 
-                                    {/*</View>*/}
-
-
-
-                            {/*</Card>*/}
-                        {/*</TouchableOpacity>*/}
-                        {/*<TouchableOpacity onPress={() => Actions.searchScreen()}>*/}
-                            {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
-                                {/*borderColor: '#999999', alignItems: 'center',*/}
-                                {/*borderRadius: 5,*/}
-                                {/*overflow: 'hidden',*/}
-
-                                {/*elevation: 1,*/}
-                                {/*padding: 10}}>*/}
+                    {/*</View>*/}
 
 
-                                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                        {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Yousufguda...</Text>*/}
-                                        {/*<Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>*/}
-                                        {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >BHEL...........</Text>*/}
-                                        {/**/}
-                                    {/*</View>*/}
 
-                            {/*</Card>*/}
-                        {/*</TouchableOpacity>*/}
+                    {/*</Card>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*<TouchableOpacity onPress={() => Actions.searchScreen()}>*/}
+                    {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
+                    {/*borderColor: '#999999', alignItems: 'center',*/}
+                    {/*borderRadius: 5,*/}
+                    {/*overflow: 'hidden',*/}
+
+                    {/*elevation: 1,*/}
+                    {/*padding: 10}}>*/}
+
+
+                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >Yousufguda...</Text>*/}
+                    {/*<Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>*/}
+                    {/*<Text note style={{fontSize:14,textAlign:'center',fontWeight:'bold'}} >BHEL...........</Text>*/}
+                    {/**/}
+                    {/*</View>*/}
+
+                    {/*</Card>*/}
+                    {/*</TouchableOpacity>*/}
 
                 </View>
 
