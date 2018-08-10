@@ -180,10 +180,19 @@ export default class Home extends Component {
     }
 
     _SwapPickerText(){
-        var pickertext = this.state.selected1;
-        this.state.selected1 = this.state.selected2;
-        this.state.selected2 = pickertext;
+        // var pickertext = fromloc;
+        // fromloc = toloc;
+        // toloc = pickertext;
+        //
+        // return(fromloc,toloc);
+        let temploc=this.state.selected1;
+        this.setState({selected1: this.state.selected2, selected2:temploc});
     }
+
+    // setFromLoc(){
+    //     this.setState({selected1: ''});
+    // }
+
     render() {
 
         return (
@@ -196,8 +205,6 @@ export default class Home extends Component {
                 </View>
                 {/*<ScrollView >*/}
                 <View style={[styles.headerview]}>
-
-
                     {/*<Card>*/}
                     {/*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 100, width: 100, flex: 1,*/}
                     {/*marginLeft:125,justifyContent: "center"}}/>*/}
@@ -270,10 +277,11 @@ export default class Home extends Component {
                                 {/*/>*/}
                                 <Picker
                                     placeholder="Select One"
+                                    // prompt="From Location"
                                     mode="dropdown"
                                     style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde',justifyContent:'flex-end'}}
                                     selectedValue={this.state.selected1}
-                                    onValueChange={this.onValueChange.bind(this)}>
+                                    onValueChange={(itemValue) => this.setState({selected1: itemValue})}>
                                     {/*<View style={{flexDirection: 'row'}}>*/}
                                     {/*<Text note style={{fontSize:12,textAlign:'center',backgroundColor:'#2eacde',*/}
                                     {/*color:'#FFFFFF'}} >JED</Text>*/}
@@ -294,7 +302,7 @@ export default class Home extends Component {
                                         borderBottomWidth: 1,
                                         width: width - 20,}}>
                                     </View>
-                                    <TouchableOpacity onPress={this._SwapPickerText} style={{alignItems:'center'}}>
+                                    <TouchableOpacity onPress={this._SwapPickerText.bind(this)} style={{alignItems:'center'}}>
                                         <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}
                                         />
                                     </TouchableOpacity>
@@ -310,7 +318,7 @@ export default class Home extends Component {
                                     mode="dropdown"
                                     style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde'}}
                                     selectedValue={this.state.selected2}
-                                    onValueChange={this.onChangeValue.bind(this)}>
+                                    onValueChange={(itemValue) => this.setState({selected2: itemValue})}>
 
                                     <Item label="To Location" value=" " />
                                     <Item label="Mehdipatnam" value="Meh" />
@@ -624,7 +632,7 @@ export default class Home extends Component {
                             key="trips"
                             icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
                             label="Trips"
-                            onPress={() => this.setState({ active: 'trips' })}
+                            onPress={() => this.setState({ active: 'trips' },Actions.tripScreen())}
                         />
                         <BottomNavigation.Action
                             key="history"
