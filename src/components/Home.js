@@ -9,7 +9,7 @@ import DatePicker from 'react-native-datepicker'
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
 import Toast from 'react-native-simple-toast';
 // import Select from 'react-select';
-
+import Divider from 'react-native-divider';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
@@ -222,7 +222,14 @@ export default class Home extends Component {
                             {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > From</Text>*/}
                             {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > To</Text>*/}
                             {/*</View>*/}
-
+                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                {/*<View*/}
+                                    {/*style={{*/}
+                                        {/*borderLeftWidth: 1,*/}
+                                        {/*borderLeftColor: '#000',*/}
+                                    {/*}}*/}
+                                {/*/>*/}
+                            {/*</View>*/}
                             <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
                                 {/*<Select*/}
                                 {/*width={250}*/}
@@ -409,10 +416,10 @@ export default class Home extends Component {
                         <View style={{flexDirection:"row",justifyContent:'flex-start',marginTop:10}}>
 
                             <TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>
-                                <Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25}}
+                                <Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}
                                 />
                             </TouchableOpacity>
-                            <Text note style={{fontSize:12,textAlign:'center'}} >Journey Date</Text>
+                            <Text note style={{fontSize:12,textAlign:'center'}} >  Journey Date</Text>
                         </View>
                         {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
                         {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
@@ -457,22 +464,22 @@ export default class Home extends Component {
                                   onPress={this._showDateTimePicker}>
 
                                 <Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {
-                                    Moment(this.state.date).format('DD ')} </Text>
+                                    Moment(this.state.date).format('DD')} </Text>
 
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
                                       onPress={this._showDateTimePicker}>
                                     <Text note style={{fontSize:10,color:'#000'}}
                                           onPress={this._showDateTimePicker}> {
-                                        Moment(this.state.date).format(' ddd ')} </Text>
+                                        Moment(this.state.date).format('ddd')} </Text>
                                     <Text note style={{fontSize:10,color:'#000'}}
                                           onPress={this._showDateTimePicker}> {
-                                        Moment(this.state.date).format(' MMMM ')} </Text>
+                                        Moment(this.state.date).format('MMMM')} </Text>
                                 </View>
                                 {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
                                 {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
                                 <Text note style={{fontSize:25,color:'#000',marginLeft:120,justifyContent: 'flex-end'}}
                                       onPress={this._showDateTimePicker}> {
-                                    Moment(this.state.date).format(' dddd ')} </Text>
+                                    Moment(this.state.date).format('dddd')} </Text>
                             </View>
                         </TouchableOpacity>
                         <View style={{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image,StyleSheet,TouchableHighlight,
+import { Image,StyleSheet,TouchableHighlight,TouchableOpacity,
   Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
@@ -9,20 +9,37 @@ import SmartPicker from 'react-native-smart-picker'
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
+const { width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 const MARGIN = 40;
 import { BottomNavigation } from 'react-native-material-ui';
-
+// var Accordion = require('react-native-accordion');
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
         borderColor: '#FFFFFF',
         padding: 10}};
 const cardItem = {cardItem: {fontSize: 40}};
 import Accordion from 'react-native-collapsible/Accordion';
-
+import Moment from "moment/moment";
+const ac_icon_blue = require('../Images/ac_icon_blue.png');
+const ac_icon_grey = require('../Images/ac_icon_grey.png');
+const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
+const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 const SECTIONS = [
+    // {
+    //     title: '  189M ',title1:'5:51 PM \n '+
+    //     '5 min away',title2:'\u20B9 72/-\n',
+    //
+    //     content: '5:51 PM  o  Jedimetla\n'
+    //     + '                 |\n'
+    //     + '                 |  189M\n'
+    //     + '                 |\n'
+    //     + '7:00 PM  o  Medipatnam'
+    // },
     {
-        title: '  189M           5:51 PM                 \u20B9 72/-\n' +
-               '                   5 min away',
+        title: '  189M ',title1:'5:51 PM \n '+
+        '5 min away',title2:'\u20B9 72/-\n',
+
         content: '5:51 PM  o  Jedimetla\n'
         + '                 |\n'
         + '                 |  189M\n'
@@ -30,8 +47,9 @@ const SECTIONS = [
         + '7:00 PM  o  Medipatnam'
     },
     {
-        title: '  158J            5:45 PM                 \u20B9 68/-\n' +
-        '                     5 min away',
+        title: '  158J ',title1:'5:45 PM \n '+
+        '5 min away',title2:'\u20B9 68/-\n',
+
         content: '5:45 PM  o  Jedimetla\n'
         + '                 |\n'
         + '                 |  158J\n'
@@ -44,8 +62,9 @@ const SECTIONS = [
         + '7:04 PM  o  Mehdipatnam'
     },
     {
-        title: '  158JA           5:45 PM                 \u20B9 70/-\n' +
-        '                     5 min away',
+        title: '  158JA ',title1:'5:45 PM \n '+
+        '5 min away',title2:'\u20B9 70/-\n',
+
         content: '5:45 PM  o  Jedimetla\n'
         + '                 |\n'
         + '                 |  158JA\n'
@@ -58,8 +77,9 @@ const SECTIONS = [
         + '7:04 PM  o  Mehdipatnam'
     },
     {
-        title: '   9K                5:45 PM                 \u20B9 65/-\n' +
-        '                     5 min away',
+        title: '  9K ',title1:'5:45 PM \n '+
+        '5 min away',title2:'\u20B9 65/-\n',
+
         content: '5:55 PM  o  Jedimetla\n'
         + '                 |\n'
         + '                 |   9K\n'
@@ -72,8 +92,9 @@ const SECTIONS = [
         + '7:14 PM  o  Mehdipatnam'
     },
     {
-        title: '  189M           5:56 PM                 \u20B9 72/-\n' +
-        '                     5 min away',
+        title: '  189M ',title1:'5:56 PM \n '+
+        '5 min away',title2:'\u20B9 72/-\n',
+
         content: '5:56 PM  o  Jedimetla\n'
         + '                 |\n'
         + '                 |   189M\n'
@@ -81,8 +102,9 @@ const SECTIONS = [
         + '7:03 PM  o  Medipatnam'
     },
     {
-        title: '  9K                 6:08 PM                \u20B9 65/-\n' +
-        '                     5 min away',
+        title: '  9K ',title1:'6:08 PM \n '+
+        '5 min away',title2:'\u20B9 65/-\n',
+
         content: '6:08 PM  o  Jedimetla\n'
         + '                 |\n'
         + '                 |   9K\n'
@@ -103,7 +125,12 @@ export default class SearchScreen extends Component {
             selected: "At",
 
         };
-
+        this.state ={
+            showacimage:false
+        };
+        this.state ={
+            shownonacimage:false
+        };
     }
 
     handleChange(value: string) {
@@ -121,13 +148,46 @@ export default class SearchScreen extends Component {
         alert('Changed to ' + isOn)
     }
 
+    changeACLogo() {
+        var imgsource = this.state.showacimage ? ac_icon_blue : ac_icon_grey;
+        return (
 
+            <Image source={imgsource} style={{height: 30, width: 30,alignItems:'center'}}/>
+
+        );
+    }
+
+    changeNonACLogo() {
+        var imgnonacsource = this.state.shownonacimage ? nonac_icon_blue : nonac_icon_grey;
+        return (
+
+            <Image source={imgnonacsource} style={{height: 30, width: 30,alignItems:'center'}}/>
+
+        );
+    }
 
     _renderHeader(section) {
         return (
             <View style={styles.header}>
-                <Text style={styles.headerText}>{section.title}</Text>
+                <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
+                    <Button  style={{backgroundColor: '#2eacde'}}>
+                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                        <Text style={styles.headerText}>{section.title}</Text>
+                    </Button>
 
+                <View style={{flexDirection:"row"}}>
+                    <Text style={{fontSize: 14,
+                        fontWeight: 'bold',
+                        color:'#000',
+                        textAlign:'left',
+                        justifyContent:'flex-end'}}>{section.title1}</Text>
+                    <Text style={{fontSize: 14,
+                        fontWeight: 'bold',
+                        color:'#000',
+                        textAlign:'right',
+                        justifyContent:'flex-end'}}>{section.title2}</Text>
+                </View>
+                </View>
             </View>
         );
     }
@@ -165,47 +225,207 @@ export default class SearchScreen extends Component {
                 <View style={[styles.headerview]}>
                     {/*<Container style={[styles.headerview]}>*/}
                         {/*<Content>*/}
-                                    <Card  styles={{width: 100,height:300,borderWidth: 3,
+                    <View style={{flexDirection:"row"}}>
+                        <TouchableHighlight onPress={() => Actions.homeScreen()} >
+                            <Image source={require('../Images/previous.png')} style={{height: 35, width: 35,
+                                alignItems:'flex-start',color:'#FFFFFF',marginTop:5}}
+                            />
+                        </TouchableHighlight>
+
+                        {/*<Text note style={{fontSize:12,justifyContent:'flex-end',color:'#FFFFFF',marginTop:5}} >Journey Details</Text>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<TouchableOpacity onPress={this._showDateTimePicker}>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+
+
+                        {/*<Text note style={{fontSize:12,textAlign:'center',justifyContent:'flex-start',color:'#FFFFFF',marginTop:5}} onPress={this._showDateTimePicker}> {*/}
+                            {/*Moment(this.state.date).format('DD MMMM')} </Text>*/}
+                        {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                        {/*onPress={this._showDateTimePicker}> {*/}
+                        {/*Moment(this.state.date).format(' MMMM ')} </Text>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                        {/*onPress={this._showDateTimePicker}> {*/}
+                        {/*Moment(this.state.date).format(' ddd ')} </Text>*/}
+                        {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                        {/*onPress={this._showDateTimePicker}> {*/}
+                        {/*Moment(this.state.date).format(' MMM ')} </Text>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*</View>*/}
+
+                    </View>
+
+                    <Card  styles={{width: 100,height:300,borderWidth: 3,
                                         borderColor: '#999999', alignItems: 'center',
                                         borderRadius: 5,
                                         overflow: 'hidden',
 
                                         elevation: 1,
                                         padding: 10}}>
-
-
-                                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
+                              onPress={this._showDateTimePicker}>
+                            <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} onPress={this._showDateTimePicker}> {
+                                Moment(this.state.date).format('DD MMMM')} </Text>
+                        </View>
+                                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
                                                 {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                                <Text note style={{textAlign:'center',fontSize:14,}} >Jedimetla
+                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >Jedimetla
                                                     </Text>
-                                                <Image source={require('../Images/arrow.png')} style = {{ width: 25, height: 25,alignItems:'center' }}/>
-                                                <Text note style={{textAlign:'center',fontSize:14}} >Mehdipatnam
+
+                                                <Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>
+                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >Mehdipatnam
                                                     </Text>
-                                            </View>
 
-
-
-                                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                                    <Text style={{fontSize:14,textAlign:'center',}} >Riding Now</Text>
-
-                                                    <Text style={{textAlign:'center',marginBottom:1,fontSize:14}} >A/C only</Text>
-                                                </View>
-
-
-                                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                                <TouchableHighlight onPress={() => Actions.homeScreen()} >
-                                                    <Image source={require('../Images/editpencil_icon.png')}
-                                                           style={{height: 50, width: 50,alignItems:'center'}}
-                                                    />
-                                                </TouchableHighlight>
-                                                {/*<Button rounded style={{height:28,backgroundColor: '#669999'}}*/}
-                                                        {/*onPress={() => Actions.homeScreen()}>*/}
-
-                                                    {/*<Text style={{fontWeight: "bold",fontSize:14}}>Change</Text>*/}
-                                                {/*</Button>*/}
-                                                <Text style={{textAlign:'center',fontSize:14}} >Direct bus</Text>
 
                                             </View>
+                                        {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+                                            <View style={{
+                                                flex: 1,
+                                                borderBottomColor: 'black',
+                                                borderBottomWidth: 1,
+                                                width: width - 20,}}>
+                                            </View>
+                                            {/*<TouchableOpacity  style={{alignItems:'center'}}>*/}
+                                                {/*<Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}*/}
+                                                {/*/>*/}
+                                                {/*/!*onPress={this._SwapPickerText.bind(this)}*!/*/}
+                                            {/*</TouchableOpacity>*/}
+                                            {/*<View style={{*/}
+                                                {/*flex: 1,*/}
+                                                {/*borderBottomColor: 'black',*/}
+                                                {/*borderBottomWidth: 1,*/}
+                                                {/*width: width - 20,}}>*/}
+                                            {/*</View>*/}
+                                        {/*</View>*/}
+
+
+
+                                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>*/}
+                                                    {/*<TouchableOpacity onPress={this._showDateTimePicker}>*/}
+                                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}*/}
+                                                              {/*onPress={this._showDateTimePicker}>*/}
+
+                                                            {/*<Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {*/}
+                                                                {/*Moment(this.state.date).format('DD ')} </Text>*/}
+
+                                                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                                                                  {/*onPress={this._showDateTimePicker}>*/}
+                                                                {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                                                                      {/*onPress={this._showDateTimePicker}> {*/}
+                                                                    {/*Moment(this.state.date).format(' dddd ')} </Text>*/}
+                                                                {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                                                                      {/*onPress={this._showDateTimePicker}> {*/}
+                                                                    {/*Moment(this.state.date).format(' MMMM ')} </Text>*/}
+                                                            {/*</View>*/}
+                                                        {/*</View>*/}
+                                                    {/*</TouchableOpacity>*/}
+                                                {/*</View>*/}
+                                                    {/*<View style={{*/}
+                                                        {/*flex: 1,*/}
+                                                        {/*borderBottomColor: 'black',*/}
+                                                        {/*borderBottomWidth: 1,*/}
+                                                        {/*width: width - 20,}}>*/}
+                                                    {/*</View>*/}
+                                                    {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                                                                       {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
+                                                        {/*{this.changeACLogo()}*/}
+                                                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                                                              {/*onPress={this._showDateTimePicker}>*/}
+                                                            {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
+                                                        {/*</View>*/}
+                                                    {/*</TouchableOpacity>*/}
+
+                                                    {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                                                                       {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
+                                                        {/*{this.changeNonACLogo()}*/}
+                                                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                                                              {/*onPress={this._showDateTimePicker}>*/}
+                                                            {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
+                                                        {/*</View>*/}
+                                                    {/*</TouchableOpacity>*/}
+                                                    {/*<Button style={{backgroundColor: '#2eacde',*/}
+                                                        {/*justifyContent:'space-evenly'}}*/}
+                                                            {/*onPress={() => Actions.homeScreen()}>*/}
+                                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                                            {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
+                                                                {/*height: 25,alignItems:'center'}}/>*/}
+                                                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
+                                                                {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
+                                                        {/*</View>*/}
+                                                    {/*</Button>*/}
+                                                {/*</View>*/}
+
+                                        {/*<Button style={{height:50,width:width-10,backgroundColor: '#2eacde',*/}
+                                            {/*justifyContent:'space-evenly'}}*/}
+                                                {/*onPress={() => Actions.homeScreen()}>*/}
+                                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                                {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
+                                                    {/*height: 25,alignItems:'center'}}/>*/}
+                                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
+                                                    {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
+                                            {/*</View>*/}
+                                        {/*</Button>*/}
+                                        {/*<View style={{*/}
+                                            {/*flex: 1,*/}
+                                            {/*borderBottomColor: 'black',*/}
+                                            {/*borderBottomWidth: 1,*/}
+                                            {/*width: width - 20,}}>*/}
+                                        {/*</View>*/}
+                                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>
+                                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                                <Text note style={{fontSize:12,textAlign:'center'}} >Filter</Text>
+                                                <Text note style={{fontSize:12,textAlign:'center'}} >Below</Text>
+                                                <Text note style={{fontSize:12,textAlign:'center'}} >Results</Text>
+                                            </View>
+                                            {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter Results</Text>*/}
+                                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                                <TouchableOpacity  style={{alignItems:'center'}}
+                                                                   onPress={()=>this.setState({showacimage:!this.state.showacimage})} >
+                                                    {this.changeACLogo()}
+                                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
+                                                          onPress={this._showDateTimePicker}>
+                                                        <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+
+                                                <TouchableOpacity  style={{alignItems:'center'}}
+                                                                   onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>
+                                                    {this.changeNonACLogo()}
+                                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
+                                                          onPress={this._showDateTimePicker}>
+                                                        <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            {/*</View>*/}
+                                        </View>
+
+                                        {/*<Button style={{height:50,width:width-10,backgroundColor: '#2eacde',*/}
+                                            {/*marginTop:30,justifyContent:'space-evenly'}}*/}
+                                                {/*onPress={() => Actions.homeScreen()}>*/}
+                                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                                {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
+                                                    {/*height: 25,alignItems:'center'}}/>*/}
+                                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
+                                                    {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
+                                            {/*</View>*/}
+                                        {/*</Button>*/}
+                                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                                {/*<TouchableOpacity onPress={() => Actions.homeScreen()} >*/}
+                                                    {/*<Image source={require('../Images/edit_icon.png')}*/}
+                                                           {/*style={{height: 50, width: 50,alignItems:'center'}}*/}
+                                                    {/*/>*/}
+                                                {/*</TouchableOpacity>*/}
+                                                {/*/!*<Button rounded style={{height:28,backgroundColor: '#669999'}}*!/*/}
+                                                        {/*/!*onPress={() => Actions.homeScreen()}>*!/*/}
+
+                                                    {/*/!*<Text style={{fontWeight: "bold",fontSize:14}}>Change</Text>*!/*/}
+                                                {/*/!*</Button>*!/*/}
+                                                {/*<Text style={{textAlign:'center',fontSize:14}} >Direct bus</Text>*/}
+
+                                            {/*</View>*/}
 
                                     </Card>
                     <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
@@ -344,7 +564,16 @@ const styles = StyleSheet.create({
         // textAlign: 'center',
         fontSize: 14,
         fontWeight: 'bold',
-        color:'#2eacde',
+        color:'#FFFFFF',
+        textAlign:'center'
+    },
+    headerTexttitle:{
+        // textAlign: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+        color:'#000',
+        textAlign:'center',
+        justifyContent:'flex-start'
     },
     content: {
         padding: 20,
