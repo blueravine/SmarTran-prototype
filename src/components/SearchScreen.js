@@ -37,7 +37,7 @@ const SECTIONS = [
     //     + '7:00 PM  o  Medipatnam'
     // },
     {
-        title: '  189M ',title1:'5:51 PM \n '+
+        title: ' 189M | ',title1:'5:51 PM \n '+
         '5 min away',title2:'\u20B9 72/-\n',
 
         content: '5:51 PM  o  Jedimetla\n'
@@ -169,24 +169,32 @@ export default class SearchScreen extends Component {
     _renderHeader(section) {
         return (
             <View style={styles.header}>
-                <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
-                    <Button  style={{backgroundColor: '#2eacde'}}>
-                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
-                        <Text style={styles.headerText}>{section.title}</Text>
-                    </Button>
+                <View style={{flexDirection: "row"}}>
+                    <View style={{flexDirection:"row"}}>
+                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                            {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                            <Text style={styles.headerText}>{section.title}</Text>
 
-                <View style={{flexDirection:"row"}}>
-                    <Text style={{fontSize: 14,
-                        fontWeight: 'bold',
-                        color:'#000',
-                        textAlign:'left',
-                        justifyContent:'flex-end'}}>{section.title1}</Text>
-                    <Text style={{fontSize: 14,
-                        fontWeight: 'bold',
-                        color:'#000',
-                        textAlign:'right',
-                        justifyContent:'flex-end'}}>{section.title2}</Text>
+                        {/*</Button>*/}
+                        <Text style={{fontSize: 14,
+                            fontWeight: 'bold',
+                            color:'#000',
+                            // textAlign:'center',
+                            justifyContent:'flex-start'}}>{section.title1}</Text>
+                    </View>
+                    <View>
+                        <Text style={{fontSize: 14,
+                            fontWeight: 'bold',
+                            color:'#000',
+                            textAlign:'right'}}>{section.title2}</Text>
+
+                    </View>
                 </View>
+                <View style={{
+                    flex: 1,
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    width: width - 20,}}>
                 </View>
             </View>
         );
@@ -428,17 +436,20 @@ export default class SearchScreen extends Component {
                                             {/*</View>*/}
 
                                     </Card>
-                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                    <Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Bus No </Text>
-                    <Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Arrival Time</Text>
-                     <Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Amount</Text>
-                    </View>
+                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                    {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Bus No </Text>*/}
+                    {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Arrival Time</Text>*/}
+                     {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Amount</Text>*/}
+                    {/*</View>*/}
+                    <ScrollView>
                     <Accordion
                         sections={SECTIONS}
                         renderHeader={this._renderHeader}
                         renderContent={this._renderContent}
-                    />
+                    >
 
+                    </Accordion>
+                    </ScrollView>
                         {/*</Content>*/}
 
 
@@ -552,8 +563,8 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#FFFFFF',
         padding: 10,
-        borderTopEndRadius:5,
-        borderWidth:1,
+
+
         borderColor:'#0c71b7',
         // borderBottomColor:'#FFFFFF',
         marginBottom:0,
@@ -564,8 +575,8 @@ const styles = StyleSheet.create({
         // textAlign: 'center',
         fontSize: 14,
         fontWeight: 'bold',
-        color:'#FFFFFF',
-        textAlign:'center'
+        color:'#000',
+        textAlign:'left'
     },
     headerTexttitle:{
         // textAlign: 'center',
