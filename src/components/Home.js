@@ -307,9 +307,9 @@ export default class Home extends Component {
                                         flex: 1,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
-                                        width: width - 20,}}>
+                                        width: width - 10,}}>
                                     </View>
-                                    <TouchableOpacity onPress={this._SwapPickerText.bind(this)} style={{alignItems:'center'}}>
+                                    <TouchableOpacity onPress={this._SwapPickerText.bind(this)}>
                                         <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}
                                         />
                                     </TouchableOpacity>
@@ -317,7 +317,7 @@ export default class Home extends Component {
                                         flex: 1,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
-                                        width: width - 20,}}>
+                                        width: width - 10,}}>
                                     </View>
                                 </View>
                                 <Picker
@@ -341,7 +341,7 @@ export default class Home extends Component {
                         <View style={{
                             borderBottomColor: 'black',
                             borderBottomWidth: 1,
-                            width: width - 20,}}>
+                            width: width - 10,}}>
                         </View>
                         {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
 
@@ -486,7 +486,7 @@ export default class Home extends Component {
                             borderBottomColor: '#917cb7',
                             borderBottomWidth: 1,
                             marginTop:10,
-                            width: width - 20,}}>
+                            width: width - 10,}}>
                         </View>
                         {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
@@ -502,7 +502,7 @@ export default class Home extends Component {
                                 <Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,
                                     height: 25,alignItems:'center'}}/>
                                 <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
-                                    ,textAlign:'center',paddingRight:15}}>Search</Text>
+                                    ,textAlign:'center',paddingLeft:10}}>Search</Text>
                             </View>
                         </Button>
                         {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}

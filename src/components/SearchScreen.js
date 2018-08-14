@@ -26,95 +26,124 @@ const ac_icon_grey = require('../Images/ac_icon_grey.png');
 const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 const SECTIONS = [
-    // {
-    //     title: '  189M ',title1:'5:51 PM \n '+
-    //     '5 min away',title2:'\u20B9 72/-\n',
-    //
-    //     content: '5:51 PM  o  Jedimetla\n'
-    //     + '                 |\n'
-    //     + '                 |  189M\n'
-    //     + '                 |\n'
-    //     + '7:00 PM  o  Medipatnam'
-    // },
     {
-        title: ' 189M | ',title1:'5:51 PM \n '+
-        '5 min away',title2:'\u20B9 72/-\n',
+        title: '189M',title1:'5:51 PM \n '+
+        '',title2:'\u20B9 72/-\n',
 
-        content: '5:51 PM  o  Jedimetla\n'
-        + '                 |\n'
-        + '                 |  189M\n'
-        + '                 |\n'
-        + '7:00 PM  o  Medipatnam'
+        content: '  \n' +
+        '5:51 PM    \n'
+        + '                  \n'
+        + '                  \n'
+        + '                  \n'
+        + '                  \n'
+        + '                  \n'
+        + '7:00 PM           \n ',
+        content1:'  \n' +
+        'Jedimetla\n' +
+        '\n' +
+        '  \n' +
+        ' 189M\n' +
+        '  \n' +
+        '\n'+
+        ' Medipatnam'
+
     },
     {
-        title: '  158J ',title1:'5:45 PM \n '+
-        '5 min away',title2:'\u20B9 68/-\n',
+        title: '158J',title1:'5:45 PM \n '+
+        '',title2:'\u20B9 68/-\n',
 
-        content: '5:45 PM  o  Jedimetla\n'
-        + '                 |\n'
-        + '                 |  158J\n'
-        + '                 |\n'
-        + '6:46 PM  o  Lakdikapul\n'
-        + '6:52 PM  o  Lakdikapul\n'
-        + '                 |\n'
-        + '                 |  113M\n'
-        + '                 |\n'
-        + '7:04 PM  o  Mehdipatnam'
+        content: '\n'+
+        '5:45 PM    \n'
+        + '                  \n'
+        + '                  \n'
+        + '6:46 PM           \n'
+        + '6:52 PM           \n'
+        + '                  \n'
+        + '                  \n'
+        + '7:00 PM           \n ',
+        content1:'\n'+
+        'Jedimetla\n'+
+        + '\n'
+        + '158J\n'
+        + '\n'
+        + 'Lakdikapul\n'
+        + 'Lakdikapul\n'
+        + '\n'
+        + '113M\n'
+        + 'Mehdipatnam'
+
     },
     {
-        title: '  158JA ',title1:'5:45 PM \n '+
-        '5 min away',title2:'\u20B9 70/-\n',
+        title: '158JA',title1:'5:45 PM \n '+
+        '',title2:'\u20B9 70/-\n',
 
-        content: '5:45 PM  o  Jedimetla\n'
-        + '                 |\n'
-        + '                 |  158JA\n'
-        + '                 |\n'
-        + '6:46 PM  o  Lakdikapul\n'
-        + '6:52 PM  o  Lakdikapul\n'
-        + '                 |\n'
-        + '                 |  216KL\n'
-        + '                 |\n'
-        + '7:04 PM  o  Mehdipatnam'
+        content: '\n'+
+        '5:45 PM    \n'
+        + '                  \n'
+        + '                  \n'
+        + '6:46 PM           \n'
+        + '6:52 PM           \n'
+        + '                  \n'
+        + '                  \n'
+        + '7:00 PM           \n ',
+        content1:'\n'+
+        'Jedimetla\n'+
+        + '\n'
+        + '158JA\n'
+        + '\n'
+        + 'Lakdikapul\n'
+        + 'Lakdikapul\n'
+        + '\n'
+        + '216KL\n'
+        + 'Mehdipatnam'
+
     },
     {
-        title: '  9K ',title1:'5:45 PM \n '+
-        '5 min away',title2:'\u20B9 65/-\n',
+        title: '9K',title1:'5:55 PM \n '+
+        '',title2:'\u20B9 65/-\n',
 
-        content: '5:55 PM  o  Jedimetla\n'
-        + '                 |\n'
-        + '                 |   9K\n'
-        + '                 |\n'
-        + '6:56 PM  o  AG office/Birla Mandir\n'
-        + '7:01 PM  o  AG office/Birla Mandir\n'
-        + '                 |\n'
-        + '                 |  113I/M\n'
-        + '                 |\n'
-        + '7:14 PM  o  Mehdipatnam'
+        content: '\n'+
+        '5:55 PM    \n'
+        + '                  \n'
+        + '                  \n'
+        + '6:56 PM           \n'
+        + '7:01 PM           \n'
+        + '                  \n'
+        + '                  \n'
+        + '7:04 PM           \n ',
+        content1:'\n'+
+        'Jedimetla\n'+
+        + '\n'
+        + '9K\n'
+        + '\n'
+        + 'AG office/Birla Mandir\n'
+        + 'AG office/Birla Mandir\n'
+        + '\n'
+        + '113M\n'
+        + 'Mehdipatnam'
+
+
     },
     {
-        title: '  189M ',title1:'5:56 PM \n '+
-        '5 min away',title2:'\u20B9 72/-\n',
+        title: '189M',title1:'5:56 PM \n '+
+        '',title2:'\u20B9 72/-\n',
 
-        content: '5:56 PM  o  Jedimetla\n'
-        + '                 |\n'
-        + '                 |   189M\n'
-        + '                 |\n'
-        + '7:03 PM  o  Medipatnam'
-    },
-    {
-        title: '  9K ',title1:'6:08 PM \n '+
-        '5 min away',title2:'\u20B9 65/-\n',
-
-        content: '6:08 PM  o  Jedimetla\n'
-        + '                 |\n'
-        + '                 |   9K\n'
-        + '                 |\n'
-        + '7:09 PM  o  AG office/Birla Mandir   '
-        + '7:16 PM  o  AG office/Birla Mandir\n'
-        + '                 |\n'
-        + '                 |  113M\n'
-        + '                 |\n'
-        + '7:27 PM  o  Mehdipatnam'
+        content: '  \n' +
+        '5:56 PM    \n'
+        + '                  \n'
+        + '                  \n'
+        + '                  \n'
+        + '                  \n'
+        + '                  \n'
+        + '7:03 PM           \n ',
+        content1:'  \n' +
+        'Jedimetla\n' +
+        '\n' +
+        '\n'+
+        '189M\n' +
+        '\n' +
+        '  \n' +
+        ' Medipatnam'
     },
 ];
 export default class SearchScreen extends Component {
@@ -169,33 +198,289 @@ export default class SearchScreen extends Component {
     _renderHeader(section) {
         return (
             <View style={styles.header}>
-                <View style={{flexDirection: "row"}}>
-                    <View style={{flexDirection:"row"}}>
+                {(section.title === '189M') &&
+                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+                    {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                        {/*<View style={{flexDirection:"row"}}>*/}
                         {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
-                            {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
-                            <Text style={styles.headerText}>{section.title}</Text>
+                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                        {/*<Text style={styles.headerText}>189M</Text>*/}
 
                         {/*</Button>*/}
-                        <Text style={{fontSize: 14,
+                    <Image source={require('../Images/live_icon.png')}
+                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
                             fontWeight: 'bold',
-                            color:'#000',
-                            // textAlign:'center',
-                            justifyContent:'flex-start'}}>{section.title1}</Text>
-                    </View>
-                    <View>
-                        <Text style={{fontSize: 14,
-                            fontWeight: 'bold',
-                            color:'#000',
-                            textAlign:'right'}}>{section.title2}</Text>
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
 
-                    </View>
+
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>{section.title}</Text>
+                        </View>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'right',
+                        marginLeft: 130,
+                        //    justifyContent:'flex-end'
+                    }}>{section.title2}</Text>
+                    {/*</View>*/}
+                    {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
+                        {/*<Text style={{*/}
+                            {/*fontSize: 14,*/}
+                            {/*fontWeight: 'bold',*/}
+                            {/*color: '#000',*/}
+                            {/*textAlign: 'right',*/}
+                            {/*marginLeft: 100,*/}
+                            {/*//    justifyContent:'flex-end'*/}
+                        {/*}}>{section.title2}</Text>*/}
+                    {/*</View>*/}
                 </View>
-                <View style={{
-                    flex: 1,
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    width: width - 20,}}>
+                }
+                {(section.title === '158J') &&
+                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+                    {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                        {/*<View style={{flexDirection:"row"}}>*/}
+                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                        {/*<Text style={styles.headerText}>189M</Text>*/}
+
+                        {/*</Button>*/}
+                    <Image source={require('../Images/live_icon.png')}
+                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
+
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>{section.title}</Text>
+                        {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>{section.title}</Text>*/}
+                            {/*<View >*/}
+                                {/*<Text note style={{*/}
+                                    {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                                    {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                                {/*}}>{section.title}</Text>*/}
+                        {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>113M</Text>*/}
+                        {/*</View>*/}
+                        </View>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
+                            <Image source={require('../Images/school_bus.png')}
+                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>113M</Text>
+                        </View>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'right',
+                        marginLeft: 80,
+                        //    justifyContent:'flex-end'
+                    }}>{section.title2}</Text>
+                    {/*</View>*/}
+                    {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
+                        {/*<Text style={{*/}
+                            {/*fontSize: 14,*/}
+                            {/*fontWeight: 'bold',*/}
+                            {/*color: '#000',*/}
+                            {/*textAlign: 'right',*/}
+                            {/*marginLeft: 200,*/}
+                            {/*//    justifyContent:'flex-end'*/}
+                        {/*}}>{section.title2}</Text>*/}
+                    {/*</View>*/}
                 </View>
+                }
+
+                {(section.title === '158JA') &&
+                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+                    {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                        {/*<View style={{flexDirection:"row"}}>*/}
+                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                        {/*<Text style={styles.headerText}>189M</Text>*/}
+
+                        {/*</Button>*/}
+                    <Image source={require('../Images/live_icon.png')}
+                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
+
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
+                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                            <Image source={require('../Images/school_bus.png')}
+                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>{section.title}</Text>
+                            {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                            {/*}}>{section.title}</Text>*/}
+                            {/*<View >*/}
+                            {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                            {/*}}>{section.title}</Text>*/}
+                            {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                            {/*}}>113M</Text>*/}
+                            {/*</View>*/}
+                        </View>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
+                            <Image source={require('../Images/school_bus.png')}
+                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+
+                            <Text note style={{
+                                fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                            }}>216KL</Text>
+                        </View>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'right',
+                        marginLeft: 70,
+                        //    justifyContent:'flex-end'
+                    }}>{section.title2}</Text>
+                    {/*</View>*/}
+                    {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
+                        {/*<Text style={{*/}
+                            {/*fontSize: 14,*/}
+                            {/*fontWeight: 'bold',*/}
+                            {/*color: '#000',*/}
+                            {/*textAlign: 'right',*/}
+                            {/*marginLeft: 200,*/}
+                            {/*//    justifyContent:'flex-end'*/}
+                        {/*}}>{section.title2}</Text>*/}
+                    {/*</View>*/}
+                </View>
+                }
+
+                {(section.title === '9K') &&
+                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+                    {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                        {/*<View style={{flexDirection:"row"}}>*/}
+                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                        {/*<Text style={styles.headerText}>189M</Text>*/}
+
+                        {/*</Button>*/}
+                    <Image source={require('../Images/live_icon.png')}
+                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
+
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
+                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                            <Image source={require('../Images/school_bus.png')}
+                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>{section.title}</Text>
+                            {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                            {/*}}>{section.title}</Text>*/}
+                            {/*<View >*/}
+                            {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                            {/*}}>{section.title}</Text>*/}
+                            {/*<Text note style={{*/}
+                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                            {/*}}>113M</Text>*/}
+                            {/*</View>*/}
+                        </View>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
+                            <Image source={require('../Images/school_bus.png')}
+                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+
+                            <Text note style={{
+                                fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                            }}>113M</Text>
+                        </View>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'right',
+                        marginLeft: 80,
+                        //    justifyContent:'flex-end'
+                    }}>{section.title2}</Text>
+                    {/*</View>*/}
+                    {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
+                        {/*<Text style={{*/}
+                            {/*fontSize: 14,*/}
+                            {/*fontWeight: 'bold',*/}
+                            {/*color: '#000',*/}
+                            {/*textAlign: 'right',*/}
+                            {/*marginLeft: 200,*/}
+                            {/*//    justifyContent:'flex-end'*/}
+                        {/*}}>{section.title2}</Text>*/}
+                    {/*</View>*/}
+                </View>
+                }
+                    {/*</View>*/}
+                    {/*<View>*/}
+                        {/*<Text style={{fontSize: 14,*/}
+                            {/*fontWeight: 'bold',*/}
+                            {/*color:'#000',*/}
+                            {/*textAlign:'right',justifyContent:'flex-end'}}>Rs72</Text>*/}
+
+
+                {/*</View>*/}
+                {/*<View style={{*/}
+                    {/*flex: 1,*/}
+                    {/*borderBottomColor: 'black',*/}
+                    {/*borderBottomWidth: 1,*/}
+                    {/*width: width - 20,}}>*/}
+                {/*</View>*/}
             </View>
         );
     }
@@ -204,8 +489,15 @@ export default class SearchScreen extends Component {
         return (
             <View style={styles.content}>
                 {/*<Text>{section.content}</Text>*/}
-                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                <View style={{flexDirection:"row"}}>
                     <Text>{section.content}</Text>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                        <Image source={require('../Images/pin_icon.png')} style = {{ width: 25, height: 35}}/>
+                        <Image source={require('../Images/line_icon.png')} style = {{ width: 25, height: 35 }}/>
+                        <Image source={require('../Images/pin.png')} style = {{ width: 25, height: 35 }}/>
+
+                    </View>
+                    <Text>{section.content1}</Text>
                     {/*<Button rounded style={{backgroundColor: '#0C71B7',justifyContent: 'flex-start',}}onPress={this._onPress}>*/}
                     {/*/!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
                     {/*<Text>Buy --></Text>*/}
@@ -215,11 +507,18 @@ export default class SearchScreen extends Component {
                     {/*//     /!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
                     {/*//     <Text style={{fontWeight: "bold",fontSize:14}}>Buy</Text>*/}
                     {/*// </Button>*/}
-                    <TouchableHighlight onPress={() => Actions.paymentScreen()} >
-                        <Image source={require('../Images/buynew_icon.png')} style={{height: 50, width: 50,alignItems:'center'}}
-                        />
-                    </TouchableHighlight>
+
                 </View>
+                <Button style={{height:50,width:width-50,backgroundColor: '#2eacde',
+                    marginTop:5,justifyContent:'space-evenly'}}
+                        onPress={() => Actions.paymentScreen()}>
+                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
+                            height: 25,alignItems:'center'}}/>
+                        <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
+                            ,textAlign:'center',paddingLeft:10}}>Buy</Text>
+                    </View>
+                </Button>
             </View>
         );
     }
@@ -234,11 +533,13 @@ export default class SearchScreen extends Component {
                     {/*<Container style={[styles.headerview]}>*/}
                         {/*<Content>*/}
                     <View style={{flexDirection:"row"}}>
-                        <TouchableHighlight onPress={() => Actions.homeScreen()} >
-                            <Image source={require('../Images/previous.png')} style={{height: 35, width: 35,
-                                alignItems:'flex-start',color:'#FFFFFF',marginTop:5}}
+                        <TouchableOpacity onPress={() => Actions.homeScreen()} >
+                            <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
+                                color:'#FFFFFF',marginTop:5, flex:1}}
                             />
-                        </TouchableHighlight>
+                        </TouchableOpacity>
+                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
+                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Journey Details</Text>
 
                         {/*<Text note style={{fontSize:12,justifyContent:'flex-end',color:'#FFFFFF',marginTop:5}} >Journey Details</Text>*/}
                         {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
@@ -280,11 +581,11 @@ export default class SearchScreen extends Component {
                         </View>
                                             <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
                                                 {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >Jedimetla
+                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > From: Jedimetla
                                                     </Text>
 
-                                                <Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>
-                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >Mehdipatnam
+                                                {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
+                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To: Mehdipatnam
                                                     </Text>
 
 
@@ -294,7 +595,7 @@ export default class SearchScreen extends Component {
                                                 flex: 1,
                                                 borderBottomColor: 'black',
                                                 borderBottomWidth: 1,
-                                                width: width - 20,}}>
+                                                width: width - 10,}}>
                                             </View>
                                             {/*<TouchableOpacity  style={{alignItems:'center'}}>*/}
                                                 {/*<Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}*/}
@@ -473,36 +774,36 @@ export default class SearchScreen extends Component {
                 {/*</ScrollView>*/}
 
 
-                <View style={[styles.footer]}>
-                    <BottomNavigation active={'search'} hidden={false} >
-                        <BottomNavigation.Action
-                            key="search"
-                            icon={<Image source={require('../Images/searchmagnifier.png')}color="#669999" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Search"
-                            // iconColor:"#2CA8DB"
-                            // onLoad={() => this.setState({ active: 'search' })}
-                            onPress={() => this.setState({ active: 'search' },Actions.homeScreen())}
-                        />
-                        <BottomNavigation.Action
-                            key="trips"
-                            icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            label="Trips"
-                            onPress={() => this.setState({ active: 'trips' })}
-                        />
-                        <BottomNavigation.Action
-                            key="history"
-                            icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            label="History"
-                            onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
-                        />
-                        <BottomNavigation.Action
-                            key="more"
-                            icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            label="More"
-                            onPress={() => this.setState({ active: 'more' })}
-                        />
-                    </BottomNavigation>
-                </View>
+                {/*<View style={[styles.footer]}>*/}
+                    {/*<BottomNavigation active={'search'} hidden={false} >*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="search"*/}
+                            {/*icon={<Image source={require('../Images/searchmagnifier.png')}color="#669999" name="Search" style={{ width: 20, height: 20 }} />}*/}
+                            {/*label="Search"*/}
+                            {/*// iconColor:"#2CA8DB"*/}
+                            {/*// onLoad={() => this.setState({ active: 'search' })}*/}
+                            {/*onPress={() => this.setState({ active: 'search' },Actions.homeScreen())}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="trips"*/}
+                            {/*icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
+                            {/*label="Trips"*/}
+                            {/*onPress={() => this.setState({ active: 'trips' })}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="history"*/}
+                            {/*icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
+                            {/*label="History"*/}
+                            {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="more"*/}
+                            {/*icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
+                            {/*label="More"*/}
+                            {/*onPress={() => this.setState({ active: 'more' })}*/}
+                        {/*/>*/}
+                    {/*</BottomNavigation>*/}
+                {/*</View>*/}
             </View>
         );
     }
@@ -564,7 +865,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         padding: 10,
 
-
+        // borderTopEndRadius:5,
+        // borderWidth:1,
+        flex: 1,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        borderTopColor: 'black',
+        borderTopWidth: 1,
+        width: width - 20,
         borderColor:'#0c71b7',
         // borderBottomColor:'#FFFFFF',
         marginBottom:0,
@@ -591,7 +899,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         marginRight:5,
         marginLeft:5,
-        textAlign:'center'
+        textAlign:'right'
     },
     // active: {
     //     backgroundColor: 'rgba(255,255,255,1)',

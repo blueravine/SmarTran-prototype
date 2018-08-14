@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image,StyleSheet,
+import { Image,StyleSheet,TouchableOpacity,
     Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
@@ -41,6 +41,17 @@ export default class TicketScreen extends Component {
                     {/*<Content/>*/}
                     {/*<Container >*/}
                         {/*<Content>*/}
+                    <View style={{flexDirection:"row"}}>
+                        <TouchableOpacity onPress={() => Actions.homeScreen()} >
+                            <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
+                                color:'#FFFFFF',marginTop:5, flex:1}}
+                            />
+                        </TouchableOpacity>
+                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
+                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Ticket Details</Text>
+
+
+                    </View>
                             <Card  styles={{width: 100,height:300, borderWidth: 1.5,
                                 borderRadius:10,
                                 borderColor:'#2EACDE', alignItems: 'center',
@@ -57,11 +68,11 @@ export default class TicketScreen extends Component {
                                     {/*elevation: 1,*/}
                                     {/*padding: 10}}>*/}
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/wind_chime.png')} style={{height: 60, width: 60}}/>
-                                    <Text  style={{marginTop:20,fontSize:18,color:'#2eacde',fontWeight:'bold',
+                                    {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60, width: 60}}/>*/}
+                                    <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
                                     }} >SmarTran Ticket
                                     </Text>
-                                    <Image source={require('../Images/wind_chime.png')} style={{height: 60,width: 60}}/>
+                                    {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60,width: 60}}/>*/}
                                 </View>
 
 
@@ -96,11 +107,11 @@ export default class TicketScreen extends Component {
                                 </View>
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                     <Text note style={{textAlign:'left',marginTop:10,fontSize:16,fontWeight:'bold'
-                                    }} >Jedimetla
+                                    }} >From: Jedimetla
                                     </Text>
-                                    <Image source={require('../Images/arrow.png')} style={{width: 25, height: 25,marginTop:10}}/>
+                                    {/*<Image source={require('../Images/arrow.png')} style={{width: 25, height: 25,marginTop:10}}/>*/}
                                     <Text note style={{textAlign:'right',fontSize:16,fontWeight:'bold',marginTop:10
-                                    }} >Mehdipatnam
+                                    }} >To: Mehdipatnam
                                     </Text>
 
                                 </View>
@@ -119,38 +130,6 @@ export default class TicketScreen extends Component {
                                 {/*}} >valid for today 02/08/2018 only*/}
                                 {/*</Text>*/}
                             </Card>
-                    <Card  styles={{width: 100,height:300, borderWidth: 1.5,
-                        borderRadius:10,
-                        borderColor:'#2EACDE', alignItems: 'center',
-                        overflow: 'hidden',
-                        backgroundColor: 'white',
-                        elevation: 1,
-                        padding: 10}}>
-
-                        {/*<CardItem cardBody  styles={{width: 100,height:300, borderWidth: 1.5,*/}
-                        {/*borderRadius:10,*/}
-                        {/*borderColor:'#2EACDE', alignItems: 'center',*/}
-                        {/*overflow: 'hidden',*/}
-                        {/*backgroundColor: 'white',*/}
-                        {/*elevation: 1,*/}
-                        {/*padding: 10}}>*/}
-                        <View style={{flexDirection:"column"}}>
-                            {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                            <Text note style={{textAlign:'center',paddingBottom:10,fontSize:18,fontWeight:'bold',
-                            }} >Congratulations !
-                            </Text>
-                            <Text note style={{textAlign:'center',fontSize:18,fontWeight:'bold',
-                            }} >Have a safe trip ! !
-                            </Text>
-
-                        </View>
-
-
-                        {/*</CardItem>*/}
-
-
-                    </Card>
-
 
                         {/*</Content>*/}
 
