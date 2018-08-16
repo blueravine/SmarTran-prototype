@@ -83,7 +83,9 @@ export default class PaymentScreen extends Component {
                            {/*radioColor={'#2eacde'}*/}
                            {/*radioBtnSize={20}*/}
                            {/*selectedColor={'#46de21'}/>*/}
+                           <TouchableOpacity>
                     <Text style={styles.headerText}>{section.title}</Text>
+                           </TouchableOpacity>
                 </View>
                 {/*<View style={{flexDirection:"column"}}>*/}
                     {/*<Text style={styles.headerText}>{section.title}</Text>*/}
@@ -385,6 +387,24 @@ const styles = StyleSheet.create({
 
 
     },
+    header: {
+        backgroundColor: '#FFFFFF',
+        padding: 10,
+
+        // borderTopEndRadius:5,
+        // borderWidth:1,
+        flex: 1,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        borderTopColor: 'black',
+        borderTopWidth: 1,
+        width: width - 20,
+        borderColor:'#0c71b7',
+        // borderBottomColor:'#FFFFFF',
+        marginBottom:0,
+        marginRight:5,
+        marginLeft:5,
+    },
     content1: {
         // backgroundColor:'#FFFFFF',
         marginTop: 90,
@@ -430,7 +450,7 @@ const styles = StyleSheet.create({
     headerText: {
         // textAlign: 'center',
         fontSize: 16,
-        fontWeight: '500',
+        // fontWeight: '500',
         color:'#000',
         marginTop:20,
         justifyContent:'flex-end'
