@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image,StyleSheet,TouchableOpacity,
     Dimensions,ScrollView,Alert} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
+import { Container, Header, Content, Card, CardItem,Radio, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import ToggleSwitch from 'toggle-switch-react-native';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
@@ -22,10 +22,7 @@ const cardItem = {cardItem: {fontSize: 40}};
 import Accordion from 'react-native-collapsible/Accordion';
 import Moment from "moment/moment";
 
-var radio_props = [
-    {label: '', value: 0 },
-    // {label: '', value: 1 }
-];
+
 
 const SECTIONS = [
     {
@@ -39,12 +36,12 @@ const SECTIONS = [
     },
     {
         title: ' Wallets',
-        content: '       Paytm\n' +
-        '         Mobikwik\n' +
+        content: '       Paytm\n\n' +
+        '         Mobikwik\n\n' +
         '         Freecharge'
     },
 ];
-
+var radio_props;
 export default class PaymentScreen extends Component {
 
     constructor(props) {
@@ -54,21 +51,38 @@ export default class PaymentScreen extends Component {
 
         };
         this.state={
-            value: 0,
+            value:"",
         };
 
     }
 
+    _onPressHandle = () => {
+        this.setState({value: !this.state.value})
+    }
+
     _renderHeader(section) {
+        // radio_props = [
+        //     {label: section.title, value: 0 }
+        // ];
         return (
             <View style={styles.header}>
                 <View style={{flexDirection:"row"}}>
                     {/*<Image source={require('../Images/circleicon.png')} style={{height: 25,marginLeft:15,width: 25,marginTop:20,justifyContent:'flex-start'}}/>*/}
-                    <RadioForm
-                        radio_props={radio_props}
-                        initial={0}
-                        onPress={() => this.setState({ value: 'value' })}
-                    />
+
+                    {/*<RadioForm*/}
+                        {/*radio_props={radio_props}*/}
+                        {/*initial={ '' }*/}
+                        {/*labelColor={'#000'}*/}
+                        {/*buttonColor={'#2eacde'}*/}
+                        {/*onPress={this._onPressHandle}*/}
+                    {/*/>*/}
+
+                    {/*<Radio style={{width:15,height:30}}*/}
+                        {/*selected={false}*/}
+                           {/*color={'#2eacde'}*/}
+                           {/*radioColor={'#2eacde'}*/}
+                           {/*radioBtnSize={20}*/}
+                           {/*selectedColor={'#46de21'}/>*/}
                     <Text style={styles.headerText}>{section.title}</Text>
                 </View>
                 {/*<View style={{flexDirection:"column"}}>*/}
@@ -78,14 +92,50 @@ export default class PaymentScreen extends Component {
         );
     }
     _renderContent(section) {
+        // radio_props = [
+        //     {label: section.content, value: 0 }
+        //     // {label: '', value: 1 }
+        // ];
         return (
             <View style={styles.content}>
-                <RadioForm
-                    radio_props={radio_props}
-                    initial={0}
-                    onPress={() => this.setState({ value: 'value' })}
-                />
-                <Text>{section.content}</Text>
+
+                {/*<RadioForm*/}
+                    {/*radio_props={radio_props}*/}
+                    {/*initial={0}*/}
+                    {/*labelColor={'#000'}*/}
+                    {/*buttonColor={'#2eacde'}*/}
+                    {/*onPress={this._onPressHandle}*/}
+                {/*/>*/}
+                <View style={{flexDirection:"row"}}>
+                <View style={{flexDirection:"column"}}>
+                <Radio style={{width:30,height:30,borderRadius:10,borderWidth:10,borderColor:'#2eacde'}}
+                    selected={true}
+                       color={'#2eacde'}
+                       radioColor={'#2eacde'}
+                       radioBtnSize={20}
+                       selectedColor={'#2eacde'}
+                       onPress={this._onPressHandle}/>
+                <Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}
+                       selected={false}
+                       color={'#2eacde'}
+                       radioColor={'#2eacde'}
+                       radioBtnSize={20}
+                       selectedColor={'#2eacde'}
+                       onPress={this._onPressHandle}/>
+                <Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}
+                       selected={false}
+                       color={'#2eacde'}
+                       radioColor={'#2eacde'}
+                       radioBtnSize={20}
+                       selectedColor={'#2eacde'}
+                       onPress={this._onPressHandle}/>
+
+                </View>
+                    <View style={{flexDirection:"row"}}>
+                        <View style={{flexDirection:"column"}}>
+                            <Text>{section.content}</Text>
+                        </View></View>
+                </View>
             </View>
         );
     }
@@ -165,14 +215,17 @@ export default class PaymentScreen extends Component {
                             {/*}} >02/08/2018 11:50 AM*/}
                             {/*</Text>*/}
                         </View>
-                        <ScrollView>
+                        {/*<ScrollView>*/}
+
+<TouchableOpacity>
                         <Accordion
                             sections={SECTIONS}
                             renderHeader={this._renderHeader}
                             renderContent={this._renderContent}
-                        >
-                        </Accordion>
-                        </ScrollView>
+                        />
+</TouchableOpacity>
+                        {/*</Accordion>*/}
+                        {/*</ScrollView>*/}
                         {/*<View style={{flexDirection:"row"}}>*/}
                         {/*<Image source={require('../Images/rupee_symbol.png')} style={{marginLeft:20,marginTop:20,height: 25, width: 25, justifyContent: 'flex-start'}}/>*/}
                         {/*<Text note style={{marginRight:20,marginTop:20,fontSize:20,fontWeight:'bold'*/}

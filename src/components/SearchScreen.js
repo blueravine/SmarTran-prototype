@@ -489,12 +489,13 @@ export default class SearchScreen extends Component {
         return (
             <View style={styles.content}>
                 {/*<Text>{section.content}</Text>*/}
-                <View style={{flexDirection:"row"}}>
+                {(section.title === '189M') &&
+                <View style={{flexDirection: "row"}}>
                     <Text>{section.content}</Text>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                        <Image source={require('../Images/pin_icon.png')} style = {{ width: 25, height: 35}}/>
-                        <Image source={require('../Images/line_icon.png')} style = {{ width: 25, height: 35 }}/>
-                        <Image source={require('../Images/pin.png')} style = {{ width: 25, height: 35 }}/>
+                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
 
                     </View>
                     <Text>{section.content1}</Text>
@@ -509,6 +510,77 @@ export default class SearchScreen extends Component {
                     {/*// </Button>*/}
 
                 </View>
+                }
+                {/*<Text>{section.content}</Text>*/}
+                {(section.title === '158J') &&
+                <View style={{flexDirection: "row"}}>
+                    <Text>{section.content}</Text>
+                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                    </View>
+                    <Text>{section.content1}</Text>
+                    {/*<Button rounded style={{backgroundColor: '#0C71B7',justifyContent: 'flex-start',}}onPress={this._onPress}>*/}
+                    {/*/!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
+                    {/*<Text>Buy --></Text>*/}
+                    {/*</Button>*/}
+                    {/*<Button rounded style={{marginLeft:220,height:28,backgroundColor: '#669999',justifyContent: 'flex-end',}}*/}
+                    {/*onPress={() => Actions.paymentScreen()}>*/}
+                    {/*//     /!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
+                    {/*//     <Text style={{fontWeight: "bold",fontSize:14}}>Buy</Text>*/}
+                    {/*// </Button>*/}
+
+                </View>
+                }
+                {(section.title === '158JA') &&
+                <View style={{flexDirection: "row"}}>
+                    <Text>{section.content}</Text>
+                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                    </View>
+                    <Text>{section.content1}</Text>
+                    {/*<Button rounded style={{backgroundColor: '#0C71B7',justifyContent: 'flex-start',}}onPress={this._onPress}>*/}
+                    {/*/!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
+                    {/*<Text>Buy --></Text>*/}
+                    {/*</Button>*/}
+                    {/*<Button rounded style={{marginLeft:220,height:28,backgroundColor: '#669999',justifyContent: 'flex-end',}}*/}
+                    {/*onPress={() => Actions.paymentScreen()}>*/}
+                    {/*//     /!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
+                    {/*//     <Text style={{fontWeight: "bold",fontSize:14}}>Buy</Text>*/}
+                    {/*// </Button>*/}
+
+                </View>
+                }
+                {(section.title === '9K') &&
+                <View style={{flexDirection: "row"}}>
+                    <Text>{section.content}</Text>
+                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                    </View>
+                    <Text>{section.content1}</Text>
+                    {/*<Button rounded style={{backgroundColor: '#0C71B7',justifyContent: 'flex-start',}}onPress={this._onPress}>*/}
+                    {/*/!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
+                    {/*<Text>Buy --></Text>*/}
+                    {/*</Button>*/}
+                    {/*<Button rounded style={{marginLeft:220,height:28,backgroundColor: '#669999',justifyContent: 'flex-end',}}*/}
+                    {/*onPress={() => Actions.paymentScreen()}>*/}
+                    {/*//     /!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
+                    {/*//     <Text style={{fontWeight: "bold",fontSize:14}}>Buy</Text>*/}
+                    {/*// </Button>*/}
+
+                </View>
+                }
                 <Button style={{height:50,width:width-50,backgroundColor: '#2eacde',
                     marginTop:5,justifyContent:'space-evenly'}}
                         onPress={() => Actions.paymentScreen()}>
@@ -519,6 +591,7 @@ export default class SearchScreen extends Component {
                             ,textAlign:'center',paddingLeft:10}}>Buy</Text>
                     </View>
                 </Button>
+
             </View>
         );
     }

@@ -218,6 +218,14 @@ export default class Home extends Component {
 
                         {/*<CardItem cardBody styles={cardItem}>*/}
                         <View style={{flexDirection:"row",marginTop:10}}>
+                            <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15}}>
+                                {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                <Image source={require('../Images/from_icon.png')}
+                                       style={{width: 25, height: 35, paddingLeft: 5}}/>
+                                <Image source={require('../Images/to_icon.png')}
+                                       style={{width: 25, height: 35, paddingLeft: 5}}/>
+
+                            </View>
                             {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                             {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > From</Text>*/}
                             {/*<Text note style={{fontSize:16,fontWeight:'bold',textAlign:'left'}} > To</Text>*/}
@@ -302,7 +310,7 @@ export default class Home extends Component {
                                     <Item label="Raheja IT Park" value="Ra" />
                                     <Item label="Miyapur" value="Mi" />
                                 </Picker>
-                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <View style={{flexDirection: 'row', alignItems: 'center',flex:1}}>
                                     <View style={{
                                         flex: 1,
                                         borderBottomColor: 'black',
@@ -310,7 +318,7 @@ export default class Home extends Component {
                                         width: width - 10,}}>
                                     </View>
                                     <TouchableOpacity onPress={this._SwapPickerText.bind(this)}>
-                                        <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}
+                                        <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35,flex:1}}
                                         />
                                     </TouchableOpacity>
                                     <View style={{
@@ -332,6 +340,7 @@ export default class Home extends Component {
                                     <Item label="Miyapur" value="Mi" />
                                     <Item label="JublieeHills" value="Jub" />
                                     <Item label="Vanastalipuram" value="Va" />
+                                    <Item label="Koti" value="Ko" />
                                     <Item label="Raheja IT Park" value="Ra" />
                                     <Item label="Gachibowli" value="GA" />
                                 </Picker>

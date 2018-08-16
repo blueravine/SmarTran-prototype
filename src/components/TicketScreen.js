@@ -11,6 +11,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
 import { BottomNavigation } from 'react-native-material-ui';
+import Moment from "moment/moment";
 
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
@@ -41,6 +42,7 @@ export default class TicketScreen extends Component {
                     {/*<Content/>*/}
                     {/*<Container >*/}
                         {/*<Content>*/}
+                    <View style={[styles.headerview1]}>
                     <View style={{flexDirection:"row"}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
                             <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
@@ -50,7 +52,7 @@ export default class TicketScreen extends Component {
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Ticket Details</Text>
 
-
+                    </View>
                     </View>
                             <Card  styles={{width: 100,height:300, borderWidth: 1.5,
                                 borderRadius:10,
@@ -78,118 +80,77 @@ export default class TicketScreen extends Component {
 
                                 {/*</CardItem>*/}
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Text note style={{marginTop:20,fontSize:18,fontWeight:'bold',justifyContent:'flex-start'
-                                    }} >TSRTC
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                    <Text note style={{marginTop:20,color:'#000',fontSize:14,justifyContent:'flex-start'
+                                    }} >Authority
                                     </Text>
-                                    <Text note style={{marginTop:20,fontSize:18,fontWeight:'bold',justifyContent:'flex-end'
-                                    }} >02/08/2018 11:50 AM
+                                    <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
+                                    }} >Date
                                     </Text>
-                                </View>
-
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Text note style={{marginTop:20,fontSize:18,fontWeight:'bold',justifyContent:'flex-start'
+                                    <Text note style={{fontSize:14,marginTop:5,color:'#000',justifyContent:'flex-start'
                                     }} >Ticket Number
                                     </Text>
-                                    <Text note style={{marginTop:20,fontSize:18,fontWeight:'bold',justifyContent:'flex-end'
-                                    }} >100100000001
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                    }} >Price
                                     </Text>
-                                </View>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                    }} >Number of Riders
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                    }} >From
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                    }} >To
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                    }} >Route(s)
+                                    </Text>
 
-                                <Text note style={{textAlign:'center',marginTop:20,fontSize:18,fontWeight:'bold'
-                                }} >1 Person Ride once only
-                                </Text>
+
+                                </View>
+                                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                                        <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+
+                                            <Text note style={{marginTop:20,fontSize:14,color:'#000',justifyContent:'flex-end'
+                                            }} >: TSRTC
+                                            </Text>
+                                            <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
+                                            }} >: {Moment(this.state.date).format('DD/MM/YYYY ' +
+                                                'h:mm A')}
+                                            </Text>
+
+                                            <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
+                                            }} >: 100100000001
+                                            </Text>
+                                            <Text note style={{color:'#000',fontSize:14,marginTop:5,
+                                            }} >: &#8377;45/-
+                                            </Text>
+                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                            }} >: 1
+                                            </Text>
+                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                            }} >: Jedimetla
+                                            </Text>
+                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                            }} >: Mehdipatnam
+                                            </Text>
+                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                            }} >: 9K, 113M
+                                            </Text>
+                                        </View>
+                                    </View>
+
+                                </View>
 
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Text note style={{marginRight:20,marginTop:10,fontSize:40,fontWeight:'bold'
-                                    }} > &#8377;45/-
-                                    </Text>
-                                    <Image source={require('../Images/qr_code.png')} style={{marginLeft:60,marginTop:20,height: 50, width: 50, justifyContent: 'flex-end'}}/>
+                                <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
                                 </View>
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Text note style={{textAlign:'left',marginTop:10,fontSize:16,fontWeight:'bold'
-                                    }} >From: Jedimetla
-                                    </Text>
-                                    {/*<Image source={require('../Images/arrow.png')} style={{width: 25, height: 25,marginTop:10}}/>*/}
-                                    <Text note style={{textAlign:'right',fontSize:16,fontWeight:'bold',marginTop:10
-                                    }} >To: Mehdipatnam
-                                    </Text>
-
-                                </View>
-
-
-                                    <Text note style={{textAlign:'center',marginTop:10,fontSize:16,fontWeight:'bold',
-                                    }} >Route(s): 9K, 113M
-                                    </Text>
-
-
-                                <Text note style={{textAlign:'center',marginTop:10,marginBottom:40,fontSize:18,fontStyle:'italic',justifyContent: 'flex-start'
-                                }} >Valid for one trip on 02/08/2018 only
+                                <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
+                                }} >Valid for one trip on {Moment(this.state.date).format('DD/MM/YYYY')} only
                                 </Text>
 
-                                {/*<Text note style={{marginLeft:20,marginBottom:10,fontSize:18,fontStyle:'italic',justifyContent: 'flex-start'*/}
-                                {/*}} >valid for today 02/08/2018 only*/}
-                                {/*</Text>*/}
                             </Card>
-
-                        {/*</Content>*/}
-
-
-                        {/*<Content />*/}
-
-                    {/*</Container>*/}
                 </View>
-
-                    {/*<View style={[styles.content1]}>*/}
-                        {/*<View style={[styles.box]}>*/}
-                            {/*/!*<Text note style={{fontSize:18}} >   </Text>*!/*/}
-
-
-                            {/*<Content>*/}
-                                {/*<Card  styles={{width: 100,height:300, borderWidth: 1.5,*/}
-                                    {/*borderRadius:10,*/}
-                                    {/*borderColor:'#2EACDE', alignItems: 'center',*/}
-                                    {/*overflow: 'hidden',*/}
-                                    {/*backgroundColor: 'white',*/}
-                                    {/*elevation: 1,*/}
-                                    {/*padding: 10}}>*/}
-
-                                    {/*/!*<CardItem cardBody  styles={{width: 100,height:300, borderWidth: 1.5,*!/*/}
-                                        {/*/!*borderRadius:10,*!/*/}
-                                        {/*/!*borderColor:'#2EACDE', alignItems: 'center',*!/*/}
-                                        {/*/!*overflow: 'hidden',*!/*/}
-                                        {/*/!*backgroundColor: 'white',*!/*/}
-                                        {/*/!*elevation: 1,*!/*/}
-                                        {/*/!*padding: 10}}>*!/*/}
-                                        {/*<View style={{flexDirection:"column"}}>*/}
-                                        {/*/!*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*!/*/}
-                                        {/*<Text note style={{textAlign:'center',paddingBottom:10,fontSize:18,fontWeight:'bold',*/}
-                                        {/*}} >Congratulations !*/}
-                                        {/*</Text>*/}
-                                        {/*<Text note style={{textAlign:'center',fontSize:18,fontWeight:'bold',*/}
-                                        {/*}} >Have a safe trip ! !*/}
-                                        {/*</Text>*/}
-
-                                        {/*</View>*/}
-
-
-                                    {/*/!*</CardItem>*!/*/}
-
-
-                                {/*</Card>*/}
-
-                            {/*</Content>*/}
-
-
-                            {/*<Content />*/}
-
-
-
-                          {/**/}
-                          {/**/}
-                        {/*</View>*/}
-
-                    {/*</View>*/}
-                {/*</ScrollView>*/}
 
 
                 <View style={[styles.footer]}>
@@ -227,12 +188,27 @@ export default class TicketScreen extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 5,
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: '#0c71b7',
     },
     headerview: {
+        // height: 250,
+        //borderRadius:25,
+        // borderWidth:5,
+        // borderColor:'#2EACDE',
+        position: 'absolute',
+        paddingRight:25,
+        paddingLeft:35,
+        paddingTop:34,
+        backgroundColor:'#0c71b7',
+        left: 0,
+        right: 0,
+
+
+    },
+    headerview1: {
         // height: 250,
         //borderRadius:25,
         // borderWidth:5,
