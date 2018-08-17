@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image,StyleSheet,TouchableHighlight,TouchableOpacity,
-  Dimensions,ScrollView,Alert} from 'react-native';
+    Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import ToggleSwitch from 'toggle-switch-react-native';
@@ -201,31 +201,31 @@ export default class SearchScreen extends Component {
                 {(section.title === '189M') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                        {/*<View style={{flexDirection:"row"}}>*/}
-                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
-                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
-                        {/*<Text style={styles.headerText}>189M</Text>*/}
+                    {/*<View style={{flexDirection:"row"}}>*/}
+                    {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                    {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                    {/*<Text style={styles.headerText}>189M</Text>*/}
 
-                        {/*</Button>*/}
+                    {/*</Button>*/}
                     <Image source={require('../Images/live_icon.png')}
                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'left',
+                        // justifyContent:'flex-start'
+                    }}>{section.title1}</Text>
 
 
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
                         <Image source={require('../Images/school_bus.png')}
                                style={{width: 25, height: 25, paddingLeft: 5}}/>
                         <Text note style={{
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                             borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
-                        </View>
+                    </View>
                     <Text style={{
                         fontSize: 14,
                         fontWeight: 'bold',
@@ -236,37 +236,37 @@ export default class SearchScreen extends Component {
                     }}>{section.title2}</Text>
                     {/*</View>*/}
                     {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
-                        {/*<Text style={{*/}
-                            {/*fontSize: 14,*/}
-                            {/*fontWeight: 'bold',*/}
-                            {/*color: '#000',*/}
-                            {/*textAlign: 'right',*/}
-                            {/*marginLeft: 100,*/}
-                            {/*//    justifyContent:'flex-end'*/}
-                        {/*}}>{section.title2}</Text>*/}
+                    {/*<Text style={{*/}
+                    {/*fontSize: 14,*/}
+                    {/*fontWeight: 'bold',*/}
+                    {/*color: '#000',*/}
+                    {/*textAlign: 'right',*/}
+                    {/*marginLeft: 100,*/}
+                    {/*//    justifyContent:'flex-end'*/}
+                    {/*}}>{section.title2}</Text>*/}
                     {/*</View>*/}
                 </View>
                 }
                 {(section.title === '158J') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                        {/*<View style={{flexDirection:"row"}}>*/}
-                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
-                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
-                        {/*<Text style={styles.headerText}>189M</Text>*/}
+                    {/*<View style={{flexDirection:"row"}}>*/}
+                    {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                    {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                    {/*<Text style={styles.headerText}>189M</Text>*/}
 
-                        {/*</Button>*/}
+                    {/*</Button>*/}
                     <Image source={require('../Images/live_icon.png')}
                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'left',
+                        // justifyContent:'flex-start'
+                    }}>{section.title1}</Text>
 
-                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                         <Image source={require('../Images/school_bus.png')}
@@ -276,29 +276,29 @@ export default class SearchScreen extends Component {
                             borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
                         {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
                         {/*}}>{section.title}</Text>*/}
-                            {/*<View >*/}
-                                {/*<Text note style={{*/}
-                                    {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                                    {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                                {/*}}>{section.title}</Text>*/}
+                        {/*<View >*/}
                         {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>{section.title}</Text>*/}
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
                         {/*}}>113M</Text>*/}
                         {/*</View>*/}
-                        </View>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
-                            <Image source={require('../Images/school_bus.png')}
-                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                    </View>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
 
                         <Text note style={{
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                             borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
                         }}>113M</Text>
-                        </View>
+                    </View>
                     <Text style={{
                         fontSize: 14,
                         fontWeight: 'bold',
@@ -309,14 +309,14 @@ export default class SearchScreen extends Component {
                     }}>{section.title2}</Text>
                     {/*</View>*/}
                     {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
-                        {/*<Text style={{*/}
-                            {/*fontSize: 14,*/}
-                            {/*fontWeight: 'bold',*/}
-                            {/*color: '#000',*/}
-                            {/*textAlign: 'right',*/}
-                            {/*marginLeft: 200,*/}
-                            {/*//    justifyContent:'flex-end'*/}
-                        {/*}}>{section.title2}</Text>*/}
+                    {/*<Text style={{*/}
+                    {/*fontSize: 14,*/}
+                    {/*fontWeight: 'bold',*/}
+                    {/*color: '#000',*/}
+                    {/*textAlign: 'right',*/}
+                    {/*marginLeft: 200,*/}
+                    {/*//    justifyContent:'flex-end'*/}
+                    {/*}}>{section.title2}</Text>*/}
                     {/*</View>*/}
                 </View>
                 }
@@ -324,54 +324,54 @@ export default class SearchScreen extends Component {
                 {(section.title === '158JA') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                        {/*<View style={{flexDirection:"row"}}>*/}
-                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
-                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
-                        {/*<Text style={styles.headerText}>189M</Text>*/}
+                    {/*<View style={{flexDirection:"row"}}>*/}
+                    {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                    {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                    {/*<Text style={styles.headerText}>189M</Text>*/}
 
-                        {/*</Button>*/}
+                    {/*</Button>*/}
                     <Image source={require('../Images/live_icon.png')}
                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'left',
+                        // justifyContent:'flex-start'
+                    }}>{section.title1}</Text>
 
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
-                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                            <Image source={require('../Images/school_bus.png')}
-                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
                         <Text note style={{
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                             borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
-                            {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                            {/*}}>{section.title}</Text>*/}
-                            {/*<View >*/}
-                            {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                            {/*}}>{section.title}</Text>*/}
-                            {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                            {/*}}>113M</Text>*/}
-                            {/*</View>*/}
-                        </View>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
-                            <Image source={require('../Images/school_bus.png')}
-                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>{section.title}</Text>*/}
+                        {/*<View >*/}
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>{section.title}</Text>*/}
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>113M</Text>*/}
+                        {/*</View>*/}
+                    </View>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
 
-                            <Text note style={{
-                                fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
-                            }}>216KL</Text>
-                        </View>
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>216KL</Text>
+                    </View>
                     <Text style={{
                         fontSize: 14,
                         fontWeight: 'bold',
@@ -382,14 +382,14 @@ export default class SearchScreen extends Component {
                     }}>{section.title2}</Text>
                     {/*</View>*/}
                     {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
-                        {/*<Text style={{*/}
-                            {/*fontSize: 14,*/}
-                            {/*fontWeight: 'bold',*/}
-                            {/*color: '#000',*/}
-                            {/*textAlign: 'right',*/}
-                            {/*marginLeft: 200,*/}
-                            {/*//    justifyContent:'flex-end'*/}
-                        {/*}}>{section.title2}</Text>*/}
+                    {/*<Text style={{*/}
+                    {/*fontSize: 14,*/}
+                    {/*fontWeight: 'bold',*/}
+                    {/*color: '#000',*/}
+                    {/*textAlign: 'right',*/}
+                    {/*marginLeft: 200,*/}
+                    {/*//    justifyContent:'flex-end'*/}
+                    {/*}}>{section.title2}</Text>*/}
                     {/*</View>*/}
                 </View>
                 }
@@ -397,54 +397,54 @@ export default class SearchScreen extends Component {
                 {(section.title === '9K') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                        {/*<View style={{flexDirection:"row"}}>*/}
-                        {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
-                        {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
-                        {/*<Text style={styles.headerText}>189M</Text>*/}
+                    {/*<View style={{flexDirection:"row"}}>*/}
+                    {/*<Button  style={{backgroundColor: '#2eacde',justifyContent: 'flex-start',}}>*/}
+                    {/*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*/}
+                    {/*<Text style={styles.headerText}>189M</Text>*/}
 
-                        {/*</Button>*/}
+                    {/*</Button>*/}
                     <Image source={require('../Images/live_icon.png')}
                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        textAlign: 'left',
+                        // justifyContent:'flex-start'
+                    }}>{section.title1}</Text>
 
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 50}}>
-                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                            <Image source={require('../Images/school_bus.png')}
-                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
                         <Text note style={{
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                             borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
-                            {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                            {/*}}>{section.title}</Text>*/}
-                            {/*<View >*/}
-                            {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                            {/*}}>{section.title}</Text>*/}
-                            {/*<Text note style={{*/}
-                            {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
-                            {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
-                            {/*}}>113M</Text>*/}
-                            {/*</View>*/}
-                        </View>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
-                            <Image source={require('../Images/school_bus.png')}
-                                   style={{width: 25, height: 25, paddingLeft: 5}}/>
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>{section.title}</Text>*/}
+                        {/*<View >*/}
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>{section.title}</Text>*/}
+                        {/*<Text note style={{*/}
+                        {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
+                        {/*borderColor: '#2eacde', borderRadius: 1, borderWidth: 1*/}
+                        {/*}}>113M</Text>*/}
+                        {/*</View>*/}
+                    </View>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 20}}>
+                        <Image source={require('../Images/school_bus.png')}
+                               style={{width: 25, height: 25, paddingLeft: 5}}/>
 
-                            <Text note style={{
-                                fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
-                            }}>113M</Text>
-                        </View>
+                        <Text note style={{
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                            borderColor: '#2eacde', borderRadius: 1, borderWidth: 1
+                        }}>113M</Text>
+                    </View>
                     <Text style={{
                         fontSize: 14,
                         fontWeight: 'bold',
@@ -455,31 +455,31 @@ export default class SearchScreen extends Component {
                     }}>{section.title2}</Text>
                     {/*</View>*/}
                     {/*<View style={{flexDirection: "row", justifyContent: 'space-evenly'}}>*/}
-                        {/*<Text style={{*/}
-                            {/*fontSize: 14,*/}
-                            {/*fontWeight: 'bold',*/}
-                            {/*color: '#000',*/}
-                            {/*textAlign: 'right',*/}
-                            {/*marginLeft: 200,*/}
-                            {/*//    justifyContent:'flex-end'*/}
-                        {/*}}>{section.title2}</Text>*/}
+                    {/*<Text style={{*/}
+                    {/*fontSize: 14,*/}
+                    {/*fontWeight: 'bold',*/}
+                    {/*color: '#000',*/}
+                    {/*textAlign: 'right',*/}
+                    {/*marginLeft: 200,*/}
+                    {/*//    justifyContent:'flex-end'*/}
+                    {/*}}>{section.title2}</Text>*/}
                     {/*</View>*/}
                 </View>
                 }
-                    {/*</View>*/}
-                    {/*<View>*/}
-                        {/*<Text style={{fontSize: 14,*/}
-                            {/*fontWeight: 'bold',*/}
-                            {/*color:'#000',*/}
-                            {/*textAlign:'right',justifyContent:'flex-end'}}>Rs72</Text>*/}
+                {/*</View>*/}
+                {/*<View>*/}
+                {/*<Text style={{fontSize: 14,*/}
+                {/*fontWeight: 'bold',*/}
+                {/*color:'#000',*/}
+                {/*textAlign:'right',justifyContent:'flex-end'}}>Rs72</Text>*/}
 
 
                 {/*</View>*/}
                 {/*<View style={{*/}
-                    {/*flex: 1,*/}
-                    {/*borderBottomColor: 'black',*/}
-                    {/*borderBottomWidth: 1,*/}
-                    {/*width: width - 20,}}>*/}
+                {/*flex: 1,*/}
+                {/*borderBottomColor: 'black',*/}
+                {/*borderBottomWidth: 1,*/}
+                {/*width: width - 20,}}>*/}
                 {/*</View>*/}
             </View>
         );
@@ -604,7 +604,7 @@ export default class SearchScreen extends Component {
                 {/*<ScrollView >*/}
                 <View style={[styles.headerview]}>
                     {/*<Container style={[styles.headerview]}>*/}
-                        {/*<Content>*/}
+                    {/*<Content>*/}
                     <View style={{flexDirection:"row"}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
                             <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
@@ -621,7 +621,7 @@ export default class SearchScreen extends Component {
 
 
                         {/*<Text note style={{fontSize:12,textAlign:'center',justifyContent:'flex-start',color:'#FFFFFF',marginTop:5}} onPress={this._showDateTimePicker}> {*/}
-                            {/*Moment(this.state.date).format('DD MMMM')} </Text>*/}
+                        {/*Moment(this.state.date).format('DD MMMM')} </Text>*/}
                         {/*<Text note style={{fontSize:10,color:'#000'}}*/}
                         {/*onPress={this._showDateTimePicker}> {*/}
                         {/*Moment(this.state.date).format(' MMMM ')} </Text>*/}
@@ -641,241 +641,272 @@ export default class SearchScreen extends Component {
                     </View>
 
                     <Card  styles={{width: 100,height:300,borderWidth: 3,
-                                        borderColor: '#999999', alignItems: 'center',
-                                        borderRadius: 5,
-                                        overflow: 'hidden',
+                        borderColor: '#999999', alignItems: 'center',
+                        borderRadius: 5,
+                        overflow: 'hidden',
 
-                                        elevation: 1,
-                                        padding: 10}}>
+                        elevation: 1,
+                        padding: 10}}>
                         <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
                               onPress={this._showDateTimePicker}>
                             <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} onPress={this._showDateTimePicker}> {
                                 Moment(this.state.date).format('DD MMMM')} </Text>
                         </View>
-                                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
-                                                {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > From: Jedimetla
-                                                    </Text>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10}}>
+                            {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >Jedimetla
+                            </Text>
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                            </Text>
+                            {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > Mehdipatnam
+                            </Text>
+                            <View style={{
+                                flex: 1,
+                                borderBottomColor: 'black',
+                                borderBottomWidth: 1,
+                                width: width - 10,}}>
+                            </View>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>
+                                {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                    {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter</Text>*/}
+                                    {/*<Text note style={{fontSize:12,textAlign:'center'}} >Below</Text>*/}
+                                    {/*<Text note style={{fontSize:12,textAlign:'center'}} >Results</Text>*/}
+                                {/*</View>*/}
+                                {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter Results</Text>*/}
+                                {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                <TouchableOpacity  style={{alignItems:'center'}}
+                                                   onPress={()=>this.setState({showacimage:!this.state.showacimage})} >
+                                    {this.changeACLogo()}
+                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
+                                          onPress={this._showDateTimePicker}>
+                                        <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
+                                    </View>
+                                </TouchableOpacity>
 
-                                                {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To: Mehdipatnam
-                                                    </Text>
+                                <TouchableOpacity  style={{alignItems:'center'}}
+                                                   onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>
+                                    {this.changeNonACLogo()}
+                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
+                                          onPress={this._showDateTimePicker}>
+                                        <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <Text note style={{fontSize:12,textAlign:'center',marginTop:20}} >ALL</Text>
+                                {/*</View>*/}
+                            </View>
+
+                        </View>
+                        {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}>*/}
+                        {/*<Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}*/}
+                        {/*/>*/}
+                        {/*/!*onPress={this._SwapPickerText.bind(this)}*!/*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*<View style={{*/}
+                        {/*flex: 1,*/}
+                        {/*borderBottomColor: 'black',*/}
+                        {/*borderBottomWidth: 1,*/}
+                        {/*width: width - 20,}}>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
 
 
-                                            </View>
-                                        {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-                                            <View style={{
-                                                flex: 1,
-                                                borderBottomColor: 'black',
-                                                borderBottomWidth: 1,
-                                                width: width - 10,}}>
-                                            </View>
-                                            {/*<TouchableOpacity  style={{alignItems:'center'}}>*/}
-                                                {/*<Image source={require('../Images/change_position.png')} style={{height: 35, width: 35}}*/}
-                                                {/*/>*/}
-                                                {/*/!*onPress={this._SwapPickerText.bind(this)}*!/*/}
-                                            {/*</TouchableOpacity>*/}
-                                            {/*<View style={{*/}
-                                                {/*flex: 1,*/}
-                                                {/*borderBottomColor: 'black',*/}
-                                                {/*borderBottomWidth: 1,*/}
-                                                {/*width: width - 20,}}>*/}
-                                            {/*</View>*/}
-                                        {/*</View>*/}
 
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>*/}
+                        {/*<TouchableOpacity onPress={this._showDateTimePicker}>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
 
+                        {/*<Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {*/}
+                        {/*Moment(this.state.date).format('DD ')} </Text>*/}
 
-                                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>*/}
-                                                    {/*<TouchableOpacity onPress={this._showDateTimePicker}>*/}
-                                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}*/}
-                                                              {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                        {/*onPress={this._showDateTimePicker}> {*/}
+                        {/*Moment(this.state.date).format(' dddd ')} </Text>*/}
+                        {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                        {/*onPress={this._showDateTimePicker}> {*/}
+                        {/*Moment(this.state.date).format(' MMMM ')} </Text>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*</View>*/}
+                        {/*<View style={{*/}
+                        {/*flex: 1,*/}
+                        {/*borderBottomColor: 'black',*/}
+                        {/*borderBottomWidth: 1,*/}
+                        {/*width: width - 20,}}>*/}
+                        {/*</View>*/}
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                        {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
+                        {/*{this.changeACLogo()}*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
 
-                                                            {/*<Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {*/}
-                                                                {/*Moment(this.state.date).format('DD ')} </Text>*/}
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                        {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
+                        {/*{this.changeNonACLogo()}*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*<Button style={{backgroundColor: '#2eacde',*/}
+                        {/*justifyContent:'space-evenly'}}*/}
+                        {/*onPress={() => Actions.homeScreen()}>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
+                        {/*height: 25,alignItems:'center'}}/>*/}
+                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
+                        {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
+                        {/*</View>*/}
+                        {/*</Button>*/}
+                        {/*</View>*/}
 
-                                                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
-                                                                  {/*onPress={this._showDateTimePicker}>*/}
-                                                                {/*<Text note style={{fontSize:10,color:'#000'}}*/}
-                                                                      {/*onPress={this._showDateTimePicker}> {*/}
-                                                                    {/*Moment(this.state.date).format(' dddd ')} </Text>*/}
-                                                                {/*<Text note style={{fontSize:10,color:'#000'}}*/}
-                                                                      {/*onPress={this._showDateTimePicker}> {*/}
-                                                                    {/*Moment(this.state.date).format(' MMMM ')} </Text>*/}
-                                                            {/*</View>*/}
-                                                        {/*</View>*/}
-                                                    {/*</TouchableOpacity>*/}
-                                                {/*</View>*/}
-                                                    {/*<View style={{*/}
-                                                        {/*flex: 1,*/}
-                                                        {/*borderBottomColor: 'black',*/}
-                                                        {/*borderBottomWidth: 1,*/}
-                                                        {/*width: width - 20,}}>*/}
-                                                    {/*</View>*/}
-                                                    {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
-                                                                       {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
-                                                        {/*{this.changeACLogo()}*/}
-                                                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
-                                                              {/*onPress={this._showDateTimePicker}>*/}
-                                                            {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
-                                                        {/*</View>*/}
-                                                    {/*</TouchableOpacity>*/}
+                        {/*<Button style={{height:50,width:width-10,backgroundColor: '#2eacde',*/}
+                        {/*justifyContent:'space-evenly'}}*/}
+                        {/*onPress={() => Actions.homeScreen()}>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
+                        {/*height: 25,alignItems:'center'}}/>*/}
+                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
+                        {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
+                        {/*</View>*/}
+                        {/*</Button>*/}
+                        {/*<View style={{*/}
+                        {/*flex: 1,*/}
+                        {/*borderBottomColor: 'black',*/}
+                        {/*borderBottomWidth: 1,*/}
+                        {/*width: width - 20,}}>*/}
+                        {/*</View>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter</Text>*/}
+                        {/*<Text note style={{fontSize:12,textAlign:'center'}} >Below</Text>*/}
+                        {/*<Text note style={{fontSize:12,textAlign:'center'}} >Results</Text>*/}
+                        {/*</View>*/}
+                        {/*/!*<Text note style={{fontSize:12,textAlign:'center'}} >Filter Results</Text>*!/*/}
+                        {/*/!*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*!/*/}
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                        {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
+                        {/*{this.changeACLogo()}*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
 
-                                                    {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
-                                                                       {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
-                                                        {/*{this.changeNonACLogo()}*/}
-                                                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
-                                                              {/*onPress={this._showDateTimePicker}>*/}
-                                                            {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
-                                                        {/*</View>*/}
-                                                    {/*</TouchableOpacity>*/}
-                                                    {/*<Button style={{backgroundColor: '#2eacde',*/}
-                                                        {/*justifyContent:'space-evenly'}}*/}
-                                                            {/*onPress={() => Actions.homeScreen()}>*/}
-                                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                                            {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
-                                                                {/*height: 25,alignItems:'center'}}/>*/}
-                                                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
-                                                                {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
-                                                        {/*</View>*/}
-                                                    {/*</Button>*/}
-                                                {/*</View>*/}
+                        {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                        {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
+                        {/*{this.changeNonACLogo()}*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}*/}
+                        {/*onPress={this._showDateTimePicker}>*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*/!*</View>*!/*/}
+                        {/*</View>*/}
 
-                                        {/*<Button style={{height:50,width:width-10,backgroundColor: '#2eacde',*/}
-                                            {/*justifyContent:'space-evenly'}}*/}
-                                                {/*onPress={() => Actions.homeScreen()}>*/}
-                                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                                {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
-                                                    {/*height: 25,alignItems:'center'}}/>*/}
-                                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
-                                                    {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
-                                            {/*</View>*/}
-                                        {/*</Button>*/}
-                                        {/*<View style={{*/}
-                                            {/*flex: 1,*/}
-                                            {/*borderBottomColor: 'black',*/}
-                                            {/*borderBottomWidth: 1,*/}
-                                            {/*width: width - 20,}}>*/}
-                                        {/*</View>*/}
-                                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>
-                                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                                <Text note style={{fontSize:12,textAlign:'center'}} >Filter</Text>
-                                                <Text note style={{fontSize:12,textAlign:'center'}} >Below</Text>
-                                                <Text note style={{fontSize:12,textAlign:'center'}} >Results</Text>
-                                            </View>
-                                            {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter Results</Text>*/}
-                                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                                <TouchableOpacity  style={{alignItems:'center'}}
-                                                                   onPress={()=>this.setState({showacimage:!this.state.showacimage})} >
-                                                    {this.changeACLogo()}
-                                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
-                                                          onPress={this._showDateTimePicker}>
-                                                        <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
-                                                    </View>
-                                                </TouchableOpacity>
+                        {/*<Button style={{height:50,width:width-10,backgroundColor: '#2eacde',*/}
+                        {/*marginTop:30,justifyContent:'space-evenly'}}*/}
+                        {/*onPress={() => Actions.homeScreen()}>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
+                        {/*height: 25,alignItems:'center'}}/>*/}
+                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
+                        {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
+                        {/*</View>*/}
+                        {/*</Button>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<TouchableOpacity onPress={() => Actions.homeScreen()} >*/}
+                        {/*<Image source={require('../Images/edit_icon.png')}*/}
+                        {/*style={{height: 50, width: 50,alignItems:'center'}}*/}
+                        {/*/>*/}
+                        {/*</TouchableOpacity>*/}
+                        {/*/!*<Button rounded style={{height:28,backgroundColor: '#669999'}}*!/*/}
+                        {/*/!*onPress={() => Actions.homeScreen()}>*!/*/}
 
-                                                <TouchableOpacity  style={{alignItems:'center'}}
-                                                                   onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>
-                                                    {this.changeNonACLogo()}
-                                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
-                                                          onPress={this._showDateTimePicker}>
-                                                        <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
-                                                    </View>
-                                                </TouchableOpacity>
-                                            {/*</View>*/}
-                                        </View>
+                        {/*/!*<Text style={{fontWeight: "bold",fontSize:14}}>Change</Text>*!/*/}
+                        {/*/!*</Button>*!/*/}
+                        {/*<Text style={{textAlign:'center',fontSize:14}} >Direct bus</Text>*/}
 
-                                        {/*<Button style={{height:50,width:width-10,backgroundColor: '#2eacde',*/}
-                                            {/*marginTop:30,justifyContent:'space-evenly'}}*/}
-                                                {/*onPress={() => Actions.homeScreen()}>*/}
-                                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                                {/*<Image source={require('../Images/edit_white_icon.png')} style = {{ width: 25,*/}
-                                                    {/*height: 25,alignItems:'center'}}/>*/}
-                                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'*/}
-                                                    {/*,textAlign:'center',paddingRight:15}}>Edit</Text>*/}
-                                            {/*</View>*/}
-                                        {/*</Button>*/}
-                                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                                {/*<TouchableOpacity onPress={() => Actions.homeScreen()} >*/}
-                                                    {/*<Image source={require('../Images/edit_icon.png')}*/}
-                                                           {/*style={{height: 50, width: 50,alignItems:'center'}}*/}
-                                                    {/*/>*/}
-                                                {/*</TouchableOpacity>*/}
-                                                {/*/!*<Button rounded style={{height:28,backgroundColor: '#669999'}}*!/*/}
-                                                        {/*/!*onPress={() => Actions.homeScreen()}>*!/*/}
+                        {/*</View>*/}
 
-                                                    {/*/!*<Text style={{fontWeight: "bold",fontSize:14}}>Change</Text>*!/*/}
-                                                {/*/!*</Button>*!/*/}
-                                                {/*<Text style={{textAlign:'center',fontSize:14}} >Direct bus</Text>*/}
-
-                                            {/*</View>*/}
-
-                                    </Card>
+                    </Card>
                     {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                     {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Bus No </Text>*/}
                     {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Arrival Time</Text>*/}
-                     {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Amount</Text>*/}
+                    {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Amount</Text>*/}
                     {/*</View>*/}
                     <ScrollView>
-                    <Accordion
-                        sections={SECTIONS}
-                        renderHeader={this._renderHeader}
-                        renderContent={this._renderContent}
-                    >
+                        <Accordion
+                            sections={SECTIONS}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                        >
 
-                    </Accordion>
+                        </Accordion>
                     </ScrollView>
-                        {/*</Content>*/}
+                    {/*</Content>*/}
 
 
-                        {/*<Content />*/}
+                    {/*<Content />*/}
 
                     {/*</Container>*/}
                 </View>
 
 
-                    {/*<View style={[styles.content1]}>*/}
-                        {/*<View style={[styles.box]}>*/}
-                            {/*<Text note style={{fontSize:14,color:'#FFFFFF'}} >     Bus No           Arrival Time           Amount</Text>*/}
-                            {/*<Accordion*/}
-                                {/*sections={SECTIONS}*/}
-                                {/*renderHeader={this._renderHeader}*/}
-                                {/*renderContent={this._renderContent}*/}
-                            {/*/>*/}
-                        {/*</View>*/}
+                {/*<View style={[styles.content1]}>*/}
+                {/*<View style={[styles.box]}>*/}
+                {/*<Text note style={{fontSize:14,color:'#FFFFFF'}} >     Bus No           Arrival Time           Amount</Text>*/}
+                {/*<Accordion*/}
+                {/*sections={SECTIONS}*/}
+                {/*renderHeader={this._renderHeader}*/}
+                {/*renderContent={this._renderContent}*/}
+                {/*/>*/}
+                {/*</View>*/}
 
-                    {/*</View>*/}
+                {/*</View>*/}
                 {/*</ScrollView>*/}
 
 
                 {/*<View style={[styles.footer]}>*/}
-                    {/*<BottomNavigation active={'search'} hidden={false} >*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="search"*/}
-                            {/*icon={<Image source={require('../Images/searchmagnifier.png')}color="#669999" name="Search" style={{ width: 20, height: 20 }} />}*/}
-                            {/*label="Search"*/}
-                            {/*// iconColor:"#2CA8DB"*/}
-                            {/*// onLoad={() => this.setState({ active: 'search' })}*/}
-                            {/*onPress={() => this.setState({ active: 'search' },Actions.homeScreen())}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="trips"*/}
-                            {/*icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
-                            {/*label="Trips"*/}
-                            {/*onPress={() => this.setState({ active: 'trips' })}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="history"*/}
-                            {/*icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
-                            {/*label="History"*/}
-                            {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="more"*/}
-                            {/*icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
-                            {/*label="More"*/}
-                            {/*onPress={() => this.setState({ active: 'more' })}*/}
-                        {/*/>*/}
-                    {/*</BottomNavigation>*/}
+                {/*<BottomNavigation active={'search'} hidden={false} >*/}
+                {/*<BottomNavigation.Action*/}
+                {/*key="home"*/}
+                {/*icon={<Image source={require('../Images/home_icon.png')} color="#669999" name="Search" style={{ width: 20, height: 20 }} />}*/}
+                {/*label="Home"*/}
+                {/*// iconColor:"#2CA8DB"*/}
+                {/*// onLoad={() => this.setState({ active: 'search' })}*/}
+                {/*onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}*/}
+                {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
+                {/*// {this.changebottomLogo()}*/}
+                {/*/>*/}
+                {/*<BottomNavigation.Action*/}
+                {/*key="track"*/}
+                {/*icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
+                {/*label="Track"*/}
+                {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
+                {/*/>*/}
+                {/*<BottomNavigation.Action*/}
+                {/*key="history"*/}
+                {/*icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
+                {/*label="History"*/}
+                {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
+                {/*/>*/}
+                {/*<BottomNavigation.Action*/}
+                {/*key="more"*/}
+                {/*icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
+                {/*label="More"*/}
+                {/*onPress={() => this.setState({ active: 'more' })}*/}
+                {/*/>*/}
+                {/*</BottomNavigation>*/}
                 {/*</View>*/}
             </View>
         );

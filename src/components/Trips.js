@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MapView, { AnimatedRegion,Polyline,Marker, Callout, ProviderPropType } from 'react-native-maps';
 import { Image,ScrollView,StyleSheet,TouchableOpacity,StatusBar,
     TouchableHighlight,Dimensions,Animated,Easing } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab,Icon, Button,  Left, Body, Right,
+import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button,  Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
@@ -12,7 +12,8 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
 import { BottomNavigation } from 'react-native-material-ui';
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icons from 'react-native-vector-icons/FontAwesome5';
 const card      = {card: {width: 300,height:500}};
 const cardItem = {cardItem: {fontSize: 40}};
 const { width } = Dimensions.get('window');
@@ -249,32 +250,35 @@ export default class Trips extends Component {
 
 
                 <View style={[styles.footer]}>
-                    <BottomNavigation active={'trips'} hidden={false} >
+                    <BottomNavigation active={'track'} hidden={false} >
                         <BottomNavigation.Action
-                            key="search"
-                            icon={<Image source={require('../Images/search_magnifier_black.png')} color="#669999" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Search"
-                            // iconColor:"#2CA8DB"
+                            key="home"
+                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+                            label="Home"
+                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
                             // onLoad={() => this.setState({ active: 'search' })}
-                            onPress={() => this.setState({ active: 'search' },Actions.homeScreen())}
+                            onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}
                             // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
                             // {this.changebottomLogo()}
                         />
                         <BottomNavigation.Action
-                            key="trips"
-                            icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            label="Trips"
-                            onPress={() => this.setState({ active: 'trips' },Actions.tripScreen())}
+                            key="track"
+                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
+                            label="Track"
+                            onPress={() => this.setState({ active: 'track' })}
                         />
                         <BottomNavigation.Action
                             key="history"
-                            icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
                         />
                         <BottomNavigation.Action
                             key="more"
-                            icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
                             label="More"
                             onPress={() => this.setState({ active: 'more' })}
                         />

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Image,StyleSheet,TouchableOpacity,
     Dimensions,ScrollView,Alert} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
+import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import ToggleSwitch from 'toggle-switch-react-native';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icons from 'react-native-vector-icons/FontAwesome5';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
@@ -156,27 +157,34 @@ export default class TicketScreen extends Component {
                 <View style={[styles.footer]}>
                     <BottomNavigation active={'history'} hidden={false} >
                         <BottomNavigation.Action
-                            key="search"
-                            icon={<Image source={require('../Images/searchmagnifier.png')}color="#669999" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Search"
+                            key="home"
+                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+                            label="Home"
+                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
                             // iconColor:"#2CA8DB"
-                            onPress={() => this.setState({ active: 'search' },Actions.homeScreen())}
+                            // onLoad={() => this.setState({ active: 'search' })}
+                            onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}
+                            // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
+                            // {this.changebottomLogo()}
                         />
                         <BottomNavigation.Action
-                            key="trips"
-                            icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            label="Trips"
-                            onPress={() => this.setState({ active: 'trips' })}
+                            key="track"
+                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
+                            label="Track"
+                            onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}
                         />
                         <BottomNavigation.Action
                             key="history"
-                            icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' })}
                         />
                         <BottomNavigation.Action
                             key="more"
-                            icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
                             label="More"
                             onPress={() => this.setState({ active: 'more' })}
                         />

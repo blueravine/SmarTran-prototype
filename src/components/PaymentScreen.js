@@ -36,9 +36,9 @@ const SECTIONS = [
     },
     {
         title: ' Wallets',
-        content: '       Paytm\n\n' +
-        '         Mobikwik\n\n' +
-        '         Freecharge'
+        content:   '  Paytm\n\n',
+        content1:  '  Mobikwik\n\n',
+        content2:  '  Freecharge\n'
     },
 ];
 var radio_props;
@@ -110,32 +110,55 @@ export default class PaymentScreen extends Component {
                 {/*/>*/}
                 <View style={{flexDirection:"row"}}>
                 <View style={{flexDirection:"column"}}>
-                <Radio style={{width:30,height:30,borderRadius:10,borderWidth:10,borderColor:'#2eacde'}}
-                    selected={true}
-                       color={'#2eacde'}
-                       radioColor={'#2eacde'}
-                       radioBtnSize={20}
-                       selectedColor={'#2eacde'}
-                       onPress={this._onPressHandle}/>
-                <Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}
-                       selected={false}
-                       color={'#2eacde'}
-                       radioColor={'#2eacde'}
-                       radioBtnSize={20}
-                       selectedColor={'#2eacde'}
-                       onPress={this._onPressHandle}/>
-                <Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}
-                       selected={false}
-                       color={'#2eacde'}
-                       radioColor={'#2eacde'}
-                       radioBtnSize={20}
-                       selectedColor={'#2eacde'}
-                       onPress={this._onPressHandle}/>
+                    <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                        <Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,
+                            color:'#FFFFFF'}}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                        <Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,
+                            color:'#FFFFFF',marginTop:10}}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                        <Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,
+                            color:'#FFFFFF',marginTop:15}}
+                        />
+                    </TouchableOpacity>
+                {/*<Radio style={{width:30,height:30,borderRadius:10,borderWidth:10,borderColor:'#2eacde'}}*/}
+                    {/*selected={true}*/}
+                       {/*color={'#2eacde'}*/}
+                       {/*radioColor={'#2eacde'}*/}
+                       {/*radioBtnSize={20}*/}
+                       {/*selectedColor={'#2eacde'}*/}
+                       {/*onPress={this._onPressHandle}/>*/}
+                {/*<Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}*/}
+                       {/*selected={false}*/}
+                       {/*color={'#2eacde'}*/}
+                       {/*radioColor={'#2eacde'}*/}
+                       {/*radioBtnSize={20}*/}
+                       {/*selectedColor={'#2eacde'}*/}
+                       {/*onPress={this._onPressHandle}/>*/}
+                {/*<Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}*/}
+                       {/*selected={false}*/}
+                       {/*color={'#2eacde'}*/}
+                       {/*radioColor={'#2eacde'}*/}
+                       {/*radioBtnSize={20}*/}
+                       {/*selectedColor={'#2eacde'}*/}
+                       {/*onPress={this._onPressHandle}/>*/}
 
                 </View>
                     <View style={{flexDirection:"row"}}>
                         <View style={{flexDirection:"column"}}>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen()} >
                             <Text>{section.content}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                                <Text>{section.content1}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                                <Text>{section.content2}</Text>
+                            </TouchableOpacity>
                         </View></View>
                 </View>
             </View>

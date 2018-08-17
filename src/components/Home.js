@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Image,ScrollView,StyleSheet,TouchableOpacity,StatusBar,
     TouchableHighlight,Dimensions,Animated,Easing } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab,Icon, Button,  Left, Body, Right,
+import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button,  Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import Calendar from 'react-native-calendar-datepicker';
 import Moment from 'moment';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icons from 'react-native-vector-icons/FontAwesome5';
+
+import Drawer from 'react-native-drawer'
 import DatePicker from 'react-native-datepicker'
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
 import Toast from 'react-native-simple-toast';
@@ -26,6 +30,11 @@ const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 const search_magnifier_black = require('../Images/search_magnifier_black.png');
 const search_magnifier_blue = require('../Images/search_magnifier_blue.png');
+
+const drawerStyles = {
+    drawer: { shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 3},
+    main: {paddingLeft: 3},
+}
 // import {BoxShadow} from 'react-native-shadow';
 // import Switch from 'react-native-customisable-switch';
 import AutoComplete from "react-native-autocomplete";
@@ -100,7 +109,12 @@ export default class Home extends Component {
         // };
 
     }
-
+    closeControlPanel = () => {
+        this._drawer.close()
+    };
+    openControlPanel = () => {
+        this._drawer.open()
+    };
     // _getOptionList() {
     //     return this.refs['OPTIONLIST'];
     // }
@@ -203,6 +217,23 @@ export default class Home extends Component {
                         hidden={false}
                         backgroundColor='#0c71b7'/>
                 </View>
+                {/*<Drawer*/}
+                    {/*open={true}*/}
+                    {/*ref={(ref) => this._drawer = ref}*/}
+                    {/*type="overlay"*/}
+                    {/*// content={<ControlPanel />}*/}
+                    {/*tapToClose={true}*/}
+                    {/*openDrawerOffset={0.2} // 20% gap on the right side of drawer*/}
+                    {/*panCloseMask={0.2}*/}
+                    {/*closedDrawerOffset={-3}*/}
+                    {/*styles={drawerStyles}*/}
+                    {/*tweenHandler={(ratio) => ({*/}
+                        {/*main: { opacity:(2-ratio)/2 }*/}
+                    {/*})}*/}
+                {/*>*/}
+                    {/*/!*<MainView />*!/*/}
+                {/*</Drawer>*/}
+
                 {/*<ScrollView >*/}
                 <View style={[styles.headerview]}>
                     {/*<Card>*/}
@@ -305,24 +336,25 @@ export default class Home extends Component {
                                     <Item label="Jedimetla" value="Je" />
                                     <Item label="Koti" value="Ko" />
                                     <Item label="Gachibowli" value="GA" />
+                                    <Item label="Vanastalipuram" value="Va" />
                                     <Item label="JublieeHills" value="Jub" />
                                     <Item label="Mehdipatnam" value="Meh" />
                                     <Item label="Raheja IT Park" value="Ra" />
                                     <Item label="Miyapur" value="Mi" />
                                 </Picker>
-                                <View style={{flexDirection: 'row', alignItems: 'center',flex:1}}>
+                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                     <View style={{
-                                        flex: 1,
+                                        flex: 5,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
                                         width: width - 10,}}>
                                     </View>
                                     <TouchableOpacity onPress={this._SwapPickerText.bind(this)}>
-                                        <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35,flex:1}}
+                                        <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35,flex:5}}
                                         />
                                     </TouchableOpacity>
                                     <View style={{
-                                        flex: 1,
+                                        flex: 5,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
                                         width: width - 10,}}>
@@ -339,6 +371,7 @@ export default class Home extends Component {
                                     <Item label="Mehdipatnam" value="Meh" />
                                     <Item label="Miyapur" value="Mi" />
                                     <Item label="JublieeHills" value="Jub" />
+                                    <Item label="Jedimetla" value="Je" />
                                     <Item label="Vanastalipuram" value="Va" />
                                     <Item label="Koti" value="Ko" />
                                     <Item label="Raheja IT Park" value="Ra" />
@@ -627,40 +660,65 @@ export default class Home extends Component {
                 </View>
 
 
-
+                {/*<View style={{ flex: 1 }}>*/}
+                {/*<Fab*/}
+                {/*active={this.state.active}*/}
+                {/*direction="up"*/}
+                {/*containerStyle={{ }}*/}
+                {/*style={{ backgroundColor: '#2CA8DB' }}*/}
+                {/*position="bottomRight"*/}
+                {/*onPress={() => this.setState({ active: !this.state.active })}>*/}
+                {/*<Image  source={require('../Images/menu_symbol.png')} />*/}
+                {/*<Button style={{ backgroundColor: '#2CA8DB' }}>*/}
+                {/*<Image  source={require('../Images/user.png')} />*/}
+                {/*</Button>*/}
+                {/*<Button style={{ backgroundColor: '#2CA8DB' }}>*/}
+                {/*<Image  source={require('../Images/alert.png')} />*/}
+                {/*</Button>*/}
+                {/*<Button disabled style={{ backgroundColor: '#2CA8DB' }}>*/}
+                {/*<Image  source={require('../Images/search.png')} />*/}
+                {/*</Button>*/}
+                {/*</Fab>*/}
+                {/*</View>*/}
                 {/*</ScrollView>*/}
 
 
 
                 <View style={[styles.footer]}>
-                    <BottomNavigation active={'search'} hidden={false} >
+                    <BottomNavigation active={'home'} hidden={false} >
                         <BottomNavigation.Action
-                            key="search"
-                            icon={<Image source={require('../Images/search_magnifier_black.png')} color="#669999" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Search"
+                            key="home"
+                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+                            label="Home"
+                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
+                            // icon = {{ type:'MaterialIcons',name:'home'}}
                             // iconColor:"#2CA8DB"
                             // onLoad={() => this.setState({ active: 'search' })}
-                            onPress={() => this.setState({ active: 'search' })}
+                            onPress={() => this.setState({ active: 'home' })}
                             // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
                             // {this.changebottomLogo()}
                         />
                         <BottomNavigation.Action
-                            key="trips"
-                            icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            label="Trips"
-                            onPress={() => this.setState({ active: 'trips' },Actions.tripScreen())}
+                            key="track"
+                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
+                            label="Track"
+                            onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}
                         />
                         <BottomNavigation.Action
                             key="history"
-                            icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
                         />
                         <BottomNavigation.Action
                             key="more"
-                            icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
                             label="More"
                             onPress={() => this.setState({ active: 'more' })}
+                            // onPress={() => {this._drawer.open()}}
                         />
                     </BottomNavigation>
                 </View>
