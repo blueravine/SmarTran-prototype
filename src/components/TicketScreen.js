@@ -46,9 +46,10 @@ export default class TicketScreen extends Component {
                     <View style={[styles.headerview1]}>
                     <View style={{flexDirection:"row"}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
-                            <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
-                                color:'#FFFFFF',marginTop:5, flex:1}}
-                            />
+                            {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
+                                {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
+                            {/*/>*/}
+                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Ticket Details</Text>

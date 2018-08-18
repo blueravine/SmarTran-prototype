@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Image,StyleSheet,TouchableHighlight,TouchableOpacity,
     Dimensions,ScrollView,Alert} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
+import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import ToggleSwitch from 'toggle-switch-react-native';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
+import MultiToggleSwitch from 'react-native-multi-toggle-switch';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icons from 'react-native-vector-icons/FontAwesome5';
+import Icoons from 'react-native-vector-icons/SimpleLineIcons';
+import Iccons from 'react-native-vector-icons/FontAwesome';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -160,6 +166,9 @@ export default class SearchScreen extends Component {
         this.state ={
             shownonacimage:false
         };
+        this.state ={
+            showtextsource:true
+        };
     }
 
     handleChange(value: string) {
@@ -184,6 +193,7 @@ export default class SearchScreen extends Component {
             <Image source={imgsource} style={{height: 30, width: 30,alignItems:'center'}}/>
 
         );
+
     }
 
     changeNonACLogo() {
@@ -195,6 +205,16 @@ export default class SearchScreen extends Component {
         );
     }
 
+    // changeAllText() {
+    //
+    //     var textsource = this.state.showtextsource ? nonac_icon_blue : nonac_icon_grey;
+    //     return (
+    //         <Text note >{textsource}</Text>
+    //               // style={{fontSize:12,textAlign:'center',marginTop:20}} >ALL</Text>
+    //         // <Image source={imgnonacsource} style={{height: 30, width: 30,alignItems:'center'}}/>
+    //
+    //     );
+    // }
     _renderHeader(section) {
         return (
             <View style={styles.header}>
@@ -606,10 +626,13 @@ export default class SearchScreen extends Component {
                     {/*<Container style={[styles.headerview]}>*/}
                     {/*<Content>*/}
                     <View style={{flexDirection:"row"}}>
+                        {/*<TouchableOpacity onPress={() => Actions.homeScreen()} >*/}
+                            {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
+                                {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
+                            {/*/>*/}
+                        {/*</TouchableOpacity>*/}
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
-                            <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
-                                color:'#FFFFFF',marginTop:5, flex:1}}
-                            />
+                        <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Journey Details</Text>
@@ -644,15 +667,13 @@ export default class SearchScreen extends Component {
                         borderColor: '#999999', alignItems: 'center',
                         borderRadius: 5,
                         overflow: 'hidden',
-
-                        elevation: 1,
-                        padding: 10}}>
+                        elevation: 1}}>
                         <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
                               onPress={this._showDateTimePicker}>
                             <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} onPress={this._showDateTimePicker}> {
                                 Moment(this.state.date).format('DD MMMM')} </Text>
                         </View>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10}}>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
                             {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
                             <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >Jedimetla
                             </Text>
@@ -661,13 +682,14 @@ export default class SearchScreen extends Component {
                             {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
                             <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > Mehdipatnam
                             </Text>
-                            <View style={{
-                                flex: 1,
-                                borderBottomColor: 'black',
-                                borderBottomWidth: 1,
-                                width: width - 10,}}>
-                            </View>
-                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginTop:10}}>
+                        </View>
+                        <View style={{
+                            flex: 1,
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                            width: width - 10,}}>
+                        </View>
+                            <View style={{flexDirection:"row",justifyContent:'center'}}>
                                 {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                                     {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter</Text>*/}
                                     {/*<Text note style={{fontSize:12,textAlign:'center'}} >Below</Text>*/}
@@ -675,27 +697,53 @@ export default class SearchScreen extends Component {
                                 {/*</View>*/}
                                 {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter Results</Text>*/}
                                 {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                <TouchableOpacity  style={{alignItems:'center'}}
-                                                   onPress={()=>this.setState({showacimage:!this.state.showacimage})} >
-                                    {this.changeACLogo()}
-                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
-                                          onPress={this._showDateTimePicker}>
-                                        <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
-                                    </View>
-                                </TouchableOpacity>
+                                <MultiToggleSwitch defaultActiveIndex={2} activeContainerStyle={size=20}  itemsContainer={size=20}>
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => console.log("Facebook tapped!")}>
+                                        <Iccons type='FontAwesome' name={'snowflake-o'} size={20} />
+                                    </MultiToggleSwitch.Item>
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
+                                        <Icoons type='SimpleLineIcons' name={'ban'} size={20} />
+                                    </MultiToggleSwitch.Item>
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
+                                        <Icon type='MaterialIcons' name={'done-all'} size={20}/>
+                                    </MultiToggleSwitch.Item>
+                                    {/*<MultiToggleSwitch.Item primaryColor={'orange'}>*/}
+                                        {/*<Icon name={'github'} size={30} />*/}
+                                    {/*</MultiToggleSwitch.Item>*/}
+                                    {/*primaryColor={'#2eacde'}*/}
+                                </MultiToggleSwitch>
 
-                                <TouchableOpacity  style={{alignItems:'center'}}
-                                                   onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>
-                                    {this.changeNonACLogo()}
-                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
-                                          onPress={this._showDateTimePicker}>
-                                        <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
-                                    </View>
-                                </TouchableOpacity>
-                                <Text note style={{fontSize:12,textAlign:'center',marginTop:20}} >ALL</Text>
+                                {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                                                   {/*onPress={()=>this.setState({showacimage:!this.state.showacimage})} >*/}
+                                    {/*{this.changeACLogo()}*/}
+                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
+                                    {/*</View>*/}
+                                {/*</TouchableOpacity>*/}
+
+                                {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                                                   {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
+                                    {/*{this.changeNonACLogo()}*/}
+                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                        {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
+                                    {/*</View>*/}
+                                {/*</TouchableOpacity>*/}
+                                {/*<TouchableOpacity  style={{alignItems:'center'}}*/}
+                                                   {/*onPress={()=>this.setState({shownonacimage:!this.state.shownonacimage})}>*/}
+                                {/*<Text note style={{fontSize:12,textAlign:'center',marginTop:20}} >ALL</Text>*/}
+                                {/*</TouchableOpacity>*/}
                                 {/*</View>*/}
-                            </View>
+                            {/*</View>*/}
 
+                        </View>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                            <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
+                            <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
+                            <Text note style={{fontSize:14,textAlign:'center'}} >ALL</Text>
+                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
                         </View>
                         {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
 
@@ -876,38 +924,44 @@ export default class SearchScreen extends Component {
                 {/*</ScrollView>*/}
 
 
-                {/*<View style={[styles.footer]}>*/}
-                {/*<BottomNavigation active={'search'} hidden={false} >*/}
-                {/*<BottomNavigation.Action*/}
-                {/*key="home"*/}
-                {/*icon={<Image source={require('../Images/home_icon.png')} color="#669999" name="Search" style={{ width: 20, height: 20 }} />}*/}
-                {/*label="Home"*/}
-                {/*// iconColor:"#2CA8DB"*/}
-                {/*// onLoad={() => this.setState({ active: 'search' })}*/}
-                {/*onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}*/}
-                {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
-                {/*// {this.changebottomLogo()}*/}
-                {/*/>*/}
-                {/*<BottomNavigation.Action*/}
-                {/*key="track"*/}
-                {/*icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
-                {/*label="Track"*/}
-                {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
-                {/*/>*/}
-                {/*<BottomNavigation.Action*/}
-                {/*key="history"*/}
-                {/*icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
-                {/*label="History"*/}
-                {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
-                {/*/>*/}
-                {/*<BottomNavigation.Action*/}
-                {/*key="more"*/}
-                {/*icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
-                {/*label="More"*/}
-                {/*onPress={() => this.setState({ active: 'more' })}*/}
-                {/*/>*/}
-                {/*</BottomNavigation>*/}
-                {/*</View>*/}
+                <View style={[styles.footer]}>
+                    <BottomNavigation active={'home'} hidden={false} >
+                        <BottomNavigation.Action
+                            key="home"
+                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+                            label="Home"
+                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
+                            // icon = {{ type:'MaterialIcons',name:'home'}}
+                            // iconColor:"#2CA8DB"
+                            // onLoad={() => this.setState({ active: 'search' })}
+                            onPress={() => this.setState({ active: 'home' })}
+                            // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
+                            // {this.changebottomLogo()}
+                        />
+                        <BottomNavigation.Action
+                            key="track"
+                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
+                            label="Track"
+                            onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}
+                        />
+                        <BottomNavigation.Action
+                            key="history"
+                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
+                            label="History"
+                            onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
+                        />
+                        <BottomNavigation.Action
+                            key="more"
+                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
+                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
+                            label="More"
+                            onPress={() => this.setState({ active: 'more' })}
+                            // onPress={() => {this._drawer.open()}}
+                        />
+                    </BottomNavigation>
+                </View>
             </View>
         );
     }

@@ -12,6 +12,8 @@ import Drawer from 'react-native-drawer'
 import DatePicker from 'react-native-datepicker'
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
 import Toast from 'react-native-simple-toast';
+
+import SendSMS from 'react-native-sms-x';
 // import Select from 'react-select';
 import Divider from 'react-native-divider';
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -203,6 +205,16 @@ export default class Home extends Component {
         this.setState({selected1: this.state.selected2, selected2:temploc});
     }
 
+    sendSMSFunction() {
+        SendSMS.send(9885638104, "9885638104", "Hello.. Thank you for using SmarTran booking service ! \nYour ticket for Jedimetla to mehdipatnam for 18 Aug 2018\n" +
+            "at 5:30 have been generated open the link fro seeing th qr code for scanning\n" +
+            "  Have a nice day.",
+            (msg)=>{
+                Toast.show(msg, Toast.SHORT);
+            }
+        );
+    Actions.ticketScreen();
+    }
     // setFromLoc(){
     //     this.setState({selected1: ''});
     // }
@@ -350,8 +362,10 @@ export default class Home extends Component {
                                         width: width - 10,}}>
                                     </View>
                                     <TouchableOpacity onPress={this._SwapPickerText.bind(this)}>
-                                        <Image source={require('../Images/change_position.png')} style={{height: 35, width: 35,flex:5}}
-                                        />
+                                    <Icon type='MaterialIcons' name='swap-vertical-circle' size={35} color="#2eacde"/>
+                                    {/*<TouchableOpacity onPress={this._SwapPickerText.bind(this)}>*/}
+                                        {/*<Image source={require('../Images/change_position.png')} style={{height: 35, width: 35,flex:5}}*/}
+                                        {/*/>*/}
                                     </TouchableOpacity>
                                     <View style={{
                                         flex: 5,
@@ -710,7 +724,7 @@ export default class Home extends Component {
                             // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
                             icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
                             label="History"
-                            onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
+                            onPress={() => this.setState({ active: 'history' },this.sendSMSFunction.bind(this))}
                         />
                         <BottomNavigation.Action
                             key="more"

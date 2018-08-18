@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MapView, { AnimatedRegion,Polyline,Marker, Callout, ProviderPropType } from 'react-native-maps';
-import { Image,ScrollView,StyleSheet,TouchableOpacity,StatusBar,
+import { Image,ScrollView,StyleSheet,TouchableOpacity,StatusBar,Alert,
     TouchableHighlight,Dimensions,Animated,Easing } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button,  Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
 import Toast from 'react-native-simple-toast';
+import Permissions from 'react-native-permissions'
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -26,8 +27,42 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const SPACE = 0.01;
 import carImg from '../Images/car.png';
+import bus from '../Images/bus.png';
+import bus1 from '../Images/bus1.png';
+import bus2 from '../Images/bus2.png';
+const r = [
+    {
+        latitude : 17.4609136,
+        longitude : 78.3345608,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4447244,
+        longitude : 78.3861475,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4853033,
+        longitude : 78.3573451,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4365557,
+        longitude : 78.3648835,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
 
+];
 export default class Trips extends Component {
+
+    state = {
+        types: [],
+        status: {},
+    }
 
 
     constructor() {
@@ -68,7 +103,16 @@ export default class Trips extends Component {
         };
     }
 
+
     componentDidMount() {
+
+        let types = Permissions.getTypes()
+        let canOpenSettings = Permissions.canOpenSettings()
+
+        this.setState({ types, canOpenSettings })
+        this._updatePermissions(types)
+        // AppState.addEventListener('change', this._handleAppStateChange)
+
         this.watchID = navigator.geolocation.watchPosition(
             position => {
                 const { coordinate, routeCoordinates, distanceTravelled } =   this.state;
@@ -105,6 +149,69 @@ export default class Trips extends Component {
         );
         // Toast.show("Latitute"+this.state.latitude+"Longitude"+this.state.longitude);
     }
+
+    // componentWillUnmount() {
+    //     AppState.removeEventListener('change', this._handleAppStateChange)
+    // }
+
+    // //update permissions when app comes back from settings
+    // _handleAppStateChange = appState => {
+    //     if (appState == 'active') {
+    //         this._updatePermissions(this.state.types)
+    //     }
+    // }
+
+    _openSettings = () =>
+        Permissions.openSettings().then(() => alert('back to app!!'))
+    _updatePermissions = types => {
+        Permissions.checkMultiple(types)
+            .then(status => {
+                if (this.state.isAlways) {
+                    return Permissions.check('location', 'always').then(location => ({
+                        ...status,
+                        location,
+                    }))
+                }
+                return status
+            })
+            .then(status => this.setState({ status }))
+    }
+
+    _requestPermission = permission => {
+        var options
+
+        if (permission == 'location') {
+            options = this.state.isAlways ? 'always' : 'whenInUse'
+        }
+
+        Permissions.request(permission, options)
+            .then(res => {
+                this.setState({
+                    status: { ...this.state.status, [permission]: res },
+                })
+                if (res != 'authorized') {
+                    var buttons = [{ text: 'Cancel', style: 'cancel' }]
+                    if (this.state.canOpenSettings)
+                        buttons.push({
+                            text: 'Open Settings',
+                            onPress: this._openSettings,
+                        })
+
+                    Alert.alert(
+                        'Whoops!',
+                        'There was a problem getting your permission. Please enable it from settings.',
+                        buttons,
+                    )
+                }
+            })
+            .catch(e => console.warn(e))
+    }
+
+    _onLocationSwitchChange = () => {
+        this.setState({ isAlways: !this.state.isAlways })
+        this._updatePermissions(this.state.types)
+    }
+
     calcDistance = newLatLng => {
         const { prevLatLng } = this.state;
         return haversine(prevLatLng, newLatLng) || 0;
@@ -121,42 +228,22 @@ export default class Trips extends Component {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
 
-    animate(){
-        let i;
-        i = 0;
-        let r = [
-            {
-                latitude : 17.4288048,
-                longitude : 78.3731846,
-                latitudeDelta : LATITUDE_DELTA,
-                longitudeDelta : LONGITUDE_DELTA,
-            },
-            {
-                latitude : 17.4288048,
-                longitude : 78.3731846,
-                latitudeDelta : LATITUDE_DELTA,
-                longitudeDelta : LONGITUDE_DELTA,
-            },
-            {
-                latitude : 17.4364795,
-                longitude : 78.364338,
-                latitudeDelta : LATITUDE_DELTA,
-                longitudeDelta : LONGITUDE_DELTA,
-            },
+    // animate(){
+        // let i;
+        // i = 0;
 
-        ];
 
-        // for(i=0;i<5;i++){
 
-        this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
-        i=1;
-        this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
-        i=2;
-        this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
+        // for(let j=0;j<10;j++){
+
+        // this.marker._component.animateMarkerToCoordinate(r[3] ,20000);
+            // this.marker1._component.animateMarkerToCoordinate(r[3] ,30000);
+            // this.marker2._component.animateMarkerToCoordinate(r[3] ,30000);
+        // this.marker._component.animateMarkerToCoordinate(r[2] ,3000);
         // this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
-        i=0;
+        // i=0;
         // this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
-        i=1;
+        // i=1;
         // this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
 
 
@@ -168,7 +255,7 @@ export default class Trips extends Component {
 
         // this.mapView.animateToCoordinate(r ,2000);
 
-    }
+    // }
     render() {
 
         return (
@@ -179,6 +266,46 @@ export default class Trips extends Component {
                         hidden={false}
                         backgroundColor='#0c71b7'/>
                 </View>
+
+                {/*<View style={styles.container}>*/}
+                    {/*{this.state.types.map(p => (*/}
+                        {/*<TouchableHighlight*/}
+                            {/*style={[styles.button, styles[this.state.status[p]]]}*/}
+                            {/*key={p}*/}
+                            {/*// onPress={() => this._requestPermission(p)}*/}
+                        {/*>*/}
+                            {/*<View>*/}
+                                {/*<Text style={styles.text}>*/}
+                                    {/*/!*{Platform.OS == 'ios' && p == 'location'*!/*/}
+                                        {/*? `location ${this.state.isAlways ? 'always' : 'whenInUse'}`*/}
+                                        {/*: p*/}
+                                    {/*/!*}*!/*/}
+                                {/*</Text>*/}
+                                {/*<Text style={styles.subtext}>{this.state.status[p]}</Text>*/}
+                            {/*</View>*/}
+                        {/*</TouchableHighlight>*/}
+                    {/*))}*/}
+                    {/*<View style={styles.footer}>*/}
+                        {/*<TouchableHighlight*/}
+                            {/*style={styles['footer_' + Platform.OS]}*/}
+                            {/*onPress={this._onLocationSwitchChange}*/}
+                        {/*>*/}
+                            {/*<Text style={styles.text}>Toggle location type</Text>*/}
+                        {/*</TouchableHighlight>*/}
+
+                        {/*{this.state.canOpenSettings && (*/}
+                            {/*<TouchableHighlight onPress={this._openSettings}>*/}
+                                {/*<Text style={styles.text}>Open settings</Text>*/}
+                            {/*</TouchableHighlight>*/}
+                        {/*)}*/}
+                    {/*</View>*/}
+
+                    {/*/!*<Text style={styles['footer_' + Platform.OS]}>*!/*/}
+                        {/*/!*Note: microphone permissions may not work on iOS simulator. Also,*!/*/}
+                        {/*/!*toggling permissions from the settings menu may cause the app to*!/*/}
+                        {/*/!*crash. This is normal on iOS. Google "ios crash permission change"*!/*/}
+                    {/*/!*</Text>*!/*/}
+                {/*</View>*/}
                 {/*<ScrollView >*/}
                 {/*<View style={[styles.headerview]}>*/}
 
@@ -199,17 +326,50 @@ export default class Trips extends Component {
                     region={this.getMapRegion()}
                 >
                     <MapView.Polyline coordinates={this.state.routeCoordinates} strokeWidth={5} strokeColor='#2eacde' />
-                    <Marker.Animated
+                    <MapView.Marker.Animated
                         ref={marker => {
                             this.marker = marker;
                         }}
-                        coordinate={this.state.coordinate}
+                        coordinate={{
+                            latitude: 17.4853033,
+                            longitude: 78.3573451,
+                        }}
+                       centerOffset={{ x: -18, y: -60 }}
+                       anchor={{ x: 0.69, y: 1 }}
+                        image={bus}
+                        onPress={()=> {this.marker._component.animateMarkerToCoordinate(r[3] ,20000)}}
+                    >
+                    </MapView.Marker.Animated>
+
+                    <MapView.Marker.Animated
+                        ref={marker1 => {
+                            this.marker1 = marker1;
+                        }}
+                        coordinate={{
+                            latitude: 17.4609136,
+                            longitude: 78.3345608,
+                        }}
                         centerOffset={{ x: -18, y: -60 }}
                         anchor={{ x: 0.69, y: 1 }}
-                        image={carImg}
-                        onPress={()=>this.animate()}
+                        image={bus1}
+                        onPress={()=> {this.marker1._component.animateMarkerToCoordinate(r[3] ,20000)}}
                     >
-                    </Marker.Animated>
+                    </MapView.Marker.Animated>
+
+                    <MapView.Marker.Animated
+                        ref={marker2 => {
+                            this.marker2 = marker2;
+                        }}
+                        coordinate={{
+                            latitude: 17.4447244,
+                            longitude: 78.3861475,
+                        }}
+                        centerOffset={{ x: -18, y: -60 }}
+                        anchor={{ x: 0.69, y: 1 }}
+                        image={bus2}
+                        onPress={()=> {this.marker2._component.animateMarkerToCoordinate(r[3] ,20000)}}
+                    >
+                    </MapView.Marker.Animated>
                     {/*<Marker*/}
                     {/*coordinate={{*/}
                     {/*latitude: LATITUDE + SPACE,*/}
@@ -335,6 +495,34 @@ const styles = StyleSheet.create({
         // backgroundColor: '#B7B152',
         marginTop:300,
 
+    },
+    text: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    subtext: {
+        textAlign: 'center',
+    },
+    button: {
+        margin: 5,
+        borderColor: 'black',
+        borderWidth: 3,
+        overflow: 'hidden',
+    },
+    buttonInner: {
+        flexDirection: 'column',
+    },
+    undetermined: {
+        backgroundColor: '#E0E0E0',
+    },
+    authorized: {
+        backgroundColor: '#C5E1A5',
+    },
+    denied: {
+        backgroundColor: '#ef9a9a',
+    },
+    restricted: {
+        backgroundColor: '#ef9a9a',
     },
     footer: {
         height: 50,

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Image,StyleSheet,TouchableOpacity,
     Dimensions,ScrollView,Alert} from 'react-native';
-import { Container, Header, Content, Card, CardItem,Radio, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Icon, Left, Body, Right,
+import { Container, Header, Content, Card, CardItem,Radio, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import ToggleSwitch from 'toggle-switch-react-native';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import SmartPicker from 'react-native-smart-picker'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -175,9 +176,10 @@ export default class PaymentScreen extends Component {
                         {/*<Content>*/}
                     <View style={{flexDirection:"row"}}>
                         <TouchableOpacity onPress={() => Actions.searchScreen()} >
-                            <Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,
-                                color:'#FFFFFF',marginTop:5, flex:1}}
-                            />
+                            {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
+                                {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
+                            {/*/>*/}
+                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Payment Details</Text>
