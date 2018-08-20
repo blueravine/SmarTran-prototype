@@ -15,6 +15,9 @@ const MARGIN = 40;
 import { BottomNavigation } from 'react-native-material-ui';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
+import Iccon from 'react-native-vector-icons/SimpleLineIcons';
+import Iccons from 'react-native-vector-icons/Foundation'
+
 const card      = {card: {width: 300,height:500}};
 const cardItem = {cardItem: {fontSize: 40}};
 const { width } = Dimensions.get('window');
@@ -415,7 +418,7 @@ export default class Trips extends Component {
                             key="home"
                             // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
                             label="Home"
-                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
+                            icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}
                             // onLoad={() => this.setState({ active: 'search' })}
                             onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}
                             // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
@@ -431,14 +434,14 @@ export default class Trips extends Component {
                         <BottomNavigation.Action
                             key="history"
                             // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
+                            icon = {<Iccons type='Foundation' name='ticket-alt' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
                         />
                         <BottomNavigation.Action
                             key="more"
                             // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
+                            icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}
                             label="More"
                             onPress={() => this.setState({ active: 'more' })}
                         />

@@ -6,8 +6,9 @@ import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper
 import Calendar from 'react-native-calendar-datepicker';
 import Moment from 'moment';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Iccon from 'react-native-vector-icons/SimpleLineIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
-
+import Iccons from 'react-native-vector-icons/Foundation'
 import Drawer from 'react-native-drawer'
 import DatePicker from 'react-native-datepicker'
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
@@ -704,7 +705,7 @@ export default class Home extends Component {
                             key="home"
                             // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
                             label="Home"
-                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
+                            icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}
                             // icon = {{ type:'MaterialIcons',name:'home'}}
                             // iconColor:"#2CA8DB"
                             // onLoad={() => this.setState({ active: 'search' })}
@@ -722,14 +723,14 @@ export default class Home extends Component {
                         <BottomNavigation.Action
                             key="history"
                             // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
+                            icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' },this.sendSMSFunction.bind(this))}
                         />
                         <BottomNavigation.Action
                             key="more"
                             // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
+                            icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}
                             label="More"
                             onPress={() => this.setState({ active: 'more' })}
                             // onPress={() => {this._drawer.open()}}

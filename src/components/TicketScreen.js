@@ -8,6 +8,8 @@ import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
+import Iccon from 'react-native-vector-icons/SimpleLineIcons';
+import Iccons from 'react-native-vector-icons/Foundation'
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
@@ -44,15 +46,16 @@ export default class TicketScreen extends Component {
                     {/*<Container >*/}
                         {/*<Content>*/}
                     <View style={[styles.headerview1]}>
-                    <View style={{flexDirection:"row"}}>
+                        <View style={{flexDirection:"row",backgroundColor:'#FFFFFF',paddingRight:10,
+                            paddingLeft:10,}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
                             {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
                                 {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
                             {/*/>*/}
-                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
+                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#2eacde"/>
                         </TouchableOpacity>
-                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:5}} > </Text>
-                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} >Ticket Details</Text>
+                        <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#000', flex:5}} >Ticket Details </Text>
+                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#000', flex:1}} > </Text>
 
                     </View>
                     </View>
@@ -161,7 +164,7 @@ export default class TicketScreen extends Component {
                             key="home"
                             // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
                             label="Home"
-                            icon = {<Icon type='MaterialIcons' name='home' size={24} color="#2eacde"/>}
+                            icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}
                             // iconColor:"#2CA8DB"
                             // onLoad={() => this.setState({ active: 'search' })}
                             onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}
@@ -178,14 +181,14 @@ export default class TicketScreen extends Component {
                         <BottomNavigation.Action
                             key="history"
                             // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icons type='FontAwesome5' name='ticket-alt' size={24} color="#2eacde"/>}
+                            icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' })}
                         />
                         <BottomNavigation.Action
                             key="more"
                             // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icon type='MaterialIcons' name='menu' size={24} color="#2eacde"/>}
+                            icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}
                             label="More"
                             onPress={() => this.setState({ active: 'more' })}
                         />
