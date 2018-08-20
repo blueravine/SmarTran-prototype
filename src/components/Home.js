@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import { Image,ScrollView,StyleSheet,TouchableOpacity,StatusBar,
+     UIManager, findNodeHandle,
     TouchableHighlight,Dimensions,Animated,Easing } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button,  Left, Body, Right,
+import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,icon,Input,View,Fab, Button,  Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import Calendar from 'react-native-calendar-datepicker';
 import Moment from 'moment';
@@ -9,8 +10,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iccon from 'react-native-vector-icons/SimpleLineIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Iccons from 'react-native-vector-icons/Foundation'
+import BottomNavigation, {
+    ShiftingTab
+} from 'react-native-material-bottom-navigation'
+
 import Drawer from 'react-native-drawer'
 import DatePicker from 'react-native-datepicker'
+const ICON_SIZE = 24
 import { Actions, ActionConst } from 'react-native-router-flux'; // 4.0.0-beta.31
 import Toast from 'react-native-simple-toast';
 
@@ -20,7 +26,7 @@ import Divider from 'react-native-divider';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
-import { BottomNavigation } from 'react-native-material-ui';
+// import { BottomNavigation } from 'react-native-material-ui';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Swiper from 'react-native-swiper';
 const card      = {card: {width: 300,height:500}};
@@ -64,6 +70,64 @@ import AutoComplete from "react-native-autocomplete";
 // const filterOptions = createFilterOptions({ options });
 
 export default class Home extends Component {
+    state = {
+        activeTab: 'games'
+    }
+    tabs = [
+        {
+            key:"home",
+            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+            label:"Home",
+            icon : 'home',
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"track",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon : 'route' ,
+            label:"Track",
+            // onPress:() => this.setState({ active: 'track' },Actions.tripScreen()),
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"history",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon :'ticket' ,
+            label:"History",
+            // onPress:() => this.setState({ active: 'track' },this.sendSMSFunction.bind(this)),
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"more",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon : 'menu' ,
+            label:"More",
+            // onPress:() => this.setState({ active: 'track' },Actions.tripScreen()),
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        }
+    ]
+
+    renderIcon = icon => ({ isActive }) => (
+        <Icon size={24} color="white" name={icon} />
+    )
+
+    renderTab = ({ tab, isActive }) => (
+        <ShiftingTab
+            isActive={isActive}
+            key={tab.key}
+            label={tab.label}
+            renderIcon={this.renderIcon(tab.icon)}
+        />
+    )
+    // static propTypes = {
+    //     // array of strings, will be list items of Menu
+    //     // actions:  PropTypes.arrayOf(PropTypes.string).isRequired,
+    //     onPress: PropTypes.func.isRequired
+    // }
 
     state = {
         isDateTimePickerVisible: false,
@@ -72,6 +136,10 @@ export default class Home extends Component {
 
     constructor() {
         super();
+
+        // this.state = {
+        //     icon: null
+        // }
 
         this.state = { date: new Date() };
         this.state ={
@@ -159,8 +227,24 @@ export default class Home extends Component {
 
         );
     }
-
-
+    // onError () {
+    //     console.log('Popup Error')
+    // }
+    // onPress = () => {
+    //     if (this.state.icon) {
+    //         UIManager.showPopupMenu(
+    //             findNodeHandle(),
+    //            this.props.actions,
+    //             this.onError,
+    //            this.props.onPress
+    //         )
+    //     }
+    // }
+    // onRef = icon => {
+    //     if (!this.state.icon) {
+    //         this.setState({icon})
+    //     }
+    // }
 
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
@@ -700,42 +784,13 @@ export default class Home extends Component {
 
 
                 <View style={[styles.footer]}>
-                    <BottomNavigation active={'home'} hidden={false} >
-                        <BottomNavigation.Action
-                            key="home"
-                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Home"
-                            icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}
-                            // icon = {{ type:'MaterialIcons',name:'home'}}
-                            // iconColor:"#2CA8DB"
-                            // onLoad={() => this.setState({ active: 'search' })}
-                            onPress={() => this.setState({ active: 'home' })}
-                            // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
-                            // {this.changebottomLogo()}
-                        />
-                        <BottomNavigation.Action
-                            key="track"
-                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
-                            label="Track"
-                            onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}
-                        />
-                        <BottomNavigation.Action
-                            key="history"
-                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}
-                            label="History"
-                            onPress={() => this.setState({ active: 'history' },this.sendSMSFunction.bind(this))}
-                        />
-                        <BottomNavigation.Action
-                            key="more"
-                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}
-                            label="More"
-                            onPress={() => this.setState({ active: 'more' })}
-                            // onPress={() => {this._drawer.open()}}
-                        />
-                    </BottomNavigation>
+                    <BottomNavigation
+                        tabs={this.tabs}
+                        activeTab={this.state.activeTab}
+                        onTabPress={newTab => this.setState({ activeTab: newTab.key })}
+                        renderTab={this.renderTab}
+                        // useLayoutAnimation
+                    />
                 </View>
             </View>
 

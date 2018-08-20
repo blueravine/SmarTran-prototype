@@ -174,16 +174,16 @@ export default class PaymentScreen extends Component {
                 <View style={[styles.headerview]}>
                     {/*<Container >*/}
                         {/*<Content>*/}
-                    <View style={{flexDirection:"row",backgroundColor:'#FFFFFF',paddingRight:10,
+                    <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
                         paddingLeft:10,}}>
                         <TouchableOpacity onPress={() => Actions.searchScreen()} >
                             {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
                                 {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
                             {/*/>*/}
-                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#2eacde"/>
+                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
-                        <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#000', flex:5}} >Payment Details </Text>
-                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#000', flex:1}} > </Text>
+                        <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Payment Details </Text>
+                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
 
 
                     </View>

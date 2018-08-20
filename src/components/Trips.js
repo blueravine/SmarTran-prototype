@@ -434,7 +434,7 @@ export default class Trips extends Component {
                         <BottomNavigation.Action
                             key="history"
                             // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Iccons type='Foundation' name='ticket-alt' size={24} color="#2eacde"/>}
+                            icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}
                             label="History"
                             onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
                         />
