@@ -3,6 +3,12 @@ import { Image,StyleSheet,TouchableOpacity,
     Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
+
+import BottomNavigation, {
+    ShiftingTab
+} from 'react-native-material-bottom-navigation'
+
+
 import ToggleSwitch from 'toggle-switch-react-native';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
@@ -13,7 +19,7 @@ import Iccons from 'react-native-vector-icons/Foundation'
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
-import { BottomNavigation } from 'react-native-material-ui';
+// import { BottomNavigation } from 'react-native-material-ui';
 import Moment from "moment/moment";
 
 const card      = {card: {width: 100,height:300,borderWidth: 3,
@@ -32,7 +38,74 @@ export default class TicketScreen extends Component {
         };
 
     }
+    state = {
+        activeTab: 'ticket'
+    }
+    tabs = [
+        {
+            key:"home",
+            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+            label:"Home",
+            icon : 'home',
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"track",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon : 'location-on' ,
+            label:"Track",
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"ticket",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon :'receipt' ,
+            label:"Ticket",
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"more",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon : 'menu' ,
+            label:"More",
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        }
+    ]
 
+    _handleTabPress(pressedKey) {
+        switch (pressedKey) {
+            case 'home':
+                Actions.homeScreen();
+                break;
+            case 'track':
+                Actions.tripScreen();
+                break;
+            case 'ticket':
+                // Actions.ticketScreen();
+                break;
+            case 'more':
+                break;
+            default:
+
+        }
+    }
+    renderIcon = icon => ({ isActive }) => (
+        <Icon size={24} color="white" name={icon} />
+
+    )
+
+    renderTab = ({ tab, isActive }) => (
+        <ShiftingTab
+            isActive={isActive}
+            key={tab.key}
+            label={tab.label}
+            renderIcon={this.renderIcon(tab.icon)}
+        />
+    )
     render() {
 
         return (
@@ -159,40 +232,48 @@ export default class TicketScreen extends Component {
 
 
                 <View style={[styles.footer]}>
-                    <BottomNavigation active={'history'} hidden={false} >
-                        <BottomNavigation.Action
-                            key="home"
-                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Home"
-                            icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}
-                            // iconColor:"#2CA8DB"
-                            // onLoad={() => this.setState({ active: 'search' })}
-                            onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}
-                            // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
-                            // {this.changebottomLogo()}
-                        />
-                        <BottomNavigation.Action
-                            key="track"
-                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
-                            label="Track"
-                            onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}
-                        />
-                        <BottomNavigation.Action
-                            key="history"
-                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}
-                            label="History"
-                            onPress={() => this.setState({ active: 'history' })}
-                        />
-                        <BottomNavigation.Action
-                            key="more"
-                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}
-                            label="More"
-                            onPress={() => this.setState({ active: 'more' })}
-                        />
-                    </BottomNavigation>
+
+                    <BottomNavigation
+                        tabs={this.tabs}
+                        activeTab={this.state.activeTab}
+                        onTabPress={newTab => {this.setState({ activeTab: newTab.key }),this._handleTabPress(newTab.key)}}
+                        renderTab={this.renderTab}
+                        // useLayoutAnimation
+                    />
+                    {/*<BottomNavigation active={'history'} hidden={false} >*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="home"*/}
+                            {/*// icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}*/}
+                            {/*label="Home"*/}
+                            {/*icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}*/}
+                            {/*// iconColor:"#2CA8DB"*/}
+                            {/*// onLoad={() => this.setState({ active: 'search' })}*/}
+                            {/*onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}*/}
+                            {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
+                            {/*// {this.changebottomLogo()}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="track"*/}
+                            {/*// icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
+                            {/*icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}*/}
+                            {/*label="Track"*/}
+                            {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="history"*/}
+                            {/*// icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
+                            {/*icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}*/}
+                            {/*label="History"*/}
+                            {/*onPress={() => this.setState({ active: 'history' })}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="more"*/}
+                            {/*// icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
+                            {/*icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}*/}
+                            {/*label="More"*/}
+                            {/*onPress={() => this.setState({ active: 'more' })}*/}
+                        {/*/>*/}
+                    {/*</BottomNavigation>*/}
                 </View>
             </View>
         );

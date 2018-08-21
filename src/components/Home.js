@@ -71,7 +71,7 @@ import AutoComplete from "react-native-autocomplete";
 
 export default class Home extends Component {
     state = {
-        activeTab: 'games'
+        activeTab: 'home'
     }
     tabs = [
         {
@@ -85,18 +85,16 @@ export default class Home extends Component {
         {
             key:"track",
             // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-            icon : 'route' ,
+            icon : 'location-on' ,
             label:"Track",
-            // onPress:() => this.setState({ active: 'track' },Actions.tripScreen()),
             barColor: '#2eacde',
             pressColor: 'rgba(255, 255, 255, 0.16)'
         },
         {
-            key:"history",
+            key:"ticket",
             // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-            icon :'ticket' ,
-            label:"History",
-            // onPress:() => this.setState({ active: 'track' },this.sendSMSFunction.bind(this)),
+            icon :'receipt' ,
+            label:"Ticket",
             barColor: '#2eacde',
             pressColor: 'rgba(255, 255, 255, 0.16)'
         },
@@ -105,14 +103,17 @@ export default class Home extends Component {
             // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
             icon : 'menu' ,
             label:"More",
-            // onPress:() => this.setState({ active: 'track' },Actions.tripScreen()),
             barColor: '#2eacde',
             pressColor: 'rgba(255, 255, 255, 0.16)'
         }
     ]
 
+    state = {
+        activeTab: this.tabs[0].key
+    }
     renderIcon = icon => ({ isActive }) => (
         <Icon size={24} color="white" name={icon} />
+
     )
 
     renderTab = ({ tab, isActive }) => (
@@ -290,19 +291,36 @@ export default class Home extends Component {
         this.setState({selected1: this.state.selected2, selected2:temploc});
     }
 
-    sendSMSFunction() {
-        SendSMS.send(9885638104, "9885638104", "Hello.. Thank you for using SmarTran booking service ! \nYour ticket for Jedimetla to mehdipatnam for 18 Aug 2018\n" +
-            "at 5:30 have been generated open the link fro seeing th qr code for scanning\n" +
-            "  Have a nice day.",
-            (msg)=>{
-                Toast.show(msg, Toast.SHORT);
-            }
-        );
-    Actions.ticketScreen();
-    }
+
+    // sendSMSFunction() {
+    //     SendSMS.send(9885638104, "9885638104", "Hello.. Thank you for using SmarTran booking service ! \nYour ticket for Jedimetla to mehdipatnam for 18 Aug 2018\n" +
+    //         "at 5:30 have been generated open the link fro seeing th qr code for scanning\n" +
+    //         "  Have a nice day.",
+    //         (msg)=>{
+    //             Toast.show(msg, Toast.SHORT);
+    //         }
+    //     );
+    // Actions.ticketScreen();
+    // }
     // setFromLoc(){
     //     this.setState({selected1: ''});
     // }
+    _handleTabPress(pressedKey) {
+        switch (pressedKey) {
+            case 'home':
+                break;
+            case 'track':
+                Actions.tripScreen();
+                break;
+            case 'ticket':
+                Actions.ticketScreen();
+                break;
+            case 'more':
+                break;
+            default:
+
+        }
+    }
 
     render() {
 
@@ -787,10 +805,11 @@ export default class Home extends Component {
                     <BottomNavigation
                         tabs={this.tabs}
                         activeTab={this.state.activeTab}
-                        onTabPress={newTab => this.setState({ activeTab: newTab.key })}
+                        onTabPress={newTab => {this.setState({ activeTab: newTab.key }),this._handleTabPress(newTab.key)}}
                         renderTab={this.renderTab}
                         // useLayoutAnimation
                     />
+
                 </View>
             </View>
 

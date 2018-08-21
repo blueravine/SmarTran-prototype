@@ -8,6 +8,11 @@ import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
 import MultiToggleSwitch from 'react-native-multi-toggle-switch';
 
+import BottomNavigation, {
+    ShiftingTab
+} from 'react-native-material-bottom-navigation'
+
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Icoons from 'react-native-vector-icons/SimpleLineIcons';
@@ -18,7 +23,7 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 const MARGIN = 40;
-import { BottomNavigation } from 'react-native-material-ui';
+// import { BottomNavigation } from 'react-native-material-ui';
 // var Accordion = require('react-native-accordion');
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
@@ -48,7 +53,7 @@ const SECTIONS = [
         'Jedimetla\n' +
         '\n' +
         '  \n' +
-        ' 189M\n' +
+        ' 189M   (\u20B9 72/-)\n' +
         '  \n' +
         '\n'+
         ' Medipatnam'
@@ -70,12 +75,12 @@ const SECTIONS = [
         content1:'\n'+
         'Jedimetla\n'+
         + '\n'
-        + '158J\n'
+        + '158J   (\u20B9 34/-)\n'
         + '\n'
         + 'Lakdikapul\n'
         + 'Lakdikapul\n'
         + '\n'
-        + '113M\n'
+        + '113M   (\u20B9 34/-)\n'
         + 'Mehdipatnam'
 
     },
@@ -95,12 +100,12 @@ const SECTIONS = [
         content1:'\n'+
         'Jedimetla\n'+
         + '\n'
-        + '158JA\n'
+        + '158JA   (\u20B9 35/-)\n'
         + '\n'
         + 'Lakdikapul\n'
         + 'Lakdikapul\n'
         + '\n'
-        + '216KL\n'
+        + '216KL   (\u20B9 35/-)\n'
         + 'Mehdipatnam'
 
     },
@@ -120,12 +125,12 @@ const SECTIONS = [
         content1:'\n'+
         'Jedimetla\n'+
         + '\n'
-        + '9K\n'
+        + '9K   (\u20B9 32/-)\n'
         + '\n'
         + 'AG office/Birla Mandir\n'
         + 'AG office/Birla Mandir\n'
         + '\n'
-        + '113M\n'
+        + '113M   (\u20B9 32/-)\n'
         + 'Mehdipatnam'
 
 
@@ -146,13 +151,14 @@ const SECTIONS = [
         'Jedimetla\n' +
         '\n' +
         '\n'+
-        '189M\n' +
+        '189M   (\u20B9 72/-)\n' +
         '\n' +
         '  \n' +
         ' Medipatnam'
     },
 ];
 export default class SearchScreen extends Component {
+
 
     constructor() {
         super();
@@ -174,6 +180,75 @@ export default class SearchScreen extends Component {
             count: 1
         };
     }
+
+    state = {
+        activeTab: 'home'
+    }
+    tabs = [
+        {
+            key:"home",
+            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
+            label:"Home",
+            icon : 'home',
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"track",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon : 'location-on' ,
+            label:"Track",
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"ticket",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon :'receipt' ,
+            label:"Ticket",
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        },
+        {
+            key:"more",
+            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
+            icon : 'menu' ,
+            label:"More",
+            barColor: '#2eacde',
+            pressColor: 'rgba(255, 255, 255, 0.16)'
+        }
+    ]
+
+
+    renderIcon = icon => ({ isActive }) => (
+        <Icon size={24} color="white" name={icon} />
+
+    )
+
+    _handleTabPress(pressedKey) {
+        switch (pressedKey) {
+            case 'home':
+                break;
+            case 'track':
+                Actions.tripScreen();
+                break;
+            case 'ticket':
+                Actions.ticketScreen();
+                break;
+            case 'more':
+                break;
+            default:
+
+        }
+    }
+    renderTab = ({ tab, isActive }) => (
+        <ShiftingTab
+            isActive={isActive}
+            key={tab.key}
+            label={tab.label}
+            renderIcon={this.renderIcon(tab.icon)}
+        />
+    )
 
     increment = () => {
         this.setState({
@@ -254,14 +329,14 @@ export default class SearchScreen extends Component {
                         // justifyContent:'flex-start'
                     }}>{section.title1}</Text>
                     </View>
-
+                    {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                         <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{
                             fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1,flex:5
+                            flex:5
                         }}>{section.title}</Text>
 
                     </View>
@@ -276,14 +351,14 @@ export default class SearchScreen extends Component {
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
                         <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                        <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                        <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
                                 onPress={this.decrement}>
                             <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                 ,textAlign:'center'}}>-</Text>
                         </Button>
                         <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                         {/*{this.state.count}*/}
-                        <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                        <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
                                 onPress={this.increment}>
                             <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                 ,textAlign:'center'}}>+</Text>
@@ -340,7 +415,6 @@ export default class SearchScreen extends Component {
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
                         {/*<Text note style={{*/}
                         {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
@@ -364,7 +438,6 @@ export default class SearchScreen extends Component {
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1,flex:5
                         }}>113M</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
@@ -378,14 +451,14 @@ export default class SearchScreen extends Component {
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
                         <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
                             <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
@@ -434,7 +507,6 @@ export default class SearchScreen extends Component {
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
                         {/*<Text note style={{*/}
                         {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
@@ -458,7 +530,6 @@ export default class SearchScreen extends Component {
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1,flex:5
                         }}>216KL</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
@@ -472,14 +543,14 @@ export default class SearchScreen extends Component {
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
                         <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
                             <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
@@ -528,7 +599,6 @@ export default class SearchScreen extends Component {
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1
                         }}>{section.title}</Text>
                         {/*<Text note style={{*/}
                         {/*fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,*/}
@@ -551,8 +621,7 @@ export default class SearchScreen extends Component {
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
                         <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            borderColor: 'grey', borderRadius: 1, borderWidth: 1,flex:5
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,flex:5
                         }}>113M</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
@@ -566,14 +635,16 @@ export default class SearchScreen extends Component {
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
                         <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                                }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
                             <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', borderColor: 'grey', borderRadius: 10, borderWidth: 1}}
+                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                                }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
@@ -804,7 +875,7 @@ export default class SearchScreen extends Component {
                         {/*</View>*/}
 
                     </View>
-
+                    <ScrollView>
                     <Card  styles={{width: 100,height:300,borderWidth: 3,
                         borderColor: '#999999', alignItems: 'center',
                         borderRadius: 5,
@@ -839,9 +910,12 @@ export default class SearchScreen extends Component {
                                 {/*</View>*/}
                                 {/*<Text note style={{fontSize:12,textAlign:'center'}} >Filter Results</Text>*/}
                                 {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                <MultiToggleSwitch defaultActiveIndex={2} activeContainerStyle={size=20}  itemsContainer={size=20}>
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => console.log("Facebook tapped!")}>
-                                        <Iccons type='FontAwesome' name={'snowflake-o'} size={20} />
+                                <MultiToggleSwitch defaultActiveIndex={2}
+                                                   activeContainerStyle={size=20}
+                                                   itemsContainer={size=20}
+                                >
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
+                                        <Iccons type='FontAwesome' name={'snowflake-o'} size={20}  />
                                     </MultiToggleSwitch.Item>
                                     <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
                                         <Icoons type='SimpleLineIcons' name={'ban'} size={20} />
@@ -1034,7 +1108,7 @@ export default class SearchScreen extends Component {
                     {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Arrival Time</Text>*/}
                     {/*<Text note style={{fontSize:14,color:'#FFFFFF',textAlign:'center'}} >Amount</Text>*/}
                     {/*</View>*/}
-                    <ScrollView>
+                    {/*<ScrollView>*/}
                         <Accordion
                             sections={SECTIONS}
                             renderHeader={this._renderHeader}
@@ -1067,42 +1141,49 @@ export default class SearchScreen extends Component {
 
 
                 <View style={[styles.footer]}>
-                    <BottomNavigation active={'home'} hidden={false} >
-                        <BottomNavigation.Action
-                            key="home"
-                            // icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}
-                            label="Home"
-                            icon = {<Icoons type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}
-                            // icon = {{ type:'MaterialIcons',name:'home'}}
-                            // iconColor:"#2CA8DB"
-                            // onLoad={() => this.setState({ active: 'search' })}
-                            onPress={() => this.setState({ active: 'home' })}
-                            // onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}
-                            // {this.changebottomLogo()}
-                        />
-                        <BottomNavigation.Action
-                            key="track"
-                            // icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}
-                            label="Track"
-                            onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}
-                        />
-                        <BottomNavigation.Action
-                            key="history"
-                            // icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icconss type='Foundation' name='ticket' size={24} color="#2eacde"/>}
-                            label="History"
-                            onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}
-                        />
-                        <BottomNavigation.Action
-                            key="more"
-                            // icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}
-                            icon = {<Icoons type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}
-                            label="More"
-                            onPress={() => this.setState({ active: 'more' })}
-                            // onPress={() => {this._drawer.open()}}
-                        />
-                    </BottomNavigation>
+                    <BottomNavigation
+                        tabs={this.tabs}
+                        activeTab={this.state.activeTab}
+                        onTabPress={newTab => {this.setState({ activeTab: newTab.key }),this._handleTabPress(newTab.key)}}
+                        renderTab={this.renderTab}
+                        // useLayoutAnimation
+                    />
+                    {/*<BottomNavigation active={'home'} hidden={false} >*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="home"*/}
+                            {/*// icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}*/}
+                            {/*label="Home"*/}
+                            {/*icon = {<Icoons type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}*/}
+                            {/*// icon = {{ type:'MaterialIcons',name:'home'}}*/}
+                            {/*// iconColor:"#2CA8DB"*/}
+                            {/*// onLoad={() => this.setState({ active: 'search' })}*/}
+                            {/*onPress={() => this.setState({ active: 'home' })}*/}
+                            {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
+                            {/*// {this.changebottomLogo()}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="track"*/}
+                            {/*// icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
+                            {/*icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}*/}
+                            {/*label="Track"*/}
+                            {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="history"*/}
+                            {/*// icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
+                            {/*icon = {<Icconss type='Foundation' name='ticket' size={24} color="#2eacde"/>}*/}
+                            {/*label="History"*/}
+                            {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
+                        {/*/>*/}
+                        {/*<BottomNavigation.Action*/}
+                            {/*key="more"*/}
+                            {/*// icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
+                            {/*icon = {<Icoons type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}*/}
+                            {/*label="More"*/}
+                            {/*onPress={() => this.setState({ active: 'more' })}*/}
+                            {/*// onPress={() => {this._drawer.open()}}*/}
+                        {/*/>*/}
+                    {/*</BottomNavigation>*/}
                 </View>
             </View>
         );
@@ -1168,8 +1249,8 @@ const styles = StyleSheet.create({
         // borderTopEndRadius:5,
         // borderWidth:1,
         flex: 1,
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
+        // borderBottomColor: 'black',
+        // borderBottomWidth: 1,
         borderTopColor: 'black',
         borderTopWidth: 1,
         width: width - 20,
