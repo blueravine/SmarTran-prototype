@@ -459,19 +459,19 @@ export default class Home extends Component {
                                 </Picker>
                                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                     <View style={{
-                                        flex: 5,
+                                        flex: 8,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
                                         width: width - 10,}}>
                                     </View>
-                                    <TouchableOpacity onPress={this._SwapPickerText.bind(this)}>
+                                    <TouchableOpacity   onPress={this._SwapPickerText.bind(this)}>
                                     <Icon type='MaterialIcons' name='swap-vertical-circle' size={35} color="#2eacde"/>
                                     {/*<TouchableOpacity onPress={this._SwapPickerText.bind(this)}>*/}
                                         {/*<Image source={require('../Images/change_position.png')} style={{height: 35, width: 35,flex:5}}*/}
                                         {/*/>*/}
                                     </TouchableOpacity>
                                     <View style={{
-                                        flex: 5,
+                                        flex: 3,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
                                         width: width - 10,}}>

@@ -111,7 +111,7 @@ const SECTIONS = [
     },
     {
         title: '9K',title1:'5:55 PM \n '+
-        '',title2:'\u20B9 65/-\n',
+        '',title2:'\u20B9 64/-\n',
 
         content: '\n'+
         '5:55 PM    \n'
@@ -914,13 +914,13 @@ export default class SearchScreen extends Component {
                                                    activeContainerStyle={size=20}
                                                    itemsContainer={size=20}
                                 >
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => console.log("Facebook tapped!")}>
                                         <Iccons type='FontAwesome' name={'snowflake-o'} size={20}  />
                                     </MultiToggleSwitch.Item>
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => console.log("Facebook tapped!")}>
                                         <Icoons type='SimpleLineIcons' name={'ban'} size={20} />
                                     </MultiToggleSwitch.Item>
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} >
+                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => console.log("Facebook tapped!")}>
                                         <Icon type='MaterialIcons' name={'done-all'} size={20}/>
                                     </MultiToggleSwitch.Item>
                                     {/*<MultiToggleSwitch.Item primaryColor={'orange'}>*/}
