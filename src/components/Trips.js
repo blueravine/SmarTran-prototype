@@ -17,6 +17,262 @@ import BottomNavigation, {
     ShiftingTab
 } from 'react-native-material-bottom-navigation'
 
+mapStyle=[
+    {
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#616161"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#bdbdbd"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.locality",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#d59563"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#eeeeee"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#757575"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e5e5e5"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#9e9e9e"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#212a37"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#9ca5b3"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#757575"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dadada"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#1f2835"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#616161"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#9e9e9e"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#2f3948"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e5e5e5"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#eeeeee"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#d59563"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#c9c9c9"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#9e9e9e"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#17263c"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    }
+];
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Iccon from 'react-native-vector-icons/SimpleLineIcons';
@@ -37,33 +293,186 @@ import carImg from '../Images/car.png';
 import bus from '../Images/bus.png';
 import bus1 from '../Images/bus1.png';
 import bus2 from '../Images/bus2.png';
-const r = [
+
+const p = [
     {
-        latitude : 17.4609136,
-        longitude : 78.3345608,
+        latitude : 17.4792724,
+        longitude : 78.3609791,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.4731989,
+        longitude : 78.3629754,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.4649845,
+        longitude: 78.3663548,
         latitudeDelta : LATITUDE_DELTA,
         longitudeDelta : LONGITUDE_DELTA,
     },
     {
-        latitude : 17.4447244,
-        longitude : 78.3861475,
+        latitude : 17.4589479,
+        longitude : 78.3661461,
         latitudeDelta : LATITUDE_DELTA,
         longitudeDelta : LONGITUDE_DELTA,
     },
     {
-        latitude : 17.4853033,
-        longitude : 78.3573451,
+        latitude : 17.4524879,
+        longitude : 78.3627797,
         latitudeDelta : LATITUDE_DELTA,
         longitudeDelta : LONGITUDE_DELTA,
     },
+    {
+        latitude : 17.4480068,
+        longitude : 78.3622317,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4429904,
+        longitude : 78.361775,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4372881,
+        longitude :78.3646025,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
     {
         latitude : 17.4365557,
         longitude : 78.3648835,
         latitudeDelta : LATITUDE_DELTA,
         longitudeDelta : LONGITUDE_DELTA,
     },
-
 ];
+
+const q = [
+    {
+        latitude : 17.4784975,
+        longitude : 78.3200628,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.4749543,
+        longitude : 78.3235076,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.4653694,
+        longitude: 78.3316511,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4604934,
+        longitude : 78.3358261,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4566017,
+        longitude : 78.3386993,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4501808,
+        longitude : 78.3456047,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4440778,
+        longitude : 78.3549546,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4398828,
+        longitude :78.3599709,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.4365557,
+        longitude : 78.3648835,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+];
+const r = [
+    {
+        latitude : 17.3956523,
+        longitude :78.4335872,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.3957154,
+        longitude : 78.428827,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.3964635,
+        longitude: 78.4212145,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.400393,
+        longitude : 78.4133943,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4020964,
+        longitude : 78.4093425,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4067287,
+        longitude : 78.4013428,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.4123072,
+        longitude : 78.3951848,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+    {
+        latitude : 17.434277,
+        longitude :78.367965,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+
+    {
+        latitude : 17.4365557,
+        longitude : 78.3648835,
+        latitudeDelta : LATITUDE_DELTA,
+        longitudeDelta : LONGITUDE_DELTA,
+    },
+];
+
 export default class Trips extends Component {
 
     state = {
@@ -303,34 +712,83 @@ export default class Trips extends Component {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
 
-    // animate(){
-        // let i;
-        // i = 0;
+    animateMarker(pt){
+
+        this.marker._component.animateMarkerToCoordinate(pt ,15000);
 
 
 
-        // for(let j=0;j<10;j++){
+    }
+    sleep(ms){
+        return new Promise(resolve => setTimeout(resolve,ms))
+    }
+    async locationmove(){
+        await this.animateMarker(p[1]);
 
-        // this.marker._component.animateMarkerToCoordinate(r[3] ,20000);
-            // this.marker1._component.animateMarkerToCoordinate(r[3] ,30000);
-            // this.marker2._component.animateMarkerToCoordinate(r[3] ,30000);
-        // this.marker._component.animateMarkerToCoordinate(r[2] ,3000);
-        // this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
-        // i=0;
-        // this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
-        // i=1;
-        // this.marker._component.animateMarkerToCoordinate(r[i] ,2000);
+        await this.sleep(20000);
+        await this.animateMarker(p[2]);
+        await this.sleep(20000);
+        await this.animateMarker(p[3]);
+        await this.sleep(20000);
+        await this.animateMarker(p[4]);
+        await this.sleep(20000);
+        await this.animateMarker(p[5]);
+        await this.sleep(20000);
+        await this.animateMarker(p[6]);
+        await this.sleep(20000);
+        await this.animateMarker(p[7]);
+    }
+
+    animateMarker1(pq){
+
+        this.marker1._component.animateMarkerToCoordinate(pq ,15000);
+    }
+    sleep(ms){
+        return new Promise(resolve => setTimeout(resolve,ms))
+    }
+    async locationmovenew(){
+        await this.animateMarker1(q[1]);
+
+        await this.sleep(20000);
+        await this.animateMarker1(q[2]);
+        await this.sleep(20000);
+        await this.animateMarker1(q[3]);
+        await this.sleep(20000);
+        await this.animateMarker1(q[4]);
+        await this.sleep(20000);
+        await this.animateMarker1(q[5]);
+        await this.sleep(20000);
+        await this.animateMarker1(q[6]);
+        await this.sleep(20000);
+        await this.animateMarker1(q[7]);
+    }
+    animateMarker2(pr){
+
+        this.marker2._component.animateMarkerToCoordinate(pr ,15000);
 
 
-        // i>=2 ? i=0 : i;
 
-        // }
+    }
+    sleep(ms){
+        return new Promise(resolve => setTimeout(resolve,ms))
+    }
+    async locationmovenewmarker(){
+        await this.animateMarker2(r[1]);
 
+        await this.sleep(20000);
+        await this.animateMarker2(r[2]);
+        await this.sleep(20000);
+        await this.animateMarker2(r[3]);
+        await this.sleep(20000);
+        await this.animateMarker2(r[4]);
+        await this.sleep(20000);
+        await this.animateMarker2(r[5]);
+        await this.sleep(20000);
+        await this.animateMarker2(r[6]);
+        await this.sleep(20000);
+        await this.animateMarker2(r[7]);
+    }
 
-
-        // this.mapView.animateToCoordinate(r ,2000);
-
-    // }
     render() {
 
         return (
@@ -397,13 +855,17 @@ export default class Trips extends Component {
                     loadingEnabled
                     apikey={"AIzaSyD3a7smG62nUL0Wp4jsP4Iv3rNg763HFyQ"}
                     // strokeWidth={3}
-                    mapType={"standard"}
+                    // mapType={"mutedStandard"}
+                    customMapStyle={mapStyle}
                     zoomEnabled={true}
                     scrollEnabled={true}
                     showsScale={true}
                     zoomControlEnabled={true}
                     maxZoomLevel={200}
                     region={this.getMapRegion()}
+                    moveOnMarkerPress={false}
+                    onMapReady={()=> {this.locationmove(),this.locationmovenew(),this.locationmovenewmarker()}}
+                    // liteMode={true}
                 >
                     <MapView.Polyline coordinates={this.state.routeCoordinates} strokeWidth={5} strokeColor='#2eacde' />
                     <MapView.Marker.Animated
@@ -414,10 +876,12 @@ export default class Trips extends Component {
                             latitude: 17.4853033,
                             longitude: 78.3573451,
                         }}
+
                        centerOffset={{ x: -18, y: -60 }}
                        anchor={{ x: 0.69, y: 1 }}
-                        image={bus}
-                        onPress={()=> {this.marker._component.animateMarkerToCoordinate(r[3] ,20000)}}
+                        image={bus2}
+                        title={"158JA"}
+
                     >
                     </MapView.Marker.Animated>
 
@@ -426,13 +890,14 @@ export default class Trips extends Component {
                             this.marker1 = marker1;
                         }}
                         coordinate={{
-                            latitude: 17.4609136,
-                            longitude: 78.3345608,
+                            latitude: 17.483664,
+                            longitude: 78.316619,
                         }}
                         centerOffset={{ x: -18, y: -60 }}
                         anchor={{ x: 0.69, y: 1 }}
-                        image={bus1}
-                        onPress={()=> {this.marker1._component.animateMarkerToCoordinate(r[3] ,20000)}}
+                        image={bus2}
+                        title={"158J"}
+                        // onPress={()=> {this.marker1._component.animateMarkerToCoordinate(r[3] ,5000)}}
                     >
                     </MapView.Marker.Animated>
 
@@ -441,13 +906,14 @@ export default class Trips extends Component {
                             this.marker2 = marker2;
                         }}
                         coordinate={{
-                            latitude: 17.4447244,
-                            longitude: 78.3861475,
+                            latitude: 17.3950935,
+                            longitude: 78.4384796,
                         }}
                         centerOffset={{ x: -18, y: -60 }}
                         anchor={{ x: 0.69, y: 1 }}
                         image={bus2}
-                        onPress={()=> {this.marker2._component.animateMarkerToCoordinate(r[3] ,20000)}}
+                        title={"189M"}
+                        // onPress={()=> {this.marker2._component.animateMarkerToCoordinate(r[3] ,5000)}}
                     >
                     </MapView.Marker.Animated>
                     {/*<Marker*/}

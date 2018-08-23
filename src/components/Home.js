@@ -116,6 +116,7 @@ export default class Home extends Component {
 
     )
 
+
     renderTab = ({ tab, isActive }) => (
         <ShiftingTab
             isActive={isActive}
@@ -323,7 +324,7 @@ export default class Home extends Component {
     }
 
     render() {
-
+        // var params =[(fromLoc=this.state.selected1),(toLoc=this.state.selected2)];
         return (
 
             <View style={styles.container}>
@@ -448,14 +449,14 @@ export default class Home extends Component {
                                     {/*color:'#FFFFFF'}} >JED</Text>*/}
                                     {/*</View>*/}
                                     <Item label="From Location" value=" " />
-                                    <Item label="Jedimetla" value="Je" />
-                                    <Item label="Koti" value="Ko" />
-                                    <Item label="Gachibowli" value="GA" />
-                                    <Item label="Vanastalipuram" value="Va" />
-                                    <Item label="JublieeHills" value="Jub" />
-                                    <Item label="Mehdipatnam" value="Meh" />
-                                    <Item label="Raheja IT Park" value="Ra" />
-                                    <Item label="Miyapur" value="Mi" />
+                                    <Item label="Jedimetla" value="Jedimetla" />
+                                    <Item label="Koti" value="Koti" />
+                                    <Item label="Gachibowli" value="Gachibowli" />
+                                    <Item label="Vanastalipuram" value="Vanastalipuram" />
+                                    <Item label="JublieeHills" value="JublieeHills" />
+                                    <Item label="Mehdipatnam" value="Mehdipatnam" />
+                                    <Item label="Raheja IT Park" value="Raheja IT Park" />
+                                    <Item label="Miyapur" value="Miyapur" />
                                 </Picker>
                                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                     <View style={{
@@ -485,14 +486,14 @@ export default class Home extends Component {
                                     onValueChange={(itemValue) => this.setState({selected2: itemValue})}>
 
                                     <Item label="To Location" value=" " />
-                                    <Item label="Mehdipatnam" value="Meh" />
-                                    <Item label="Miyapur" value="Mi" />
-                                    <Item label="JublieeHills" value="Jub" />
-                                    <Item label="Jedimetla" value="Je" />
-                                    <Item label="Vanastalipuram" value="Va" />
-                                    <Item label="Koti" value="Ko" />
-                                    <Item label="Raheja IT Park" value="Ra" />
-                                    <Item label="Gachibowli" value="GA" />
+                                    <Item label="Mehdipatnam" value="Mehdipatnam" />
+                                    <Item label="Miyapur" value="Miyapur" />
+                                    <Item label="JublieeHills" value="JublieeHills" />
+                                    <Item label="Jedimetla" value="Jedimetla" />
+                                    <Item label="Vanastalipuram" value="Vanastalipuram" />
+                                    <Item label="Koti" value="Koti" />
+                                    <Item label="Raheja IT Park" value="Raheja IT Park" />
+                                    <Item label="Gachibowli" value="Gachibowli" />
                                 </Picker>
 
                             </View>
