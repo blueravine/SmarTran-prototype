@@ -324,7 +324,12 @@ export default class Home extends Component {
     }
 
     render() {
-        // var params =[(fromLoc=this.state.selected1),(toLoc=this.state.selected2)];
+         var params = {};
+         params = {
+             fromLoc:this.state.selected1,
+             toLoc:this.state.selected2,
+             tripdte:this.state.date,
+         };
         return (
 
             <View style={styles.container}>
@@ -657,7 +662,7 @@ export default class Home extends Component {
 
                         <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
                             marginTop:30,justifyContent:'space-evenly'}}
-                                onPress={() => Actions.searchScreen()}>
+                                onPress={() => Actions.searchScreen(params)}>
                             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                 <Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,
                                     height: 25,alignItems:'center'}}/>
