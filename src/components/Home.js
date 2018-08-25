@@ -39,7 +39,7 @@ const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 const search_magnifier_black = require('../Images/search_magnifier_black.png');
 const search_magnifier_blue = require('../Images/search_magnifier_blue.png');
-
+var params;
 const drawerStyles = {
     drawer: { shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 3},
     main: {paddingLeft: 3},
@@ -311,10 +311,10 @@ export default class Home extends Component {
             case 'home':
                 break;
             case 'track':
-                Actions.tripScreen();
+                Actions.tripScreen(params);
                 break;
             case 'ticket':
-                Actions.ticketScreen();
+                Actions.ticketScreen(params);
                 break;
             case 'more':
                 break;
@@ -339,7 +339,7 @@ export default class Home extends Component {
         // Alert.alert('Button has been pressed!');
     }
     render() {
-         var params = {};
+          params = {};
          params = {
              fromLoc:this.state.selected1,
              toLoc:this.state.selected2,

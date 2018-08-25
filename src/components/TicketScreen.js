@@ -82,7 +82,7 @@ export default class TicketScreen extends Component {
                 Actions.homeScreen();
                 break;
             case 'track':
-                Actions.tripScreen();
+                Actions.tripScreen(params);
                 break;
             case 'ticket':
                 // Actions.ticketScreen();

@@ -565,7 +565,7 @@ export default class Trips extends Component {
 
                 break;
             case 'ticket':
-                Actions.ticketScreen();
+                Actions.ticketScreen(params);
                 break;
             case 'more':
                 break;

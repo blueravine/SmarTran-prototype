@@ -120,10 +120,10 @@ export default class SearchScreen extends Component {
                 Actions.homeScreen();
                 break;
             case 'track':
-                Actions.tripScreen();
+                Actions.tripScreen(params);
                 break;
             case 'ticket':
-                Actions.ticketScreen();
+                Actions.ticketScreen(params);
                 break;
             case 'more':
                 break;
