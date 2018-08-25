@@ -861,7 +861,8 @@ export default class Trips extends Component {
                     scrollEnabled={true}
                     showsScale={true}
                     zoomControlEnabled={true}
-                    maxZoomLevel={200}
+                    minZoomLevel={5}
+                    maxZoomLevel={11.8}
                     region={this.getMapRegion()}
                     moveOnMarkerPress={false}
                     onMapReady={()=> {this.locationmove(),this.locationmovenew(),this.locationmovenewmarker()}}
@@ -916,15 +917,16 @@ export default class Trips extends Component {
                         // onPress={()=> {this.marker2._component.animateMarkerToCoordinate(r[3] ,5000)}}
                     >
                     </MapView.Marker.Animated>
-                    {/*<Marker*/}
-                    {/*coordinate={{*/}
-                    {/*latitude: LATITUDE + SPACE,*/}
-                    {/*longitude: LONGITUDE + SPACE,*/}
-                    {/*}}*/}
-                    {/*centerOffset={{ x: -18, y: -60 }}*/}
-                    {/*anchor={{ x: 0.69, y: 1 }}*/}
-                    {/*image={carImg}*/}
-                    {/*/>*/}
+
+                    <Marker
+                    coordinate={{
+                        latitude : 17.4365557,
+                        longitude : 78.3648835,
+                    }}
+                    centerOffset={{ x: -18, y: -60 }}
+                    anchor={{ x: 0.69, y: 1 }}
+                    //image={carImg}
+                    />
                     {/*<Marker*/}
                     {/*coordinate={{*/}
                     {/*latitude: LATITUDE - SPACE,*/}

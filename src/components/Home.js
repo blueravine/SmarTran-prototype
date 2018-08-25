@@ -165,14 +165,14 @@ export default class Home extends Component {
 
         this.state = {
             selectedItem: undefined,
-            selected1: 'key1',
+            selected1: '',
             results: {
                 items: []
             }
         }
         this.state = {
             selectedItem: undefined,
-            selected2: 'key2',
+            selected2: '',
             results: {
                 items: []
             }
@@ -323,6 +323,21 @@ export default class Home extends Component {
         }
     }
 
+    _onSubmit(param) {
+        // const { selected1, selected2 } = this.state;
+        if(!(this.state.selected1) || !(this.state.selected2)){
+            Toast.show("Please enter From and To Location",Toast.LONG);
+        }
+
+        else if(this.state.selected1 === this.state.selected2){
+            Toast.show(" From and To Location cannot be same",Toast.LONG);
+        }
+
+        else if((this.state.selected1) && (this.state.selected2)){
+            Actions.searchScreen(param);
+        }
+        // Alert.alert('Button has been pressed!');
+    }
     render() {
          var params = {};
          params = {
@@ -453,7 +468,7 @@ export default class Home extends Component {
                                     {/*<Text note style={{fontSize:12,textAlign:'center',backgroundColor:'#2eacde',*/}
                                     {/*color:'#FFFFFF'}} >JED</Text>*/}
                                     {/*</View>*/}
-                                    <Item label="From Location" value=" " />
+                                    <Item label="From Location" value="" />
                                     <Item label="Jedimetla" value="Jedimetla" />
                                     <Item label="Koti" value="Koti" />
                                     <Item label="Gachibowli" value="Gachibowli" />
@@ -490,7 +505,7 @@ export default class Home extends Component {
                                     selectedValue={this.state.selected2}
                                     onValueChange={(itemValue) => this.setState({selected2: itemValue})}>
 
-                                    <Item label="To Location" value=" " />
+                                    <Item label="To Location" value="" />
                                     <Item label="Mehdipatnam" value="Mehdipatnam" />
                                     <Item label="Miyapur" value="Miyapur" />
                                     <Item label="JublieeHills" value="JublieeHills" />
@@ -662,7 +677,16 @@ export default class Home extends Component {
 
                         <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
                             marginTop:30,justifyContent:'space-evenly'}}
-                                onPress={() => Actions.searchScreen(params)}>
+                                onPress={() => {
+                                if(!this.state.selected1 || !this.state.selected2){
+                                    Toast.show(" From or To Location cannot be empty! ",Toast.LONG);
+                                }
+                                else if(this.state.selected1 === this.state.selected2){
+                                    Toast.show(" From and To Location cannot be same! ",Toast.LONG);
+                                }
+                                else{
+                                    Actions.searchScreen(params);
+                                }}}>
                             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                 <Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,
                                     height: 25,alignItems:'center'}}/>

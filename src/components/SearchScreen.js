@@ -12,7 +12,7 @@ import BottomNavigation, {
     ShiftingTab
 } from 'react-native-material-bottom-navigation'
 
-
+var params;
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Icoons from 'react-native-vector-icons/SimpleLineIcons';
@@ -36,127 +36,7 @@ const ac_icon_blue = require('../Images/ac_icon_blue.png');
 const ac_icon_grey = require('../Images/ac_icon_grey.png');
 const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
-const SECTIONS = [
-    {
-        title: '189M',title1:'5:51 PM \n '+
-        '',title2:'\u20B9 72/-\n',
 
-        content: '  \n' +
-        '5:51 PM    \n'
-        + '                  \n'
-        + '                  \n'
-        + '                  \n'
-        + '                  \n'
-        + '                  \n'
-        + '7:00 PM           \n ',
-        content1:'  \n' +
-        'Jedimetla\n' +
-        '\n' +
-        '  \n' +
-        ' 189M   (\u20B9 72/-)\n' +
-        '  \n' +
-        '\n'+
-        ' Mehdipatnam'
-
-    },
-    {
-        title: '158J',title1:'5:45 PM \n '+
-        '',title2:'\u20B9 68/-\n',
-
-        content: '\n'+
-        '5:45 PM    \n'
-        + '                  \n'
-        + '                  \n'
-        + '6:46 PM           \n'
-        + '6:52 PM           \n'
-        + '                  \n'
-        + '                  \n'
-        + '7:00 PM           \n ',
-        content1:'\n'+
-        'Jedimetla\n'+
-        + '\n'
-        + '158J   (\u20B9 34/-)\n'
-        + '\n'
-        + 'Lakdikapul\n'
-        + 'Lakdikapul\n'
-        + '\n'
-        + '113M   (\u20B9 34/-)\n'
-        + 'Mehdipatnam'
-
-    },
-    {
-        title: '158JA',title1:'5:45 PM \n '+
-        '',title2:'\u20B9 70/-\n',
-
-        content: '\n'+
-        '5:45 PM    \n'
-        + '                  \n'
-        + '                  \n'
-        + '6:46 PM           \n'
-        + '6:52 PM           \n'
-        + '                  \n'
-        + '                  \n'
-        + '7:00 PM           \n ',
-        content1:'\n'+
-        'Jedimetla\n'+
-        + '\n'
-        + '158JA   (\u20B9 35/-)\n'
-        + '\n'
-        + 'Lakdikapul\n'
-        + 'Lakdikapul\n'
-        + '\n'
-        + '216KL   (\u20B9 35/-)\n'
-        + 'Mehdipatnam'
-
-    },
-    {
-        title: '9K',title1:'5:55 PM \n '+
-        '',title2:'\u20B9 64/-\n',
-
-        content: '\n'+
-        '5:55 PM    \n'
-        + '                  \n'
-        + '                  \n'
-        + '6:56 PM           \n'
-        + '7:01 PM           \n'
-        + '                  \n'
-        + '                  \n'
-        + '7:04 PM           \n ',
-        content1:'\n'+
-        'Jedimetla\n'+
-        + '\n'
-        + '9K   (\u20B9 32/-)\n'
-        + '\n'
-        + 'AG office/Birla Mandir\n'
-        + 'AG office/Birla Mandir\n'
-        + '\n'
-        + '113M   (\u20B9 32/-)\n'
-        + 'Mehdipatnam'
-
-
-    },
-    {
-        title: '189M',title1:'5:56 PM \n '+
-        '',title2:'\u20B9 72/-\n',
-
-        content: '  \n' +
-        '5:56 PM    \n'
-        + '                  \n'
-        + '                  \n'
-        + '                  \n'
-        + '                  \n'
-        + '                  \n'
-        + '7:03 PM           \n ',
-        content1:'  \n' +
-        'Jedimetla\n' +
-        '\n' +
-        '\n'+
-        '189M   (\u20B9 72/-)\n' +
-        '\n' +
-        '  \n' +
-        ' Medipatnam'
-    },
-];
 export default class SearchScreen extends Component {
 
 
@@ -190,7 +70,8 @@ export default class SearchScreen extends Component {
 
     state = {
         activeTab: 'home'
-    }
+    };
+
     tabs = [
         {
             key:"home",
@@ -224,7 +105,7 @@ export default class SearchScreen extends Component {
             barColor: '#2eacde',
             pressColor: 'rgba(255, 255, 255, 0.16)'
         }
-    ]
+    ];
 
 
     renderIcon = icon => ({ isActive }) => (
@@ -236,6 +117,7 @@ export default class SearchScreen extends Component {
     _handleTabPress(pressedKey) {
         switch (pressedKey) {
             case 'home':
+                Actions.homeScreen();
                 break;
             case 'track':
                 Actions.tripScreen();
@@ -298,7 +180,7 @@ export default class SearchScreen extends Component {
         return (
             <View style={styles.header}>
 
-                {(this.state.showacview) && (section.title === '189M') &&
+                {(this.state.showacview) && (section.title === '625M') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start', padding: 5}}>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
                     <Image source={require('../Images/live_icon.png')}
@@ -313,7 +195,7 @@ export default class SearchScreen extends Component {
                     </View>
                     {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{
@@ -350,7 +232,7 @@ export default class SearchScreen extends Component {
 
                 </View>
                 }
-                {(this.state.shownonacview) && (section.title === '158J') &&
+                {(this.state.shownonacview) && (section.title === '635MA') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
 
                     <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
@@ -382,7 +264,7 @@ export default class SearchScreen extends Component {
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>113M</Text>
+                        }}>639A</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
                         <Text style={{
@@ -412,7 +294,7 @@ export default class SearchScreen extends Component {
                 </View>
                 }
 
-                {(this.state.shownonacview) && (section.title === '158JA') &&
+                {(this.state.shownonacview) && (section.title === '645TA') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                     <Image source={require('../Images/live_icon.png')}
@@ -441,7 +323,7 @@ export default class SearchScreen extends Component {
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>216KL</Text>
+                        }}>648KL</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
                         <Text style={{
@@ -471,7 +353,7 @@ export default class SearchScreen extends Component {
                 </View>
                 }
 
-                {(this.state.showacview) && (section.title === '9K') &&
+                {(this.state.showacview) && (section.title === '650N') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
 
                     <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
@@ -487,7 +369,7 @@ export default class SearchScreen extends Component {
                     </View>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
@@ -496,13 +378,13 @@ export default class SearchScreen extends Component {
 
                     </View>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 5,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,flex:5
-                        }}>113M</Text>
+                        }}>652H</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
                         <Text style={{
@@ -543,7 +425,7 @@ export default class SearchScreen extends Component {
         return (
             <View style={styles.content}>
 
-                {(section.title === '189M') &&
+                {(section.title === '625M') &&
 
                 <View style={{flexDirection: "row"}}>
 
@@ -560,7 +442,7 @@ export default class SearchScreen extends Component {
 
                 }
                 {/*<Text>{section.content}</Text>*/}
-                {(section.title === '158J') &&
+                {(section.title === '635MA') &&
                 <View style={{flexDirection: "row"}}>
                     <Text>{section.content}</Text>
                     <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
@@ -573,7 +455,7 @@ export default class SearchScreen extends Component {
                     <Text>{section.content1}</Text>
                 </View>
                 }
-                {(section.title === '158JA') &&
+                {(section.title === '645TA') &&
                 <View style={{flexDirection: "row"}}>
                     <Text>{section.content}</Text>
                     <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
@@ -586,7 +468,7 @@ export default class SearchScreen extends Component {
                     <Text>{section.content1}</Text>
                 </View>
                 }
-                {(section.title === '9K') &&
+                {(section.title === '650N') &&
                 <View style={{flexDirection: "row"}}>
                     <Text>{section.content}</Text>
                     <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
@@ -601,12 +483,28 @@ export default class SearchScreen extends Component {
                 }
                 <Button style={{height:50,width:width-50,backgroundColor: '#2eacde',
                     marginTop:5,justifyContent:'space-evenly'}}
-                        onPress={() => Actions.paymentScreen()}>
+                        onPress={() => Actions.paymentScreen(params)}>
                     <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                         <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
                             height: 25,alignItems:'center'}}/>
                         <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
                             ,textAlign:'center',paddingLeft:10}}>Buy</Text>
+
+
+                        {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
+                        {/*}}*/}
+                                {/*onPress={this.decrement}>*/}
+                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                {/*,textAlign:'center'}}>-</Text>*/}
+                        {/*</Button>*/}
+                        {/*<Text note style={{ fontSize: 14, color:'#FFFFFF',textAlign: 'center',fontWeight:'bold'}}> 1 </Text>*/}
+                        {/*/!*{this.state.count}*!/*/}
+                        {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
+                        {/*}}*/}
+                                {/*onPress={this.increment}>*/}
+                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                {/*,textAlign:'center'}}>+</Text>*/}
+                        {/*</Button>*/}
                     </View>
                 </Button>
 
@@ -615,6 +513,135 @@ export default class SearchScreen extends Component {
     }
 
     render() {
+         params = {};
+        params = {
+            fromLoc:this.props.fromLoc,
+            toLoc:this.props.toLoc,
+            tripdte:this.props.tripdte,
+        };
+        const SECTIONS = [
+            {
+                title: '625M',title1:'5:51 PM \n '+
+                '',title2:'\u20B9 72/-\n',
+
+                content: '  \n' +
+                '5:51 PM    \n'
+                + '                  \n'
+                + '                  \n'
+                + '                  \n'
+                + '                  \n'
+                + '                  \n'
+                + '7:00 PM           \n ',
+                content1:'  \n' + this.props.fromLoc +
+                '\n' +
+                '\n' +
+                '  \n' +
+                ' 625M   (\u20B9 72/-)\n' +
+                '  \n' +
+                '\n'+
+                this.props.toLoc
+
+            },
+            {
+                title: '635MA',title1:'5:45 PM \n '+
+                '',title2:'\u20B9 68/-\n',
+
+                content: '\n'+
+                '5:45 PM    \n'
+                + '                  \n'
+                + '                  \n'
+                + '6:46 PM           \n'
+                + '6:52 PM           \n'
+                + '                  \n'
+                + '                  \n'
+                + '7:00 PM           \n ',
+                content1:'\n'+ this.props.fromLoc+
+                '\n'+
+                + '\n'
+                + '635MA   (\u20B9 34/-)\n'
+                + '\n'
+                + 'Lakdikapul\n'
+                + 'Lakdikapul\n'
+                + '\n'
+                + '639A   (\u20B9 34/-)\n'
+                +  this.props.toLoc
+
+            },
+            {
+                title: '645TA',title1:'5:45 PM \n '+
+                '',title2:'\u20B9 70/-\n',
+
+                content: '\n'+
+                '5:45 PM    \n'
+                + '                  \n'
+                + '                  \n'
+                + '6:46 PM           \n'
+                + '6:52 PM           \n'
+                + '                  \n'
+                + '                  \n'
+                + '7:00 PM           \n ',
+                content1:'\n'+ this.props.fromLoc+
+                '\n'+
+                + '\n'
+                + '645TA   (\u20B9 35/-)\n'
+                + '\n'
+                + 'Lakdikapul\n'
+                + 'Lakdikapul\n'
+                + '\n'
+                + '648KL   (\u20B9 35/-)\n'
+                +  this.props.toLoc
+
+            },
+            {
+                title: '650N',title1:'5:55 PM \n '+
+                '',title2:'\u20B9 64/-\n',
+
+                content: '\n'+
+                '5:55 PM    \n'
+                + '                  \n'
+                + '                  \n'
+                + '6:56 PM           \n'
+                + '7:01 PM           \n'
+                + '                  \n'
+                + '                  \n'
+                + '7:04 PM           \n ',
+                content1:'\n'+ this.props.fromLoc+
+                '\n'+
+                + '\n'
+                + '650N   (\u20B9 32/-)\n'
+                + '\n'
+                + 'Lakdikapul\n'
+                + 'Lakdikapul\n'
+                + '\n'
+                + '652H   (\u20B9 32/-)\n'
+                +  this.props.toLoc
+
+
+            },
+            {
+                title: '625M',title1:'5:56 PM \n '+
+                '',title2:'\u20B9 72/-\n',
+
+                content: '  \n' +
+                '5:56 PM    \n'
+                + '                  \n'
+                + '                  \n'
+                + '                  \n'
+                + '                  \n'
+                + '                  \n'
+                + '7:03 PM           \n ',
+                content1:'  \n' + this.props.fromLoc+
+                '\n' +
+                '\n' +
+                '\n'+
+                '625M   (\u20B9 72/-)\n' +
+                '\n' +
+                '  \n' +
+                this.props.toLoc
+            },
+        ];
+
+
 
         return (
 
@@ -625,7 +652,7 @@ export default class SearchScreen extends Component {
                     {/*<Content>*/}
                     <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
                         paddingLeft:10,}}>
-                        <TouchableOpacity onPress={() => Actions.homeScreen()} >
+                        <TouchableOpacity onPress={() => Actions.homeScreen(params)} >
                         <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Journey Options</Text>

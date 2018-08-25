@@ -193,7 +193,7 @@ export default class TicketScreen extends Component {
                                             }} >: TSRTC
                                             </Text>
                                             <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
-                                            }} >: {Moment(this.state.date).format('DD/MM/YYYY ' +
+                                            }} >: {Moment(this.props.tripdte).format('DD/MM/YYYY ' +
                                                 'h:mm A')}
                                             </Text>
 
@@ -207,13 +207,13 @@ export default class TicketScreen extends Component {
                                             }} >: 1
                                             </Text>
                                             <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: Jedimetla
+                                            }} >: {this.props.fromLoc}
                                             </Text>
                                             <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: Mehdipatnam
+                                            }} >: {this.props.toLoc}
                                             </Text>
                                             <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: 9K, 113M
+                                            }} >: 650N, 652H
                                             </Text>
                                         </View>
                                     </View>
@@ -224,7 +224,7 @@ export default class TicketScreen extends Component {
                                 <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
                                 </View>
                                 <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
-                                }} >Valid for one trip on {Moment(this.state.date).format('DD/MM/YYYY')} only
+                                }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only
                                 </Text>
 
                             </Card>

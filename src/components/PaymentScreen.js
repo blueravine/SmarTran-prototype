@@ -43,6 +43,7 @@ const SECTIONS = [
     },
 ];
 var radio_props;
+var params;
 export default class PaymentScreen extends Component {
 
     constructor(props) {
@@ -111,17 +112,17 @@ export default class PaymentScreen extends Component {
                 {/*/>*/}
                 <View style={{flexDirection:"row"}}>
                 <View style={{flexDirection:"column"}}>
-                    <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                    <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
                         <Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,
                             color:'#FFFFFF'}}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                    <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
                         <Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,
                             color:'#FFFFFF',marginTop:10}}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                    <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
                         <Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,
                             color:'#FFFFFF',marginTop:15}}
                         />
@@ -151,13 +152,13 @@ export default class PaymentScreen extends Component {
                 </View>
                     <View style={{flexDirection:"row"}}>
                         <View style={{flexDirection:"column"}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
                             <Text>{section.content}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
                                 <Text>{section.content1}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen()} >
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
                                 <Text>{section.content2}</Text>
                             </TouchableOpacity>
                         </View></View>
@@ -167,7 +168,12 @@ export default class PaymentScreen extends Component {
     }
 
     render() {
-
+         params = {};
+        params = {
+            fromLoc:this.props.fromLoc,
+            toLoc:this.props.toLoc,
+            tripdte:this.props.tripdte,
+        };
         return (
             <View style={styles.container}>
                 {/*<ScrollView>*/}
@@ -176,7 +182,7 @@ export default class PaymentScreen extends Component {
                         {/*<Content>*/}
                     <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
                         paddingLeft:10,}}>
-                        <TouchableOpacity onPress={() => Actions.searchScreen()} >
+                        <TouchableOpacity onPress={() => Actions.searchScreen(params)} >
                             {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
                                 {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
                             {/*/>*/}
@@ -212,8 +218,8 @@ export default class PaymentScreen extends Component {
 
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}
                               onPress={this._showDateTimePicker}>
-                            <Text note style={{fontSize:12,textAlign:'left',color:'#000',flex:1}} onPress={this._showDateTimePicker}> {
-                                Moment(this.state.date).format('DD MMMM')} </Text>
+                            <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {
+                                Moment(this.props.tripdte).format('DD MMMM')} </Text>
 
                             <Text note style={{textAlign:'right',fontSize:14,color:'#000',fontWeight:'bold',flex:1
                             }} > &#8377;45/-
@@ -221,11 +227,12 @@ export default class PaymentScreen extends Component {
                         </View>
                         <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
                             {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >From: Jedimetla
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >{this.props.fromLoc}
                             </Text>
-
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                            </Text>
                             {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >To: Mehdipatnam
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}
                             </Text>
 
 
@@ -268,7 +275,7 @@ export default class PaymentScreen extends Component {
                             {/*</Text>*/}
                             <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
                                 marginTop:30,justifyContent:'space-evenly'}}
-                                    onPress={() => Actions.ticketScreen()}>
+                                    onPress={() => Actions.ticketScreen(params)}>
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                     {/*<Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,*/}
                                         {/*height: 25,alignItems:'center'}}/>*/}
