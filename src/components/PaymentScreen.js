@@ -80,20 +80,7 @@ export default class PaymentScreen extends Component {
                 <View style={{flexDirection:"row"}}>
                     {/*<Image source={require('../Images/circleicon.png')} style={{height: 25,marginLeft:15,width: 25,marginTop:20,justifyContent:'flex-start'}}/>*/}
 
-                    {/*<RadioForm*/}
-                        {/*radio_props={radio_props}*/}
-                        {/*initial={ '' }*/}
-                        {/*labelColor={'#000'}*/}
-                        {/*buttonColor={'#2eacde'}*/}
-                        {/*onPress={this._onPressHandle}*/}
-                    {/*/>*/}
-
-                    {/*<Radio style={{width:15,height:30}}*/}
-                        {/*selected={false}*/}
-                           {/*color={'#2eacde'}*/}
-                           {/*radioColor={'#2eacde'}*/}
-                           {/*radioBtnSize={20}*/}
-                           {/*selectedColor={'#46de21'}/>*/}
+                   
                            <TouchableOpacity>
                     <Text style={styles.headerText}>{section.title}</Text>
                            </TouchableOpacity>
@@ -105,40 +92,10 @@ export default class PaymentScreen extends Component {
         );
     }
     _renderContent(section) {
-        // radio_props = [
-        //     {label: section.content, value: 0 }
-        //     // {label: '', value: 1 }
-        // ];
         return (
             <View style={styles.content}>
 
-                {/*<RadioForm*/}
-                    {/*radio_props={radio_props}*/}
-                    {/*initial={0}*/}
-                    {/*labelColor={'#000'}*/}
-                    {/*buttonColor={'#2eacde'}*/}
-                    {/*onPress={this._onPressHandle}*/}
-                {/*/>*/}
-
                 <View style={{flexDirection:"row"}}>
-                {/*<View style={{flexDirection:"column"}}>*/}
-                    {/*<TouchableOpacity onPress={() => Actions.ticketScreen(params)} >*/}
-                        {/*<Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,*/}
-                            {/*color:'#FFFFFF'}}*/}
-                        {/*/>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => Actions.ticketScreen(params)} >*/}
-                        {/*<Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,*/}
-                            {/*color:'#FFFFFF',marginTop:10}}*/}
-                        {/*/>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => Actions.ticketScreen(params)} >*/}
-                        {/*<Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,*/}
-                            {/*color:'#FFFFFF',marginTop:15}}*/}
-                        {/*/>*/}
-                    {/*</TouchableOpacity>*/}
-
-                {/*</View>*/}
                     {(section.title === 'Credit Card') &&
                     <View style={{flexDirection: "row"}}>
                         <View style={{flexDirection: "column"}}>
@@ -231,6 +188,7 @@ export default class PaymentScreen extends Component {
             tripdte:this.props.tripdte,
         };
         return (
+
             <View style={styles.container}>
                 {/*<ScrollView>*/}
                 <View style={[styles.headerview]}>
@@ -258,13 +216,6 @@ export default class PaymentScreen extends Component {
                         elevation: 1,
                         padding: 10}}>
 
-                        {/*<CardItem cardBody  styles={{width: 100,height:300, borderWidth: 1.5,*/}
-                        {/*borderRadius:10,*/}
-                        {/*borderColor:'#2EACDE', alignItems: 'center',*/}
-                        {/*overflow: 'hidden',*/}
-                        {/*backgroundColor: 'white',*/}
-                        {/*elevation: 1,*/}
-                        {/*padding: 10}}>*/}
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60, width: 60}}/>*/}
                             <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
@@ -300,12 +251,6 @@ export default class PaymentScreen extends Component {
                             <Text  style={{marginLeft:20,marginTop:20,fontSize:18,fontWeight:'bold',color:'#000',justifyContent:'flex-start'
                             }} >Select Payment Method
                             </Text>
-                            {/*<Text note style={{textAlign:'left',justifyContent: 'flex-end',marginBottom:10,fontSize:40,color:'#000',fontWeight:'bold',marginTop:20,*/}
-                            {/*}} > &#8377;45/-*/}
-                            {/*</Text>*/}
-                            {/*<Text note style={{marginTop:20,marginLeft:100,fontSize:18,fontWeight:'bold',justifyContent:'flex-end'*/}
-                            {/*}} >02/08/2018 11:50 AM*/}
-                            {/*</Text>*/}
                         </View>
                         {/*<ScrollView>*/}
 
@@ -316,16 +261,6 @@ export default class PaymentScreen extends Component {
                             renderContent={this._renderContent}
                         />
 
-                        {/*</Accordion>*/}
-                        {/*</ScrollView>*/}
-                        {/*<View style={{flexDirection:"row"}}>*/}
-                        {/*<Image source={require('../Images/rupee_symbol.png')} style={{marginLeft:20,marginTop:20,height: 25, width: 25, justifyContent: 'flex-start'}}/>*/}
-                        {/*<Text note style={{marginRight:20,marginTop:20,fontSize:20,fontWeight:'bold'*/}
-                        {/*}} >45/-*/}
-                        {/*</Text>*/}
-                        {/*<Image source={require('../Images/qr_code.png')} style={{marginLeft:60,marginTop:20,height: 50, width: 50, justifyContent: 'flex-end'}}/>*/}
-                        {/*</View>*/}
-                        {/*marginLeft:220,*/}
                         <View style={{flexDirection:"row"}}>
                             {/*<Text note style={{textAlign:'left',marginBottom:10,fontSize:40,color:'#2eacde',fontWeight:'bold',marginTop:20,*/}
                             {/*}} > &#8377;45/-*/}
@@ -347,106 +282,9 @@ export default class PaymentScreen extends Component {
                             {/*</Button>*/}
                         </View>
 
-                        {/*<Text note style={{marginLeft:20,marginTop:20,fontSize:18,fontStyle:'italic',justifyContent: 'flex-start'*/}
-                        {/*}} >This a secure transaction*/}
-                        {/*</Text>*/}
-
-                        {/*<Text note style={{marginLeft:20,marginBottom:30,fontSize:18,fontStyle:'italic',justifyContent: 'flex-start'*/}
-                        {/*}} >Please do not navigate back or refresh !*/}
-                        {/*</Text>*/}
                     </Card>
-                        {/*</Content>*/}
 
-
-                        {/*<Content />*/}
-
-
-
-                    {/*</Container>*/}
                 </View>
-
-                    {/*<View style={[styles.content1]}>*/}
-                        {/*<View style={[styles.box]}>*/}
-                            {/*/!*<Text note style={{fontSize:5}} >   </Text>*!/*/}
-                            {/*<Content>*/}
-                                {/*<Card  styles={{width: 100,height:300, borderWidth: 1.5,*/}
-                                    {/*borderRadius:10,*/}
-                                    {/*borderColor:'#2EACDE', alignItems: 'center',*/}
-                                    {/*overflow: 'hidden',*/}
-                                    {/*backgroundColor: 'white',*/}
-                                    {/*elevation: 1,*/}
-                                    {/*padding: 10}}>*/}
-
-                                    {/*/!*<CardItem cardBody  styles={{width: 100,height:300, borderWidth: 1.5,*!/*/}
-                                        {/*/!*borderRadius:10,*!/*/}
-                                        {/*/!*borderColor:'#2EACDE', alignItems: 'center',*!/*/}
-                                        {/*/!*overflow: 'hidden',*!/*/}
-                                        {/*/!*backgroundColor: 'white',*!/*/}
-                                        {/*/!*elevation: 1,*!/*/}
-                                        {/*/!*padding: 10}}>*!/*/}
-                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                            {/*<Image source={require('../Images/wind_chimes.png')} style={{height: 60, width: 60}}/>*/}
-                                            {/*<Text  style={{marginTop:20,fontSize:18,color:'#669999',fontWeight:'bold',*/}
-                                            {/*}} >Payment*/}
-                                            {/*</Text>*/}
-                                            {/*<Image source={require('../Images/wind_chimes.png')} style={{height: 60,width: 60}}/>*/}
-                                        {/*</View>*/}
-
-
-                                    {/*/!*</CardItem>*!/*/}
-                                    {/*<View style={{flexDirection:"row"}}>*/}
-                                        {/*<Text  style={{marginLeft:20,marginTop:20,fontSize:18,fontWeight:'bold',color:'#669999',justifyContent:'flex-start'*/}
-                                        {/*}} >Select Payment Method*/}
-                                        {/*</Text>*/}
-                                        {/*/!*<Text note style={{marginTop:20,marginLeft:100,fontSize:18,fontWeight:'bold',justifyContent:'flex-end'*!/*/}
-                                        {/*/!*}} >02/08/2018 11:50 AM*!/*/}
-                                        {/*/!*</Text>*!/*/}
-                                    {/*</View>*/}
-
-                                        {/*<Accordion*/}
-                                        {/*sections={SECTIONS}*/}
-                                        {/*renderHeader={this._renderHeader}*/}
-                                        {/*renderContent={this._renderContent}*/}
-                                    {/*/>*/}
-
-                                    {/*/!*<View style={{flexDirection:"row"}}>*!/*/}
-                                        {/*/!*<Image source={require('../Images/rupee_symbol.png')} style={{marginLeft:20,marginTop:20,height: 25, width: 25, justifyContent: 'flex-start'}}/>*!/*/}
-                                        {/*/!*<Text note style={{marginRight:20,marginTop:20,fontSize:20,fontWeight:'bold'*!/*/}
-                                        {/*/!*}} >45/-*!/*/}
-                                        {/*/!*</Text>*!/*/}
-                                        {/*/!*<Image source={require('../Images/qr_code.png')} style={{marginLeft:60,marginTop:20,height: 50, width: 50, justifyContent: 'flex-end'}}/>*!/*/}
-                                    {/*/!*</View>*!/*/}
-                                    {/*/!*marginLeft:220,*!/*/}
-                                    {/*<View style={{flexDirection:"row"}}>*/}
-                                    {/*<Text note style={{textAlign:'left',marginBottom:10,fontSize:40,color:'#669999',fontWeight:'bold',marginTop:20,*/}
-                                    {/*}} > &#8377;45/-*/}
-                                    {/*</Text>*/}
-                                    {/*<Button rounded style={{marginLeft:50,marginTop:20,height:28,backgroundColor: '#669999',justifyContent: 'flex-end',}}*/}
-                                            {/*onPress={() => Actions.ticketScreen()}>*/}
-                                        {/*/!*<Image source={require('../Images/location.png')} style = {{ width: 25, height: 25,paddingLeft:5 }}/>*!/*/}
-                                        {/*<Text style={{fontWeight: "bold",fontSize:18}}>Pay securely</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*</View>*/}
-
-                                    {/*<Text note style={{marginLeft:20,marginTop:20,fontSize:18,fontStyle:'italic',justifyContent: 'flex-start'*/}
-                                    {/*}} >This a secure transaction*/}
-                                    {/*</Text>*/}
-
-                                    {/*<Text note style={{marginLeft:20,marginBottom:30,fontSize:18,fontStyle:'italic',justifyContent: 'flex-start'*/}
-                                    {/*}} >Please do not navigate back or refresh !*/}
-                                    {/*</Text>*/}
-                                {/*</Card>*/}
-
-                            {/*</Content>*/}
-
-
-                            {/*<Content />*/}
-
-
-
-                        {/*</View>*/}
-
-                    {/*</View>*/}
                 {/*</ScrollView>*/}
 
             </View>
