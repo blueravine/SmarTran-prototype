@@ -461,7 +461,7 @@ export default class Home extends Component {
                                     placeholder="Select One"
                                     // prompt="From Location"
                                     mode="dropdown"
-                                    style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde',justifyContent:'flex-end'}}
+                                    style={{height:45,width:295,borderWidth:5, borderColor:'#2eacde',justifyContent:'flex-end'}}
                                     selectedValue={this.state.selected1}
                                     onValueChange={(itemValue) => this.setState({selected1: itemValue})}>
                                     {/*<View style={{flexDirection: 'row'}}>*/}
@@ -480,7 +480,7 @@ export default class Home extends Component {
                                 </Picker>
                                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                     <View style={{
-                                        flex: 8,
+                                        flex: 10,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
                                         width: width - 10,}}>
@@ -492,7 +492,7 @@ export default class Home extends Component {
                                         {/*/>*/}
                                     </TouchableOpacity>
                                     <View style={{
-                                        flex: 3,
+                                        flex: 1,
                                         borderBottomColor: 'black',
                                         borderBottomWidth: 1,
                                         width: width - 10,}}>
@@ -501,7 +501,7 @@ export default class Home extends Component {
                                 <Picker
                                     placeholder="Select One"
                                     mode="dropdown"
-                                    style={{height:45,width:380,borderWidth:5, borderColor:'#2eacde'}}
+                                    style={{height:45,width:295,borderWidth:5, borderColor:'#2eacde'}}
                                     selectedValue={this.state.selected2}
                                     onValueChange={(itemValue) => this.setState({selected2: itemValue})}>
 
@@ -648,10 +648,10 @@ export default class Home extends Component {
 
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
                                       onPress={this._showDateTimePicker}>
-                                    <Text note style={{fontSize:10,color:'#000'}}
-                                          onPress={this._showDateTimePicker}> {
-                                        Moment(this.state.date).format('ddd')} </Text>
-                                    <Text note style={{fontSize:10,color:'#000'}}
+                                    {/*<Text note style={{fontSize:10,color:'#000'}}*/}
+                                          {/*onPress={this._showDateTimePicker}> {*/}
+                                        {/*Moment(this.state.date).format('ddd')} </Text>*/}
+                                    <Text note style={{fontSize:14,color:'#000'}}
                                           onPress={this._showDateTimePicker}> {
                                         Moment(this.state.date).format('MMMM')} </Text>
                                 </View>

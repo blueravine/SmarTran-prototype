@@ -27,16 +27,25 @@ import Moment from "moment/moment";
 
 const SECTIONS = [
     {
-        title: ' Credit Card',
+        title: 'Credit Card',
+        content:   '  ',
+        content1:  '  ',
+        content2:  '  '
     },
     {
-        title: ' Debit Card',
+        title: 'Debit Card',
+        content:   '  ',
+        content1:  '  ',
+        content2:  '  '
     },
     {
-        title: ' Net Banking',
+        title: 'Net Banking',
+        content:   '  ',
+        content1:  '  ',
+        content2:  '  '
     },
     {
-        title: ' Wallets',
+        title: 'Wallets',
         content:   '  Paytm\n\n',
         content1:  '  Mobikwik\n\n',
         content2:  '  Freecharge\n'
@@ -110,59 +119,106 @@ export default class PaymentScreen extends Component {
                     {/*buttonColor={'#2eacde'}*/}
                     {/*onPress={this._onPressHandle}*/}
                 {/*/>*/}
-                <View style={{flexDirection:"row"}}>
-                <View style={{flexDirection:"column"}}>
-                    <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
-                        <Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,
-                            color:'#FFFFFF'}}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
-                        <Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,
-                            color:'#FFFFFF',marginTop:10}}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
-                        <Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,
-                            color:'#FFFFFF',marginTop:15}}
-                        />
-                    </TouchableOpacity>
-                {/*<Radio style={{width:30,height:30,borderRadius:10,borderWidth:10,borderColor:'#2eacde'}}*/}
-                    {/*selected={true}*/}
-                       {/*color={'#2eacde'}*/}
-                       {/*radioColor={'#2eacde'}*/}
-                       {/*radioBtnSize={20}*/}
-                       {/*selectedColor={'#2eacde'}*/}
-                       {/*onPress={this._onPressHandle}/>*/}
-                {/*<Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}*/}
-                       {/*selected={false}*/}
-                       {/*color={'#2eacde'}*/}
-                       {/*radioColor={'#2eacde'}*/}
-                       {/*radioBtnSize={20}*/}
-                       {/*selectedColor={'#2eacde'}*/}
-                       {/*onPress={this._onPressHandle}/>*/}
-                {/*<Radio style={{width:30,height:30,borderRadius:10,marginTop:10,borderWidth:10,borderColor:'#2eacde'}}*/}
-                       {/*selected={false}*/}
-                       {/*color={'#2eacde'}*/}
-                       {/*radioColor={'#2eacde'}*/}
-                       {/*radioBtnSize={20}*/}
-                       {/*selectedColor={'#2eacde'}*/}
-                       {/*onPress={this._onPressHandle}/>*/}
 
-                </View>
-                    <View style={{flexDirection:"row"}}>
-                        <View style={{flexDirection:"column"}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
-                            <Text>{section.content}</Text>
+                <View style={{flexDirection:"row"}}>
+                {/*<View style={{flexDirection:"column"}}>*/}
+                    {/*<TouchableOpacity onPress={() => Actions.ticketScreen(params)} >*/}
+                        {/*<Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,*/}
+                            {/*color:'#FFFFFF'}}*/}
+                        {/*/>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*<TouchableOpacity onPress={() => Actions.ticketScreen(params)} >*/}
+                        {/*<Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,*/}
+                            {/*color:'#FFFFFF',marginTop:10}}*/}
+                        {/*/>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*<TouchableOpacity onPress={() => Actions.ticketScreen(params)} >*/}
+                        {/*<Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,*/}
+                            {/*color:'#FFFFFF',marginTop:15}}*/}
+                        {/*/>*/}
+                    {/*</TouchableOpacity>*/}
+
+                {/*</View>*/}
+                    {(section.title === 'Credit Card') &&
+                    <View style={{flexDirection: "row"}}>
+                        <View style={{flexDirection: "column"}}>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
                                 <Text>{section.content1}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
                                 <Text>{section.content2}</Text>
                             </TouchableOpacity>
                         </View></View>
+                    }
+                    {(section.title === 'Debit Card') &&
+                    <View style={{flexDirection: "row"}}>
+                        <View style={{flexDirection: "column"}}>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content1}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content2}</Text>
+                            </TouchableOpacity>
+                        </View></View>
+                    }
+
+                    {(section.title === 'Net Banking') &&
+                    <View style={{flexDirection: "row"}}>
+                        <View style={{flexDirection: "column"}}>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content1}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content2}</Text>
+                            </TouchableOpacity>
+                        </View></View>
+                    }
+                    {(section.title === 'Wallets') &&
+                    <View style={{flexDirection: "row"}}>
+                        <View style={{flexDirection: "column"}}>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content1}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                                <Text>{section.content2}</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={{flexDirection:"column",marginLeft:15}}>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                                <Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,
+                                    color:'#FFFFFF'}}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                                <Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,
+                                    color:'#FFFFFF',marginTop:10}}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                                <Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,
+                                    color:'#FFFFFF',marginTop:15}}
+                                />
+                            </TouchableOpacity>
+
+                        </View>
+
+                    </View>
+                    }
                 </View>
+
             </View>
         );
     }
@@ -193,6 +249,7 @@ export default class PaymentScreen extends Component {
 
 
                     </View>
+                    {/*<ScrollView>*/}
                     <Card  styles={{width: 100,height:300, borderWidth: 1.5,
                         borderRadius:10,
                         borderColor:'#2EACDE', alignItems: 'center',
@@ -252,13 +309,13 @@ export default class PaymentScreen extends Component {
                         </View>
                         {/*<ScrollView>*/}
 
-<TouchableOpacity>
+
                         <Accordion
                             sections={SECTIONS}
                             renderHeader={this._renderHeader}
                             renderContent={this._renderContent}
                         />
-</TouchableOpacity>
+
                         {/*</Accordion>*/}
                         {/*</ScrollView>*/}
                         {/*<View style={{flexDirection:"row"}}>*/}

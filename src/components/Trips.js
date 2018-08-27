@@ -698,7 +698,7 @@ export default class Trips extends Component {
 
     calcDistance = newLatLng => {
         const { prevLatLng } = this.state;
-        return haversine(prevLatLng, newLatLng) || 0;
+        // return haversine(prevLatLng, newLatLng) || 0;
     };
     getMapRegion = () => ({
         latitude: this.state.latitude,
@@ -868,7 +868,7 @@ export default class Trips extends Component {
                     onMapReady={()=> {this.locationmove(),this.locationmovenew(),this.locationmovenewmarker()}}
                     // liteMode={true}
                 >
-                    <MapView.Polyline coordinates={this.state.routeCoordinates} strokeWidth={5} strokeColor='#2eacde' />
+                    {/*<MapView.Polyline coordinates={this.state.routeCoordinates} strokeWidth={5} strokeColor='#2eacde' />*/}
                     <MapView.Marker.Animated
                         ref={marker => {
                             this.marker = marker;
@@ -881,7 +881,7 @@ export default class Trips extends Component {
                        centerOffset={{ x: -18, y: -60 }}
                        anchor={{ x: 0.69, y: 1 }}
                         image={bus2}
-                        title={"158JA"}
+                        title={"645TA"}
 
                     >
                     </MapView.Marker.Animated>
@@ -897,7 +897,7 @@ export default class Trips extends Component {
                         centerOffset={{ x: -18, y: -60 }}
                         anchor={{ x: 0.69, y: 1 }}
                         image={bus2}
-                        title={"158J"}
+                        title={"635MA"}
                         // onPress={()=> {this.marker1._component.animateMarkerToCoordinate(r[3] ,5000)}}
                     >
                     </MapView.Marker.Animated>
@@ -913,7 +913,7 @@ export default class Trips extends Component {
                         centerOffset={{ x: -18, y: -60 }}
                         anchor={{ x: 0.69, y: 1 }}
                         image={bus2}
-                        title={"189M"}
+                        title={"625M"}
                         // onPress={()=> {this.marker2._component.animateMarkerToCoordinate(r[3] ,5000)}}
                     >
                     </MapView.Marker.Animated>

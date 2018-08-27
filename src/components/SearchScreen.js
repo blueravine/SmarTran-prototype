@@ -181,7 +181,7 @@ export default class SearchScreen extends Component {
             <View style={styles.header}>
 
                 {(this.state.showacview) && (section.title === '625M') &&
-                <View style={{flexDirection: "row", justifyContent: 'flex-start', padding: 5}}>
+                <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
                     <Image source={require('../Images/live_icon.png')}
                            style={{width: 20, height: 20, paddingLeft: 5}}/>
@@ -194,8 +194,8 @@ export default class SearchScreen extends Component {
                     }}>{section.title1}</Text>
                     </View>
                     {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="#2eacde"/>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{
@@ -210,23 +210,25 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
-                            marginLeft: 130,
+                            marginLeft: 120,
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                        <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
-                                onPress={this.decrement}>
-                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                ,textAlign:'center'}}>-</Text>
-                        </Button>
-                        <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
-                        {/*{this.state.count}*/}
-                        <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
-                                onPress={this.increment}>
-                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                ,textAlign:'center'}}>+</Text>
-                        </Button>
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:110,marginRight:2}}>
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            }}
+                                    onPress={this.decrement}>
+                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                    ,textAlign:'center'}}>-</Text>
+                            </Button>
+                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            {/*{this.state.count}*/}
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            }}
+                                    onPress={this.increment}>
+                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                    ,textAlign:'center'}}>+</Text>
+                            </Button>
                         </View>
                     </View>
 
@@ -249,7 +251,7 @@ export default class SearchScreen extends Component {
                     {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
@@ -257,8 +259,8 @@ export default class SearchScreen extends Component {
                         }}>{section.title}</Text>
 
                     </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 5,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
@@ -272,19 +274,21 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
-                            marginLeft: 100,
+                            marginLeft: 120,
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:65,marginRight:2}}>
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
@@ -309,15 +313,15 @@ export default class SearchScreen extends Component {
                 </View>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                         }}>{section.title}</Text>
                     </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 5,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="grey"/>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
@@ -331,19 +335,21 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
-                            marginLeft: 100,
+                            marginLeft: 120,
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:60,marginRight:2}}>
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF', }}
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
@@ -369,7 +375,7 @@ export default class SearchScreen extends Component {
                     </View>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="#2eacde"/>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
@@ -377,13 +383,13 @@ export default class SearchScreen extends Component {
                         }}>{section.title}</Text>
 
                     </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 5,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={24} color="#2eacde"/>
+                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
+                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
                                {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
                         <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,flex:5
+                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
                         }}>652H</Text>
                     </View>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
@@ -392,20 +398,20 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
-                            marginLeft: 100,
+                            marginLeft:120,
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:65,marginRight:2}}>
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
                                 }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 14, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
-                            <Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
                                 }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
