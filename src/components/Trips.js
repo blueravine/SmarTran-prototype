@@ -489,6 +489,10 @@ export default class Trips extends Component {
         this.state= {
             active:'search',
         };
+
+        this.state= {
+            activeTab: 'track',
+        };
         // this.state = {
         //     coordinates: [
         //         {
@@ -518,9 +522,9 @@ export default class Trips extends Component {
             })
         };
     }
-    state = {
-        activeTab: 'track'
-    }
+    // state = {
+    //     activeTab: 'track'
+    // }
     tabs = [
         {
             key:"home",
@@ -568,7 +572,7 @@ export default class Trips extends Component {
                 Actions.ticketScreen(params);
                 break;
             case 'more':
-                Actions.moreScreen(params);
+                Actions.moreScreen();
                 break;
             default:
 

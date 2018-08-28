@@ -50,13 +50,17 @@ export default class More extends Component {
             shownonacview: true,
         };
 
+        this.state= {
+            activeTab: 'more',
+        };
+
         this._renderHeader = this._renderHeader.bind(this);
         this._renderContent=this._renderContent.bind(this)
     }
 
-    state = {
-        activeTab: 'home'
-    };
+    // state = {
+    //     activeTab: 'home'
+    // };
 
     tabs = [
         {
@@ -128,7 +132,7 @@ export default class More extends Component {
 
     _renderHeader(section) {
         return (
-            <View style={styles.header}>
+            <View style={styles.headermoretitle}>
 
                 {(section.title === 'Preference') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5,marginBottom:10}}>
@@ -162,7 +166,7 @@ export default class More extends Component {
 
     _renderContent(section) {
         return (
-            <View style={styles.content}>
+            <View style={styles.contentmore}>
 
                 {(section.title === 'Preference') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
@@ -187,12 +191,12 @@ export default class More extends Component {
     }
 
     render() {
-        params = {};
-        params = {
-            fromLoc:this.props.fromLoc,
-            toLoc:this.props.toLoc,
-            tripdte:this.props.tripdte,
-        };
+        // params = {};
+        // params = {
+        //     fromLoc:this.props.fromLoc,
+        //     toLoc:this.props.toLoc,
+        //     tripdte:this.props.tripdte,
+        // };
         const SECTIONS = [
             {
                 title:'Preference',
@@ -289,11 +293,6 @@ const styles = StyleSheet.create({
         bottom:0,
 
     },
-    content1: {
-        backgroundColor:'#0c71b7',
-        marginTop: 140,
-
-    },
     footer: {
         height: 50,
         position: 'absolute',
@@ -302,24 +301,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         // backgroundColor: '#8BC34A'
     },
-    box: {
-
-        backgroundColor: '#0c71b7',
-        color:'#0C71B7',
-        // marginTop: 10
-    },
-    // container: {
-    //     flex: 1,
-    //     justifyContent: 'center',
-    //     backgroundColor: '#F5FCFF',
-    // },
-    // title: {
-    //     textAlign: 'center',
-    //     fontSize: 22,
-    //     fontWeight: '300',
-    //     marginBottom: 20,
-    // },
-    header: {
+    headermoretitle: {
         backgroundColor: '#FFFFFF',
         // padding: 0,
 
@@ -337,22 +319,7 @@ const styles = StyleSheet.create({
         marginRight:5,
         marginLeft:5,
     },
-    headerText: {
-        // textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 'bold',
-        color:'#000',
-        textAlign:'left'
-    },
-    headerTexttitle:{
-        // textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 'bold',
-        color:'#000',
-        textAlign:'center',
-        justifyContent:'flex-start'
-    },
-    content: {
+    contentmore: {
         padding: 20,
         backgroundColor: '#FFFFFF',
         marginRight:5,
@@ -398,27 +365,4 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
 
     },
-    // active: {
-    //     backgroundColor: 'rgba(255,255,255,1)',
-    // },
-    // inactive: {
-    //     backgroundColor: 'rgba(245,252,255,1)',
-    // },
-    // selectors: {
-    //     marginBottom: 10,
-    //     flexDirection: 'row',
-    //     justifyContent: 'center',
-    // },
-    // selector: {
-    //     backgroundColor: '#F5FCFF',
-    //     padding: 10,
-    // },
-    // activeSelector: {
-    //     fontWeight: 'bold',
-    // },
-    // selectTitle: {
-    //     fontSize: 14,
-    //     fontWeight: '500',
-    //     padding: 10,
-    // },
 });

@@ -70,9 +70,9 @@ import AutoComplete from "react-native-autocomplete";
 // const filterOptions = createFilterOptions({ options });
 
 export default class Home extends Component {
-    state = {
-        activeTab: 'home'
-    }
+    // state = {
+    //     activeTab: 'home'
+    // }
     tabs = [
         {
             key:"home",
@@ -108,9 +108,9 @@ export default class Home extends Component {
         }
     ]
 
-    state = {
-        activeTab: this.tabs[0].key
-    }
+    // state = {
+    //     activeTab: this.tabs[0].key
+    // }
     renderIcon = icon => ({ isActive }) => (
         <Icon size={24} color="white" name={icon} />
 
@@ -157,6 +157,9 @@ export default class Home extends Component {
 
         this.state= {
             active:'search',
+        };
+        this.state= {
+            activeTab: 'home',
         };
         // this.state = {
         //     selected: "Je",
@@ -317,7 +320,7 @@ export default class Home extends Component {
                 Actions.ticketScreen(params);
                 break;
             case 'more':
-                Actions.moreScreen(params);
+                Actions.moreScreen();
                 break;
             default:
 

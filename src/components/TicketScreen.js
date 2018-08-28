@@ -37,10 +37,14 @@ export default class TicketScreen extends Component {
 
         };
 
+        this.state= {
+            activeTab: 'ticket',
+        };
+
     }
-    state = {
-        activeTab: 'ticket'
-    }
+    // state = {
+    //     activeTab: 'ticket'
+    // }
     tabs = [
         {
             key:"home",
@@ -88,7 +92,7 @@ export default class TicketScreen extends Component {
                 // Actions.ticketScreen();
                 break;
             case 'more':
-                Actions.moreScreen(params);
+                Actions.moreScreen();
                 break;
             default:
 
