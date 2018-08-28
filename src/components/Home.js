@@ -317,6 +317,7 @@ export default class Home extends Component {
                 Actions.ticketScreen(params);
                 break;
             case 'more':
+                Actions.moreScreen(params);
                 break;
             default:
 

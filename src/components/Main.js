@@ -8,6 +8,7 @@ import Registration from './Registration';
 import LoginScreen from './LoginScreen';
 import OTPScreen from './OTPScreen';
 import Trips from './Trips'
+import More from './More'
 import PaymentScreen from './PaymentScreen';
 import TicketScreen from './TicketScreen';
 
@@ -65,6 +66,11 @@ export default class Main extends Component {
                      component={TicketScreen}
                      animation='fade'
                      hideNavBar={true}/>
+              <Scene key="moreScreen"
+                     component={More}
+                     animation='fade'
+                     hideNavBar={true}
+              />
 	      </Scene>
 
 

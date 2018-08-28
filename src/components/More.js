@@ -37,7 +37,7 @@ const ac_icon_grey = require('../Images/ac_icon_grey.png');
 const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 
-export default class SearchScreen extends Component {
+export default class More extends Component {
 
 
     constructor() {
@@ -126,7 +126,6 @@ export default class SearchScreen extends Component {
                 Actions.ticketScreen(params);
                 break;
             case 'more':
-                Actions.moreScreen(params);
                 break;
             default:
 
@@ -184,21 +183,21 @@ export default class SearchScreen extends Component {
                 {(this.state.showacview) && (section.title === '625M') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                    <Image source={require('../Images/live_icon.png')}
-                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: 'bold',
-                        color: '#000',
-                        textAlign: 'left',
-                        // justifyContent:'flex-start'
-                    }}>{section.title1}</Text>
+                        <Image source={require('../Images/live_icon.png')}
+                               style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
                     </View>
                     {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{
                             fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
                             flex:5
@@ -239,22 +238,22 @@ export default class SearchScreen extends Component {
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
 
                     <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                    <Image source={require('../Images/live_icon.png')}
-                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: 'bold',
-                        color: '#000',
-                        textAlign: 'left',
-                        // justifyContent:'flex-start'
-                    }}>{section.title1}</Text>
+                        <Image source={require('../Images/live_icon.png')}
+                               style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
                     </View>
                     {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                         }}>{section.title}</Text>
@@ -263,7 +262,7 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
@@ -302,21 +301,21 @@ export default class SearchScreen extends Component {
                 {(this.state.shownonacview) && (section.title === '645TA') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                    <Image source={require('../Images/live_icon.png')}
-                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: 'bold',
-                        color: '#000',
-                        textAlign: 'left',
-                        // justifyContent:'flex-start'
-                    }}>{section.title1}</Text>
-                </View>
+                        <Image source={require('../Images/live_icon.png')}
+                               style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
+                    </View>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                         }}>{section.title}</Text>
@@ -324,7 +323,7 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
@@ -364,21 +363,21 @@ export default class SearchScreen extends Component {
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
 
                     <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                    <Image source={require('../Images/live_icon.png')}
-                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: 'bold',
-                        color: '#000',
-                        textAlign: 'left',
-                        // justifyContent:'flex-start'
-                    }}>{section.title1}</Text>
+                        <Image source={require('../Images/live_icon.png')}
+                               style={{width: 20, height: 20, paddingLeft: 5}}/>
+                        <Text style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            textAlign: 'left',
+                            // justifyContent:'flex-start'
+                        }}>{section.title1}</Text>
                     </View>
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                         }}>{section.title}</Text>
@@ -387,7 +386,7 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
                         <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
                         {/*<Image source={require('../Images/school_bus.png')}*/}
-                               {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
 
                         <Text note style={{color:'#000',
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
@@ -405,7 +404,7 @@ export default class SearchScreen extends Component {
                         }}>{section.title2}</Text>
                         <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:65,marginRight:2}}>
                             <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
-                                }}
+                            }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
@@ -413,7 +412,7 @@ export default class SearchScreen extends Component {
                             <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
                             {/*{this.state.count}*/}
                             <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
-                                }}
+                            }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
@@ -500,17 +499,17 @@ export default class SearchScreen extends Component {
 
                         {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
                         {/*}}*/}
-                                {/*onPress={this.decrement}>*/}
-                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                {/*,textAlign:'center'}}>-</Text>*/}
+                        {/*onPress={this.decrement}>*/}
+                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                        {/*,textAlign:'center'}}>-</Text>*/}
                         {/*</Button>*/}
                         {/*<Text note style={{ fontSize: 14, color:'#FFFFFF',textAlign: 'center',fontWeight:'bold'}}> 1 </Text>*/}
                         {/*/!*{this.state.count}*!/*/}
                         {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
                         {/*}}*/}
-                                {/*onPress={this.increment}>*/}
-                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                {/*,textAlign:'center'}}>+</Text>*/}
+                        {/*onPress={this.increment}>*/}
+                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                        {/*,textAlign:'center'}}>+</Text>*/}
                         {/*</Button>*/}
                     </View>
                 </Button>
@@ -520,7 +519,7 @@ export default class SearchScreen extends Component {
     }
 
     render() {
-         params = {};
+        params = {};
         params = {
             fromLoc:this.props.fromLoc,
             toLoc:this.props.toLoc,
@@ -660,37 +659,37 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
                         paddingLeft:10,}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen(params)} >
-                        <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
+                            <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Journey Options</Text>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
                     </View>
                     <ScrollView>
-                    <Card  styles={{width: 100,height:300,borderWidth: 3,
-                        borderColor: '#999999', alignItems: 'center',
-                        borderRadius: 5,
-                        overflow: 'hidden',
-                        elevation: 1}}>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                            <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {
-                                Moment(this.props.tripdte).format('DD MMMM')} </Text>
-                        </View>
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
-                            {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >{this.props.fromLoc}
-                            </Text>
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
-                            </Text>
-                            {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}
-                            </Text>
-                        </View>
-                        <View style={{
-                            flex: 1,
-                            borderBottomColor: 'black',
-                            borderBottomWidth: 1,
-                            width: width - 10,}}>
-                        </View>
+                        <Card  styles={{width: 100,height:300,borderWidth: 3,
+                            borderColor: '#999999', alignItems: 'center',
+                            borderRadius: 5,
+                            overflow: 'hidden',
+                            elevation: 1}}>
+                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {
+                                    Moment(this.props.tripdte).format('DD MMMM')} </Text>
+                            </View>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
+                                {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
+                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >{this.props.fromLoc}
+                                </Text>
+                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                                </Text>
+                                {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
+                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}
+                                </Text>
+                            </View>
+                            <View style={{
+                                flex: 1,
+                                borderBottomColor: 'black',
+                                borderBottomWidth: 1,
+                                width: width - 10,}}>
+                            </View>
                             <View style={{flexDirection:"row",justifyContent:'center'}}>
 
                                 <MultiToggleSwitch defaultActiveIndex={2}
@@ -707,19 +706,19 @@ export default class SearchScreen extends Component {
                                         <Icon type='MaterialIcons' name={'done-all'} size={20}/>
                                     </MultiToggleSwitch.Item>
                                 </MultiToggleSwitch>
-                        </View>
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                            <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
-                            <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
-                            <Text note style={{fontSize:14,textAlign:'center'}} >ALL</Text>
-                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                            <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                        </View>
+                            </View>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                                <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
+                                <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
+                                <Text note style={{fontSize:14,textAlign:'center'}} >ALL</Text>
+                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                            </View>
 
-                    </Card>
-                    {/*<ScrollView>*/}
+                        </Card>
+                        {/*<ScrollView>*/}
                         <Accordion
                             sections={SECTIONS}
                             renderHeader={this._renderHeader}
@@ -740,40 +739,40 @@ export default class SearchScreen extends Component {
                         // useLayoutAnimation
                     />
                     {/*<BottomNavigation active={'home'} hidden={false} >*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="home"*/}
-                            {/*// icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}*/}
-                            {/*label="Home"*/}
-                            {/*icon = {<Icoons type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}*/}
-                            {/*// icon = {{ type:'MaterialIcons',name:'home'}}*/}
-                            {/*// iconColor:"#2CA8DB"*/}
-                            {/*// onLoad={() => this.setState({ active: 'search' })}*/}
-                            {/*onPress={() => this.setState({ active: 'home' })}*/}
-                            {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
-                            {/*// {this.changebottomLogo()}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="track"*/}
-                            {/*// icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
-                            {/*icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}*/}
-                            {/*label="Track"*/}
-                            {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="history"*/}
-                            {/*// icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
-                            {/*icon = {<Icconss type='Foundation' name='ticket' size={24} color="#2eacde"/>}*/}
-                            {/*label="History"*/}
-                            {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="more"*/}
-                            {/*// icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
-                            {/*icon = {<Icoons type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}*/}
-                            {/*label="More"*/}
-                            {/*onPress={() => this.setState({ active: 'more' })}*/}
-                            {/*// onPress={() => {this._drawer.open()}}*/}
-                        {/*/>*/}
+                    {/*<BottomNavigation.Action*/}
+                    {/*key="home"*/}
+                    {/*// icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}*/}
+                    {/*label="Home"*/}
+                    {/*icon = {<Icoons type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}*/}
+                    {/*// icon = {{ type:'MaterialIcons',name:'home'}}*/}
+                    {/*// iconColor:"#2CA8DB"*/}
+                    {/*// onLoad={() => this.setState({ active: 'search' })}*/}
+                    {/*onPress={() => this.setState({ active: 'home' })}*/}
+                    {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
+                    {/*// {this.changebottomLogo()}*/}
+                    {/*/>*/}
+                    {/*<BottomNavigation.Action*/}
+                    {/*key="track"*/}
+                    {/*// icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
+                    {/*icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}*/}
+                    {/*label="Track"*/}
+                    {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
+                    {/*/>*/}
+                    {/*<BottomNavigation.Action*/}
+                    {/*key="history"*/}
+                    {/*// icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
+                    {/*icon = {<Icconss type='Foundation' name='ticket' size={24} color="#2eacde"/>}*/}
+                    {/*label="History"*/}
+                    {/*onPress={() => this.setState({ active: 'history' },Actions.ticketScreen())}*/}
+                    {/*/>*/}
+                    {/*<BottomNavigation.Action*/}
+                    {/*key="more"*/}
+                    {/*// icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
+                    {/*icon = {<Icoons type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}*/}
+                    {/*label="More"*/}
+                    {/*onPress={() => this.setState({ active: 'more' })}*/}
+                    {/*// onPress={() => {this._drawer.open()}}*/}
+                    {/*/>*/}
                     {/*</BottomNavigation>*/}
                 </View>
             </View>

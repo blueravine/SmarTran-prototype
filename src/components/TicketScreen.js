@@ -88,6 +88,7 @@ export default class TicketScreen extends Component {
                 // Actions.ticketScreen();
                 break;
             case 'more':
+                Actions.moreScreen(params);
                 break;
             default:
 

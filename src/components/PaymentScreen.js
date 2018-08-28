@@ -80,7 +80,7 @@ export default class PaymentScreen extends Component {
                 <View style={{flexDirection:"row"}}>
                     {/*<Image source={require('../Images/circleicon.png')} style={{height: 25,marginLeft:15,width: 25,marginTop:20,justifyContent:'flex-start'}}/>*/}
 
-                   
+
                            <TouchableOpacity>
                     <Text style={styles.headerText}>{section.title}</Text>
                            </TouchableOpacity>

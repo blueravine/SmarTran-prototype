@@ -568,6 +568,7 @@ export default class Trips extends Component {
                 Actions.ticketScreen(params);
                 break;
             case 'more':
+                Actions.moreScreen(params);
                 break;
             default:
 
