@@ -125,7 +125,7 @@ export default class SearchScreen extends Component {
                 Actions.homeScreen();
                 break;
             case 'track':
-                Actions.tripScreen(params);
+                Actions.tripScreen();
                 break;
             case 'ticket':
                 Actions.ticketScreen(params);
@@ -196,6 +196,7 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'left',
+                            marginLeft:2,
                             // justifyContent:'flex-start'
                         }}>{section.title1}</Text>
                     </View>
@@ -210,26 +211,28 @@ export default class SearchScreen extends Component {
                         }}>{section.title}</Text>
 
                     </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
+                    <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
                         <Text style={{
                             fontSize: 14,
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
                             marginLeft: 120,
+                            marginRight:2
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:110,marginRight:2}}>
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                            ,marginLeft:65,marginRight:2}}>
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
                             {/*{this.state.count}*/}
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
@@ -251,6 +254,7 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'left',
+                            marginLeft:2
                             // justifyContent:'flex-start'
                         }}>{section.title1}</Text>
                     </View>
@@ -274,26 +278,28 @@ export default class SearchScreen extends Component {
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                         }}>639A</Text>
                     </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
+                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                         <Text style={{
                             fontSize: 14,
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
                             marginLeft: 120,
+                            marginRight:2
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:65,marginRight:2}}>
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                            ,marginLeft:65,marginRight:2}}>
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
                             {/*{this.state.count}*/}
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
@@ -314,6 +320,7 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'left',
+                            marginLeft:2
                             // justifyContent:'flex-start'
                         }}>{section.title1}</Text>
                     </View>
@@ -335,26 +342,28 @@ export default class SearchScreen extends Component {
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
                         }}>648KL</Text>
                     </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
+                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                         <Text style={{
                             fontSize: 14,
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
-                            marginLeft: 120,
+                            marginLeft: 90,
+                            marginRight:5
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:60,marginRight:2}}>
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                            ,marginLeft:65,marginRight:6}}>
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
                             {/*{this.state.count}*/}
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
@@ -376,6 +385,7 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'left',
+                            marginLeft:2
                             // justifyContent:'flex-start'
                         }}>{section.title1}</Text>
                     </View>
@@ -398,26 +408,27 @@ export default class SearchScreen extends Component {
                             fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
                         }}>652H</Text>
                     </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly',flex:5}}>
+                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                         <Text style={{
                             fontSize: 14,
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
                             marginLeft:120,
-
+                            marginRight:2
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1,marginLeft:65,marginRight:2}}>
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                            ,marginLeft:65,marginRight:2}}>
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center',fontWeight:'bold'}}> 1 </Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
                             {/*{this.state.count}*/}
-                            <Button transparent style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.increment}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'

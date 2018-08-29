@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Image,StyleSheet,TouchableOpacity,
+import { Image,StyleSheet,TouchableOpacity,AsyncStorage,
     Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem,Radio, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
 import ToggleSwitch from 'toggle-switch-react-native';
+import Toast from 'react-native-simple-toast';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SmartPicker from 'react-native-smart-picker'
@@ -14,12 +15,18 @@ const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 const MARGIN = 40;
 import { BottomNavigation } from 'react-native-material-ui';
-
+import { Dialog } from 'react-native-simple-dialogs';
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
         borderColor: '#FFFFFF',
         padding: 10}};
 const cardItem = {cardItem: {fontSize: 40}};
+// LocationData = [
+//             this.props.fromLoc=FromLoc,
+//             this.props.toLoc=ToLoc,
+//             this.props.tripdte=Tripdte,
+//         ];
+
 import Accordion from 'react-native-collapsible/Accordion';
 import Moment from "moment/moment";
 
@@ -53,6 +60,8 @@ const SECTIONS = [
 ];
 var radio_props;
 var params;
+var temptickets;
+var payticket;
 export default class PaymentScreen extends Component {
 
     constructor(props) {
@@ -67,6 +76,11 @@ export default class PaymentScreen extends Component {
 
     }
 
+    state = {}
+
+    openDialog(show) {
+        this.setState({ showDialog: show })
+    }
     _onPressHandle = () => {
         this.setState({value: !this.state.value})
     }
@@ -180,6 +194,22 @@ export default class PaymentScreen extends Component {
         );
     }
 
+    saveContacts() {
+        try {
+
+            AsyncStorage.getItem('ticket')
+                .then((ticket) => {
+                    payticket = ticket ? JSON.parse(ticket) : [];
+                    // Toast.show("tickets " +c ,Toast.LONG);
+                    payticket.push(temptickets);
+                    AsyncStorage.setItem('ticket', JSON.stringify(payticket));
+                });
+
+        }catch(error) {
+            alert(error)
+        }
+    }
+
     render() {
          params = {};
         params = {
@@ -187,6 +217,19 @@ export default class PaymentScreen extends Component {
             toLoc:this.props.toLoc,
             tripdte:this.props.tripdte,
         };
+
+        temptickets = {
+            "Authority":"TSRTC",
+            "Date":this.props.tripdte,
+            "Ticket Number":"1001000000001",
+            "Price":"\u20B9 45/-",
+            "Number of Riders":"1",
+            "From":this.props.fromLoc,
+            "To":this.props.toLoc,
+            "Route(s)":"650N,625H",
+
+        };
+
         return (
 
             <View style={styles.container}>
@@ -265,9 +308,12 @@ export default class PaymentScreen extends Component {
                             {/*<Text note style={{textAlign:'left',marginBottom:10,fontSize:40,color:'#2eacde',fontWeight:'bold',marginTop:20,*/}
                             {/*}} > &#8377;45/-*/}
                             {/*</Text>*/}
+
                             <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
                                 marginTop:30,justifyContent:'space-evenly'}}
-                                    onPress={() => Actions.ticketScreen(params)}>
+                                    onPress={() => {(this.openDialog(true)),this.saveContacts()}} >
+
+                                {/*onPress={() => Actions.ticketScreen(params)}*/}
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                     {/*<Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,*/}
                                         {/*height: 25,alignItems:'center'}}/>*/}
@@ -283,6 +329,91 @@ export default class PaymentScreen extends Component {
                         </View>
 
                     </Card>
+
+                    <Dialog
+                        visible={this.state.showDialog}
+                        title="Ticket Details"
+                        onTouchOutside={() => this.openDialog(false)}
+                        contentStyle={{ justifyContent: 'center', alignItems: 'center', }}
+                        animationType="fade">
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                <Text note style={{marginTop:20,color:'#000',fontSize:14,justifyContent:'flex-start'
+                                }} >Authority
+                                </Text>
+                                <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
+                                }} >Date
+                                </Text>
+                                <Text note style={{fontSize:14,marginTop:5,color:'#000',justifyContent:'flex-start'
+                                }} >Ticket Number
+                                </Text>
+                                <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                }} >Price
+                                </Text>
+                                <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                }} >Number of Riders
+                                </Text>
+                                <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                }} >From
+                                </Text>
+                                <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                }} >To
+                                </Text>
+                                <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
+                                }} >Route(s)
+                                </Text>
+
+
+                            </View>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+
+                                    <Text note style={{marginTop:20,fontSize:14,color:'#000',justifyContent:'flex-end'
+                                    }} >: TSRTC
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
+                                    }} >: {Moment(this.props.tripdte).format('DD/MM/YYYY ' +
+                                        'h:mm A')}
+                                    </Text>
+
+                                    <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
+                                    }} >: 100100000001
+                                    </Text>
+                                    <Text note style={{color:'#000',fontSize:14,marginTop:5,
+                                    }} >: &#8377;45/-
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                    }} >: 1
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                    }} >: {this.props.fromLoc}
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                    }} >: {this.props.toLoc}
+                                    </Text>
+                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
+                                    }} >: 650N, 652H
+                                    </Text>
+                                </View>
+                            </View>
+
+                        </View>
+
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
+                        </View>
+                        <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
+                        }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only
+                        </Text>
+                        <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',flex:5
+                        }}
+                                onPress={() => {(this.openDialog(false)),Actions.homeScreen()}} >
+                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:5
+                                ,textAlign:'center'}}>Close</Text>
+                        </Button>
+
+                        {/*<Button onPress={() => this.openDialog(false)}  title="CLOSE" />*/}
+                    </Dialog>
 
                 </View>
                 {/*</ScrollView>*/}

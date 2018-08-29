@@ -110,7 +110,7 @@ export default class More extends Component {
                 Actions.homeScreen();
                 break;
             case 'track':
-                Actions.tripScreen(params);
+                Actions.tripScreen();
                 break;
             case 'ticket':
                 Actions.ticketScreen(params);

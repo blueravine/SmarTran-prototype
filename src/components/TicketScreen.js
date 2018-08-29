@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image,StyleSheet,TouchableOpacity,
+import { Image,StyleSheet,TouchableOpacity,AsyncStorage,
     Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
     Footer, FooterTab} from 'native-base';
@@ -21,30 +21,31 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
 // import { BottomNavigation } from 'react-native-material-ui';
 import Moment from "moment/moment";
+import Toast from "react-native-simple-toast";
 
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
         borderColor: '#FFFFFF',
         padding: 10}};
 const cardItem = {cardItem: {fontSize: 40}};
-
+var ticketdata;
+var cardListArr;
 export default class TicketScreen extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            selected: "At",
-
-        };
-
         this.state= {
             activeTab: 'ticket',
         };
 
+
+        this.state = {
+          thisticket : [],
+        };
+
+
     }
-    // state = {
-    //     activeTab: 'ticket'
-    // }
+
     tabs = [
         {
             key:"home",
@@ -80,13 +81,14 @@ export default class TicketScreen extends Component {
         }
     ]
 
+
     _handleTabPress(pressedKey) {
         switch (pressedKey) {
             case 'home':
                 Actions.homeScreen();
                 break;
             case 'track':
-                Actions.tripScreen(params);
+                Actions.tripScreen();
                 break;
             case 'ticket':
                 // Actions.ticketScreen();
@@ -101,7 +103,7 @@ export default class TicketScreen extends Component {
     renderIcon = icon => ({ isActive }) => (
         <Icon size={24} color="white" name={icon} />
 
-    )
+    );
 
     renderTab = ({ tab, isActive }) => (
         <ShiftingTab
@@ -110,10 +112,51 @@ export default class TicketScreen extends Component {
             label={tab.label}
             renderIcon={this.renderIcon(tab.icon)}
         />
-    )
-    render() {
+    );
 
-        return (
+    async componentDidMount() {
+        await AsyncStorage.getItem('ticket')
+            .then((ticket) => {
+                ticketdata = ticket ? JSON.parse(ticket) : [];
+                Toast.show(ticketdata[0].From, Toast.LONG);
+                this.setState({thisticket: ticketdata});
+}).done();
+}
+render() {
+
+    cardListArr = this.state.thisticket.map(cardInfo => (
+        <Card  styles={{width: 100,height:300, borderWidth: 1.5,
+            borderRadius:10,
+            borderColor:'#2EACDE', alignItems: 'center',
+            overflow: 'hidden',
+            backgroundColor: 'white',
+            elevation: 1,
+            padding: 10}}>
+
+            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
+                }} >SmarTran Ticket
+                </Text>
+            </View>
+
+            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
+                }} >{JSON.stringify(cardInfo)}</Text>
+
+            </View>
+
+            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
+            </View>
+            <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
+            }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only
+            </Text>
+
+        </Card>
+    ));
+
+
+    return (
 
             <View style={styles.container}>
                 {/*<ScrollView>*/}
@@ -137,102 +180,10 @@ export default class TicketScreen extends Component {
 
                     </View>
                     </View>
-                            <Card  styles={{width: 100,height:300, borderWidth: 1.5,
-                                borderRadius:10,
-                                borderColor:'#2EACDE', alignItems: 'center',
-                                overflow: 'hidden',
-                                backgroundColor: 'white',
-                                elevation: 1,
-                                padding: 10}}>
+                    <ScrollView>
+                        {cardListArr}
+                    </ScrollView>
 
-                                {/*<CardItem cardBody  styles={{width: 100,height:300, borderWidth: 1.5,*/}
-                                    {/*borderRadius:10,*/}
-                                    {/*borderColor:'#2EACDE', alignItems: 'center',*/}
-                                    {/*overflow: 'hidden',*/}
-                                    {/*backgroundColor: 'white',*/}
-                                    {/*elevation: 1,*/}
-                                    {/*padding: 10}}>*/}
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60, width: 60}}/>*/}
-                                    <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
-                                    }} >SmarTran Ticket
-                                    </Text>
-                                    {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60,width: 60}}/>*/}
-                                </View>
-
-
-                                {/*</CardItem>*/}
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                    <Text note style={{marginTop:20,color:'#000',fontSize:14,justifyContent:'flex-start'
-                                    }} >Authority
-                                    </Text>
-                                    <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
-                                    }} >Date
-                                    </Text>
-                                    <Text note style={{fontSize:14,marginTop:5,color:'#000',justifyContent:'flex-start'
-                                    }} >Ticket Number
-                                    </Text>
-                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
-                                    }} >Price
-                                    </Text>
-                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
-                                    }} >Number of Riders
-                                    </Text>
-                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
-                                    }} >From
-                                    </Text>
-                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
-                                    }} >To
-                                    </Text>
-                                    <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-start'
-                                    }} >Route(s)
-                                    </Text>
-
-
-                                </View>
-                                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                        <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-
-                                            <Text note style={{marginTop:20,fontSize:14,color:'#000',justifyContent:'flex-end'
-                                            }} >: TSRTC
-                                            </Text>
-                                            <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
-                                            }} >: {Moment(this.props.tripdte).format('DD/MM/YYYY ' +
-                                                'h:mm A')}
-                                            </Text>
-
-                                            <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
-                                            }} >: 100100000001
-                                            </Text>
-                                            <Text note style={{color:'#000',fontSize:14,marginTop:5,
-                                            }} >: &#8377;45/-
-                                            </Text>
-                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: 1
-                                            </Text>
-                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: {this.props.fromLoc}
-                                            </Text>
-                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: {this.props.toLoc}
-                                            </Text>
-                                            <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                            }} >: 650N, 652H
-                                            </Text>
-                                        </View>
-                                    </View>
-
-                                </View>
-
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
-                                </View>
-                                <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
-                                }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only
-                                </Text>
-
-                            </Card>
                 </View>
 
 
@@ -245,40 +196,7 @@ export default class TicketScreen extends Component {
                         renderTab={this.renderTab}
                         // useLayoutAnimation
                     />
-                    {/*<BottomNavigation active={'history'} hidden={false} >*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="home"*/}
-                            {/*// icon={<Image source={require('../Images/home_icon.png')} color="#2eacde" name="Search" style={{ width: 20, height: 20 }} />}*/}
-                            {/*label="Home"*/}
-                            {/*icon = {<Iccon type='SimpleLineIcons' name='home' size={24} color="#2eacde"/>}*/}
-                            {/*// iconColor:"#2CA8DB"*/}
-                            {/*// onLoad={() => this.setState({ active: 'search' })}*/}
-                            {/*onPress={() => this.setState({ active: 'home' },Actions.homeScreen())}*/}
-                            {/*// onPress={()=>this.setState({showasearchimage:!this.state.showasearchimage})}*/}
-                            {/*// {this.changebottomLogo()}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="track"*/}
-                            {/*// icon={<Image source={require('../Images/route.png')}color="#669999" name="trips" style={{ width: 20, height: 20 }} />}*/}
-                            {/*icon = {<Icons type='FontAwesome5' name='route' size={24} color="#2eacde"/>}*/}
-                            {/*label="Track"*/}
-                            {/*onPress={() => this.setState({ active: 'track' },Actions.tripScreen())}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="history"*/}
-                            {/*// icon={<Image source={require('../Images/ticket.png')} color="#669999" name="History" style={{ width: 20, height: 20 }} />}*/}
-                            {/*icon = {<Iccons type='Foundation' name='ticket' size={24} color="#2eacde"/>}*/}
-                            {/*label="History"*/}
-                            {/*onPress={() => this.setState({ active: 'history' })}*/}
-                        {/*/>*/}
-                        {/*<BottomNavigation.Action*/}
-                            {/*key="more"*/}
-                            {/*// icon={<Image source={require('../Images/menuicon.png')} color="#669999" name="More" style={{ width: 20, height: 20 }} />}*/}
-                            {/*icon = {<Iccon type='SimpleLineIcons' name='menu' size={24} color="#2eacde"/>}*/}
-                            {/*label="More"*/}
-                            {/*onPress={() => this.setState({ active: 'more' })}*/}
-                        {/*/>*/}
-                    {/*</BottomNavigation>*/}
+
                 </View>
             </View>
         );

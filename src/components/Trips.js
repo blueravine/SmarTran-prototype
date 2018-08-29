@@ -486,9 +486,9 @@ export default class Trips extends Component {
 
 
 
-        this.state= {
-            active:'search',
-        };
+        // this.state= {
+        //     active:'search',
+        // };
 
         this.state= {
             activeTab: 'track',
@@ -569,7 +569,7 @@ export default class Trips extends Component {
 
                 break;
             case 'ticket':
-                Actions.ticketScreen(params);
+                Actions.ticketScreen();
                 break;
             case 'more':
                 Actions.moreScreen();

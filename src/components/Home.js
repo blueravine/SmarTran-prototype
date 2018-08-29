@@ -155,9 +155,9 @@ export default class Home extends Component {
         };
         // this.setState = { date: new Date() };
 
-        this.state= {
-            active:'search',
-        };
+        // this.state= {
+        //     active:'search',
+        // };
         this.state= {
             activeTab: 'home',
         };
@@ -314,7 +314,7 @@ export default class Home extends Component {
             case 'home':
                 break;
             case 'track':
-                Actions.tripScreen(params);
+                Actions.tripScreen();
                 break;
             case 'ticket':
                 Actions.ticketScreen(params);
