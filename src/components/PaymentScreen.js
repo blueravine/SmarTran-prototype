@@ -220,7 +220,7 @@ export default class PaymentScreen extends Component {
 
         temptickets = {
             "Authority":"TSRTC",
-            "Date":this.props.tripdte,
+            "Date":Moment(this.props.tripdte).format('DD/MM/YYYY h:mm A'),
             "Ticket Number":"1001000000001",
             "Price":"\u20B9 45/-",
             "Number of Riders":"1",

@@ -32,15 +32,18 @@ var ticketdata;
 var cardListArr;
 export default class TicketScreen extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state= {
-            activeTab: 'ticket',
-        };
+    constructor() {
+        super();
+        // this.state= {
+        //     activeTab: 'ticket',
+        //     thisticket : [],
+        // };
 
 
         this.state = {
-          thisticket : [],
+            thisticket : [],
+            activeTab: 'ticket',
+            thiscard : [],
         };
 
 
@@ -118,60 +121,118 @@ export default class TicketScreen extends Component {
         await AsyncStorage.getItem('ticket')
             .then((ticket) => {
                 ticketdata = ticket ? JSON.parse(ticket) : [];
-                Toast.show(ticketdata[0].From, Toast.LONG);
+                // Toast.show(ticketdata[0].From, Toast.LONG);
                 this.setState({thisticket: ticketdata});
-}).done();
-}
-render() {
+            }).done();
+    }
 
-    cardListArr = this.state.thisticket.map(cardInfo => (
-        <Card  styles={{width: 100,height:300, borderWidth: 1.5,
-            borderRadius:10,
-            borderColor:'#2EACDE', alignItems: 'center',
-            overflow: 'hidden',
-            backgroundColor: 'white',
-            elevation: 1,
-            padding: 10}}>
+    renderTicketText(currentTicket) {
 
-            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
-                }} >SmarTran Ticket
-                </Text>
+        // return (
+
+        //         var ticketobj = [currentTicket];
+        // ticketobj.forEach(function(AllTicket){
+        //     var ticketkeys=Object.keys(AllTicket);
+        //     <Text note style={{
+        //         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+        //     }}>{ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]}</Text>
+        //         alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+        //
+        // })
+        // // )
+    }
+
+    render() {
+
+
+        // var ticketobj;
+        // var ticketkeys;
+        // var ticketListArr;
+        //
+        // ticketListArr = this.state.thiscard.forEach(function(AllTicket){
+        //     ticketkeys=Object.keys(AllTicket);
+        //
+        //     <Text note style={{
+        //         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+        //     }}>{ticketkeys[0] + ":" + AllTicket[ticketkeys[0]]}</Text>
+        //     // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+        //
+        // });
+
+        cardListArr = this.state.thisticket.map(cardInfo => (
+            <View style={{  paddingRight:25,
+                paddingLeft:35,
+                paddingTop:20,}}>
+                <Card>
+
+                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
+                        }} >SmarTran Ticket
+                        </Text>
+                    </View>
+
+                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
+                        }} >{JSON.stringify(cardInfo)}</Text>
+                        {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
+
+                    </View>
+
+                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
+                    </View>
+                    <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
+                    }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only{"\n"}{"\n"}{"\n"}
+                    </Text>
+
+                </Card>
             </View>
-
-            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
-                }} >{JSON.stringify(cardInfo)}</Text>
-
-            </View>
-
-            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
-            </View>
-            <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
-            }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only
-            </Text>
-
-        </Card>
-    ));
+        ));
 
 
-    return (
+        return (
 
             <View style={styles.container}>
                 {/*<ScrollView>*/}
-                <View style={[styles.headerview]}>
-                    {/*<Content>*/}
-                    {/*</Content>*/}
-                    {/*<Content/>*/}
-                    {/*<Container >*/}
-                        {/*<Content>*/}
-                    <View style={[styles.headerview1]}>
-                        <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
-                            paddingLeft:10,}}>
+                {/*<View style={[styles.headerview]}>*/}
+                {/*<Content>*/}
+                {/*</Content>*/}
+                {/*<Content/>*/}
+                {/*<Container >*/}
+                {/*<Content>*/}
+                {/*<View style={[styles.headerview1]}>*/}
+                {/*<View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,*/}
+                {/*paddingLeft:10,}}>*/}
+                {/*<TouchableOpacity onPress={() => Actions.homeScreen()} >*/}
+                {/*<Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>*/}
+                {/*</TouchableOpacity>*/}
+                {/*<Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Ticket Details </Text>*/}
+                {/*<Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>*/}
+
+                {/*</View>*/}
+                {/*</View>*/}
+
+
+                {/*</View>*/}
+                {/*<View style={[styles.headerview1]}>*/}
+                {/*<View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,*/}
+                {/*paddingLeft:10,}}>*/}
+                {/*<TouchableOpacity onPress={() => Actions.homeScreen()} >*/}
+                {/**/}
+                {/*<Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>*/}
+                {/*</TouchableOpacity>*/}
+                {/*<Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Ticket Details </Text>*/}
+                {/*<Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>*/}
+
+                {/*</View>*/}
+                {/*</View>*/}
+                <ScrollView>
+
+                    <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
+                        paddingLeft:10,}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
                             {/*<Image source={require('../Images/back_arrow.png')} style={{height: 30, width: 30,*/}
-                                {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
+                            {/*color:'#FFFFFF',marginTop:5, flex:1}}*/}
                             {/*/>*/}
                             <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
@@ -179,14 +240,10 @@ render() {
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
 
                     </View>
-                    </View>
-                    <ScrollView>
+                    <View >
                         {cardListArr}
-                    </ScrollView>
-
-                </View>
-
-
+                    </View>
+                </ScrollView>
                 <View style={[styles.footer]}>
 
                     <BottomNavigation

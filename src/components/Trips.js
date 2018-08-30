@@ -483,32 +483,9 @@ export default class Trips extends Component {
 
     constructor() {
         super();
-
-
-
         // this.state= {
-        //     active:'search',
+        //     activeTab: 'track',
         // };
-
-        this.state= {
-            activeTab: 'track',
-        };
-        // this.state = {
-        //     coordinates: [
-        //         {
-        //             latitude: LATITUDE,
-        //             longitude: LONGITUDE,
-        //         },
-        //         {
-        //             latitude: 17.4338811,
-        //             longitude: 78.3702524,
-        //         },
-        //     ],
-        // };
-        //
-        // this.mapView = null;
-
-
         this.state = {
             latitude: LATITUDE,
             longitude: LONGITUDE,
@@ -518,8 +495,8 @@ export default class Trips extends Component {
             coordinate: new AnimatedRegion({
                 latitude: LATITUDE,
                 longitude: LONGITUDE,
-
-            })
+            }),
+            activeTab: 'track',
         };
     }
     // state = {

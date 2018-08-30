@@ -113,7 +113,7 @@ export default class More extends Component {
                 Actions.tripScreen();
                 break;
             case 'ticket':
-                Actions.ticketScreen(params);
+                Actions.ticketScreen();
                 break;
             case 'more':
                 break;
@@ -134,15 +134,15 @@ export default class More extends Component {
         return (
             <View style={styles.headermoretitle}>
 
-                {(section.title === 'Preference') &&
+                {(section.title === 'Profile') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5,marginBottom:10}}>
                     <View style={{marginLeft:10}}>
-                    <Iccons type='FontAwesome' name={'save'} size={20} color={'#2eacde'}/>
+                    <Iccons type='FontAwesome' name={'user-circle'} size={20} color={'#2eacde'}/>
                     </View>
                     <Text style={{marginLeft:10}}>{section.title}</Text>
                 </View>
                 }
-                {(section.title === '(App Version 0.01)') &&
+                {(section.title === 'Settings (App Version 0.01)') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start',marginTop:5,marginBottom:10}}>
                     <View style={{marginLeft:10}}>
                     <Icoons type='SimpleLineIcons' name={'settings'} size={20} color={'#2eacde'} />
@@ -168,13 +168,13 @@ export default class More extends Component {
         return (
             <View style={styles.contentmore}>
 
-                {(section.title === 'Preference') &&
+                {(section.title === 'Profile') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
                     <Text>{section.content}</Text>
 
                 </View>
                 }
-                {(section.title === '(App Version 0.01)') &&
+                {(section.title === 'Settings (App Version 0.01)') &&
                 <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                     <Text>{section.content}</Text>
                 </View>
@@ -199,11 +199,11 @@ export default class More extends Component {
         // };
         const SECTIONS = [
             {
-                title:'Preference',
-                content:'preferences of the app',
+                title:'Profile',
+                content:'Users Profile',
             },
             {
-                title:'(App Version 0.01)',
+                title:'Settings (App Version 0.01)',
                 content:'This the updated version of the app 0.01',
 
             },
@@ -224,7 +224,7 @@ export default class More extends Component {
                     {/*<Content>*/}
                     <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:10,
                         paddingLeft:10,}}>
-                        <TouchableOpacity onPress={() => Actions.homeScreen(params)} >
+                        <TouchableOpacity onPress={() => Actions.homeScreen()} >
                             <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Profile Details</Text>
