@@ -360,7 +360,6 @@ export default class SearchScreen extends Component {
                                     onPress={this.decrement}>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
-                                
                             </Button>
                             <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
                             {/*{this.state.count}*/}

@@ -414,7 +414,6 @@ export default class PaymentScreen extends Component {
 
                         {/*<Button onPress={() => this.openDialog(false)}  title="CLOSE" />*/}
                     </Dialog>
-
                 </View>
                 {/*</ScrollView>*/}
 

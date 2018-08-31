@@ -260,7 +260,6 @@ export default class TicketScreen extends Component {
                     <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
                     }} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}
                     </Text>
-
                 </Card>
             </View>
         // ));
