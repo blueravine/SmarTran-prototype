@@ -113,13 +113,13 @@ export default class PaymentScreen extends Component {
                     {(section.title === 'Credit Card') &&
                     <View style={{flexDirection: "row"}}>
                         <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content1}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content2}</Text>
                             </TouchableOpacity>
                         </View></View>
@@ -127,13 +127,13 @@ export default class PaymentScreen extends Component {
                     {(section.title === 'Debit Card') &&
                     <View style={{flexDirection: "row"}}>
                         <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content1}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content2}</Text>
                             </TouchableOpacity>
                         </View></View>
@@ -142,13 +142,13 @@ export default class PaymentScreen extends Component {
                     {(section.title === 'Net Banking') &&
                     <View style={{flexDirection: "row"}}>
                         <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content1}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content2}</Text>
                             </TouchableOpacity>
                         </View></View>
@@ -156,29 +156,29 @@ export default class PaymentScreen extends Component {
                     {(section.title === 'Wallets') &&
                     <View style={{flexDirection: "row"}}>
                         <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content1}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)}>
+                            <TouchableOpacity >
                                 <Text>{section.content2}</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View style={{flexDirection:"column",marginLeft:15}}>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                            <TouchableOpacity  >
                                 <Image source={require('../Images/paytm.png')} style={{height: 30, width: 30,
                                     color:'#FFFFFF'}}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                            <TouchableOpacity  >
                                 <Image source={require('../Images/mobikwik.png')} style={{height: 30, width: 30,
                                     color:'#FFFFFF',marginTop:10}}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Actions.ticketScreen(params)} >
+                            <TouchableOpacity  >
                                 <Image source={require('../Images/freecharge.png')} style={{height: 30, width: 30,
                                     color:'#FFFFFF',marginTop:15}}
                                 />
@@ -405,10 +405,10 @@ export default class PaymentScreen extends Component {
                         <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
                         }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only
                         </Text>
-                        <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',flex:5
+                        <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
                         }}
                                 onPress={() => {(this.openDialog(false)),Actions.homeScreen()}} >
-                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:5
+                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
                                 ,textAlign:'center'}}>Close</Text>
                         </Button>
 

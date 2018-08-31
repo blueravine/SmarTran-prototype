@@ -349,12 +349,12 @@ export default class SearchScreen extends Component {
                             color: '#000',
                             textAlign: 'right',
                             marginLeft: 90,
-                            marginRight:5
+                            marginRight:8
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
                         <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:65,marginRight:6}}>
+                            ,marginLeft:60,marginRight:6}}>
                             <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
@@ -471,6 +471,7 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                         <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
 
@@ -484,6 +485,7 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                         <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
 
@@ -497,6 +499,7 @@ export default class SearchScreen extends Component {
                     <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                         <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                         <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
 
@@ -584,7 +587,6 @@ export default class SearchScreen extends Component {
                 + '635MA   (\u20B9 34/-)\n'
                 + '\n'
                 + 'Lakdikapul\n'
-                + 'Lakdikapul\n'
                 + '\n'
                 + '639A   (\u20B9 34/-)\n'
                 +  this.props.toLoc
@@ -609,7 +611,6 @@ export default class SearchScreen extends Component {
                 + '645TA   (\u20B9 35/-)\n'
                 + '\n'
                 + 'Lakdikapul\n'
-                + 'Lakdikapul\n'
                 + '\n'
                 + '648KL   (\u20B9 35/-)\n'
                 +  this.props.toLoc
@@ -633,7 +634,6 @@ export default class SearchScreen extends Component {
                 + '\n'
                 + '650N   (\u20B9 32/-)\n'
                 + '\n'
-                + 'Lakdikapul\n'
                 + 'Lakdikapul\n'
                 + '\n'
                 + '652H   (\u20B9 32/-)\n'

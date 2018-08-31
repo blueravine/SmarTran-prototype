@@ -30,6 +30,9 @@ const card      = {card: {width: 100,height:300,borderWidth: 3,
 const cardItem = {cardItem: {fontSize: 40}};
 var ticketdata;
 var cardListArr;
+var ticketobj;
+var ticketkeys;
+var ticketListArr;
 export default class TicketScreen extends Component {
 
     constructor() {
@@ -144,22 +147,35 @@ export default class TicketScreen extends Component {
 
     render() {
 
+        // const { ticketdata: list } = this.state.thiscard;
+        //         ticketListArr = list && list.map(({Authority, Date},index) => {
+        //             // ticketkeys=Object.keys(AllTicket);
+        //             <View key={index}>
+        //                 <Text>{Authority}</Text>
+        //                 <Text>{Date}</Text>
+        //             </View>
 
+
+        //
         // var ticketobj;
         // var ticketkeys;
         // var ticketListArr;
         //
         // ticketListArr = this.state.thiscard.forEach(function(AllTicket){
         //     ticketkeys=Object.keys(AllTicket);
-        //
-        //     <Text note style={{
-        //         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //     }}>{ticketkeys[0] + ":" + AllTicket[ticketkeys[0]]}</Text>
-        //     // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
-        //
-        // });
 
-        cardListArr = this.state.thisticket.map(cardInfo => (
+            {/*<Text note style={{*/}
+                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+            {/*}}>{ticketkeys[0] + ":" + AllTicket[ticketkeys[0]]}</Text>*/}
+            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+
+        // });
+        // const { thisticket: list } = this.state.thisticket
+        cardListArr = this.state.thisticket.map((AllTicket)=>{
+            ticketkeys=Object.keys(AllTicket);
+            // var ticketkeys=Object.keys(AllTicket);
+            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+            return(
             <View style={{  paddingRight:25,
                 paddingLeft:35,
                 paddingTop:20,}}>
@@ -172,23 +188,84 @@ export default class TicketScreen extends Component {
                     </View>
 
                     <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                        <Text note style={{marginTop:5,fontSize:14,color:'#000',justifyContent:'flex-start'
-                        }} >{JSON.stringify(cardInfo)}</Text>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                        <Text note style={{
+                            marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                             }}>{ticketkeys[0]  }</Text>
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                            }}>{ticketkeys[1] }</Text>
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                            }}>{ticketkeys[2] }</Text>
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                            }}>{ticketkeys[3]}</Text>
+                            <Text note style={{
+                            marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                             }}>{ticketkeys[4]}</Text>
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                            }}>{ticketkeys[5]}</Text>
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                            }}>{ticketkeys[6]}</Text>
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                            }}>{ticketkeys[7] }</Text>
                         {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-
+                        </View>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[0]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[1]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[2]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[3]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[4]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[5]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[6]]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{":" + AllTicket[ticketkeys[7]]}</Text>
+                                {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
+                            </View>
+                        </View>
                     </View>
+                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        {/*<Text note style={{*/}
+                            {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                        {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
+                        {/*/!*{this.setState((({thiscard: cardInfo}), ticketListArr))}*!/*/}
+                        {/*</View>*/}
+                    {/*</View>*/}
 
                     <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                         <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
                     </View>
                     <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
-                    }} >Valid for one trip on {Moment(this.props.tripdte).format('DD/MM/YYYY')} only{"\n"}{"\n"}{"\n"}
+                    }} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}
                     </Text>
 
                 </Card>
             </View>
-        ));
-
+        // ));
+            );
+        });
 
         return (
 
