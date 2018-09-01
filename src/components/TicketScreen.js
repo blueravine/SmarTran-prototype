@@ -189,9 +189,9 @@ export default class TicketScreen extends Component {
 
                     <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                         <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                        <Text note style={{
-                            marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                             }}>{ticketkeys[0]  }</Text>
+                        {/*<Text note style={{*/}
+                            {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                             {/*}}>{ticketkeys[0]  }</Text>*/}
                             <Text note style={{
                                 marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                             }}>{ticketkeys[1] }</Text>
@@ -204,12 +204,12 @@ export default class TicketScreen extends Component {
                             <Text note style={{
                             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                              }}>{ticketkeys[4]}</Text>
-                            <Text note style={{
-                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                            }}>{ticketkeys[5]}</Text>
-                            <Text note style={{
-                                marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                            }}>{ticketkeys[6]}</Text>
+                            {/*<Text note style={{*/}
+                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                            {/*}}>{ticketkeys[5]}</Text>*/}
+                            {/*<Text note style={{*/}
+                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                            {/*}}>{ticketkeys[6]}</Text>*/}
                             <Text note style={{
                                 marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                             }}>{ticketkeys[7] }</Text>
@@ -217,9 +217,9 @@ export default class TicketScreen extends Component {
                         </View>
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                <Text note style={{
-                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                }}>{":" + AllTicket[ticketkeys[0]]}</Text>
+                                {/*<Text note style={{*/}
+                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
                                 <Text note style={{
                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                                 }}>{":" + AllTicket[ticketkeys[1]]}</Text>
@@ -232,12 +232,12 @@ export default class TicketScreen extends Component {
                                 <Text note style={{
                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                                 }}>{":" + AllTicket[ticketkeys[4]]}</Text>
-                                <Text note style={{
-                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                }}>{":" + AllTicket[ticketkeys[5]]}</Text>
-                                <Text note style={{
-                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                }}>{":" + AllTicket[ticketkeys[6]]}</Text>
+                                {/*<Text note style={{*/}
+                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                {/*}}>{":" + AllTicket[ticketkeys[5]]}</Text>*/}
+                                {/*<Text note style={{*/}
+                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                {/*}}>{":" + AllTicket[ticketkeys[6]]}</Text>*/}
                                 <Text note style={{
                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                                 }}>{":" + AllTicket[ticketkeys[7]]}</Text>
@@ -261,6 +261,19 @@ export default class TicketScreen extends Component {
                     }} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}
                     </Text>
                 </Card>
+                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
+                    {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
+                    <Text note style={{
+                        marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
+                    }}>{AllTicket[ticketkeys[5]]}</Text>
+                    <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                    </Text>
+                    {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
+                    <Text note style={{
+                        marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
+                    }}>{AllTicket[ticketkeys[6]]}{"\n"}{"\n"}{"\n"}{"\n"}</Text>
+                </View>
+
             </View>
         // ));
             );

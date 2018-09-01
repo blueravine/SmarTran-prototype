@@ -61,7 +61,7 @@ export default class SearchScreen extends Component {
         };
 
         this.state = {
-            count: 1
+            count: 0
         };
         this.state ={
             showacview: true,
@@ -146,17 +146,19 @@ export default class SearchScreen extends Component {
         />
     )
 
-    increment = () => {
+    increment () {
         this.setState({
             count: this.state.count + 1
         });
     }
 
-    decrement = () => {
+    decrement () {
         this.setState({
             count: this.state.count - 1
         });
     }
+
+
     handleChange(value: string) {
         this.setState({
             selected: value
@@ -226,15 +228,15 @@ export default class SearchScreen extends Component {
                             ,marginLeft:65,marginRight:2}}>
                             <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
-                                    onPress={this.decrement}>
+                                    onPress={ () => this.decrement() }>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>-</Text>
                             </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
+                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count} </Text>
                             {/*{this.state.count}*/}
                             <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
-                                    onPress={this.increment}>
+                                    onPress={ () => this.increment() }>
                                 <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                     ,textAlign:'center'}}>+</Text>
                             </Button>
