@@ -36,36 +36,38 @@ const ac_icon_blue = require('../Images/ac_icon_blue.png');
 const ac_icon_grey = require('../Images/ac_icon_grey.png');
 const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
+var rupesstitile;
 
 export default class SearchScreen extends Component {
 
 
     constructor() {
         super();
-        this.state = {
-            selected: "At",
-
-        };
+        // this.state = {
+        //     selected: "At",
+        //
+        // };
         this.state= {
             activeTab: 'home',
         };
 
-        this.state ={
-            showacimage:false
-        };
-        this.state ={
-            shownonacimage:false
-        };
-        this.state ={
-            showtextsource:true
-        };
+        // this.state ={
+        //     showacimage:false
+        // };
+        // this.state ={
+        //     shownonacimage:false
+        // };
+        // this.state ={
+        //     showtextsource:true
+        // };
 
-        this.state = {
-            count: 0
-        };
+        // this.state = {
+        //     count: 0
+        // };
         this.state ={
             showacview: true,
             shownonacview: true,
+            count: 1,
         };
 
 
@@ -146,43 +148,43 @@ export default class SearchScreen extends Component {
         />
     )
 
-    increment () {
+    increment  = () => {
         this.setState({
             count: this.state.count + 1
         });
     }
 
-    decrement () {
+    decrement  = () => {
         this.setState({
             count: this.state.count - 1
         });
     }
 
 
-    handleChange(value: string) {
-        this.setState({
-            selected: value
-        });
-    }
-
-    changeACLogo() {
-        var imgsource = this.state.showacimage ? ac_icon_blue : ac_icon_grey;
-        return (
-
-            <Image source={imgsource} style={{height: 30, width: 30,alignItems:'center'}}/>
-
-        );
-
-    }
-
-    changeNonACLogo() {
-        var imgnonacsource = this.state.shownonacimage ? nonac_icon_blue : nonac_icon_grey;
-        return (
-
-            <Image source={imgnonacsource} style={{height: 30, width: 30,alignItems:'center'}}/>
-
-        );
-    }
+    // handleChange(value: string) {
+    //     this.setState({
+    //         selected: value
+    //     });
+    // }
+    //
+    // changeACLogo() {
+    //     var imgsource = this.state.showacimage ? ac_icon_blue : ac_icon_grey;
+    //     return (
+    //
+    //         <Image source={imgsource} style={{height: 30, width: 30,alignItems:'center'}}/>
+    //
+    //     );
+    //
+    // }
+    //
+    // changeNonACLogo() {
+    //     var imgnonacsource = this.state.shownonacimage ? nonac_icon_blue : nonac_icon_grey;
+    //     return (
+    //
+    //         <Image source={imgnonacsource} style={{height: 30, width: 30,alignItems:'center'}}/>
+    //
+    //     );
+    // }
 
     _renderHeader(section) {
         return (
@@ -224,23 +226,23 @@ export default class SearchScreen extends Component {
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:65,marginRight:2}}>
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={ () => this.decrement() }>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>-</Text>
-                            </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count} </Text>
-                            {/*{this.state.count}*/}
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={ () => this.increment() }>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>+</Text>
-                            </Button>
-                        </View>
+                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                            {/*,marginLeft:65,marginRight:2}}>*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                            {/*</Button>*/}
+                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                            {/*/!*{this.state.count}*!/*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                            {/*</Button>*/}
+                        {/*</View>*/}
                     </View>
 
                 </View>
@@ -291,23 +293,23 @@ export default class SearchScreen extends Component {
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:65,marginRight:2}}>
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.decrement}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>-</Text>
-                            </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
-                            {/*{this.state.count}*/}
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.increment}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>+</Text>
-                            </Button>
-                        </View>
+                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                            {/*,marginLeft:65,marginRight:2}}>*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                            {/*</Button>*/}
+                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                            {/*/!*{this.state.count}*!/*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                            {/*</Button>*/}
+                        {/*</View>*/}
                     </View>
                 </View>
                 }
@@ -350,28 +352,28 @@ export default class SearchScreen extends Component {
                             fontWeight: 'bold',
                             color: '#000',
                             textAlign: 'right',
-                            marginLeft: 90,
-                            marginRight:8
+                            marginLeft: 115,
+                            marginRight:2
 
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:60,marginRight:6}}>
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.decrement}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>-</Text>
-                            </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
-                            {/*{this.state.count}*/}
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.increment}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>+</Text>
-                            </Button>
-                        </View>
+                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                            {/*,marginLeft:60,marginRight:6}}>*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                            {/*</Button>*/}
+                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                            {/*/!*{this.state.count}*!/*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                            {/*</Button>*/}
+                        {/*</View>*/}
                     </View>
                 </View>
                 }
@@ -420,28 +422,29 @@ export default class SearchScreen extends Component {
                             marginRight:2
                             //    justifyContent:'flex-end'
                         }}>{section.title2}</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:65,marginRight:2}}>
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.decrement}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>-</Text>
-                            </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>1</Text>
-                            {/*{this.state.count}*/}
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.increment}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>+</Text>
-                            </Button>
-                        </View>
+                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                            {/*,marginLeft:65,marginRight:2}}>*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                            {/*</Button>*/}
+                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                            {/*/!*{this.state.count}*!/*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                            {/*</Button>*/}
+                        {/*</View>*/}
                     </View>
 
 
                 </View>
                 }
+
             </View>
         );
     }
@@ -547,10 +550,34 @@ export default class SearchScreen extends Component {
             toLoc:this.props.toLoc,
             tripdte:this.props.tripdte,
         };
+        rupesstitile=[
+
+            {
+                "price":"72/-"
+
+            },
+            {
+                "price":"68/-"
+
+            },
+            {
+                "price":"70/-"
+
+            },
+            {
+                "price":"64/-"
+
+
+            },
+            {
+                "price":"72/-"
+            },
+
+        ];
         const SECTIONS = [
             {
                 title: '625M',title1:'5:51 PM \n '+
-                '',title2:'\u20B9 72/-\n',
+                '',title2:'\u20B9 '+ rupesstitile[0].price +'\n',
 
                 content: '  \n' +
                 '5:51 PM    \n'
@@ -572,7 +599,7 @@ export default class SearchScreen extends Component {
             },
             {
                 title: '635MA',title1:'5:45 PM \n '+
-                '',title2:'\u20B9 68/-\n',
+                '',title2:'\u20B9 '+ rupesstitile[1].price +'\n',
 
                 content: '\n'+
                 '5:45 PM    \n'
@@ -596,7 +623,7 @@ export default class SearchScreen extends Component {
             },
             {
                 title: '645TA',title1:'5:45 PM \n '+
-                '',title2:'\u20B9 70/-\n',
+                '',title2:'\u20B9 '+ rupesstitile[2].price +'\n',
 
                 content: '\n'+
                 '5:45 PM    \n'
@@ -620,7 +647,7 @@ export default class SearchScreen extends Component {
             },
             {
                 title: '650N',title1:'5:55 PM \n '+
-                '',title2:'\u20B9 64/-\n',
+                '',title2:'\u20B9 '+ rupesstitile[3].price +'\n',
 
                 content: '\n'+
                 '5:55 PM    \n'
@@ -645,7 +672,7 @@ export default class SearchScreen extends Component {
             },
             {
                 title: '625M',title1:'5:56 PM \n '+
-                '',title2:'\u20B9 72/-\n',
+                '',title2:'\u20B9 '+ rupesstitile[4].price +'\n',
 
                 content: '  \n' +
                 '5:56 PM    \n'
@@ -736,7 +763,30 @@ export default class SearchScreen extends Component {
                                 <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
                             </View>
 
+
+
                         </Card>
+                        <View  style={{flexDirection:'row',justifyContent:'center'}} >
+                        <Text note style={{fontSize:14,textAlign:'center',color:'#FFFFFF'}} >Number of passengers</Text>
+                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                            ,marginLeft:75,marginRight:2,marginBottom:5,backgroundColor:'#FFFFFF'}}>
+
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
+                            }}
+                                    onPress={this.decrement}>
+                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                    ,textAlign:'center'}}>-</Text>
+                            </Button>
+                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>
+                            {/*{this.state.count}*/}
+                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
+                            }}
+                                    onPress={this.increment}>
+                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                    ,textAlign:'center'}}>+</Text>
+                            </Button>
+                        </View>
+                        </View>
                         {/*<ScrollView>*/}
                         <Accordion
                             sections={SECTIONS}
