@@ -355,7 +355,7 @@ export default class Home extends Component {
                 <View>
                     <StatusBar
                         hidden={false}
-                        backgroundColor='#0c71b7'/>
+                        backgroundColor='#4d6bcb'/>
                 </View>
                 {/*<Drawer*/}
                     {/*open={true}*/}
@@ -655,9 +655,9 @@ export default class Home extends Component {
                                     {/*<Text note style={{fontSize:10,color:'#000'}}*/}
                                           {/*onPress={this._showDateTimePicker}> {*/}
                                         {/*Moment(this.state.date).format('ddd')} </Text>*/}
-                                    <Text note style={{fontSize:14,color:'#000'}}
+                                    <Text note style={{fontSize:25,color:'#000'}}
                                           onPress={this._showDateTimePicker}> {
-                                        Moment(this.state.date).format('MMMM')} </Text>
+                                        Moment(this.state.date).format('MMM')} </Text>
                                 </View>
                                 {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
                                 {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
@@ -666,12 +666,12 @@ export default class Home extends Component {
                                     Moment(this.state.date).format('dddd')} </Text>
                             </View>
                         </TouchableOpacity>
-                        <View style={{
-                            borderBottomColor: '#917cb7',
-                            borderBottomWidth: 1,
-                            marginTop:10,
-                            width: width - 10,}}>
-                        </View>
+                        {/*<View style={{*/}
+                            {/*borderBottomColor: '#917cb7',*/}
+                            {/*borderBottomWidth: 1,*/}
+                            {/*marginTop:10,*/}
+                            {/*width: width - 10,}}>*/}
+                        {/*</View>*/}
                         {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
                         {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
@@ -679,8 +679,8 @@ export default class Home extends Component {
                         {/*</View>*/}
                         {/*</TouchableOpacity>*/}
 
-                        <Button style={{height:50,width:width-10,backgroundColor: '#2eacde',
-                            marginTop:30,justifyContent:'space-evenly'}}
+                        <Button style={{height:60,width:width-10,backgroundColor: '#2eacde',
+                            marginTop:10,justifyContent:'space-evenly'}}
                                 onPress={() => {
                                 if(!this.state.selected1 || !this.state.selected2){
                                     Toast.show(" From or To Location cannot be empty! ",Toast.LONG);
@@ -692,9 +692,9 @@ export default class Home extends Component {
                                     Actions.searchScreen(params);
                                 }}}>
                             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                <Image source={require('../Images/search_magnifie.png')} style = {{ width: 25,
-                                    height: 25,alignItems:'center'}}/>
-                                <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
+                                <Image source={require('../Images/search_magnifie.png')} style = {{ width: 20,
+                                    height: 20,alignItems:'center'}}/>
+                                <Text style={{fontSize:20,color:'#FFFFFF'
                                     ,textAlign:'center',paddingLeft:10}}>Search</Text>
                             </View>
                         </Button>
@@ -873,7 +873,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
 
     },
     headerview: {
@@ -882,9 +882,9 @@ const styles = StyleSheet.create({
         // borderWidth:5,
         // borderColor:'#917cb7',
         position: 'absolute',
-        backgroundColor: '#0c71b7',
-        paddingRight:5,
-        paddingLeft:5,
+        backgroundColor: '#4d6bcb',
+        paddingRight:15,
+        paddingLeft:15,
         paddingTop:55,
         left: 0,
         right: 0,
@@ -907,7 +907,7 @@ const styles = StyleSheet.create({
     },
     box: {
 
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
         // marginBottom: 10
         marginRight:5,
         marginLeft:5,
@@ -925,7 +925,7 @@ const styles = StyleSheet.create({
     //     marginBottom: 20,
     // },
     header: {
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
         padding: 10,
         borderTopEndRadius:5,
         borderWidth:2,
@@ -941,7 +941,7 @@ const styles = StyleSheet.create({
     },
     content: {
         padding: 20,
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
         // color:'#B7B152',
         marginRight:5,
         marginLeft:5,
@@ -955,19 +955,19 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
     },
     slide2: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
     },
     slide3: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#0c71b7',
+        backgroundColor: '#4d6bcb',
     },
     text: {
         color: '#FFFFFF',
