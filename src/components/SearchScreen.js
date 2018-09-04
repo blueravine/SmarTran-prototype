@@ -156,7 +156,8 @@ export default class SearchScreen extends Component {
 
     decrement  = () => {
         this.setState({
-            count: this.state.count - 1
+            // count: this.state.count - 1
+            count: (this.state.count > 1) ? (this.state.count - 1) : 1
         });
     }
 
