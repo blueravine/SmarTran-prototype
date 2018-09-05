@@ -11,7 +11,7 @@ import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-n
 import BottomNavigation, {
     ShiftingTab
 } from 'react-native-material-bottom-navigation'
-
+import { Dialog } from 'react-native-simple-dialogs';
 var params;
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
@@ -37,6 +37,7 @@ const ac_icon_grey = require('../Images/ac_icon_grey.png');
 const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 var rupesstitile;
+var  SECTIONS;
 
 export default class SearchScreen extends Component {
 
@@ -68,11 +69,71 @@ export default class SearchScreen extends Component {
             showacview: true,
             shownonacview: true,
             count: 1,
+            showfirstroute: false,
+            showsecondroute: false,
+            showthirdroute: false,
+            showfourthroute: false,
+            showfifthroute: false,
         };
 
 
-        this._renderHeader = this._renderHeader.bind(this);
-        this._renderContent=this._renderContent.bind(this)
+        // this._renderHeader = this._renderHeader.bind(this);
+        // this._renderContent=this._renderContent.bind(this)
+    }
+
+    state = {}
+
+    openDialog(sectionnumber) {
+    switch(sectionnumber) {
+        case 'first':
+            this.setState({showfirstroute: true});
+            this.setState({showsecondroute: false});
+            this.setState({showthirdroute: false});
+            this.setState({showfourthroute: false});
+            this.setState({showfifthroute: false});
+            this.setState({ showDialog: true });
+            break;
+        case 'second':
+            this.setState({showfirstroute: false});
+            this.setState({showsecondroute: true});
+            this.setState({showthirdroute: false});
+            this.setState({showfourthroute: false});
+            this.setState({showfifthroute: false});
+            this.setState({ showDialog: true });
+            break;
+        case 'third':
+            this.setState({showfirstroute: false});
+            this.setState({showsecondroute: false});
+            this.setState({showthirdroute: true});
+            this.setState({showfourthroute: false});
+            this.setState({showfifthroute: false});
+            this.setState({ showDialog: true });
+            break;
+        case 'fourth':
+            this.setState({showfirstroute: false});
+            this.setState({showsecondroute: false});
+            this.setState({showthirdroute: false});
+            this.setState({showfourthroute: true});
+            this.setState({showfifthroute: false});
+            this.setState({ showDialog: true });
+            break;
+        case 'fifth':
+            this.setState({showfirstroute: false});
+            this.setState({showsecondroute: false});
+            this.setState({showthirdroute: false});
+            this.setState({showfourthroute: false});
+            this.setState({showfifthroute: true});
+            this.setState({ showDialog: true });
+            break;
+        default:
+            this.setState({showfirstroute: false});
+            this.setState({showsecondroute: false});
+            this.setState({showthirdroute: false});
+            this.setState({showfourthroute: false});
+            this.setState({showfifthroute: false});
+            this.setState({ showDialog: false });
+            break;
+    }
     }
 
     // state = {
@@ -187,362 +248,362 @@ export default class SearchScreen extends Component {
     //     );
     // }
 
-    _renderHeader(section) {
-        return (
-            <View style={styles.header}>
+    // _renderHeader(section) {
+    //     return (
+    //         <View style={styles.header}>
+    //
+    //             {(this.state.showacview) && (section.title === '625M') &&
+    //             <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+    //                     <Image source={require('../Images/live_icon.png')}
+    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'left',
+    //                         marginLeft:2,
+    //                         // justifyContent:'flex-start'
+    //                     }}>{section.title1}</Text>
+    //                 </View>
+    //                 {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //                     <Text note style={{
+    //                         fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
+    //                         flex:5
+    //                     }}>{section.title}</Text>
+    //
+    //                 </View>
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'right',
+    //                         marginLeft: 120,
+    //                         marginRight:2
+    //
+    //                         //    justifyContent:'flex-end'
+    //                     }}>{section.title2}</Text>
+    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+    //                         {/*,marginLeft:65,marginRight:2}}>*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.decrement}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>-</Text>*/}
+    //                         {/*</Button>*/}
+    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+    //                         {/*/!*{this.state.count}*!/*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.increment}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>+</Text>*/}
+    //                         {/*</Button>*/}
+    //                     {/*</View>*/}
+    //                 </View>
+    //
+    //             </View>
+    //             }
+    //             {(this.state.shownonacview) && (section.title === '635MA') &&
+    //             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+    //
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+    //                     <Image source={require('../Images/live_icon.png')}
+    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'left',
+    //                         marginLeft:2
+    //                         // justifyContent:'flex-start'
+    //                     }}>{section.title1}</Text>
+    //                 </View>
+    //                 {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
+    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //                     <Text note style={{color:'#000',
+    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+    //                     }}>{section.title}</Text>
+    //
+    //                 </View>
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //
+    //                     <Text note style={{color:'#000',
+    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+    //                     }}>639A</Text>
+    //                 </View>
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'right',
+    //                         marginLeft: 120,
+    //                         marginRight:2
+    //
+    //                         //    justifyContent:'flex-end'
+    //                     }}>{section.title2}</Text>
+    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+    //                         {/*,marginLeft:65,marginRight:2}}>*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.decrement}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>-</Text>*/}
+    //                         {/*</Button>*/}
+    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+    //                         {/*/!*{this.state.count}*!/*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.increment}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>+</Text>*/}
+    //                         {/*</Button>*/}
+    //                     {/*</View>*/}
+    //                 </View>
+    //             </View>
+    //             }
+    //
+    //             {(this.state.shownonacview) && (section.title === '645TA') &&
+    //             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+    //                     <Image source={require('../Images/live_icon.png')}
+    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'left',
+    //                         marginLeft:2
+    //                         // justifyContent:'flex-start'
+    //                     }}>{section.title1}</Text>
+    //                 </View>
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
+    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //                     <Text note style={{color:'#000',
+    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+    //                     }}>{section.title}</Text>
+    //                 </View>
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //
+    //                     <Text note style={{color:'#000',
+    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+    //                     }}>648KL</Text>
+    //                 </View>
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'right',
+    //                         marginLeft: 115,
+    //                         marginRight:2
+    //
+    //                         //    justifyContent:'flex-end'
+    //                     }}>{section.title2}</Text>
+    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+    //                         {/*,marginLeft:60,marginRight:6}}>*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.decrement}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>-</Text>*/}
+    //                         {/*</Button>*/}
+    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+    //                         {/*/!*{this.state.count}*!/*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.increment}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>+</Text>*/}
+    //                         {/*</Button>*/}
+    //                     {/*</View>*/}
+    //                 </View>
+    //             </View>
+    //             }
+    //
+    //             {(this.state.showacview) && (section.title === '650N') &&
+    //             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+    //
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+    //                     <Image source={require('../Images/live_icon.png')}
+    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'left',
+    //                         marginLeft:2
+    //                         // justifyContent:'flex-start'
+    //                     }}>{section.title1}</Text>
+    //                 </View>
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
+    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //                     <Text note style={{color:'#000',
+    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+    //                     }}>{section.title}</Text>
+    //
+    //                 </View>
+    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
+    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
+    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+    //
+    //                     <Text note style={{color:'#000',
+    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
+    //                     }}>652H</Text>
+    //                 </View>
+    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+    //                     <Text style={{
+    //                         fontSize: 14,
+    //                         fontWeight: 'bold',
+    //                         color: '#000',
+    //                         textAlign: 'right',
+    //                         marginLeft:120,
+    //                         marginRight:2
+    //                         //    justifyContent:'flex-end'
+    //                     }}>{section.title2}</Text>
+    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+    //                         {/*,marginLeft:65,marginRight:2}}>*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.decrement}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>-</Text>*/}
+    //                         {/*</Button>*/}
+    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+    //                         {/*/!*{this.state.count}*!/*/}
+    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+    //                         {/*}}*/}
+    //                                 {/*onPress={this.increment}>*/}
+    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                                 {/*,textAlign:'center'}}>+</Text>*/}
+    //                         {/*</Button>*/}
+    //                     {/*</View>*/}
+    //                 </View>
+    //
+    //
+    //             </View>
+    //             }
+    //
+    //         </View>
+    //     );
+    // }
 
-                {(this.state.showacview) && (section.title === '625M') &&
-                <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                        <Image source={require('../Images/live_icon.png')}
-                               style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            marginLeft:2,
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
-                    </View>
-                    {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                        <Text note style={{
-                            fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
-                            flex:5
-                        }}>{section.title}</Text>
-
-                    </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'right',
-                            marginLeft: 120,
-                            marginRight:2
-
-                            //    justifyContent:'flex-end'
-                        }}>{section.title2}</Text>
-                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                            {/*,marginLeft:65,marginRight:2}}>*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                            {/*</Button>*/}
-                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                            {/*/!*{this.state.count}*!/*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                            {/*</Button>*/}
-                        {/*</View>*/}
-                    </View>
-
-                </View>
-                }
-                {(this.state.shownonacview) && (section.title === '635MA') &&
-                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                        <Image source={require('../Images/live_icon.png')}
-                               style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            marginLeft:2
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
-                    </View>
-                    {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                        <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>{section.title}</Text>
-
-                    </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-
-                        <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>639A</Text>
-                    </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'right',
-                            marginLeft: 120,
-                            marginRight:2
-
-                            //    justifyContent:'flex-end'
-                        }}>{section.title2}</Text>
-                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                            {/*,marginLeft:65,marginRight:2}}>*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                            {/*</Button>*/}
-                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                            {/*/!*{this.state.count}*!/*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                            {/*</Button>*/}
-                        {/*</View>*/}
-                    </View>
-                </View>
-                }
-
-                {(this.state.shownonacview) && (section.title === '645TA') &&
-                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                        <Image source={require('../Images/live_icon.png')}
-                               style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            marginLeft:2
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
-                    </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
-                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                        <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>{section.title}</Text>
-                    </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-
-                        <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>648KL</Text>
-                    </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'right',
-                            marginLeft: 115,
-                            marginRight:2
-
-                            //    justifyContent:'flex-end'
-                        }}>{section.title2}</Text>
-                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                            {/*,marginLeft:60,marginRight:6}}>*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                            {/*</Button>*/}
-                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                            {/*/!*{this.state.count}*!/*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                            {/*</Button>*/}
-                        {/*</View>*/}
-                    </View>
-                </View>
-                }
-
-                {(this.state.showacview) && (section.title === '650N') &&
-                <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                        <Image source={require('../Images/live_icon.png')}
-                               style={{width: 20, height: 20, paddingLeft: 5}}/>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'left',
-                            marginLeft:2
-                            // justifyContent:'flex-start'
-                        }}>{section.title1}</Text>
-                    </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                        <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                        }}>{section.title}</Text>
-
-                    </View>
-                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
-                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-
-                        <Text note style={{color:'#000',
-                            fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
-                        }}>652H</Text>
-                    </View>
-                    <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                        <Text style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            textAlign: 'right',
-                            marginLeft:120,
-                            marginRight:2
-                            //    justifyContent:'flex-end'
-                        }}>{section.title2}</Text>
-                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                            {/*,marginLeft:65,marginRight:2}}>*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                            {/*</Button>*/}
-                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                            {/*/!*{this.state.count}*!/*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                            {/*</Button>*/}
-                        {/*</View>*/}
-                    </View>
-
-
-                </View>
-                }
-
-            </View>
-        );
-    }
-
-    _renderContent(section) {
-        return (
-            <View style={styles.content}>
-
-                {(section.title === '625M') &&
-
-                <View style={{flexDirection: "row"}}>
-
-                    {/*<Text>{this.props.fromLoc}</Text>*/}
-                    <Text>{section.content}</Text>
-                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                    </View>
-                    <Text>{section.content1}</Text>
-                </View>
-
-                }
-                {/*<Text>{section.content}</Text>*/}
-                {(section.title === '635MA') &&
-                <View style={{flexDirection: "row"}}>
-                    <Text>{section.content}</Text>
-                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                    </View>
-                    <Text>{section.content1}</Text>
-                </View>
-                }
-                {(section.title === '645TA') &&
-                <View style={{flexDirection: "row"}}>
-                    <Text>{section.content}</Text>
-                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                    </View>
-                    <Text>{section.content1}</Text>
-                </View>
-                }
-                {(section.title === '650N') &&
-                <View style={{flexDirection: "row"}}>
-                    <Text>{section.content}</Text>
-                    <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                        <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                    </View>
-                    <Text>{section.content1}</Text>
-                </View>
-                }
-                <Button style={{height:50,width:width-50,backgroundColor: '#2eacde',
-                    marginTop:5,justifyContent:'space-evenly'}}
-                        onPress={() => Actions.paymentScreen(params)}>
-                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                        <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
-                            height: 25,alignItems:'center'}}/>
-                        <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
-                            ,textAlign:'center',paddingLeft:10}}>Buy</Text>
-
-
-                        {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
-                        {/*}}*/}
-                        {/*onPress={this.decrement}>*/}
-                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                        {/*,textAlign:'center'}}>-</Text>*/}
-                        {/*</Button>*/}
-                        {/*<Text note style={{ fontSize: 14, color:'#FFFFFF',textAlign: 'center',fontWeight:'bold'}}> 1 </Text>*/}
-                        {/*/!*{this.state.count}*!/*/}
-                        {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
-                        {/*}}*/}
-                        {/*onPress={this.increment}>*/}
-                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                        {/*,textAlign:'center'}}>+</Text>*/}
-                        {/*</Button>*/}
-                    </View>
-                </Button>
-
-            </View>
-        );
-    }
+    // _renderContent(section) {
+    //     return (
+    //         <View style={styles.content}>
+    //
+    //             {(section.title === '625M') &&
+    //
+    //             <View style={{flexDirection: "row"}}>
+    //
+    //                 {/*<Text>{this.props.fromLoc}</Text>*/}
+    //                 <Text>{section.content}</Text>
+    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //
+    //                 </View>
+    //                 <Text>{section.content1}</Text>
+    //             </View>
+    //
+    //             }
+    //             {/*<Text>{section.content}</Text>*/}
+    //             {(section.title === '635MA') &&
+    //             <View style={{flexDirection: "row"}}>
+    //                 <Text>{section.content}</Text>
+    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //
+    //                 </View>
+    //                 <Text>{section.content1}</Text>
+    //             </View>
+    //             }
+    //             {(section.title === '645TA') &&
+    //             <View style={{flexDirection: "row"}}>
+    //                 <Text>{section.content}</Text>
+    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //
+    //                 </View>
+    //                 <Text>{section.content1}</Text>
+    //             </View>
+    //             }
+    //             {(section.title === '650N') &&
+    //             <View style={{flexDirection: "row"}}>
+    //                 <Text>{section.content}</Text>
+    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+    //
+    //                 </View>
+    //                 <Text>{section.content1}</Text>
+    //             </View>
+    //             }
+    //             <Button style={{height:50,width:width-50,backgroundColor: '#2eacde',
+    //                 marginTop:5,justifyContent:'space-evenly'}}
+    //                     onPress={() => Actions.paymentScreen(params)}>
+    //                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+    //                     <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
+    //                         height: 25,alignItems:'center'}}/>
+    //                     <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
+    //                         ,textAlign:'center',paddingLeft:10}}>Buy</Text>
+    //
+    //
+    //                     {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
+    //                     {/*}}*/}
+    //                     {/*onPress={this.decrement}>*/}
+    //                     {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                     {/*,textAlign:'center'}}>-</Text>*/}
+    //                     {/*</Button>*/}
+    //                     {/*<Text note style={{ fontSize: 14, color:'#FFFFFF',textAlign: 'center',fontWeight:'bold'}}> 1 </Text>*/}
+    //                     {/*/!*{this.state.count}*!/*/}
+    //                     {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
+    //                     {/*}}*/}
+    //                     {/*onPress={this.increment}>*/}
+    //                     {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+    //                     {/*,textAlign:'center'}}>+</Text>*/}
+    //                     {/*</Button>*/}
+    //                 </View>
+    //             </Button>
+    //
+    //         </View>
+    //     );
+    // }
 
     render() {
         params = {};
@@ -575,7 +636,7 @@ export default class SearchScreen extends Component {
             },
 
         ];
-        const SECTIONS = [
+         SECTIONS = [
             {
                 title: '625M',title1:'5:51 PM \n '+
                 '',title2:'\u20B9 '+ rupesstitile[0].price +'\n',
@@ -710,68 +771,506 @@ export default class SearchScreen extends Component {
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Journey Options</Text>
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
+                        {/*<Button rounded style={{height: 25,backgroundColor: '#2eacde',marginBottom:10*/}
+                        {/*}}*/}
+                                {/*onPress={() => this.setState({shownonacview: false, showacview: true})} >*/}
+                            {/*<Iccons type='FontAwesome' color="#FFFFFF" name={'snowflake-o'} size={20}  />*/}
+                            {/*/!*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF',flex:2*!/*/}
+                                {/*/!*,textAlign:'center'}}>AC</Text>*!/*/}
+                        {/*</Button>*/}
+                        {/*<Button rounded style={{height: 25,backgroundColor: '#2eacde',marginBottom:10*/}
+                        {/*}}*/}
+                                {/*onPress={() => this.setState({shownonacview: true, showacview: false})} >*/}
+                            {/*<Icoons type='SimpleLineIcons' color="#FFFFFF" name={'ban'} size={20} />*/}
+                            {/*/!*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF',flex:2*!/*/}
+                                {/*/!*,textAlign:'center'}}>Non/AC</Text>*!/*/}
+                        {/*</Button>*/}
+                        {/*<Button rounded style={{height: 25,backgroundColor: '#2eacde',marginBottom:10*/}
+                        {/*}}*/}
+                                {/*onPress={() => this.setState({shownonacview: true, showacview: true})} >*/}
+                            {/*<Icon type='MaterialIcons' color="#FFFFFF" name={'done-all'} size={20}/>*/}
+                            {/*/!*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF',flex:2*!/*/}
+                                {/*/!*,textAlign:'center'}}>All</Text>*!/*/}
+                        {/*</Button>*/}
                     </View>
-                    <ScrollView>
-                        <Card  styles={{width: 100,height:300,borderWidth: 3,
-                            borderColor: '#999999', alignItems: 'center',
-                            borderRadius: 5,
-                            overflow: 'hidden',
-                            elevation: 1}}>
-                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {
-                                    Moment(this.props.tripdte).format('DD MMMM')} </Text>
-                            </View>
+                    {/*<ScrollView>*/}
+                        {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
+                            {/*borderColor: '#999999', alignItems: 'center',*/}
+                            {/*borderRadius: 5,*/}
+                            {/*overflow: 'hidden',*/}
+                            {/*elevation: 1}}>*/}
+                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                {/*<Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {*/}
+                                    {/*Moment(this.props.tripdte).format('DD MMMM')} </Text>*/}
+                            {/*</View>*/}
                             <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
                                 {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >{this.props.fromLoc}
+                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} >{this.props.fromLoc}
                                 </Text>
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} > To
                                 </Text>
                                 {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}
+                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} > {this.props.toLoc}
                                 </Text>
-                            </View>
-                            <View style={{
-                                flex: 1,
-                                borderBottomColor: 'black',
-                                borderBottomWidth: 1,
-                                width: width - 10,}}>
-                            </View>
-                            <View style={{flexDirection:"row",justifyContent:'center'}}>
+                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
+                                    {/*<Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}*/}
+                                    {/*/>*/}
 
-                                <MultiToggleSwitch defaultActiveIndex={2}
-                                                   activeContainerStyle={size=20}
-                                                   itemsContainer={size=20}
-                                >
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'}  onPress={() => this.setState({shownonacview: false, showacview: true})}>
-                                        <Iccons type='FontAwesome' name={'snowflake-o'} size={20}  />
-                                    </MultiToggleSwitch.Item>
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => this.setState({shownonacview: true, showacview: false})}>
-                                        <Icoons type='SimpleLineIcons' name={'ban'} size={20} />
-                                    </MultiToggleSwitch.Item>
-                                    <MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => this.setState({shownonacview: true, showacview: true})}>
-                                        <Icon type='MaterialIcons' name={'done-all'} size={20}/>
-                                    </MultiToggleSwitch.Item>
-                                </MultiToggleSwitch>
+                                {/*</TouchableOpacity>*/}
+                                <Text note style={{fontSize:16,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {
+                                    Moment(this.props.tripdte).format('DD MMMM')} </Text>
+                                {/*</View>*/}
                             </View>
-                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                                <Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>
-                                <Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>
-                                <Text note style={{fontSize:14,textAlign:'center'}} >ALL</Text>
-                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
-                                <Text note style={{fontSize:14,textAlign:'center'}} > </Text>
+                            {/*<View style={{*/}
+                                {/*flex: 1,*/}
+                                {/*borderBottomColor: 'black',*/}
+                                {/*borderBottomWidth: 1,*/}
+                                {/*width: width - 10,}}>*/}
+                            {/*</View>*/}
+                            {/*<View style={{flexDirection:"row",justifyContent:'center'}}>*/}
+
+                                {/*<MultiToggleSwitch defaultActiveIndex={2}*/}
+                                                   {/*activeContainerStyle={size=20}*/}
+                                                   {/*itemsContainer={size=20}*/}
+                                {/*>*/}
+                                    {/*<MultiToggleSwitch.Item  primaryColor={'#2EACDE'}  onPress={() => this.setState({shownonacview: false, showacview: true})}>*/}
+                                        {/*<Iccons type='FontAwesome' name={'snowflake-o'} size={20}  />*/}
+                                    {/*</MultiToggleSwitch.Item>*/}
+                                    {/*<MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => this.setState({shownonacview: true, showacview: false})}>*/}
+                                        {/*<Icoons type='SimpleLineIcons' name={'ban'} size={20} />*/}
+                                    {/*</MultiToggleSwitch.Item>*/}
+                                    {/*<MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => this.setState({shownonacview: true, showacview: true})}>*/}
+                                        {/*<Icon type='MaterialIcons' name={'done-all'} size={20}/>*/}
+                                    {/*</MultiToggleSwitch.Item>*/}
+                                {/*</MultiToggleSwitch>*/}
+                            {/*</View>*/}
+                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} >ALL</Text>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
+                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
+                            {/*</View>*/}
+
+
+
+                        {/*</Card>*/}
+                        {/*<View  style={{flexDirection:'row',justifyContent:'center'}} >*/}
+                        <Card>
+                            <TouchableOpacity  onPress={() => {(this.openDialog('first'))}}>
+                            {(this.state.showacview) && (SECTIONS[0].title === '625M') &&
+                            <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                    <Image source={require('../Images/live_icon.png')}
+                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'left',
+                                        marginLeft:2,
+                                        // justifyContent:'flex-start'
+                                    }}>{SECTIONS[0].title1}</Text>
+                                </View>
+                                {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                                    <Text note style={{
+                                        fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                        flex:5
+                                    }}>{SECTIONS[0].title}</Text>
+
+                                </View>
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 120,
+                                        marginRight:2
+
+                                        //    justifyContent:'flex-end'
+                                    }}>{SECTIONS[0].title2}</Text>
+                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                                    {/*,marginLeft:65,marginRight:2}}>*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                                    {/*/!*{this.state.count}*!/*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*</View>*/}
+                                </View>
+
                             </View>
+                            }
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {(this.openDialog('second'))}}>
+                            {(this.state.shownonacview) && (SECTIONS[1].title === '635MA') &&
+                            <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+                                    <Image source={require('../Images/live_icon.png')}
+                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'left',
+                                        marginLeft:2
+                                        // justifyContent:'flex-start'
+                                    }}>{SECTIONS[1].title1}</Text>
+                                </View>
+                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
+                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                                    <Text note style={{color:'#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                    }}>{SECTIONS[1].title}</Text>
+
+                                </View>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+
+                                    <Text note style={{color:'#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                    }}>639A</Text>
+                                </View>
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 120,
+                                        marginRight:2
+
+                                        //    justifyContent:'flex-end'
+                                    }}>{SECTIONS[1].title2}</Text>
+                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                                    {/*,marginLeft:65,marginRight:2}}>*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                                    {/*/!*{this.state.count}*!/*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*</View>*/}
+                                </View>
+                            </View>
+                            }
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {(this.openDialog('third'))}}>
+                            {(this.state.shownonacview) && (SECTIONS[2].title === '645TA') &&
+                            <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+                                    <Image source={require('../Images/live_icon.png')}
+                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'left',
+                                        marginLeft:2
+                                        // justifyContent:'flex-start'
+                                    }}>{SECTIONS[2].title1}</Text>
+                                </View>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
+                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                                    <Text note style={{color:'#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                    }}>{SECTIONS[2].title}</Text>
+                                </View>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+
+                                    <Text note style={{color:'#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                    }}>648KL</Text>
+                                </View>
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 115,
+                                        marginRight:2
+
+                                        //    justifyContent:'flex-end'
+                                    }}>{SECTIONS[2].title2}</Text>
+                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                                    {/*,marginLeft:60,marginRight:6}}>*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                                    {/*/!*{this.state.count}*!/*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*</View>*/}
+                                </View>
+                            </View>
+                            }
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {(this.openDialog('fourth'))}}>
+                            {(this.state.showacview) && (SECTIONS[3].title === '650N') &&
+                            <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
+
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+                                    <Image source={require('../Images/live_icon.png')}
+                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'left',
+                                        marginLeft:2
+                                        // justifyContent:'flex-start'
+                                    }}>{SECTIONS[3].title1}</Text>
+                                </View>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
+                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                                    <Text note style={{color:'#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                    }}>{SECTIONS[3].title}</Text>
+
+                                </View>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    {/*<Image source={require('../Images/school_bus.png')}*/}
+                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+
+                                    <Text note style={{color:'#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
+                                    }}>652H</Text>
+                                </View>
+                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft:120,
+                                        marginRight:2
+                                        //    justifyContent:'flex-end'
+                                    }}>{SECTIONS[3].title2}</Text>
+                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                                    {/*,marginLeft:65,marginRight:2}}>*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                                    {/*/!*{this.state.count}*!/*/}
+                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                    {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                                    {/*</Button>*/}
+                                    {/*</View>*/}
+                                </View>
 
 
+                            </View>
+                            }
+                            </TouchableOpacity>
+                            <TouchableOpacity  onPress={() => {(this.openDialog('fifth'))}}>
+                                {(this.state.showacview) && (SECTIONS[4].title === '625M') &&
+                                <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
+                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                        <Image source={require('../Images/live_icon.png')}
+                                               style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                        <Text style={{
+                                            fontSize: 14,
+                                            fontWeight: 'bold',
+                                            color: '#000',
+                                            textAlign: 'left',
+                                            marginLeft:2,
+                                            // justifyContent:'flex-start'
+                                        }}>{SECTIONS[4].title1}</Text>
+                                    </View>
+                                    {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
+                                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
+                                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                        {/*<Image source={require('../Images/school_bus.png')}*/}
+                                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
+                                        <Text note style={{
+                                            fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                            flex:5
+                                        }}>{SECTIONS[4].title}</Text>
 
+                                    </View>
+                                    <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
+                                        <Text style={{
+                                            fontSize: 14,
+                                            fontWeight: 'bold',
+                                            color: '#000',
+                                            textAlign: 'right',
+                                            marginLeft: 120,
+                                            marginRight:2
+
+                                            //    justifyContent:'flex-end'
+                                        }}>{SECTIONS[4].title2}</Text>
+                                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                                        {/*,marginLeft:65,marginRight:2}}>*/}
+                                        {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                        {/*}}*/}
+                                        {/*onPress={this.decrement}>*/}
+                                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                        {/*,textAlign:'center'}}>-</Text>*/}
+                                        {/*</Button>*/}
+                                        {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                                        {/*/!*{this.state.count}*!/*/}
+                                        {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                                        {/*}}*/}
+                                        {/*onPress={this.increment}>*/}
+                                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                        {/*,textAlign:'center'}}>+</Text>*/}
+                                        {/*</Button>*/}
+                                        {/*</View>*/}
+                                    </View>
+
+                                </View>
+                                }
+                            </TouchableOpacity>
+
+                            {/*</View>*/}
                         </Card>
-                        <View  style={{flexDirection:'row',justifyContent:'center'}} >
-                        <Text note style={{fontSize:14,textAlign:'center',color:'#FFFFFF'}} >Number of passengers</Text>
-                        <View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:75,marginRight:2,marginBottom:5,backgroundColor:'#FFFFFF'}}>
 
+                    <Dialog
+                        visible={this.state.showDialog}
+                        title="Bus Route Details"
+                        onTouchOutside={() => this.openDialog('done')}
+                        contentStyle={{ justifyContent: 'center', alignItems: 'center', }}
+                        animationType="fade">
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            {(this.state.showfirstroute) &&
+
+                            <View style={{flexDirection: "row"}}>
+
+                                {/*<Text>{this.props.fromLoc}</Text>*/}
+                                <Text>{SECTIONS[0].content}</Text>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                                </View>
+                                <Text>{SECTIONS[0].content1}</Text>
+                            </View>
+                            }
+                        </View>
+                            {/*/!*<Text>{section.content}</Text>*!/*/}
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            {(this.state.showsecondroute) &&
+                            <View style={{flexDirection: "row"}}>
+                                <Text>{SECTIONS[1].content}</Text>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                                </View>
+                                <Text>{SECTIONS[1].content1}</Text>
+                            </View>
+                            }
+                        </View>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            {(this.state.showthirdroute) &&
+                            <View style={{flexDirection: "row"}}>
+                                <Text>{SECTIONS[2].content}</Text>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                                </View>
+                                <Text>{SECTIONS[2].content1}</Text>
+                            </View>
+                            }
+                        </View>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            {(this.state.showfourthroute) &&
+                            <View style={{flexDirection: "row"}}>
+                                <Text>{SECTIONS[3].content}</Text>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                                </View>
+                                <Text>{SECTIONS[3].content1}</Text>
+                            </View>
+                            }
+                        </View>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            {(this.state.showfifthroute) &&
+                            <View style={{flexDirection: "row"}}>
+                                <Text>{SECTIONS[4].content}</Text>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
+                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
+
+                                </View>
+                                <Text>{SECTIONS[4].content1}</Text>
+                            </View>
+                            }
+                        </View>
+                        <View style={{flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                            ,marginLeft:5,marginRight:2}}>
                             <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
@@ -787,16 +1286,62 @@ export default class SearchScreen extends Component {
                                     ,textAlign:'center'}}>+</Text>
                             </Button>
                         </View>
-                        </View>
-                        {/*<ScrollView>*/}
-                        <Accordion
-                            sections={SECTIONS}
-                            renderHeader={this._renderHeader}
-                            renderContent={this._renderContent}
-                        >
 
-                        </Accordion>
-                    </ScrollView>
+                            <Button style={{height:50,width:width-80,backgroundColor: '#2eacde',
+                                marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}
+                                    onPress={() => Actions.paymentScreen(params)}>
+                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                                    <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
+                                        height: 25,alignItems:'center'}}/>
+                                    <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
+                                        ,textAlign:'center',paddingLeft:10}}>Buy</Text>
+
+                                </View>
+                            </Button>
+
+                        {/*</View>*/}
+
+                        <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
+                        }}
+                                onPress={() => {(this.openDialog(false)),Actions.searchScreen(params)}} >
+                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
+                                ,textAlign:'center'}}>Close</Text>
+                        </Button>
+
+                        {/*<Button onPress={() => this.openDialog(false)}  title="CLOSE" />*/}
+                    </Dialog>
+
+                    {/*<View  style={{flexDirection:'row',justifyContent:'center'}} >*/}
+                        {/*<Text note style={{fontSize:14,textAlign:'center',color:'#FFFFFF'}} >Number of passengers</Text>*/}
+                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                            {/*,marginLeft:75,marginRight:2,marginBottom:5,backgroundColor:'#FFFFFF'}}>*/}
+
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                            {/*</Button>*/}
+                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                            {/*/!*{this.state.count}*!/*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                            {/*</Button>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+
+                        {/*<ScrollView>*/}
+                        {/*<Accordion*/}
+                            {/*sections={SECTIONS}*/}
+                            {/*renderHeader={this._renderHeader}*/}
+                            {/*renderContent={this._renderContent}*/}
+                        {/*>*/}
+
+                        {/*</Accordion>*/}
+                    {/*</ScrollView>*/}
 
                 </View>
 
