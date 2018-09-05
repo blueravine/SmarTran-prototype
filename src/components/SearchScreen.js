@@ -16,7 +16,7 @@ import DropdownMenu from 'react-native-dropdown-menu';
 var params;
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
-import Icoons from 'react-native-vector-icons/FontAwesome';
+import Icoons from 'react-native-vector-icons/SimpleLineIcons';
 
 // import Icoons from 'react-native-vector-icons/SimpleLineIcons';
 // import Iccons from 'react-native-vector-icons/FontAwesome';
@@ -779,27 +779,6 @@ export default class SearchScreen extends Component {
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Journey Options</Text>
                         {/*<Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>*/}
-                        <View style={{flex: 2,marginRight:25}}>
-                            {/*<View style={{height: 64}} />*/}
-                        <DropdownMenu
-                            style={{flex: 2,borderWidth:5,borderRadius:5}}
-                            bgColor={'white'}
-                            tintColor={'#666666'}
-                            activityTintColor={'green'}
-                            // arrowImg={}
-                            // checkImage={}
-                            // optionTextStyle={{color: '#333333'}}
-                            // titleStyle={{color: '#333333'}}
-                            // maxHeight={300}
-                            handler={(selection, row) => this.setState({text: data[selection][row]})}
-                            data={data}
-                        />
-
-                        </View>
-                        {/*onPress={() => Actions.homeScreen(params)}*/}
-                        <TouchableOpacity  >
-                            <Icoons type='FontAwesome' name='refresh' size={30} color="#FFFFFF"/>
-                        </TouchableOpacity>
                         {/*<Button rounded style={{height: 25,backgroundColor: '#2eacde',marginBottom:10*/}
                         {/*}}*/}
                                 {/*onPress={() => this.setState({shownonacview: false, showacview: true})} >*/}
@@ -822,6 +801,33 @@ export default class SearchScreen extends Component {
                                 {/*/!*,textAlign:'center'}}>All</Text>*!/*/}
                         {/*</Button>*/}
                     </View>
+                    <View style={{flexDirection:"row",justifyContent:'space-evenly',backgroundColor:'#0c71b7',paddingRight:10,
+                        paddingLeft:10,}}>
+                        <View style={{flex: 2,marginRight:25}}>
+                            {/*<View style={{height: 64}} />*/}
+                            <DropdownMenu
+                                style={{flex: 2,borderWidth:5,borderRadius:5}}
+                                bgColor={'white'}
+                                tintColor={'#666666'}
+                                activityTintColor={'green'}
+                                // arrowImg={}
+                                // checkImage={}
+                                // optionTextStyle={{color: '#333333'}}
+                                // titleStyle={{color: '#333333'}}
+                                // maxHeight={300}
+                                handler={(selection, row) => this.setState({text: data[selection][row]})}
+                                data={data}
+                            />
+
+                        </View>
+                        <Text note style={{fontSize:20,textAlign:'center',color:'#FFFFFF',marginTop:10,flex: 8}} > {
+                            Moment(this.props.tripdte).format('DD MMM')} </Text>
+                        {/*onPress={() => Actions.homeScreen(params)}*/}
+                        <TouchableOpacity  >
+                            <Icoons type='SimpleLineIcons' name='refresh' size={30} color="#FFFFFF"/>
+                        </TouchableOpacity>
+                    </View>
+
                     {/*<ScrollView>*/}
                         {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
                             {/*borderColor: '#999999', alignItems: 'center',*/}
@@ -832,23 +838,23 @@ export default class SearchScreen extends Component {
                                 {/*<Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {*/}
                                     {/*Moment(this.props.tripdte).format('DD MMMM')} </Text>*/}
                             {/*</View>*/}
-                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
+                            <View style={{flexDirection:"column",backgroundColor:'#FFFFFF',justifyContent:'space-evenly',marginBottom:10,marginTop:5}}>
                                 {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                <Text numberOfLines={1}   style={{textAlign:'center',flex:8,fontWeight:'bold',fontSize:20,color:'#FFFFFF',marginTop:10}} >{this.props.fromLoc}
+                                <Text style={{textAlign:'center',fontWeight:'bold',fontSize:20,color:'#000',marginTop:10}} >From: {this.props.fromLoc}
                                 </Text>
-                                <Text  style={{textAlign:'center',fontSize:20,color:'#FFFFFF',marginTop:10}} > To
-                                </Text>
+                                {/*<Text  style={{textAlign:'center',fontSize:20,color:'#FFFFFF',marginTop:10}} > To*/}
+                                {/*</Text>*/}
                                 {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                                <Text numberOfLines={1}  style={{textAlign:'center',flex:16,fontWeight:'bold',fontSize:20,color:'#FFFFFF',marginTop:10}} > {this.props.toLoc}
+                                <Text style={{textAlign:'center',fontWeight:'bold',fontSize:20,color:'#000',marginTop:10}} >To: {this.props.toLoc}
                                 </Text>
                                 {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                                 {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
-                                    {/*<Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}*/}
-                                    {/*/>*/}
+                                {/*<Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}*/}
+                                {/*/>*/}
 
                                 {/*</TouchableOpacity>*/}
-                                <Text note style={{fontSize:20,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {
-                                    Moment(this.props.tripdte).format('DD MMM')} </Text>
+                                {/*<Text note style={{fontSize:20,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {*/}
+                                    {/*Moment(this.props.tripdte).format('DD MMM')} </Text>*/}
 
                                 {/*</View>*/}
                             </View>
