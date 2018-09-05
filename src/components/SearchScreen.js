@@ -12,12 +12,15 @@ import BottomNavigation, {
     ShiftingTab
 } from 'react-native-material-bottom-navigation'
 import { Dialog } from 'react-native-simple-dialogs';
+import DropdownMenu from 'react-native-dropdown-menu';
 var params;
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
-import Icoons from 'react-native-vector-icons/SimpleLineIcons';
-import Iccons from 'react-native-vector-icons/FontAwesome';
-import Icconss from 'react-native-vector-icons/Foundation'
+import Icoons from 'react-native-vector-icons/FontAwesome';
+
+// import Icoons from 'react-native-vector-icons/SimpleLineIcons';
+// import Iccons from 'react-native-vector-icons/FontAwesome';
+// import Icconss from 'react-native-vector-icons/Foundation'
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const { width } = Dimensions.get('window');
@@ -66,6 +69,7 @@ export default class SearchScreen extends Component {
         //     count: 0
         // };
         this.state ={
+            text: '',
             showacview: true,
             shownonacview: true,
             count: 1,
@@ -756,7 +760,11 @@ export default class SearchScreen extends Component {
         ];
 
 
+        var data =
+            [
+            ["All","A/C","Non A/C"]
 
+            ];
         return (
 
             <View style={styles.container}>
@@ -770,7 +778,28 @@ export default class SearchScreen extends Component {
                             <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Journey Options</Text>
-                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
+                        {/*<Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>*/}
+                        <View style={{flex: 2,marginRight:25}}>
+                            {/*<View style={{height: 64}} />*/}
+                        <DropdownMenu
+                            style={{flex: 2,borderWidth:5,borderRadius:5}}
+                            bgColor={'white'}
+                            tintColor={'#666666'}
+                            activityTintColor={'green'}
+                            // arrowImg={}
+                            // checkImage={}
+                            // optionTextStyle={{color: '#333333'}}
+                            // titleStyle={{color: '#333333'}}
+                            // maxHeight={300}
+                            handler={(selection, row) => this.setState({text: data[selection][row]})}
+                            data={data}
+                        />
+
+                        </View>
+                        {/*onPress={() => Actions.homeScreen(params)}*/}
+                        <TouchableOpacity  >
+                            <Icoons type='FontAwesome' name='refresh' size={30} color="#FFFFFF"/>
+                        </TouchableOpacity>
                         {/*<Button rounded style={{height: 25,backgroundColor: '#2eacde',marginBottom:10*/}
                         {/*}}*/}
                                 {/*onPress={() => this.setState({shownonacview: false, showacview: true})} >*/}
@@ -805,12 +834,12 @@ export default class SearchScreen extends Component {
                             {/*</View>*/}
                             <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
                                 {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} >{this.props.fromLoc}
+                                <Text numberOfLines={1}   style={{textAlign:'center',flex:8,fontWeight:'bold',fontSize:20,color:'#FFFFFF',marginTop:10}} >{this.props.fromLoc}
                                 </Text>
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} > To
+                                <Text  style={{textAlign:'center',fontSize:20,color:'#FFFFFF',marginTop:10}} > To
                                 </Text>
                                 {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} > {this.props.toLoc}
+                                <Text numberOfLines={1}  style={{textAlign:'center',flex:16,fontWeight:'bold',fontSize:20,color:'#FFFFFF',marginTop:10}} > {this.props.toLoc}
                                 </Text>
                                 {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                                 {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
@@ -818,8 +847,9 @@ export default class SearchScreen extends Component {
                                     {/*/>*/}
 
                                 {/*</TouchableOpacity>*/}
-                                <Text note style={{fontSize:16,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {
-                                    Moment(this.props.tripdte).format('DD MMMM')} </Text>
+                                <Text note style={{fontSize:20,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {
+                                    Moment(this.props.tripdte).format('DD MMM')} </Text>
+
                                 {/*</View>*/}
                             </View>
                             {/*<View style={{*/}
@@ -1289,7 +1319,8 @@ export default class SearchScreen extends Component {
 
                             <Button style={{height:50,width:width-80,backgroundColor: '#2eacde',
                                 marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}
-                                    onPress={() => Actions.paymentScreen(params)}>
+                                    onPress={() => {(this.openDialog(false)),Actions.paymentScreen(params)}} >
+                                    {/*onPress={() => Actions.paymentScreen(params)}>*/}
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                     <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
                                         height: 25,alignItems:'center'}}/>
