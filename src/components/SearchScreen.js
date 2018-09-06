@@ -869,7 +869,7 @@ export default class SearchScreen extends Component {
                             Moment(this.state.date).format('DD MMM').toUpperCase()} </Text>
                             </View>
                         </TouchableOpacity>
-                        <View style={{flex:10,marginTop:10,justifyContent:'flex-end',alignItems:'flex-end'}}>
+                        <View style={{flex:1,marginTop:10,justifyContent:'flex-end',alignItems:'flex-end'}}>
                             {/*<View style={{height: 64}} />*/}
                             <Dropdown
                                 value={'All Buses'}
@@ -880,6 +880,7 @@ export default class SearchScreen extends Component {
                                 fontSize={13}
                                 itemPadding={8}
                                 dropdownPosition={0}
+                                pickerStyle={{paddingLeft:200}}
                                 containerStyle={{borderWidth:1, borderColor:'#FFFFFF', width:130,height:30,borderRadius:20,paddingTop:2,paddingLeft:width*0.04}}
                                 rippleCentered={true}
                                 inputContainerStyle={{ borderBottomColor: 'transparent' }}
