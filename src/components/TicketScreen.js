@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image,StyleSheet,TouchableOpacity,AsyncStorage,
     Dimensions,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper, Text,Item,Input,View,Fab, Button, Left, Body, Right,
-    Footer, FooterTab,Accordion} from 'native-base';
+    Footer, FooterTab} from 'native-base';
 
 import BottomNavigation, {
     ShiftingTab
@@ -22,7 +22,6 @@ const MARGIN = 40;
 // import { BottomNavigation } from 'react-native-material-ui';
 import Moment from "moment/moment";
 import Toast from "react-native-simple-toast";
-// import Accordion from 'react-native-collapsible/Accordion';
 
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
@@ -50,8 +49,7 @@ export default class TicketScreen extends Component {
             thiscard : [],
         };
 
-        // this._renderHeader = this._renderHeader.bind(this);
-        // this._renderContent=this._renderContent.bind(this)
+
     }
 
     tabs = [
@@ -131,274 +129,23 @@ export default class TicketScreen extends Component {
             }).done();
     }
 
-    // renderTicketText(currentTicket) {
-    //
-    //     return (
-    //
-    //             var ticketobj = [currentTicket];
-    //     ticketobj.forEach(function(AllTicket){
-    //         var ticketkeys=Object.keys(AllTicket);
-    //         <Text note style={{
-    //             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //         }}>{ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]}</Text>
-    //             alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
-    //
-    //     })
-    //     )
-    // }
+    renderTicketText(currentTicket) {
 
-    // _renderHeader(section) {
-    //     return (
-    //         <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
-    //             {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-    //             <Text note style={{
-    //                 marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-    //             }}>{section.title}</Text>
-    //             <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
-    //             </Text>
-    //             {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-    //             <Text note style={{
-    //                 marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-    //             }}>{section.title1}</Text>
-    //             <Text note style={{
-    //                 marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-    //             }}>{section.title2}</Text>
-    //
-    //         </View>
-    //
-    //     );
-    // }
+        // return (
 
-    // _renderContent(section) {
-    //     // return (
-    //         cardListArr = this.state.thisticket.map((AllTicket)=>{
-    //             ticketkeys=Object.keys(AllTicket);
-    //             // var ticketkeys=Object.keys(AllTicket);
-    //             // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
-    //             return(
-    //                 <View style={{  paddingRight:25,
-    //                     paddingLeft:35,
-    //                     paddingTop:20,}}>
-    //                     <Card>
-    //
-    //                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-    //                             <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
-    //                             }} >SmarTran Ticket
-    //                             </Text>
-    //                         </View>
-    //
-    //                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-    //                             <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-    //                                 {/*<Text note style={{*/}
-    //                                 {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                                 {/*}}>{ticketkeys[0]  }</Text>*/}
-    //                                 <Text note style={{
-    //                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                 }}>{ticketkeys[1] }</Text>
-    //                                 <Text note style={{
-    //                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                 }}>{ticketkeys[2] }</Text>
-    //                                 <Text note style={{
-    //                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                 }}>{ticketkeys[3]}</Text>
-    //                                 <Text note style={{
-    //                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                 }}>{ticketkeys[4]}</Text>
-    //                                 {/*<Text note style={{*/}
-    //                                 {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                                 {/*}}>{ticketkeys[5]}</Text>*/}
-    //                                 {/*<Text note style={{*/}
-    //                                 {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                                 {/*}}>{ticketkeys[6]}</Text>*/}
-    //                                 <Text note style={{
-    //                                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                 }}>{ticketkeys[7] }</Text>
-    //                                 {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-    //                             </View>
-    //                             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-    //                                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-    //                                     {/*<Text note style={{*/}
-    //                                     {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                                     {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
-    //                                     <Text note style={{
-    //                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                     }}>{":" + AllTicket[ticketkeys[1]]}</Text>
-    //                                     <Text note style={{
-    //                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                     }}>{":" + AllTicket[ticketkeys[2]]}</Text>
-    //                                     <Text note style={{
-    //                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                     }}>{":" + AllTicket[ticketkeys[3]]}</Text>
-    //                                     <Text note style={{
-    //                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                     }}>{":" + AllTicket[ticketkeys[4]]}</Text>
-    //                                     {/*<Text note style={{*/}
-    //                                     {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                                     {/*}}>{":" + AllTicket[ticketkeys[5]]}</Text>*/}
-    //                                     {/*<Text note style={{*/}
-    //                                     {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                                     {/*}}>{":" + AllTicket[ticketkeys[6]]}</Text>*/}
-    //                                     <Text note style={{
-    //                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-    //                                     }}>{":" + AllTicket[ticketkeys[7]]}</Text>
-    //                                     {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-    //                                 </View>
-    //                             </View>
-    //                         </View>
-    //                         {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-    //                         {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-    //                         {/*<Text note style={{*/}
-    //                         {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-    //                         {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
-    //                         {/*/!*{this.setState((({thiscard: cardInfo}), ticketListArr))}*!/*/}
-    //                         {/*</View>*/}
-    //                         {/*</View>*/}
-    //
-    //                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-    //                             <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
-    //                         </View>
-    //                         {/*<Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'*/}
-    //                         {/*}} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}*/}
-    //                         {/*</Text>*/}
-    //                     </Card>
-    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>*/}
-    //                         {/*<Text note style={{*/}
-    //                             {/*marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'*/}
-    //                         {/*}}>{AllTicket[ticketkeys[5]]}</Text>*/}
-    //                         {/*<Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To*/}
-    //                         {/*</Text>*/}
-    //                         {/*<Text note style={{*/}
-    //                             {/*marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'*/}
-    //                         {/*}}>{AllTicket[ticketkeys[6]]}{"\n"}{"\n"}{"\n"}{"\n"}</Text>*/}
-    //                     {/*</View>*/}
-    //
-    //                 </View>
-    //                 // ));
-    //             );
-    //         });
-    //     // );
-    // }
+        //         var ticketobj = [currentTicket];
+        // ticketobj.forEach(function(AllTicket){
+        //     var ticketkeys=Object.keys(AllTicket);
+        //     <Text note style={{
+        //         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+        //     }}>{ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]}</Text>
+        //         alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+        //
+        // })
+        // // )
+    }
 
     render() {
-        const SECTIONS = [
-            {
-                title: ' \n ',
-                title1:' \n ',
-                title2:' \n '
-
-                // content: '  \n' +
-                // '5:51 PM    \n'
-                // + '                  \n'
-                // + '                  \n'
-                // + '                  \n'
-                // + '                  \n'
-                // + '                  \n'
-                // + '7:00 PM           \n ',
-                // content1:'  \n' + this.props.fromLoc +
-                // '\n' +
-                // '\n' +
-                // '  \n' +
-                // ' 625M   (\u20B9 72/-)\n' +
-                // '  \n' +
-                // '\n'+
-                // this.props.toLoc
-
-            },
-            // {
-            //     title: '635MA',title1:'5:45 PM \n '+
-            //     '',title2:'\u20B9 '+ rupesstitile[1].price +'\n',
-            //
-            //     content: '\n'+
-            //     '5:45 PM    \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '6:46 PM           \n'
-            //     + '6:52 PM           \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '7:00 PM           \n ',
-            //     content1:'\n'+ this.props.fromLoc+
-            //     '\n'+
-            //     + '\n'
-            //     + '635MA   (\u20B9 34/-)\n'
-            //     + '\n'
-            //     + 'Lakdikapul\n'
-            //     + '\n'
-            //     + '639A   (\u20B9 34/-)\n'
-            //     +  this.props.toLoc
-            //
-            // },
-            // {
-            //     title: '645TA',title1:'5:45 PM \n '+
-            //     '',title2:'\u20B9 '+ rupesstitile[2].price +'\n',
-            //
-            //     content: '\n'+
-            //     '5:45 PM    \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '6:46 PM           \n'
-            //     + '6:52 PM           \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '7:00 PM           \n ',
-            //     content1:'\n'+ this.props.fromLoc+
-            //     '\n'+
-            //     + '\n'
-            //     + '645TA   (\u20B9 35/-)\n'
-            //     + '\n'
-            //     + 'Lakdikapul\n'
-            //     + '\n'
-            //     + '648KL   (\u20B9 35/-)\n'
-            //     +  this.props.toLoc
-            //
-            // },
-            // {
-            //     title: '650N',title1:'5:55 PM \n '+
-            //     '',title2:'\u20B9 '+ rupesstitile[3].price +'\n',
-            //
-            //     content: '\n'+
-            //     '5:55 PM    \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '6:56 PM           \n'
-            //     + '7:01 PM           \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '7:04 PM           \n ',
-            //     content1:'\n'+ this.props.fromLoc+
-            //     '\n'+
-            //     + '\n'
-            //     + '650N   (\u20B9 32/-)\n'
-            //     + '\n'
-            //     + 'Lakdikapul\n'
-            //     + '\n'
-            //     + '652H   (\u20B9 32/-)\n'
-            //     +  this.props.toLoc
-            //
-            //
-            // },
-            // {
-            //     title: '625M',title1:'5:56 PM \n '+
-            //     '',title2:'\u20B9 '+ rupesstitile[4].price +'\n',
-            //
-            //     content: '  \n' +
-            //     '5:56 PM    \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '                  \n'
-            //     + '7:03 PM           \n ',
-            //     content1:'  \n' + this.props.fromLoc+
-            //     '\n' +
-            //     '\n' +
-            //     '\n'+
-            //     '625M   (\u20B9 72/-)\n' +
-            //     '\n' +
-            //     '  \n' +
-            //     this.props.toLoc
-            // },
-        ];
 
         // const { ticketdata: list } = this.state.thiscard;
         //         ticketListArr = list && list.map(({Authority, Date},index) => {
@@ -417,120 +164,121 @@ export default class TicketScreen extends Component {
         // ticketListArr = this.state.thiscard.forEach(function(AllTicket){
         //     ticketkeys=Object.keys(AllTicket);
 
-            {/*<Text note style={{*/}
-                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-            {/*}}>{ticketkeys[0] + ":" + AllTicket[ticketkeys[0]]}</Text>*/}
-            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+        {/*<Text note style={{*/}
+        {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+        {/*}}>{ticketkeys[0] + ":" + AllTicket[ticketkeys[0]]}</Text>*/}
+        // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
 
         // });
         // const { thisticket: list } = this.state.thisticket
-        // cardListArr = this.state.thisticket.map((AllTicket)=>{
-        //     ticketkeys=Object.keys(AllTicket);
-        //     // var ticketkeys=Object.keys(AllTicket);
-        //     // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
-        //     return(
-        //     <View style={{  paddingRight:25,
-        //         paddingLeft:35,
-        //         paddingTop:20,}}>
-        //         <Card>
-        //
-        //             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-        //                 <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
-        //                 }} >SmarTran Ticket
-        //                 </Text>
-        //             </View>
-        //
-        //             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-        //                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-        //                 {/*<Text note style={{*/}
-        //                     {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                      {/*}}>{ticketkeys[0]  }</Text>*/}
-        //                     <Text note style={{
-        //                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                     }}>{ticketkeys[1] }</Text>
-        //                     <Text note style={{
-        //                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                     }}>{ticketkeys[2] }</Text>
-        //                     <Text note style={{
-        //                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                     }}>{ticketkeys[3]}</Text>
-        //                     <Text note style={{
-        //                     marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                      }}>{ticketkeys[4]}</Text>
-        //                     {/*<Text note style={{*/}
-        //                         {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                     {/*}}>{ticketkeys[5]}</Text>*/}
-        //                     {/*<Text note style={{*/}
-        //                         {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                     {/*}}>{ticketkeys[6]}</Text>*/}
-        //                     <Text note style={{
-        //                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                     }}>{ticketkeys[7] }</Text>
-        //                 {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-        //                 </View>
-        //                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-        //                     <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-        //                         {/*<Text note style={{*/}
-        //                             {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                         {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
-        //                         <Text note style={{
-        //                             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                         }}>{":" + AllTicket[ticketkeys[1]]}</Text>
-        //                         <Text note style={{
-        //                             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                         }}>{":" + AllTicket[ticketkeys[2]]}</Text>
-        //                         <Text note style={{
-        //                             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                         }}>{":" + AllTicket[ticketkeys[3]]}</Text>
-        //                         <Text note style={{
-        //                             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                         }}>{":" + AllTicket[ticketkeys[4]]}</Text>
-        //                         {/*<Text note style={{*/}
-        //                             {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                         {/*}}>{":" + AllTicket[ticketkeys[5]]}</Text>*/}
-        //                         {/*<Text note style={{*/}
-        //                             {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                         {/*}}>{":" + AllTicket[ticketkeys[6]]}</Text>*/}
-        //                         <Text note style={{
-        //                             marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-        //                         }}>{":" + AllTicket[ticketkeys[7]]}</Text>
-        //                         {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-        //                     </View>
-        //                 </View>
-        //             </View>
-        //             {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-        //                 {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-        //                 {/*<Text note style={{*/}
-        //                     {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-        //                 {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
-        //                 {/*/!*{this.setState((({thiscard: cardInfo}), ticketListArr))}*!/*/}
-        //                 {/*</View>*/}
-        //             {/*</View>*/}
-        //
-        //             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-        //                 <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
-        //             </View>
-        //             <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
-        //             }} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}
-        //             </Text>
-        //         </Card>
-        //         <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
-        //             {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-        //             <Text note style={{
-        //                 marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-        //             }}>{AllTicket[ticketkeys[5]]}</Text>
-        //             <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
-        //             </Text>
-        //             {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-        //             <Text note style={{
-        //                 marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-        //             }}>{AllTicket[ticketkeys[6]]}{"\n"}{"\n"}{"\n"}{"\n"}</Text>
-        //         </View>
-        //
-        //     </View>
-        // // ));
-        //     );
-        // });
+        cardListArr = this.state.thisticket.reverse().map((AllTicket)=>{
+            ticketkeys=Object.keys(AllTicket);
+            // var ticketkeys=Object.keys(AllTicket);
+            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+            return(
+                <View style={{  paddingRight:25,
+                    paddingLeft:35,
+                    paddingTop:20,}}>
+                    <Card>
+
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
+                            }} >SmarTran Ticket
+                            </Text>
+                        </View>
+
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                {/*<Text note style={{*/}
+                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                {/*}}>{ticketkeys[0]  }</Text>*/}
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{ticketkeys[1] }</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{ticketkeys[2] }</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{ticketkeys[3]}</Text>
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{ticketkeys[4]}</Text>
+                                {/*<Text note style={{*/}
+                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                {/*}}>{ticketkeys[5]}</Text>*/}
+                                {/*<Text note style={{*/}
+                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                {/*}}>{ticketkeys[6]}</Text>*/}
+                                <Text note style={{
+                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                }}>{ticketkeys[7] }</Text>
+                                {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
+                            </View>
+                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
+                                    {/*<Text note style={{*/}
+                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                    {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
+                                    <Text note style={{
+                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                    }}>{":" + AllTicket[ticketkeys[1]]}</Text>
+                                    <Text note style={{
+                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                    }}>{":" + AllTicket[ticketkeys[2]]}</Text>
+                                    <Text note style={{
+                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                    }}>{":" + AllTicket[ticketkeys[3]]}</Text>
+                                    <Text note style={{
+                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                    }}>{":" + AllTicket[ticketkeys[4]]}</Text>
+                                    {/*<Text note style={{*/}
+                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                    {/*}}>{":" + AllTicket[ticketkeys[5]]}</Text>*/}
+                                    {/*<Text note style={{*/}
+                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                                    {/*}}>{":" + AllTicket[ticketkeys[6]]}</Text>*/}
+                                    <Text note style={{
+                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
+                                    }}>{":" + AllTicket[ticketkeys[7]]}</Text>
+                                    {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
+                                </View>
+                            </View>
+                        </View>
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        {/*<Text note style={{*/}
+                        {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
+                        {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
+                        {/*/!*{this.setState((({thiscard: cardInfo}), ticketListArr))}*!/*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                            <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
+                        </View>
+                        <Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'
+                        }} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}
+                        </Text>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
+                            {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
+                            }}>{AllTicket[ticketkeys[5]]}</Text>
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                            </Text>
+                            {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
+                            }}>{AllTicket[ticketkeys[6]]}{"\n"}{"\n"}{"\n"}{"\n"}</Text>
+                        </View>
+                    </Card>
+
+
+                </View>
+                // ));
+            );
+        });
 
         return (
 
@@ -583,139 +331,7 @@ export default class TicketScreen extends Component {
 
                     </View>
                     <View >
-                        {/*<Accordion*/}
-                            {/*sections={{cardListArr}}*/}
-                            {/*renderHeader={this._renderHeader}*/}
-                            {/*renderContent={this._renderContent}*/}
-                        {/*>*/}
-                        {/*</Accordion>*/}
-                        <Accordion  SECTIONS={SECTIONS} renderHeader={(title) => <Card>
-                            <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
-                                {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                <Text note style={{
-                                    marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-                                }}>{ticketkeys[5]+ ":"+ AllTicket[ticketkeys[5]]}</Text>
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
-                                </Text>
-                                {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                                <Text note style={{
-                                    marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-                                }}>{ticketkeys[6]+ ":"+ AllTicket[ticketkeys[6]]}</Text>
-                                <Text note style={{
-                                    marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-                                }}>{ticketkeys[1]+ ":"+ AllTicket[ticketkeys[1]]}</Text>
-
-                            </View>
-                        </Card>}
-                                    renderContent={(content) => {
-                                        cardListArr = this.state.thisticket.map((AllTicket)=>{
-                                            ticketkeys=Object.keys(AllTicket);
-                                            // var ticketkeys=Object.keys(AllTicket);
-                                            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
-                                            return(
-                                                <View style={{  paddingRight:25,
-                                                    paddingLeft:35,
-                                                    paddingTop:20,}}>
-                                                    <Card>
-
-                                                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                                            <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
-                                                            }} >SmarTran Ticket
-                                                            </Text>
-                                                        </View>
-
-                                                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                                            <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                                                {/*<Text note style={{*/}
-                                                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                                {/*}}>{ticketkeys[0]  }</Text>*/}
-                                                                <Text note style={{
-                                                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                }}>{ticketkeys[1] }</Text>
-                                                                <Text note style={{
-                                                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                }}>{ticketkeys[2] }</Text>
-                                                                <Text note style={{
-                                                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                }}>{ticketkeys[3]}</Text>
-                                                                <Text note style={{
-                                                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                }}>{ticketkeys[4]}</Text>
-                                                                {/*<Text note style={{*/}
-                                                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                                {/*}}>{ticketkeys[5]}</Text>*/}
-                                                                {/*<Text note style={{*/}
-                                                                {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                                {/*}}>{ticketkeys[6]}</Text>*/}
-                                                                <Text note style={{
-                                                                    marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                }}>{ticketkeys[7] }</Text>
-                                                                {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-                                                            </View>
-                                                            <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                                                    {/*<Text note style={{*/}
-                                                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                                    {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
-                                                                    <Text note style={{
-                                                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                    }}>{":" + AllTicket[ticketkeys[1]]}</Text>
-                                                                    <Text note style={{
-                                                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                    }}>{":" + AllTicket[ticketkeys[2]]}</Text>
-                                                                    <Text note style={{
-                                                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                    }}>{":" + AllTicket[ticketkeys[3]]}</Text>
-                                                                    <Text note style={{
-                                                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                    }}>{":" + AllTicket[ticketkeys[4]]}</Text>
-                                                                    {/*<Text note style={{*/}
-                                                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                                    {/*}}>{":" + AllTicket[ticketkeys[5]]}</Text>*/}
-                                                                    {/*<Text note style={{*/}
-                                                                    {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                                    {/*}}>{":" + AllTicket[ticketkeys[6]]}</Text>*/}
-                                                                    <Text note style={{
-                                                                        marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                                                    }}>{":" + AllTicket[ticketkeys[7]]}</Text>
-                                                                    {/*{this.setState((({thiscard: cardInfo}), ticketListArr))}*/}
-                                                                </View>
-                                                            </View>
-                                                        </View>
-                                                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                                        {/*<Text note style={{*/}
-                                                        {/*marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'*/}
-                                                        {/*}}>{":" + AllTicket[ticketkeys[0]]}</Text>*/}
-                                                        {/*/!*{this.setState((({thiscard: cardInfo}), ticketListArr))}*!/*/}
-                                                        {/*</View>*/}
-                                                        {/*</View>*/}
-
-                                                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                                            <Image source={require('../Images/qr_code.png')} style={{marginTop:20,height: 80, width: 80,alignItems:'center'}}/>
-                                                        </View>
-                                                        {/*<Text note style={{textAlign:'center',color:'#000',marginTop:10,marginBottom:20,fontSize:14,fontStyle:'italic',justifyContent: 'flex-start'*/}
-                                                        {/*}} >Valid for one trip on {AllTicket[ticketkeys[1]]} only{"\n"}{"\n"}{"\n"}*/}
-                                                        {/*</Text>*/}
-                                                    </Card>
-                                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>*/}
-                                                    {/*<Text note style={{*/}
-                                                    {/*marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'*/}
-                                                    {/*}}>{AllTicket[ticketkeys[5]]}</Text>*/}
-                                                    {/*<Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To*/}
-                                                    {/*</Text>*/}
-                                                    {/*<Text note style={{*/}
-                                                    {/*marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'*/}
-                                                    {/*}}>{AllTicket[ticketkeys[6]]}{"\n"}{"\n"}{"\n"}{"\n"}</Text>*/}
-                                                    {/*</View>*/}
-
-                                                </View>
-                                                // ));
-                                            );
-                                        });
-
-                                        return cardListArr
-                                    }} />
+                        {cardListArr}
                     </View>
                 </ScrollView>
                 <View style={[styles.footer]}>

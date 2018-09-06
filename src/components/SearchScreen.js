@@ -47,16 +47,12 @@ var  SECTIONS;
 export default class SearchScreen extends Component {
 
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         // this.state = {
         //     selected: "At",
         //
         // };
-        this.state= {
-            activeTab: 'home',
-        };
-
         // this.state ={
         //     showacimage:false
         // };
@@ -71,6 +67,7 @@ export default class SearchScreen extends Component {
         //     count: 0
         // };
         this.state ={
+            activeTab: 'home',
             selectedvalue:'',
             isDateTimePickerVisible: false,
             uniqueValue:1,
@@ -83,6 +80,7 @@ export default class SearchScreen extends Component {
             showthirdroute: false,
             showfourthroute: false,
             showfifthroute: false,
+            date: this.props.tripdte,
         };
 
         this.onChangeTextPress=this.onChangeTextPress.bind(this);
