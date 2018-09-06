@@ -220,7 +220,7 @@ export default class PaymentScreen extends Component {
 
         temptickets = {
             "Authority":"TSRTC",
-            "Date":Moment(this.props.tripdte).format('DD/MM/YYYY h:mm A'),
+            "Date":Moment(this.props.tripdte).format('DD/MM/YYYY'),
             "Ticket Number":"1001000000001",
             "Price":"\u20B9 45/-",
             "Number of Riders":"1",
@@ -276,16 +276,28 @@ export default class PaymentScreen extends Component {
                             }} > &#8377;45/-
                             </Text>
                         </View>
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
+                        <View style={{flexDirection:"row",justifyContent:'flex-start',marginBottom:10}}>
+                            <View style={{flexDirection:"column",justifyContent:'flex-start'}}>
                             {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} >{this.props.fromLoc}
-                            </Text>
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
-                            </Text>
-                            {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}
-                            </Text>
+                                <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5,marginLeft: 5}} >From
+                                </Text>
 
+                                <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5,marginLeft: 5}} >To
+                                </Text>
+                            {/*/!*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*!/*/}
+                            {/*<Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}*/}
+                            {/*</Text>*/}
+
+                            </View>
+                            <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
+                                <View styl={{flexDirection:"column",justifyContent:'flex-start'}}>
+                                    <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5}} > : {this.props.fromLoc}
+                                    </Text>
+
+                                    <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5}} > : {this.props.toLoc}
+                                    </Text>
+                                </View>
+                            </View>
 
                         </View>
 
@@ -372,8 +384,7 @@ export default class PaymentScreen extends Component {
                                     }} >: TSRTC
                                     </Text>
                                     <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
-                                    }} >: {Moment(this.props.tripdte).format('DD/MM/YYYY ' +
-                                        'h:mm A')}
+                                    }} >: {Moment(this.props.tripdte).format('DD/MM/YYYY ')}
                                     </Text>
 
                                     <Text note style={{fontSize:14,color:'#000',justifyContent:'flex-end',marginTop:5,
