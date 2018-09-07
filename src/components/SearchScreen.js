@@ -42,6 +42,7 @@ const nonac_icon_blue = require('../Images/nonac_icon_blue.png');
 const nonac_icon_grey = require('../Images/nonac_icon_grey.png');
 var rupesstitile;
 var  SECTIONS;
+var RouteTimings;
 
 export default class SearchScreen extends Component {
 
@@ -74,12 +75,11 @@ export default class SearchScreen extends Component {
             showacview: true,
             shownonacview: true,
             count: 1,
-            showfirstroute: false,
-            showsecondroute: false,
-            showthirdroute: false,
-            showfourthroute: false,
-            showfifthroute: false,
             date: this.props.tripdte,
+            routetimeindex: 0,
+            firstbusfare:0,
+            secondbusfare:0,
+            totalfare: 0,
         };
 
         this.onChangeTextPress=this.onChangeTextPress.bind(this);
@@ -90,53 +90,48 @@ export default class SearchScreen extends Component {
     state = {}
 
     openDialog(sectionnumber) {
+
     switch(sectionnumber) {
         case 'first':
-            this.setState({showfirstroute: true});
-            this.setState({showsecondroute: false});
-            this.setState({showthirdroute: false});
-            this.setState({showfourthroute: false});
-            this.setState({showfifthroute: false});
+            this.setState({ routetimeindex: 0 });
+            this.setState({ firstbusfare: RouteTimings[0].FirstBusFare });
+            this.setState({ secondbusfare: RouteTimings[0].SecondBusFare });
+            this.setState({totalfare: RouteTimings[0].FirstBusFare + RouteTimings[0].SecondBusFare});
             this.setState({ showDialog: true });
             break;
         case 'second':
-            this.setState({showfirstroute: false});
-            this.setState({showsecondroute: true});
-            this.setState({showthirdroute: false});
-            this.setState({showfourthroute: false});
-            this.setState({showfifthroute: false});
+            this.setState({ routetimeindex: 1 });
+            this.setState({ firstbusfare: RouteTimings[1].FirstBusFare });
+            this.setState({ secondbusfare: RouteTimings[1].SecondBusFare });
+            this.setState({totalfare: RouteTimings[1].FirstBusFare + RouteTimings[1].SecondBusFare});
             this.setState({ showDialog: true });
             break;
         case 'third':
-            this.setState({showfirstroute: false});
-            this.setState({showsecondroute: false});
-            this.setState({showthirdroute: true});
-            this.setState({showfourthroute: false});
-            this.setState({showfifthroute: false});
+            this.setState({ routetimeindex: 2 });
+            this.setState({ firstbusfare: RouteTimings[2].FirstBusFare });
+            this.setState({ secondbusfare: RouteTimings[2].SecondBusFare });
+            this.setState({totalfare: RouteTimings[2].FirstBusFare + RouteTimings[2].SecondBusFare});
             this.setState({ showDialog: true });
             break;
         case 'fourth':
-            this.setState({showfirstroute: false});
-            this.setState({showsecondroute: false});
-            this.setState({showthirdroute: false});
-            this.setState({showfourthroute: true});
-            this.setState({showfifthroute: false});
+            this.setState({ routetimeindex: 3 });
+            this.setState({ firstbusfare: RouteTimings[3].FirstBusFare });
+            this.setState({ secondbusfare: RouteTimings[3].SecondBusFare });
+            this.setState({totalfare: RouteTimings[3].FirstBusFare + RouteTimings[3].SecondBusFare});
             this.setState({ showDialog: true });
             break;
         case 'fifth':
-            this.setState({showfirstroute: false});
-            this.setState({showsecondroute: false});
-            this.setState({showthirdroute: false});
-            this.setState({showfourthroute: false});
-            this.setState({showfifthroute: true});
+            this.setState({ routetimeindex: 4 });
+            this.setState({ firstbusfare: RouteTimings[4].FirstBusFare });
+            this.setState({ secondbusfare: RouteTimings[4].SecondBusFare });
+            this.setState({totalfare: RouteTimings[4].FirstBusFare + RouteTimings[4].SecondBusFare});
             this.setState({ showDialog: true });
             break;
         default:
-            this.setState({showfirstroute: false});
-            this.setState({showsecondroute: false});
-            this.setState({showthirdroute: false});
-            this.setState({showfourthroute: false});
-            this.setState({showfifthroute: false});
+            this.setState({ routetimeindex: 0 });
+            this.setState({ firstbusfare: RouteTimings[0].FirstBusFare });
+            this.setState({ secondbusfare: RouteTimings[0].SecondBusFare });
+            this.setState({totalfare: RouteTimings[0].FirstBusFare + RouteTimings[0].SecondBusFare});
             this.setState({ showDialog: false });
             break;
     }
@@ -223,14 +218,15 @@ export default class SearchScreen extends Component {
 
     increment  = () => {
         this.setState({
-            count: this.state.count + 1
+            count: this.state.count + 1,
+            totalfare: (this.state.firstbusfare + this.state.secondbusfare) * this.state.count,
         });
     }
 
     decrement  = () => {
         this.setState({
-            
-            count: (this.state.count > 1) ? (this.state.count - 1) : 1
+            count: (this.state.count > 1) ? (this.state.count - 1) : 1,
+            totalfare: (this.state.firstbusfare + this.state.secondbusfare) * this.state.count,
         });
     }
 
@@ -677,135 +673,197 @@ export default class SearchScreen extends Component {
             },
 
         ];
-         SECTIONS = [
-            {
-                title: '625M',title1:'5:51 PM \n '+
-                '',title2:'\u20B9 '+ rupesstitile[0].price +'\n',
 
-                content: '  \n' +
-                '5:51 PM    \n'
-                + '                  \n'
-                + '                  \n'
-                + '                  \n'
-                + '                  \n'
-                + '                  \n'
-                + '7:00 PM           \n ',
-                content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-                 + '\n'
-                 + '\n'
-                 + '\n'
-                 +' 625M   (\u20B9 72/-)\n'
-                 +'\n'
-                 +'\n'+
-                ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+        RouteTimings = [
+            {
+                FirstBusNumber: '625M',
+                FirstArrivalTime:'5:51 PM',
+                FirstDestinationTime:'7:00 PM',
+                FirstOriginName: (this.props.fromLoc),
+                FirstDestinationName:(this.props.toLoc),
+                FirstBusFare:72,
+                SecondBusFare: 0,
 
             },
             {
-                title: '635MA',title1:'5:45 PM \n '+
-                '',title2:'\u20B9 '+ rupesstitile[1].price +'\n',
-
-                content: '5:45 PM    \n'
-                + '                  \n'
-                + '                  \n'
-                + '6:46 PM           \n'
-                + '                  \n'
-                + '                  \n'
-                + '6:52 PM           \n'
-                + '                  \n'
-                + '                  \n'
-                + '7:00 PM           \n ',
-               content1:  ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-                +'\n'
-                + '\n'
-                + '635MA   (\u20B9 34/-)\n'
-                + '\n'
-                +'\n'
-                + 'Lakdikapul\n'
-                + '\n'
-                + '639A   (\u20B9 34/-)\n'
-                + '\n'
-                +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+                FirstBusNumber: '635MA',
+                FirstArrivalTime:'5:45 PM',
+                FirstDestinationTime:'6:46 PM',
+                FirstOriginName: (this.props.fromLoc),
+                FirstDestinationName:'Lakdikapul',
+                FirstBusFare:33,
+                SecondBusNumber: '639A',
+                SecondArrivalTime:'6:52 PM',
+                SecondDestinationTime:'7:00 PM',
+                SecondDestinationName:(this.props.toLoc),
+                SecondBusFare:35,
 
             },
             {
-                title: '645TA',title1:'5:45 PM \n '+
-                '',title2:'\u20B9 '+ rupesstitile[2].price +'\n',
-
-                content: '5:45 PM    \n'
-                + '                  \n'
-                + '                  \n'
-                + '6:46 PM           \n'
-                + '                  \n'
-                + '                  \n'
-                + '6:52 PM           \n'
-                + '                  \n'
-                + '                  \n'
-                + '7:00 PM           \n ',
-               content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-                + '\n'
-                + '\n'
-                + '645TA   (\u20B9 35/-)\n'
-                + '\n'
-                +'\n'
-                + 'Lakdikapul\n'
-                + '\n'
-                + '648KL   (\u20B9 35/-)'
-                +'\n'
-                + '\n'
-                +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-
+                FirstBusNumber: '645TA',
+                FirstArrivalTime:'5:45 PM',
+                FirstDestinationTime:'6:46 PM',
+                FirstOriginName: (this.props.fromLoc),
+                FirstDestinationName:'Lakdikapul',
+                FirstBusFare:34,
+                SecondBusNumber: '648KL',
+                SecondArrivalTime:'6:52 PM',
+                SecondDestinationTime:'7:00 PM',
+                SecondDestinationName:(this.props.toLoc),
+                SecondBusFare:36,
             },
             {
-                title: '650N',title1:'5:55 PM \n '+
-                '',title2:'\u20B9 '+ rupesstitile[3].price +'\n',
-
-                content: '5:55 PM    \n'
-                + '                  \n'
-                + '                  \n'
-                + '6:56 PM           \n'
-                + '                  \n'
-                + '                  \n'
-                + '7:01 PM           \n'
-                + '                  \n'
-                + '                  \n'
-                + '7:04 PM           \n ',
-               content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-                + '\n'
-                + '\n'
-                + '650N   (\u20B9 32/-)\n'
-                + '\n'
-                + '\n'
-                + 'Lakdikapul\n'
-                + '\n'
-                + '652H   (\u20B9 32/-)'
-                +'\n'
-                +'\n'
-                +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-
-
+                FirstBusNumber: '650N',
+                FirstArrivalTime:'5:55 PM',
+                FirstDestinationTime:'6:56 PM',
+                FirstOriginName: (this.props.fromLoc),
+                FirstDestinationName:'Lakdikapul',
+                FirstBusFare:30,
+                SecondBusNumber: '652H',
+                SecondArrivalTime:'7:01 PM',
+                SecondDestinationTime:'7:04 PM',
+                SecondDestinationName:(this.props.toLoc),
+                SecondBusFare:34,
             },
             {
-                title: '625M',title1:'5:56 PM \n '+
-                '',title2:'\u20B9 '+ rupesstitile[4].price +'\n',
-
-                content: '  \n' +
-                '5:56 PM    \n'
-                + '                  \n'
-                + '                  \n'
-                + '                  \n'
-                + '                  \n'
-                + '                  \n'
-                + '7:03 PM           \n ',
-                content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-                + '\n'
-                + '\n'
-                + '\n'
-                +'625M   (\u20B9 72/-)\n'
-                +'\n'
-                +'\n' +
-                ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+                FirstBusNumber: '625M',
+                FirstArrivalTime:'5:56 PM',
+                FirstDestinationTime:'7:03 PM',
+                FirstOriginName: (this.props.fromLoc),
+                FirstDestinationName:(this.props.toLoc),
+                FirstBusFare:72,
+                SecondBusFare: 0,
             },
         ];
+        //  SECTIONS = [
+        //     {
+        //         title: '625M',title1:'5:51 PM \n '+
+        //         '',title2:'\u20B9 '+ rupesstitile[0].price +'\n',
+        //
+        //         content: '  \n' +
+        //         '5:51 PM    \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '7:00 PM           \n ',
+        //         content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+        //          + '\n'
+        //          + '\n'
+        //          + '\n'
+        //          +' 625M   (\u20B9 72/-)\n'
+        //          +'\n'
+        //          +'\n'+
+        //         ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+        //
+        //     },
+        //     {
+        //         title: '635MA',title1:'5:45 PM \n '+
+        //         '',title2:'\u20B9 '+ rupesstitile[1].price +'\n',
+        //
+        //         content: '5:45 PM    \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '6:46 PM           \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '6:52 PM           \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '7:00 PM           \n ',
+        //        content1:  ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+        //         +'\n'
+        //         + '\n'
+        //         + '635MA   (\u20B9 34/-)\n'
+        //         + '\n'
+        //         +'\n'
+        //         + 'Lakdikapul\n'
+        //         + '\n'
+        //         + '639A   (\u20B9 34/-)\n'
+        //         + '\n'
+        //         +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+        //
+        //     },
+        //     {
+        //         title: '645TA',title1:'5:45 PM \n '+
+        //         '',title2:'\u20B9 '+ rupesstitile[2].price +'\n',
+        //
+        //         content: '5:45 PM    \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '6:46 PM           \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '6:52 PM           \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '7:00 PM           \n ',
+        //        content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+        //         + '\n'
+        //         + '\n'
+        //         + '645TA   (\u20B9 35/-)\n'
+        //         + '\n'
+        //         +'\n'
+        //         + 'Lakdikapul\n'
+        //         + '\n'
+        //         + '648KL   (\u20B9 35/-)'
+        //         +'\n'
+        //         + '\n'
+        //         +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+        //
+        //     },
+        //     {
+        //         title: '650N',title1:'5:55 PM \n '+
+        //         '',title2:'\u20B9 '+ rupesstitile[3].price +'\n',
+        //
+        //         content: '5:55 PM    \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '6:56 PM           \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '7:01 PM           \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '7:04 PM           \n ',
+        //        content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+        //         + '\n'
+        //         + '\n'
+        //         + '650N   (\u20B9 32/-)\n'
+        //         + '\n'
+        //         + '\n'
+        //         + 'Lakdikapul\n'
+        //         + '\n'
+        //         + '652H   (\u20B9 32/-)'
+        //         +'\n'
+        //         +'\n'
+        //         +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+        //
+        //
+        //     },
+        //     {
+        //         title: '625M',title1:'5:56 PM \n '+
+        //         '',title2:'\u20B9 '+ rupesstitile[4].price +'\n',
+        //
+        //         content: '  \n' +
+        //         '5:56 PM    \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '                  \n'
+        //         + '7:03 PM           \n ',
+        //         content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+        //         + '\n'
+        //         + '\n'
+        //         + '\n'
+        //         +'625M   (\u20B9 72/-)\n'
+        //         +'\n'
+        //         +'\n' +
+        //         ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
+        //     },
+        // ];
 
 
         let data = [{
@@ -877,9 +935,10 @@ export default class SearchScreen extends Component {
                                 fontSize={13}
                                 itemPadding={8}
                                 dropdownPosition={0}
-                                pickerStyle={{paddingLeft:200}}
+                                // pickerStyle={{paddingLeft:200}}
                                 containerStyle={{borderWidth:1, borderColor:'#FFFFFF', width:130,height:30,borderRadius:20,paddingTop:2,paddingLeft:width*0.04}}
                                 rippleCentered={true}
+                                overlayStyle={{position:'absolute',marginLeft:220,marginTop:87}}
                                 inputContainerStyle={{ borderBottomColor: 'transparent' }}
                                 dropdownOffset={top= 0}
                                 data={data}
@@ -1001,7 +1060,7 @@ export default class SearchScreen extends Component {
                         {/*<View  style={{flexDirection:'row',justifyContent:'center'}} >*/}
                         <Card>
                             <TouchableOpacity  onPress={() => {(this.openDialog('first'))}}>
-                            {(this.state.showacview) && (SECTIONS[0].title === '625M') &&
+                            {(this.state.showacview) && (RouteTimings[0].FirstBusNumber === '625M') &&
                             <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
                                     <Image source={require('../Images/live_icon.png')}
@@ -1013,7 +1072,7 @@ export default class SearchScreen extends Component {
                                         textAlign: 'left',
                                         marginLeft:2,
                                         // justifyContent:'flex-start'
-                                    }}>{SECTIONS[0].title1}</Text>
+                                    }}>{RouteTimings[0].FirstArrivalTime}</Text>
                                 </View>
                                 {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
@@ -1023,7 +1082,7 @@ export default class SearchScreen extends Component {
                                     <Text note style={{
                                         fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
                                         flex:5
-                                    }}>{SECTIONS[0].title}</Text>
+                                    }}>{RouteTimings[0].FirstBusNumber}</Text>
 
                                 </View>
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
@@ -1036,7 +1095,7 @@ export default class SearchScreen extends Component {
                                         marginRight:2
 
                                         //    justifyContent:'flex-end'
-                                    }}>{SECTIONS[0].title2}</Text>
+                                    }}>{RouteTimings[0].FirstBusFare}</Text>
                                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
                                     {/*,marginLeft:65,marginRight:2}}>*/}
                                     {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
@@ -1060,7 +1119,7 @@ export default class SearchScreen extends Component {
                             }
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => {(this.openDialog('second'))}}>
-                            {(this.state.shownonacview) && (SECTIONS[1].title === '635MA') &&
+                            {(this.state.shownonacview) && (RouteTimings[1].FirstBusNumber === '635MA') &&
                             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
 
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
@@ -1073,7 +1132,7 @@ export default class SearchScreen extends Component {
                                         textAlign: 'left',
                                         marginLeft:2
                                         // justifyContent:'flex-start'
-                                    }}>{SECTIONS[1].title1}</Text>
+                                    }}>{RouteTimings[1].FirstArrivalTime}</Text>
                                 </View>
                                 {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
@@ -1083,7 +1142,7 @@ export default class SearchScreen extends Component {
                                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                                     <Text note style={{color:'#000',
                                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{SECTIONS[1].title}</Text>
+                                    }}>{RouteTimings[1].FirstBusNumber}</Text>
 
                                 </View>
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
@@ -1093,7 +1152,7 @@ export default class SearchScreen extends Component {
 
                                     <Text note style={{color:'#000',
                                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>639A</Text>
+                                    }}>{RouteTimings[1].SecondBusNumber}</Text>
                                 </View>
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                                     <Text style={{
@@ -1105,7 +1164,7 @@ export default class SearchScreen extends Component {
                                         marginRight:2
 
                                         //    justifyContent:'flex-end'
-                                    }}>{SECTIONS[1].title2}</Text>
+                                    }}>{RouteTimings[1].FirstBusFare}</Text>
                                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
                                     {/*,marginLeft:65,marginRight:2}}>*/}
                                     {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
@@ -1128,7 +1187,7 @@ export default class SearchScreen extends Component {
                             }
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => {(this.openDialog('third'))}}>
-                            {(this.state.shownonacview) && (SECTIONS[2].title === '645TA') &&
+                            {(this.state.shownonacview) && (RouteTimings[2].FirstBusNumber === '645TA') &&
                             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                                     <Image source={require('../Images/live_icon.png')}
@@ -1140,7 +1199,7 @@ export default class SearchScreen extends Component {
                                         textAlign: 'left',
                                         marginLeft:2
                                         // justifyContent:'flex-start'
-                                    }}>{SECTIONS[2].title1}</Text>
+                                    }}>{RouteTimings[2].FirstArrivalTime}</Text>
                                 </View>
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
                                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
@@ -1149,7 +1208,7 @@ export default class SearchScreen extends Component {
                                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                                     <Text note style={{color:'#000',
                                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{SECTIONS[2].title}</Text>
+                                    }}>{RouteTimings[2].FirstBusNumber}</Text>
                                 </View>
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
                                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
@@ -1158,7 +1217,7 @@ export default class SearchScreen extends Component {
 
                                     <Text note style={{color:'#000',
                                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>648KL</Text>
+                                    }}>{RouteTimings[2].SecondBusNumber}</Text>
                                 </View>
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                                     <Text style={{
@@ -1170,7 +1229,7 @@ export default class SearchScreen extends Component {
                                         marginRight:2
 
                                         //    justifyContent:'flex-end'
-                                    }}>{SECTIONS[2].title2}</Text>
+                                    }}>{RouteTimings[2].FirstBusFare}</Text>
                                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
                                     {/*,marginLeft:60,marginRight:6}}>*/}
                                     {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
@@ -1193,7 +1252,7 @@ export default class SearchScreen extends Component {
                             }
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => {(this.openDialog('fourth'))}}>
-                            {(this.state.showacview) && (SECTIONS[3].title === '650N') &&
+                            {(this.state.showacview) && (RouteTimings[3].FirstBusNumber === '650N') &&
                             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
 
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
@@ -1206,7 +1265,7 @@ export default class SearchScreen extends Component {
                                         textAlign: 'left',
                                         marginLeft:2
                                         // justifyContent:'flex-start'
-                                    }}>{SECTIONS[3].title1}</Text>
+                                    }}>{RouteTimings[3].FirstArrivalTime}</Text>
                                 </View>
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
                                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
@@ -1215,7 +1274,7 @@ export default class SearchScreen extends Component {
                                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
                                     <Text note style={{color:'#000',
                                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{SECTIONS[3].title}</Text>
+                                    }}>{RouteTimings[3].FirstBusNumber}</Text>
 
                                 </View>
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
@@ -1225,7 +1284,7 @@ export default class SearchScreen extends Component {
 
                                     <Text note style={{color:'#000',
                                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
-                                    }}>652H</Text>
+                                    }}>{RouteTimings[3].SecondBusNumber}</Text>
                                 </View>
                                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
                                     <Text style={{
@@ -1236,7 +1295,7 @@ export default class SearchScreen extends Component {
                                         marginLeft:120,
                                         marginRight:2
                                         //    justifyContent:'flex-end'
-                                    }}>{SECTIONS[3].title2}</Text>
+                                    }}>{RouteTimings[3].FirstBusFare}</Text>
                                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
                                     {/*,marginLeft:65,marginRight:2}}>*/}
                                     {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
@@ -1261,7 +1320,7 @@ export default class SearchScreen extends Component {
                             }
                             </TouchableOpacity>
                             <TouchableOpacity  onPress={() => {(this.openDialog('fifth'))}}>
-                                {(this.state.showacview) && (SECTIONS[4].title === '625M') &&
+                                {(this.state.showacview) && (RouteTimings[4].FirstBusNumber === '625M') &&
                                 <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
                                     <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
                                         <Image source={require('../Images/live_icon.png')}
@@ -1273,7 +1332,7 @@ export default class SearchScreen extends Component {
                                             textAlign: 'left',
                                             marginLeft:2,
                                             // justifyContent:'flex-start'
-                                        }}>{SECTIONS[4].title1}</Text>
+                                        }}>{RouteTimings[4].FirstArrivalTime}</Text>
                                     </View>
                                     {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
                                     <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
@@ -1283,7 +1342,7 @@ export default class SearchScreen extends Component {
                                         <Text note style={{
                                             fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
                                             flex:5
-                                        }}>{SECTIONS[4].title}</Text>
+                                        }}>{RouteTimings[4].FirstBusNumber}</Text>
 
                                     </View>
                                     <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
@@ -1296,7 +1355,7 @@ export default class SearchScreen extends Component {
                                             marginRight:2
 
                                             //    justifyContent:'flex-end'
-                                        }}>{SECTIONS[4].title2}</Text>
+                                        }}>{RouteTimings[4].FirstBusFare}</Text>
                                         {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
                                         {/*,marginLeft:65,marginRight:2}}>*/}
                                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
@@ -1329,125 +1388,176 @@ export default class SearchScreen extends Component {
                         onTouchOutside={() => this.openDialog('done')}
                         contentStyle={{ justifyContent: 'center', alignItems: 'center' ,width:'100%' }}
                         animationType="fade">
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginLeft:10,marginRight:10}}>
-                            {(this.state.showfirstroute) &&
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:10,marginRight:10}}>
 
-                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
-
-                                {/*<Text>{this.props.fromLoc}</Text>*/}
-                                <Text >{SECTIONS[0].content}</Text>
-                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                                </View>
-                                <Text>{SECTIONS[0].content1}</Text>
+                            <View style={{flexDirection: "row"}}>
+                                <Text style={{flex: 2}}>{RouteTimings[this.state.routetimeindex].FirstArrivalTime}</Text>
+                                <Image source={require('../Images/from_icon.png')} style={{flex: 1, width: 15, height: 50}}/>
+                                <Text style={{flex: 3}}>{
+                                    (RouteTimings[this.state.routetimeindex].FirstOriginName.length > 15) ?
+                                        (RouteTimings[this.state.routetimeindex].FirstOriginName.substring(0,14)) + '...' :
+                                        (RouteTimings[this.state.routetimeindex].FirstOriginName)
+                                }</Text>
                             </View>
-                            }
-                        </View>
-                            {/*/!*<Text>{section.content}</Text>*!/*/}
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                            {(this.state.showsecondroute) &&
-                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
-                                <Text>{SECTIONS[1].content}</Text>
-                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
 
-                                </View>
-                                <Text>{SECTIONS[1].content1}</Text>
+                            <View style={{flexDirection: "row"}}>
+                                <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
+                                <Image source={require('../Images/line_coloricon.png')} style={{flex:1,width: 15, height: 50}}/>
+                                <Text  style={{flex: 3}}>{RouteTimings[this.state.routetimeindex].FirstBusNumber}</Text>
                             </View>
-                            }
-                        </View>
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                            {(this.state.showthirdroute) &&
-                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
-                                <Text>{SECTIONS[2].content}</Text>
-                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                                </View>
-                                <Text>{SECTIONS[2].content1}</Text>
+                            <View style={{flexDirection: "row"}}>
+                                <Text  style={{flex: 2}}>{RouteTimings[this.state.routetimeindex].FirstDestinationTime}</Text>
+                                <Image source={require('../Images/to_icon.png')} style={{flex:1,width: 15, height: 50}}/>
+                                <Text  style={{flex: 3}}>{
+                                    (RouteTimings[this.state.routetimeindex].FirstDestinationName.length > 15) ?
+                                        (RouteTimings[this.state.routetimeindex].FirstDestinationName.substring(0,14)) + '...' :
+                                        (RouteTimings[this.state.routetimeindex].FirstDestinationName)
+                                }</Text>
                             </View>
-                            }
-                        </View>
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                            {(this.state.showfourthroute) &&
-                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
-                                <Text>{SECTIONS[3].content}</Text>
-                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
 
-                                </View>
-                                <Text>{SECTIONS[3].content1}</Text>
+<View style={{flexDirection:'row'}}>
+    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
+                            <View style={{flex: 2,flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                                ,marginLeft:5,marginRight:2,marginBottom:15}}>
+                                <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
+                                }}
+                                        onPress={this.decrement}>
+                                    <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                        ,textAlign:'center'}}>-</Text>
+                                </Button>
+                                <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>
+                                {/*{this.state.count}*/}
+                                <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
+                                }}
+                                        onPress={this.increment}>
+                                    <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                        ,textAlign:'center'}}>+</Text>
+                                </Button>
                             </View>
-                            }
-                        </View>
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                            {(this.state.showfifthroute) &&
-                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
-                                <Text>{SECTIONS[4].content}</Text>
-                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-                                    <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-                                    <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-
-                                </View>
-                                <Text>{SECTIONS[4].content1}</Text>
-                            </View>
-                            }
-                        </View>
-                        <View style={{flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:5,marginRight:2,marginBottom:15}}>
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.decrement}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>-</Text>
-                            </Button>
-                            <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>
-                            {/*{this.state.count}*/}
-                            <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                            }}
-                                    onPress={this.increment}>
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                    ,textAlign:'center'}}>+</Text>
-                            </Button>
-                        </View>
-
+    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
+</View>
                             <Button style={{height:50,width:width-80,backgroundColor: '#2eacde',
                                 marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}
                                     onPress={() => {(this.openDialog(false)),Actions.paymentScreen(params)}} >
-                                    {/*onPress={() => Actions.paymentScreen(params)}>*/}
+                                {/*onPress={() => Actions.paymentScreen(params)}>*/}
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                     <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
                                         height: 25,alignItems:'center'}}/>
                                     <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
                                         ,textAlign:'center',paddingLeft:10}}>Buy</Text>
-
+                                    <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
+                                        ,textAlign:'center',paddingLeft:10}}>&#8377;{this.state.totalfare}/-</Text>
                                 </View>
                             </Button>
+                            <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
+                            }}
+                                    onPress={() => {(this.openDialog(false)),Actions.searchScreen(params)}} >
+                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
+                                    ,textAlign:'center'}}>Close</Text>
+                            </Button>
+                        </View>
+                            {/*/!*<Text>{section.content}</Text>*!/*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                            {/*{(this.state.showsecondroute) &&*/}
+                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
+                                {/*<Text>{SECTIONS[1].content}</Text>*/}
+                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+
+                                {/*</View>*/}
+                                {/*<Text>{SECTIONS[1].content1}</Text>*/}
+                            {/*</View>*/}
+                            {/*}*/}
+                        {/*</View>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                            {/*{(this.state.showthirdroute) &&*/}
+                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
+                                {/*<Text>{SECTIONS[2].content}</Text>*/}
+                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+
+                                {/*</View>*/}
+                                {/*<Text>{SECTIONS[2].content1}</Text>*/}
+                            {/*</View>*/}
+                            {/*}*/}
+                        {/*</View>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                            {/*{(this.state.showfourthroute) &&*/}
+                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
+                                {/*<Text>{SECTIONS[3].content}</Text>*/}
+                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+
+                                {/*</View>*/}
+                                {/*<Text>{SECTIONS[3].content1}</Text>*/}
+                            {/*</View>*/}
+                            {/*}*/}
+                        {/*</View>*/}
+                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                            {/*{(this.state.showfifthroute) &&*/}
+                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
+                                {/*<Text>{SECTIONS[4].content}</Text>*/}
+                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
+                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
+                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
+
+                                {/*</View>*/}
+                                {/*<Text>{SECTIONS[4].content1}</Text>*/}
+                            {/*</View>*/}
+                            {/*}*/}
+                        {/*</View>*/}
+                        {/*<View style={{flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
+                            {/*,marginLeft:5,marginRight:2,marginBottom:15}}>*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.decrement}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>-</Text>*/}
+                            {/*</Button>*/}
+                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
+                            {/*/!*{this.state.count}*!/*/}
+                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
+                            {/*}}*/}
+                                    {/*onPress={this.increment}>*/}
+                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
+                                    {/*,textAlign:'center'}}>+</Text>*/}
+                            {/*</Button>*/}
+                        {/*</View>*/}
+
+                            {/*<Button style={{height:50,width:width-80,backgroundColor: '#2eacde',*/}
+                                {/*marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}*/}
+                                    {/*onPress={() => {(this.openDialog(false)),Actions.paymentScreen(params)}} >*/}
+                                    {/*/!*onPress={() => Actions.paymentScreen(params)}>*!/*/}
+                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+                                    {/*<Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,*/}
+                                        {/*height: 25,alignItems:'center'}}/>*/}
+                                    {/*<Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'*/}
+                                        {/*,textAlign:'center',paddingLeft:10}}>Buy</Text>*/}
+
+                                {/*</View>*/}
+                            {/*</Button>*/}
 
                         {/*</View>*/}
 
-                        <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
-                        }}
-                                onPress={() => {(this.openDialog(false)),Actions.searchScreen(params)}} >
-                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
-                                ,textAlign:'center'}}>Close</Text>
-                        </Button>
+                        {/*<Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10*/}
+                        {/*}}*/}
+                                {/*onPress={() => {(this.openDialog(false)),Actions.searchScreen(params)}} >*/}
+                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2*/}
+                                {/*,textAlign:'center'}}>Close</Text>*/}
+                        {/*</Button>*/}
 
                         {/*<Button onPress={() => this.openDialog(false)}  title="CLOSE" />*/}
                     </Dialog>
@@ -1540,7 +1650,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor:'#0c71b7',
+        backgroundColor:'#4d6bcb',
     },
     headerview: {
         // height: 250,
@@ -1551,7 +1661,7 @@ const styles = StyleSheet.create({
         paddingRight:5,
         paddingLeft:5,
         paddingTop:15,
-        backgroundColor:'#0c71b7',
+        backgroundColor:'#4d6bcb',
         left: 0,
         right: 0,
         top:0,
@@ -1559,7 +1669,7 @@ const styles = StyleSheet.create({
 
     },
     content1: {
-        backgroundColor:'#0c71b7',
+        backgroundColor:'#4d6bcb',
         marginTop: 140,
 
     },
@@ -1573,8 +1683,8 @@ const styles = StyleSheet.create({
     },
     box: {
 
-        backgroundColor: '#0c71b7',
-        color:'#0C71B7',
+        backgroundColor: '#4d6bcb',
+        color:'#4d6bcb',
         // marginTop: 10
     },
     // container: {
@@ -1600,7 +1710,7 @@ const styles = StyleSheet.create({
         borderTopColor: 'black',
         borderTopWidth: 1,
         width: width - 20,
-        borderColor:'#0c71b7',
+        borderColor:'#4d6bcb',
         // borderBottomColor:'#FFFFFF',
         marginBottom:0,
         marginRight:5,
