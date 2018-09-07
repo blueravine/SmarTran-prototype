@@ -6,18 +6,23 @@ import { Container, Header, Content, Card, CardItem, Thumbnail,Picker,DeckSwiper
 import ToggleSwitch from 'toggle-switch-react-native';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import MultiToggleSwitch from 'react-native-multi-toggle-switch';
 import {Collapse, CollapseHeader, CollapseBody} from "accordion-collapse-react-native";
 import BottomNavigation, {
     ShiftingTab
 } from 'react-native-material-bottom-navigation'
 import { Dialog } from 'react-native-simple-dialogs';
+import DropdownMenu from 'react-native-dropdown-menu';
+import { Dropdown } from 'react-native-material-dropdown';
 var params;
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Icoons from 'react-native-vector-icons/SimpleLineIcons';
-import Iccons from 'react-native-vector-icons/FontAwesome';
-import Icconss from 'react-native-vector-icons/Foundation'
+
+// import Icoons from 'react-native-vector-icons/SimpleLineIcons';
+// import Iccons from 'react-native-vector-icons/FontAwesome';
+// import Icconss from 'react-native-vector-icons/Foundation'
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const { width } = Dimensions.get('window');
@@ -42,16 +47,12 @@ var  SECTIONS;
 export default class SearchScreen extends Component {
 
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         // this.state = {
         //     selected: "At",
         //
         // };
-        this.state= {
-            activeTab: 'home',
-        };
-
         // this.state ={
         //     showacimage:false
         // };
@@ -66,6 +67,11 @@ export default class SearchScreen extends Component {
         //     count: 0
         // };
         this.state ={
+            activeTab: 'home',
+            selectedvalue:'',
+            isDateTimePickerVisible: false,
+            uniqueValue:1,
+            text: '',
             showacview: true,
             shownonacview: true,
             count: 1,
@@ -74,9 +80,10 @@ export default class SearchScreen extends Component {
             showthirdroute: false,
             showfourthroute: false,
             showfifthroute: false,
+            date: this.props.tripdte,
         };
 
-
+        this.onChangeTextPress=this.onChangeTextPress.bind(this);
         // this._renderHeader = this._renderHeader.bind(this);
         // this._renderContent=this._renderContent.bind(this)
     }
@@ -134,6 +141,12 @@ export default class SearchScreen extends Component {
             this.setState({ showDialog: false });
             break;
     }
+    }
+
+    forceRemount=() =>{
+        this.setState(({uniqueValue})=>({
+            uniqueValue:uniqueValue+1
+        }));
     }
 
     // state = {
@@ -604,13 +617,42 @@ export default class SearchScreen extends Component {
     //         </View>
     //     );
     // }
+    _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+    _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
+    _handleDatePicked = (date) => {
+        this.setState({
+            date :  date
+        });
+        // params.tripdte = this.state.date;
+        this._hideDateTimePicker();
+    };
+
+    onChangeTextPress(value){
+
+        this.setState({selectedvalue: value});
+
+        switch(value) {
+            case 'All Buses':
+                this.setState({shownonacview: true, showacview: true});
+                break;
+            case 'A/C Buses':
+                this.setState({shownonacview: false, showacview: true});
+                break;
+            case 'Non A/C Buses':
+                this.setState({shownonacview: true, showacview: false});
+                break;
+            default:
+                this.setState({shownonacview: true, showacview: true});
+                break;
+        }
+    }
     render() {
         params = {};
         params = {
             fromLoc:this.props.fromLoc,
             toLoc:this.props.toLoc,
-            tripdte:this.props.tripdte,
+            tripdte:this.state.date,
         };
         rupesstitile=[
 
@@ -649,86 +691,97 @@ export default class SearchScreen extends Component {
                 + '                  \n'
                 + '                  \n'
                 + '7:00 PM           \n ',
-                content1:'  \n' + this.props.fromLoc +
-                '\n' +
-                '\n' +
-                '  \n' +
-                ' 625M   (\u20B9 72/-)\n' +
-                '  \n' +
-                '\n'+
-                this.props.toLoc
+                content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+                 + '\n'
+                 + '\n'
+                 + '\n'
+                 +' 625M   (\u20B9 72/-)\n'
+                 +'\n'
+                 +'\n'+
+                ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
 
             },
             {
                 title: '635MA',title1:'5:45 PM \n '+
                 '',title2:'\u20B9 '+ rupesstitile[1].price +'\n',
 
-                content: '\n'+
-                '5:45 PM    \n'
+                content: '5:45 PM    \n'
                 + '                  \n'
                 + '                  \n'
                 + '6:46 PM           \n'
+                + '                  \n'
+                + '                  \n'
                 + '6:52 PM           \n'
                 + '                  \n'
                 + '                  \n'
                 + '7:00 PM           \n ',
-                content1:'\n'+ this.props.fromLoc+
-                '\n'+
+               content1:  ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+                +'\n'
                 + '\n'
                 + '635MA   (\u20B9 34/-)\n'
                 + '\n'
+                +'\n'
                 + 'Lakdikapul\n'
                 + '\n'
                 + '639A   (\u20B9 34/-)\n'
-                +  this.props.toLoc
+                + '\n'
+                +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
 
             },
             {
                 title: '645TA',title1:'5:45 PM \n '+
                 '',title2:'\u20B9 '+ rupesstitile[2].price +'\n',
 
-                content: '\n'+
-                '5:45 PM    \n'
+                content: '5:45 PM    \n'
                 + '                  \n'
                 + '                  \n'
                 + '6:46 PM           \n'
+                + '                  \n'
+                + '                  \n'
                 + '6:52 PM           \n'
                 + '                  \n'
                 + '                  \n'
                 + '7:00 PM           \n ',
-                content1:'\n'+ this.props.fromLoc+
-                '\n'+
+               content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+                + '\n'
                 + '\n'
                 + '645TA   (\u20B9 35/-)\n'
                 + '\n'
+                +'\n'
                 + 'Lakdikapul\n'
                 + '\n'
-                + '648KL   (\u20B9 35/-)\n'
-                +  this.props.toLoc
+                + '648KL   (\u20B9 35/-)'
+                +'\n'
+                + '\n'
+                +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
 
             },
             {
                 title: '650N',title1:'5:55 PM \n '+
                 '',title2:'\u20B9 '+ rupesstitile[3].price +'\n',
 
-                content: '\n'+
-                '5:55 PM    \n'
+                content: '5:55 PM    \n'
                 + '                  \n'
                 + '                  \n'
                 + '6:56 PM           \n'
+                + '                  \n'
+                + '                  \n'
                 + '7:01 PM           \n'
                 + '                  \n'
                 + '                  \n'
                 + '7:04 PM           \n ',
-                content1:'\n'+ this.props.fromLoc+
-                '\n'+
+               content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+                + '\n'
                 + '\n'
                 + '650N   (\u20B9 32/-)\n'
                 + '\n'
+                + '\n'
                 + 'Lakdikapul\n'
                 + '\n'
-                + '652H   (\u20B9 32/-)\n'
-                +  this.props.toLoc
+                + '652H   (\u20B9 32/-)'
+                +'\n'
+                +'\n'
+                +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
 
 
             },
@@ -744,19 +797,25 @@ export default class SearchScreen extends Component {
                 + '                  \n'
                 + '                  \n'
                 + '7:03 PM           \n ',
-                content1:'  \n' + this.props.fromLoc+
-                '\n' +
-                '\n' +
-                '\n'+
-                '625M   (\u20B9 72/-)\n' +
-                '\n' +
-                '  \n' +
-                this.props.toLoc
+                content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
+                + '\n'
+                + '\n'
+                + '\n'
+                +'625M   (\u20B9 72/-)\n'
+                +'\n'
+                +'\n' +
+                ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
             },
         ];
 
 
-
+        let data = [{
+            value: 'All Buses',
+        }, {
+            value: 'A/C Buses',
+        }, {
+            value: 'Non A/C Buses',
+        }];
         return (
 
             <View style={styles.container}>
@@ -770,7 +829,7 @@ export default class SearchScreen extends Component {
                             <Icon type='MaterialIcons' name='arrow-back' size={30} color="#FFFFFF"/>
                         </TouchableOpacity>
                         <Text note style={{marginTop:5,fontSize:16,textAlign:'center',color:'#FFFFFF', flex:5}} >Journey Options</Text>
-                        <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
+                        {/*<Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>*/}
                         {/*<Button rounded style={{height: 25,backgroundColor: '#2eacde',marginBottom:10*/}
                         {/*}}*/}
                                 {/*onPress={() => this.setState({shownonacview: false, showacview: true})} >*/}
@@ -792,7 +851,79 @@ export default class SearchScreen extends Component {
                             {/*/!*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF',flex:2*!/*/}
                                 {/*/!*,textAlign:'center'}}>All</Text>*!/*/}
                         {/*</Button>*/}
+                        <TouchableOpacity onPress={() => this.setState({dummy: 1})}>
+                            <Icoons type='SimpleLineIcons' name='refresh' size={24} color="#FFFFFF"/>
+                        </TouchableOpacity>
+
                     </View>
+
+                    <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:5,
+                        paddingLeft:5}}>
+                        <TouchableOpacity  onPress={this._showDateTimePicker}>
+                            <View style={{flex:1,flexDirection:"row",justifyContent:'flex-start',alignItems:'flex-start'}}>
+                            <Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginTop:10}}
+                            />
+                        <Text note style={{fontSize:16,textAlign:'left',marginRight:10,color:'#FFFFFF',marginTop:10}} > {
+                            Moment(this.state.date).format('DD MMM').toUpperCase()} </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <View style={{flex:1,marginTop:10,justifyContent:'flex-end',alignItems:'flex-end'}}>
+                            {/*<View style={{height: 64}} />*/}
+                            <Dropdown
+                                value={'All Buses'}
+                                baseColor={'#FFFFFF'}
+                                textColor={'#FFFFFF'}
+                                selectedItemColor={'#2eacde'}
+                                itemColor={'#000'}
+                                fontSize={13}
+                                itemPadding={8}
+                                dropdownPosition={0}
+                                pickerStyle={{paddingLeft:200}}
+                                containerStyle={{borderWidth:1, borderColor:'#FFFFFF', width:130,height:30,borderRadius:20,paddingTop:2,paddingLeft:width*0.04}}
+                                rippleCentered={true}
+                                inputContainerStyle={{ borderBottomColor: 'transparent' }}
+                                dropdownOffset={top= 0}
+                                data={data}
+                                // valueExtractor={({value})=> value}
+                                onChangeText={(value)=>{this.onChangeTextPress(value)}}
+                            />
+                        </View>
+
+                        {/*onPress={() => Actions.homeScreen(params)}*/}
+                        {/*<TouchableOpacity style={{marginTop:10}} onPress={() => this.setState({dummy: 1})}>*/}
+                            {/*<Icoons type='SimpleLineIcons' name='refresh' size={24} color="#FFFFFF"/>*/}
+                        {/*</TouchableOpacity>*/}
+                    </View>
+                    <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
+                        <TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>
+                            <DateTimePicker
+                                isVisible={this.state.isDateTimePickerVisible}
+                                mode={'date'}
+                                minimumDate={Moment().toDate()}
+                                onConfirm={this._handleDatePicked}
+                                onCancel={this._hideDateTimePicker}
+                            />
+
+                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
+
+                            {/*<Text note style={{fontSize:16,color:'#000',textAlign:'center'}} > {*/}
+                            {/*Moment(this.state.date).format('DD MMM YYYY')} </Text>*/}
+                            {/*/!*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*!/*/}
+                            {/*/!*Moment(this.state.date).format('h:mm A')} </Text>*!/*/}
+                            {/*<Text note style={{fontSize:16,color:'#000',textAlign:'right'}} > {*/}
+                            {/*Moment(this.state.date).format('  ')} </Text>*/}
+                            {/*</View>*/}
+                        </TouchableOpacity>
+
+                        {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
+                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
+                        {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*</TouchableOpacity>*/}
+
+                    </View>
+
                     {/*<ScrollView>*/}
                         {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
                             {/*borderColor: '#999999', alignItems: 'center',*/}
@@ -803,25 +934,35 @@ export default class SearchScreen extends Component {
                                 {/*<Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {*/}
                                     {/*Moment(this.props.tripdte).format('DD MMMM')} </Text>*/}
                             {/*</View>*/}
-                            <View style={{flexDirection:"row",justifyContent:'space-evenly',marginBottom:10}}>
+                    <View style={{flexDirection:"row",justifyContent:'flex-start',backgroundColor:'#FFFFFF', marginRight:2,
+                        marginLeft:2,borderRadius:2, marginBottom:10,marginTop:5}}>
+                            <View style={{flexDirection:"column",justifyContent:'flex-start',marginBottom:5}}>
                                 {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} >{this.props.fromLoc}
+                                <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5,marginLeft: 5}} >From
                                 </Text>
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} > To
-                                </Text>
-                                {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                                <Text  style={{textAlign:'center',fontSize:16,color:'#FFFFFF',marginTop:10}} > {this.props.toLoc}
-                                </Text>
-                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
-                                    {/*<Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}*/}
-                                    {/*/>*/}
 
-                                {/*</TouchableOpacity>*/}
-                                <Text note style={{fontSize:16,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {
-                                    Moment(this.props.tripdte).format('DD MMMM')} </Text>
-                                {/*</View>*/}
+                                <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5,marginLeft: 5}} >To
+                                </Text>
+                                </View>
+
+                        <View style={{flexDirection:"row",justifyContent:'flex-start',marginBottom:5}}>
+                            <View styl={{flexDirection:"column",justifyContent:'flex-start'}}>
+                                <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5}} > : {this.props.fromLoc}
+                                </Text>
+
+                                <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5}} > : {this.props.toLoc}
+                                </Text>
                             </View>
+                            {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
+                            {/*<Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}*/}
+                            {/*/>*/}
+
+                            {/*</TouchableOpacity>*/}
+                            {/*<Text note style={{fontSize:20,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {*/}
+                            {/*Moment(this.props.tripdte).format('DD MMM')} </Text>*/}
+                        </View>
+
+                    </View>
                             {/*<View style={{*/}
                                 {/*flex: 1,*/}
                                 {/*borderBottomColor: 'black',*/}
@@ -1187,15 +1328,15 @@ export default class SearchScreen extends Component {
                         visible={this.state.showDialog}
                         title="Bus Route Details"
                         onTouchOutside={() => this.openDialog('done')}
-                        contentStyle={{ justifyContent: 'center', alignItems: 'center', }}
+                        contentStyle={{ justifyContent: 'center', alignItems: 'center' ,width:'100%' }}
                         animationType="fade">
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <View style={{flexDirection:"row",justifyContent:'space-evenly',marginLeft:10,marginRight:10}}>
                             {(this.state.showfirstroute) &&
 
-                            <View style={{flexDirection: "row"}}>
+                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
 
                                 {/*<Text>{this.props.fromLoc}</Text>*/}
-                                <Text>{SECTIONS[0].content}</Text>
+                                <Text >{SECTIONS[0].content}</Text>
                                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
                                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
@@ -1209,7 +1350,7 @@ export default class SearchScreen extends Component {
                             {/*/!*<Text>{section.content}</Text>*!/*/}
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             {(this.state.showsecondroute) &&
-                            <View style={{flexDirection: "row"}}>
+                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
                                 <Text>{SECTIONS[1].content}</Text>
                                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
@@ -1225,7 +1366,7 @@ export default class SearchScreen extends Component {
                         </View>
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             {(this.state.showthirdroute) &&
-                            <View style={{flexDirection: "row"}}>
+                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
                                 <Text>{SECTIONS[2].content}</Text>
                                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
@@ -1241,7 +1382,7 @@ export default class SearchScreen extends Component {
                         </View>
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             {(this.state.showfourthroute) &&
-                            <View style={{flexDirection: "row"}}>
+                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
                                 <Text>{SECTIONS[3].content}</Text>
                                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
@@ -1257,7 +1398,7 @@ export default class SearchScreen extends Component {
                         </View>
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             {(this.state.showfifthroute) &&
-                            <View style={{flexDirection: "row"}}>
+                            <View style={{flexDirection: "row",justifyContent:'space-evenly'}}>
                                 <Text>{SECTIONS[4].content}</Text>
                                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
                                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
@@ -1270,7 +1411,7 @@ export default class SearchScreen extends Component {
                             }
                         </View>
                         <View style={{flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                            ,marginLeft:5,marginRight:2}}>
+                            ,marginLeft:5,marginRight:2,marginBottom:15}}>
                             <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                             }}
                                     onPress={this.decrement}>
@@ -1289,7 +1430,8 @@ export default class SearchScreen extends Component {
 
                             <Button style={{height:50,width:width-80,backgroundColor: '#2eacde',
                                 marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}
-                                    onPress={() => Actions.paymentScreen(params)}>
+                                    onPress={() => {(this.openDialog(false)),Actions.paymentScreen(params)}} >
+                                    {/*onPress={() => Actions.paymentScreen(params)}>*/}
                                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                                     <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
                                         height: 25,alignItems:'center'}}/>

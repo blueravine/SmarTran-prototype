@@ -473,14 +473,14 @@ export default class Home extends Component {
                                     {/*color:'#FFFFFF'}} >JED</Text>*/}
                                     {/*</View>*/}
                                     <Item label="From Location" value="" />
-                                    <Item label="Jedimetla" value="Jedimetla" />
-                                    <Item label="Koti" value="Koti" />
-                                    <Item label="Gachibowli" value="Gachibowli" />
-                                    <Item label="Vanastalipuram" value="Vanastalipuram" />
-                                    <Item label="JublieeHills" value="JublieeHills" />
-                                    <Item label="Mehdipatnam" value="Mehdipatnam" />
-                                    <Item label="Raheja IT Park" value="Raheja IT Park" />
-                                    <Item label="Miyapur" value="Miyapur" />
+                                    <Item label="JEDIMETLA BUS STOP" value="JEDIMETLA BUS STOP" />
+                                    <Item label="KOTI BUS STOP" value="KOTI BUS STOP" />
+                                    <Item label="HITECH CITY BUS STOP" value="HITECH CITY BUS STOP" />
+                                    <Item label="VANASTALIPURAM" value="VANASTALIPURAM" />
+                                    <Item label="KACHIGUDA BUS STOP" value="KACHIGUDA BUS STOP" />
+                                    <Item label="MEHDIPATNAM BUS STOP" value="MEHDIPATNAM BUS STOP" />
+                                    <Item label="JNTU (KUKATPALLY) BUS STOP" value="JNTU (KUKATPALLY) BUS STOP" />
+                                    <Item label="MIYAPUR X ROADS" value="MIYAPUR X ROADS" />
                                 </Picker>
                                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                     <View style={{
@@ -510,14 +510,14 @@ export default class Home extends Component {
                                     onValueChange={(itemValue) => this.setState({selected2: itemValue})}>
 
                                     <Item label="To Location" value="" />
-                                    <Item label="Mehdipatnam" value="Mehdipatnam" />
-                                    <Item label="Miyapur" value="Miyapur" />
-                                    <Item label="JublieeHills" value="JublieeHills" />
-                                    <Item label="Jedimetla" value="Jedimetla" />
-                                    <Item label="Vanastalipuram" value="Vanastalipuram" />
-                                    <Item label="Koti" value="Koti" />
-                                    <Item label="Raheja IT Park" value="Raheja IT Park" />
-                                    <Item label="Gachibowli" value="Gachibowli" />
+                                    <Item label="MEHDIPATNAM BUS STOP" value="MEHDIPATNAM BUS STOP" />
+                                    <Item label="MIYAPUR X ROADS" value="MIYAPUR X ROADS" />
+                                    <Item label="JNTU (KUKATPALLY) BUS STOP" value="JNTU (KUKATPALLY) BUS STOP" />
+                                    <Item label="JEDIMETLA BUS STOP" value="JEDIMETLA BUS STOP" />
+                                    <Item label="VANASTALIPURAM" value="VANASTALIPURAM" />
+                                    <Item label="KOTI BUS STOP" value="KOTI BUS STOP" />
+                                    <Item label="HITECH CITY BUS STOP" value="HITECH CITY BUS STOP" />
+                                    <Item label="KACHIGUDA BUS STOP" value="KACHIGUDA BUS STOP" />
                                 </Picker>
 
                             </View>
@@ -647,7 +647,7 @@ export default class Home extends Component {
                             <View style={{flexDirection:"row",justifyContent:'space-evenly'}}
                                   onPress={this._showDateTimePicker}>
 
-                                <Text note style={{fontSize:25,color:'#000'}} onPress={this._showDateTimePicker}> {
+                                <Text note style={{fontSize:25,color:'#000',marginLeft:15}} onPress={this._showDateTimePicker}> {
                                     Moment(this.state.date).format('DD')} </Text>
 
                                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}
@@ -661,7 +661,7 @@ export default class Home extends Component {
                                 </View>
                                 {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*/}
                                 {/*Moment(this.state.date).format('h:mm A')} </Text>*/}
-                                <Text note style={{fontSize:25,color:'#000',marginLeft:120,justifyContent: 'flex-end'}}
+                                <Text note style={{fontSize:25,color:'#000',marginLeft:98,justifyContent: 'flex-end'}}
                                       onPress={this._showDateTimePicker}> {
                                     Moment(this.state.date).format('dddd')} </Text>
                             </View>
