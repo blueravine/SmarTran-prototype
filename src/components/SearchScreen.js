@@ -13,7 +13,6 @@ import BottomNavigation, {
     ShiftingTab
 } from 'react-native-material-bottom-navigation'
 import { Dialog } from 'react-native-simple-dialogs';
-import DropdownMenu from 'react-native-dropdown-menu';
 import { Dropdown } from 'react-native-material-dropdown';
 var params;
 import Icon from 'react-native-vector-icons/MaterialIcons';
