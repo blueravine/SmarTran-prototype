@@ -180,8 +180,7 @@ export default class TicketScreen extends Component {
         // const { thisticket: list } = this.state.thisticket
         cardListArr = this.state.thisticket.reverse().map((AllTicket)=>{
             ticketkeys=Object.keys(AllTicket);
-            // var ticketkeys=Object.keys(AllTicket);
-            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
+
             return(
                 <View style={{  paddingRight:25,
                     paddingLeft:35,
