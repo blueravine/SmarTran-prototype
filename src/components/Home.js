@@ -713,7 +713,7 @@ export default class Home extends Component {
 
                         {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
                         {/*/!*<Image source={require('../Images/smartranlogowhite.png')} style={{height: 200, width: null, flex: 1}}/>*!/*/}
-                        {/*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > Selected Date Time: {*/}
+                        {/*<Text note style={{fontSize:16,color:'#2eacdeF',textAlign:'center',fontWeight:'bold'}} > Selected Date Time: {*/}
                         {/*Moment(this.state.date).format('DD-MM-YYYY h:mm a')} </Text>*/}
 
 

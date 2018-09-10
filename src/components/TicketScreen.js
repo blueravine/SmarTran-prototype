@@ -24,7 +24,7 @@ const MARGIN = 40;
 // import { BottomNavigation } from 'react-native-material-ui';
 import Moment from "moment/moment";
 import Toast from "react-native-simple-toast";
-
+var dialogticketarr = [];
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
         borderColor: '#FFFFFF',
@@ -49,6 +49,7 @@ export default class TicketScreen extends Component {
             thisticket : [],
             activeTab: 'ticket',
             thiscard : [],
+            ticketdialogindex:0,
         };
 
 
@@ -178,43 +179,12 @@ export default class TicketScreen extends Component {
 
         // });
         // const { thisticket: list } = this.state.thisticket
-        cardListArr = this.state.thisticket.reverse().map((AllTicket)=>{
+        dialogticketarr = this.state.thisticket.map((AllTicket,index)=>{
             ticketkeys=Object.keys(AllTicket);
-            // var ticketkeys=Object.keys(AllTicket);
-            // alert(ticketkeys[0]+ ":"+AllTicket[ticketkeys[0]]);
-            return(
-                <View style={{  paddingRight:25,
-                    paddingLeft:35,
-                    paddingTop:5,}}>
 
-                    <Card style={{borderRightWidth:10,borderBottomRightRadius:10,borderTopRightRadius:10,borderBottomLeftRadius:10,
-                        borderTopLeftRadius:10,borderLeftWidth:10,shadowColor:"#f1f1f1f1",borderColor:'#2eacde'}}>
+            if(this.state.ticketdialogindex === index){
 
-                        <TouchableOpacity  onPress={() => {(this.openDialog(true))}}>
-                            <View style={{flexDirection:'row',flex:5}}>
-                        <Text note style={{textDecorationLine: 'underline',marginLeft:10,
-                            marginTop: 2, fontSize: 14, color: '#000', textAlign:'left', alignItems:'flex-start'
-                        }}>{AllTicket[ticketkeys[1]]}</Text>
-                            <TouchableOpacity  style={{flex:1,alignItems:'flex-end'}} >
-                                {/*<View style={{flex:15,alignItems:'flex-end'}}>*/}
-                                <Iccon type='MaterialIcons' name='star-border' size={22} color="#2eacde"/>
-                                {/*</View>*/}
-                            </TouchableOpacity>
-                            </View>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
-                            {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                            <Text note style={{
-                                marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-                            }}>{AllTicket[ticketkeys[5]]}</Text>
-                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
-                            </Text>
-                            {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
-                            <Text note style={{
-                                marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
-                            }}>{AllTicket[ticketkeys[6]]}</Text>
-                        </View>
-                        </TouchableOpacity>
-                    </Card>
+                return (
                     <Dialog
                         visible={this.state.showDialog}
                         title="SmarTran Ticket"
@@ -223,9 +193,9 @@ export default class TicketScreen extends Component {
                         animationType="fade">
 
                         {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                            {/*<Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',*/}
-                            {/*}} >SmarTran Ticket*/}
-                            {/*</Text>*/}
+                        {/*<Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',*/}
+                        {/*}} >SmarTran Ticket*/}
+                        {/*</Text>*/}
                         {/*</View>*/}
                         <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
                             <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
@@ -280,10 +250,10 @@ export default class TicketScreen extends Component {
                                     }}>{":" + AllTicket[ticketkeys[2]]}</Text>
                                     <Text note style={{
                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                    }}>{":" + AllTicket[ticketkeys[3]]}</Text>
+                                    }}>{":\u20B9" + AllTicket[ticketkeys[3]]}/-</Text>
                                     <Text note style={{
                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
-                                    }}>{"::" + AllTicket[ticketkeys[4]]}</Text>
+                                    }}>{":" + AllTicket[ticketkeys[4]]}</Text>
                                     <Text note style={{
                                         marginTop: 5, fontSize: 14, color: '#000', justifyContent: 'flex-start'
                                     }}>{":" + AllTicket[ticketkeys[5]]}</Text>
@@ -319,6 +289,54 @@ export default class TicketScreen extends Component {
 
                         {/*<Button onPress={() => this.openDialog(false)}  title="CLOSE" />*/}
                     </Dialog>
+                )};
+        });
+
+        cardListArr = this.state.thisticket.reverse().map((AllTicket,index)=>{
+            ticketkeys=Object.keys(AllTicket);
+            let cardlistlen = this.state.thisticket.length;
+
+            return(
+                <View style={{  paddingRight:25,
+                    paddingLeft:35,
+                    paddingTop:5,}}>
+
+                    <Card style={{borderRightWidth:10,borderBottomRightRadius:10,borderTopRightRadius:10,borderBottomLeftRadius:10,
+                        borderTopLeftRadius:10,borderLeftWidth:10,shadowColor:"#f1f1f1f1",borderColor:'#2eacde'}}>
+
+                        <TouchableOpacity  onPress={() => {
+                            this.setState({ ticketdialogindex: index }),
+                                (this.openDialog(true))}}>
+                            <View style={{flexDirection:'row',flex:5}}>
+                        <Text note style={{textDecorationLine: 'underline',marginLeft:10,
+                            marginTop: 2, fontSize: 14, color: '#000', textAlign:'left', alignItems:'flex-start'
+                        }}>{AllTicket[ticketkeys[1]]}</Text>
+                            <TouchableOpacity  style={{flex:1,alignItems:'flex-end'}} >
+                                {/*<View style={{flex:15,alignItems:'flex-end'}}>*/}
+                                <Iccon type='MaterialIcons' name='star-border' size={22} color="#2eacde"/>
+                                {/*</View>*/}
+                            </TouchableOpacity>
+                            </View>
+                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginBottom:10,backgroundColor:'#FFFFFF'}}>
+                            {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
+                            }}>{AllTicket[ticketkeys[5]]}</Text>
+                            <Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > To
+                            </Text>
+                            {/*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*/}
+                            <Text note style={{
+                                marginTop: 5, fontSize: 14, color: '#000', textAlign:'center'
+                            }}>{AllTicket[ticketkeys[6]]}
+                            {(index === (cardlistlen-1))
+                                ? <Text>{"\n"}{"\n"}{"\n"}</Text>
+                                : ''
+                            }
+                            </Text>
+                        </View>
+                        </TouchableOpacity>
+                    </Card>
+
 
                 </View>
                 // ));
@@ -361,7 +379,7 @@ export default class TicketScreen extends Component {
 
                 {/*</View>*/}
                 {/*</View>*/}
-                <ScrollView>
+                <ScrollView ref={ (c) => {this.scroll = c}} >
 
                     <View style={{flexDirection:"row",backgroundColor:'#4d6bcb',paddingRight:10,
                         paddingLeft:10,}}>
@@ -375,10 +393,40 @@ export default class TicketScreen extends Component {
                         <Text note style={{marginTop:5,fontSize:12,textAlign:'right',color:'#FFFFFF', flex:1}} > </Text>
 
                     </View>
+
                     <View>
                         {cardListArr}
+                        {dialogticketarr}
+                        {/*<Button rounded onPress={this.onButtonPress}>*/}
+                            {/*<Text>^</Text>*/}
+                        {/*</Button>*/}
+
                     </View>
+                    {/*<View style={{ flex: 3 }}>*/}
+                        {/*<Fab*/}
+                            {/*// active={this.state.active}*/}
+                            {/*direction="up"*/}
+                            {/*containerStyle={{position:'absolute',bottom:50}}*/}
+                            {/*style={{ backgroundColor: '#2CA8DB' }}*/}
+                            {/*position="bottomRight"*/}
+                            {/*onPress={this.onButtonPress}>*/}
+                            {/*<Image  source={require('../Images/menu_symbol.png')} />*/}
+
+                        {/*</Fab>*/}
+                    {/*</View>*/}
+
                 </ScrollView>
+                <Fab
+                    // active={this.state.active}
+                    direction="up"
+                    containerStyle={{position:'absolute',bottom:50}}
+                    style={{ backgroundColor: '#2CA8DB' }}
+                    position="bottomRight"
+                    onPress={this.onButtonPress}>
+                    <Image  source={require('../Images/menu_symbol.png')} />
+
+                </Fab>
+
                 <View style={[styles.footer]}>
 
                     <BottomNavigation
@@ -390,8 +438,13 @@ export default class TicketScreen extends Component {
                     />
 
                 </View>
+
             </View>
         );
+    }
+
+    onButtonPress = () => {
+        this.scroll.scrollTo({x:0, y:0, animated:true});
     }
 }
 const styles = StyleSheet.create({
@@ -442,6 +495,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
+
         // backgroundColor: '#8BC34A'
     },
     box: {

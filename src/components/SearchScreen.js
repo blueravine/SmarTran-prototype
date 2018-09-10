@@ -15,6 +15,8 @@ import BottomNavigation, {
 import { Dialog } from 'react-native-simple-dialogs';
 import { Dropdown } from 'react-native-material-dropdown';
 var params;
+var routelistarr = [];
+var dialogarr = [];
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Icoons from 'react-native-vector-icons/SimpleLineIcons';
@@ -80,6 +82,8 @@ export default class SearchScreen extends Component {
             firstbusfare:0,
             secondbusfare:0,
             totalfare: 0,
+            dialogindex: 0,
+            bustype:'All Buses',
         };
 
         this.onChangeTextPress=this.onChangeTextPress.bind(this);
@@ -89,52 +93,53 @@ export default class SearchScreen extends Component {
 
     state = {}
 
-    openDialog(sectionnumber) {
+    openDialog(show) {
+        this.setState({ showDialog: show });
 
-    switch(sectionnumber) {
-        case 'first':
-            this.setState({ routetimeindex: 0 });
-            this.setState({ firstbusfare: RouteTimings[0].FirstBusFare });
-            this.setState({ secondbusfare: RouteTimings[0].SecondBusFare });
-            this.setState({totalfare: RouteTimings[0].FirstBusFare + RouteTimings[0].SecondBusFare});
-            this.setState({ showDialog: true });
-            break;
-        case 'second':
-            this.setState({ routetimeindex: 1 });
-            this.setState({ firstbusfare: RouteTimings[1].FirstBusFare });
-            this.setState({ secondbusfare: RouteTimings[1].SecondBusFare });
-            this.setState({totalfare: RouteTimings[1].FirstBusFare + RouteTimings[1].SecondBusFare});
-            this.setState({ showDialog: true });
-            break;
-        case 'third':
-            this.setState({ routetimeindex: 2 });
-            this.setState({ firstbusfare: RouteTimings[2].FirstBusFare });
-            this.setState({ secondbusfare: RouteTimings[2].SecondBusFare });
-            this.setState({totalfare: RouteTimings[2].FirstBusFare + RouteTimings[2].SecondBusFare});
-            this.setState({ showDialog: true });
-            break;
-        case 'fourth':
-            this.setState({ routetimeindex: 3 });
-            this.setState({ firstbusfare: RouteTimings[3].FirstBusFare });
-            this.setState({ secondbusfare: RouteTimings[3].SecondBusFare });
-            this.setState({totalfare: RouteTimings[3].FirstBusFare + RouteTimings[3].SecondBusFare});
-            this.setState({ showDialog: true });
-            break;
-        case 'fifth':
-            this.setState({ routetimeindex: 4 });
-            this.setState({ firstbusfare: RouteTimings[4].FirstBusFare });
-            this.setState({ secondbusfare: RouteTimings[4].SecondBusFare });
-            this.setState({totalfare: RouteTimings[4].FirstBusFare + RouteTimings[4].SecondBusFare});
-            this.setState({ showDialog: true });
-            break;
-        default:
-            this.setState({ routetimeindex: 0 });
-            this.setState({ firstbusfare: RouteTimings[0].FirstBusFare });
-            this.setState({ secondbusfare: RouteTimings[0].SecondBusFare });
-            this.setState({totalfare: RouteTimings[0].FirstBusFare + RouteTimings[0].SecondBusFare});
-            this.setState({ showDialog: false });
-            break;
-    }
+    // switch(sectionnumber) {
+    //     case 0:
+    //         this.setState({ routetimeindex: 0 });
+    //         this.setState({ firstbusfare: RouteTimings[0].FirstBusFare });
+    //         this.setState({ secondbusfare: RouteTimings[0].SecondBusFare });
+    //         this.setState({totalfare: RouteTimings[0].FirstBusFare + RouteTimings[0].SecondBusFare});
+    //         this.setState({ showDialog: true });
+    //         break;
+    //     case 1:
+    //         this.setState({ routetimeindex: 1 });
+    //         this.setState({ firstbusfare: RouteTimings[1].FirstBusFare });
+    //         this.setState({ secondbusfare: RouteTimings[1].SecondBusFare });
+    //         this.setState({totalfare: RouteTimings[1].FirstBusFare + RouteTimings[1].SecondBusFare});
+    //         this.setState({ showDialog: true });
+    //         break;
+    //     case 2:
+    //         this.setState({ routetimeindex: 2 });
+    //         this.setState({ firstbusfare: RouteTimings[2].FirstBusFare });
+    //         this.setState({ secondbusfare: RouteTimings[2].SecondBusFare });
+    //         this.setState({totalfare: RouteTimings[2].FirstBusFare + RouteTimings[2].SecondBusFare});
+    //         this.setState({ showDialog: true });
+    //         break;
+    //     case 3:
+    //         this.setState({ routetimeindex: 3 });
+    //         this.setState({ firstbusfare: RouteTimings[3].FirstBusFare });
+    //         this.setState({ secondbusfare: RouteTimings[3].SecondBusFare });
+    //         this.setState({totalfare: RouteTimings[3].FirstBusFare + RouteTimings[3].SecondBusFare});
+    //         this.setState({ showDialog: true });
+    //         break;
+    //     case 4:
+    //         this.setState({ routetimeindex: 4 });
+    //         this.setState({ firstbusfare: RouteTimings[4].FirstBusFare });
+    //         this.setState({ secondbusfare: RouteTimings[4].SecondBusFare });
+    //         this.setState({totalfare: RouteTimings[4].FirstBusFare + RouteTimings[4].SecondBusFare});
+    //         this.setState({ showDialog: true });
+    //         break;
+    //     default:
+    //         this.setState({ routetimeindex: 0 });
+    //         this.setState({ firstbusfare: RouteTimings[0].FirstBusFare });
+    //         this.setState({ secondbusfare: RouteTimings[0].SecondBusFare });
+    //         this.setState({totalfare: RouteTimings[0].FirstBusFare + RouteTimings[0].SecondBusFare});
+    //         this.setState({ showDialog: false });
+    //         break;
+    // }
     }
 
     forceRemount=() =>{
@@ -216,402 +221,23 @@ export default class SearchScreen extends Component {
         />
     )
 
-    increment  = () => {
+    increment = () => {
+        let currentcount = this.state.count;
         this.setState({
-            count: this.state.count + 1,
-            totalfare: (this.state.firstbusfare + this.state.secondbusfare) * this.state.count,
+            count: currentcount + 1,
+            totalfare: (this.state.firstbusfare + this.state.secondbusfare) * (currentcount + 1),
         });
     }
 
-    decrement  = () => {
+    decrement = () => {
+        let currentcount = this.state.count;
         this.setState({
-            count: (this.state.count > 1) ? (this.state.count - 1) : 1,
-            totalfare: (this.state.firstbusfare + this.state.secondbusfare) * this.state.count,
+            count: (currentcount > 1) ? (currentcount - 1) : 1,
+            totalfare: (this.state.firstbusfare + this.state.secondbusfare) * ((currentcount > 1) ? (currentcount - 1) : 1),
         });
     }
 
 
-    // handleChange(value: string) {
-    //     this.setState({
-    //         selected: value
-    //     });
-    // }
-    //
-    // changeACLogo() {
-    //     var imgsource = this.state.showacimage ? ac_icon_blue : ac_icon_grey;
-    //     return (
-    //
-    //         <Image source={imgsource} style={{height: 30, width: 30,alignItems:'center'}}/>
-    //
-    //     );
-    //
-    // }
-    //
-    // changeNonACLogo() {
-    //     var imgnonacsource = this.state.shownonacimage ? nonac_icon_blue : nonac_icon_grey;
-    //     return (
-    //
-    //         <Image source={imgnonacsource} style={{height: 30, width: 30,alignItems:'center'}}/>
-    //
-    //     );
-    // }
-
-    // _renderHeader(section) {
-    //     return (
-    //         <View style={styles.header}>
-    //
-    //             {(this.state.showacview) && (section.title === '625M') &&
-    //             <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-    //                     <Image source={require('../Images/live_icon.png')}
-    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'left',
-    //                         marginLeft:2,
-    //                         // justifyContent:'flex-start'
-    //                     }}>{section.title1}</Text>
-    //                 </View>
-    //                 {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //                     <Text note style={{
-    //                         fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
-    //                         flex:5
-    //                     }}>{section.title}</Text>
-    //
-    //                 </View>
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'right',
-    //                         marginLeft: 120,
-    //                         marginRight:2
-    //
-    //                         //    justifyContent:'flex-end'
-    //                     }}>{section.title2}</Text>
-    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-    //                         {/*,marginLeft:65,marginRight:2}}>*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.decrement}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>-</Text>*/}
-    //                         {/*</Button>*/}
-    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-    //                         {/*/!*{this.state.count}*!/*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.increment}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>+</Text>*/}
-    //                         {/*</Button>*/}
-    //                     {/*</View>*/}
-    //                 </View>
-    //
-    //             </View>
-    //             }
-    //             {(this.state.shownonacview) && (section.title === '635MA') &&
-    //             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-    //
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-    //                     <Image source={require('../Images/live_icon.png')}
-    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'left',
-    //                         marginLeft:2
-    //                         // justifyContent:'flex-start'
-    //                     }}>{section.title1}</Text>
-    //                 </View>
-    //                 {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //                     <Text note style={{color:'#000',
-    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-    //                     }}>{section.title}</Text>
-    //
-    //                 </View>
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //
-    //                     <Text note style={{color:'#000',
-    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-    //                     }}>639A</Text>
-    //                 </View>
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'right',
-    //                         marginLeft: 120,
-    //                         marginRight:2
-    //
-    //                         //    justifyContent:'flex-end'
-    //                     }}>{section.title2}</Text>
-    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-    //                         {/*,marginLeft:65,marginRight:2}}>*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.decrement}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>-</Text>*/}
-    //                         {/*</Button>*/}
-    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-    //                         {/*/!*{this.state.count}*!/*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.increment}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>+</Text>*/}
-    //                         {/*</Button>*/}
-    //                     {/*</View>*/}
-    //                 </View>
-    //             </View>
-    //             }
-    //
-    //             {(this.state.shownonacview) && (section.title === '645TA') &&
-    //             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-    //                     <Image source={require('../Images/live_icon.png')}
-    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'left',
-    //                         marginLeft:2
-    //                         // justifyContent:'flex-start'
-    //                     }}>{section.title1}</Text>
-    //                 </View>
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
-    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //                     <Text note style={{color:'#000',
-    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-    //                     }}>{section.title}</Text>
-    //                 </View>
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //
-    //                     <Text note style={{color:'#000',
-    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-    //                     }}>648KL</Text>
-    //                 </View>
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'right',
-    //                         marginLeft: 115,
-    //                         marginRight:2
-    //
-    //                         //    justifyContent:'flex-end'
-    //                     }}>{section.title2}</Text>
-    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-    //                         {/*,marginLeft:60,marginRight:6}}>*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.decrement}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>-</Text>*/}
-    //                         {/*</Button>*/}
-    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-    //                         {/*/!*{this.state.count}*!/*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.increment}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>+</Text>*/}
-    //                         {/*</Button>*/}
-    //                     {/*</View>*/}
-    //                 </View>
-    //             </View>
-    //             }
-    //
-    //             {(this.state.showacview) && (section.title === '650N') &&
-    //             <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-    //
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-    //                     <Image source={require('../Images/live_icon.png')}
-    //                            style={{width: 20, height: 20, paddingLeft: 5}}/>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'left',
-    //                         marginLeft:2
-    //                         // justifyContent:'flex-start'
-    //                     }}>{section.title1}</Text>
-    //                 </View>
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-    //                     {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //                     <Text note style={{color:'#000',
-    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-    //                     }}>{section.title}</Text>
-    //
-    //                 </View>
-    //                 <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
-    //                     <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-    //                     {/*<Image source={require('../Images/school_bus.png')}*/}
-    //                     {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-    //
-    //                     <Text note style={{color:'#000',
-    //                         fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
-    //                     }}>652H</Text>
-    //                 </View>
-    //                 <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-    //                     <Text style={{
-    //                         fontSize: 14,
-    //                         fontWeight: 'bold',
-    //                         color: '#000',
-    //                         textAlign: 'right',
-    //                         marginLeft:120,
-    //                         marginRight:2
-    //                         //    justifyContent:'flex-end'
-    //                     }}>{section.title2}</Text>
-    //                     {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-    //                         {/*,marginLeft:65,marginRight:2}}>*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.decrement}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>-</Text>*/}
-    //                         {/*</Button>*/}
-    //                         {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-    //                         {/*/!*{this.state.count}*!/*/}
-    //                         {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-    //                         {/*}}*/}
-    //                                 {/*onPress={this.increment}>*/}
-    //                             {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                                 {/*,textAlign:'center'}}>+</Text>*/}
-    //                         {/*</Button>*/}
-    //                     {/*</View>*/}
-    //                 </View>
-    //
-    //
-    //             </View>
-    //             }
-    //
-    //         </View>
-    //     );
-    // }
-
-    // _renderContent(section) {
-    //     return (
-    //         <View style={styles.content}>
-    //
-    //             {(section.title === '625M') &&
-    //
-    //             <View style={{flexDirection: "row"}}>
-    //
-    //                 {/*<Text>{this.props.fromLoc}</Text>*/}
-    //                 <Text>{section.content}</Text>
-    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //
-    //                 </View>
-    //                 <Text>{section.content1}</Text>
-    //             </View>
-    //
-    //             }
-    //             {/*<Text>{section.content}</Text>*/}
-    //             {(section.title === '635MA') &&
-    //             <View style={{flexDirection: "row"}}>
-    //                 <Text>{section.content}</Text>
-    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //
-    //                 </View>
-    //                 <Text>{section.content1}</Text>
-    //             </View>
-    //             }
-    //             {(section.title === '645TA') &&
-    //             <View style={{flexDirection: "row"}}>
-    //                 <Text>{section.content}</Text>
-    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //
-    //                 </View>
-    //                 <Text>{section.content1}</Text>
-    //             </View>
-    //             }
-    //             {(section.title === '650N') &&
-    //             <View style={{flexDirection: "row"}}>
-    //                 <Text>{section.content}</Text>
-    //                 <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>
-    //                     <Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>
-    //
-    //                 </View>
-    //                 <Text>{section.content1}</Text>
-    //             </View>
-    //             }
-    //             <Button style={{height:50,width:width-50,backgroundColor: '#2eacde',
-    //                 marginTop:5,justifyContent:'space-evenly'}}
-    //                     onPress={() => Actions.paymentScreen(params)}>
-    //                 <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-    //                     <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
-    //                         height: 25,alignItems:'center'}}/>
-    //                     <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
-    //                         ,textAlign:'center',paddingLeft:10}}>Buy</Text>
-    //
-    //
-    //                     {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
-    //                     {/*}}*/}
-    //                     {/*onPress={this.decrement}>*/}
-    //                     {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                     {/*,textAlign:'center'}}>-</Text>*/}
-    //                     {/*</Button>*/}
-    //                     {/*<Text note style={{ fontSize: 14, color:'#FFFFFF',textAlign: 'center',fontWeight:'bold'}}> 1 </Text>*/}
-    //                     {/*/!*{this.state.count}*!/*/}
-    //                     {/*<Button rounded style={{height: 25,width:width-820,backgroundColor: '#FFFFFF',*/}
-    //                     {/*}}*/}
-    //                     {/*onPress={this.increment}>*/}
-    //                     {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-    //                     {/*,textAlign:'center'}}>+</Text>*/}
-    //                     {/*</Button>*/}
-    //                 </View>
-    //             </Button>
-    //
-    //         </View>
-    //     );
-    // }
     _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
@@ -625,22 +251,22 @@ export default class SearchScreen extends Component {
 
     onChangeTextPress(value){
 
-        this.setState({selectedvalue: value});
-
-        switch(value) {
-            case 'All Buses':
-                this.setState({shownonacview: true, showacview: true});
-                break;
-            case 'A/C Buses':
-                this.setState({shownonacview: false, showacview: true});
-                break;
-            case 'Non A/C Buses':
-                this.setState({shownonacview: true, showacview: false});
-                break;
-            default:
-                this.setState({shownonacview: true, showacview: true});
-                break;
-        }
+        // this.setState({selectedvalue: value});
+        this.setState({bustype: value});
+        // switch(value) {
+        //     case 'All Buses':
+        //         this.setState({bustype: value});
+        //         break;
+        //     case 'A/C Buses':
+        //         this.setState({bustype: value});
+        //         break;
+        //     case 'Non A/C Buses':
+        //         this.setState({bustype: value});
+        //         break;
+        //     default:
+        //         this.setState({bustype: value});
+        //         break;
+        // }
     }
     render() {
         params = {};
@@ -648,6 +274,8 @@ export default class SearchScreen extends Component {
             fromLoc:this.props.fromLoc,
             toLoc:this.props.toLoc,
             tripdte:this.state.date,
+            totalfare:this.state.totalfare,
+            count:this.state.count,
         };
         rupesstitile=[
 
@@ -676,6 +304,7 @@ export default class SearchScreen extends Component {
 
         RouteTimings = [
             {
+                acroute: true,
                 FirstBusNumber: '625M',
                 FirstArrivalTime:'5:51 PM',
                 FirstDestinationTime:'7:00 PM',
@@ -686,11 +315,12 @@ export default class SearchScreen extends Component {
 
             },
             {
-                FirstBusNumber: '635MA',
+                acroute: false,
+                FirstBusNumber: '635A',
                 FirstArrivalTime:'5:45 PM',
                 FirstDestinationTime:'6:46 PM',
                 FirstOriginName: (this.props.fromLoc),
-                FirstDestinationName:'Lakdikapul',
+                FirstDestinationName:'LAKDIKAPUL',
                 FirstBusFare:33,
                 SecondBusNumber: '639A',
                 SecondArrivalTime:'6:52 PM',
@@ -700,24 +330,26 @@ export default class SearchScreen extends Component {
 
             },
             {
-                FirstBusNumber: '645TA',
+                acroute: false,
+                FirstBusNumber: '645T',
                 FirstArrivalTime:'5:45 PM',
                 FirstDestinationTime:'6:46 PM',
                 FirstOriginName: (this.props.fromLoc),
-                FirstDestinationName:'Lakdikapul',
+                FirstDestinationName:'LAKDIKAPUL',
                 FirstBusFare:34,
-                SecondBusNumber: '648KL',
+                SecondBusNumber: '648K',
                 SecondArrivalTime:'6:52 PM',
                 SecondDestinationTime:'7:00 PM',
                 SecondDestinationName:(this.props.toLoc),
                 SecondBusFare:36,
             },
             {
+                acroute: true,
                 FirstBusNumber: '650N',
                 FirstArrivalTime:'5:55 PM',
                 FirstDestinationTime:'6:56 PM',
                 FirstOriginName: (this.props.fromLoc),
-                FirstDestinationName:'Lakdikapul',
+                FirstDestinationName:'LAKDIKAPUL',
                 FirstBusFare:30,
                 SecondBusNumber: '652H',
                 SecondArrivalTime:'7:01 PM',
@@ -726,6 +358,7 @@ export default class SearchScreen extends Component {
                 SecondBusFare:34,
             },
             {
+                acroute: true,
                 FirstBusNumber: '625M',
                 FirstArrivalTime:'5:56 PM',
                 FirstDestinationTime:'7:03 PM',
@@ -735,135 +368,6 @@ export default class SearchScreen extends Component {
                 SecondBusFare: 0,
             },
         ];
-        //  SECTIONS = [
-        //     {
-        //         title: '625M',title1:'5:51 PM \n '+
-        //         '',title2:'\u20B9 '+ rupesstitile[0].price +'\n',
-        //
-        //         content: '  \n' +
-        //         '5:51 PM    \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '7:00 PM           \n ',
-        //         content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-        //          + '\n'
-        //          + '\n'
-        //          + '\n'
-        //          +' 625M   (\u20B9 72/-)\n'
-        //          +'\n'
-        //          +'\n'+
-        //         ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-        //
-        //     },
-        //     {
-        //         title: '635MA',title1:'5:45 PM \n '+
-        //         '',title2:'\u20B9 '+ rupesstitile[1].price +'\n',
-        //
-        //         content: '5:45 PM    \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '6:46 PM           \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '6:52 PM           \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '7:00 PM           \n ',
-        //        content1:  ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-        //         +'\n'
-        //         + '\n'
-        //         + '635MA   (\u20B9 34/-)\n'
-        //         + '\n'
-        //         +'\n'
-        //         + 'Lakdikapul\n'
-        //         + '\n'
-        //         + '639A   (\u20B9 34/-)\n'
-        //         + '\n'
-        //         +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-        //
-        //     },
-        //     {
-        //         title: '645TA',title1:'5:45 PM \n '+
-        //         '',title2:'\u20B9 '+ rupesstitile[2].price +'\n',
-        //
-        //         content: '5:45 PM    \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '6:46 PM           \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '6:52 PM           \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '7:00 PM           \n ',
-        //        content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-        //         + '\n'
-        //         + '\n'
-        //         + '645TA   (\u20B9 35/-)\n'
-        //         + '\n'
-        //         +'\n'
-        //         + 'Lakdikapul\n'
-        //         + '\n'
-        //         + '648KL   (\u20B9 35/-)'
-        //         +'\n'
-        //         + '\n'
-        //         +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-        //
-        //     },
-        //     {
-        //         title: '650N',title1:'5:55 PM \n '+
-        //         '',title2:'\u20B9 '+ rupesstitile[3].price +'\n',
-        //
-        //         content: '5:55 PM    \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '6:56 PM           \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '7:01 PM           \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '7:04 PM           \n ',
-        //        content1: ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-        //         + '\n'
-        //         + '\n'
-        //         + '650N   (\u20B9 32/-)\n'
-        //         + '\n'
-        //         + '\n'
-        //         + 'Lakdikapul\n'
-        //         + '\n'
-        //         + '652H   (\u20B9 32/-)'
-        //         +'\n'
-        //         +'\n'
-        //         +  ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-        //
-        //
-        //     },
-        //     {
-        //         title: '625M',title1:'5:56 PM \n '+
-        //         '',title2:'\u20B9 '+ rupesstitile[4].price +'\n',
-        //
-        //         content: '  \n' +
-        //         '5:56 PM    \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '                  \n'
-        //         + '7:03 PM           \n ',
-        //         content1:'\n'+ ((this.props.fromLoc.length > 11) ? (this.props.fromLoc).substring(0,11) + '...' : (this.props.fromLoc))
-        //         + '\n'
-        //         + '\n'
-        //         + '\n'
-        //         +'625M   (\u20B9 72/-)\n'
-        //         +'\n'
-        //         +'\n' +
-        //         ((this.props.toLoc.length > 11) ? (this.props.toLoc).substring(0,11) + '...' : (this.props.toLoc))
-        //     },
-        // ];
 
 
         let data = [{
@@ -873,6 +377,228 @@ export default class SearchScreen extends Component {
         }, {
             value: 'Non A/C Buses',
         }];
+
+        dialogarr = RouteTimings.map((currentroutetiming, index) => {
+
+              if(this.state.dialogindex === index){
+
+            return (
+        <Dialog
+            visible={this.state.showDialog}
+            title="Bus Route Details"
+            onTouchOutside={() => {this.openDialog(false)}}
+            contentStyle={{ justifyContent: 'center', alignItems: 'center' ,width:'100%' }}
+            animationType="fade">
+            <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:10,marginRight:10}}>
+
+                {/*first view - firstarrivaltime, start image, firstoriginname*/}
+                <View style={{flexDirection: "row"}}>
+                    <Text style={{flex: 2}}>{RouteTimings[this.state.dialogindex].FirstArrivalTime}</Text>
+                    <Image source={require('../Images/pin_icon.png')} style={{flex: 1, width: 10, height: 50}}/>
+                    <Text style={{flex: 3}}>{
+                        (RouteTimings[this.state.dialogindex].FirstOriginName.length > 11) ?
+                            (RouteTimings[this.state.dialogindex].FirstOriginName.substring(0,10)) + '...' :
+                            (RouteTimings[this.state.dialogindex].FirstOriginName)
+                    }</Text>
+                </View>
+
+                {/*second view - ., middle image, firstbusnumber*/}
+                <View style={{flexDirection: "row"}}>
+                    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
+                    <Image source={require('../Images/line_icon.png')} style={{flex:1,width: 8, height: 50}}/>
+                    <Text  style={{flex: 3}}>{RouteTimings[this.state.dialogindex].FirstBusNumber}</Text>
+                </View>
+
+                {/*third view - firstdestinationtime, stop image, firstdestinationname*/}
+                <View style={{flexDirection: "row"}}>
+                    <Text  style={{flex: 2}}>{RouteTimings[this.state.dialogindex].FirstDestinationTime}</Text>
+                    <Image source={require('../Images/pin.png')} style={{flex:1,width: 10, height: 50}}/>
+                    <Text  style={{flex: 3}}>{
+                        (RouteTimings[this.state.dialogindex].FirstDestinationName.length > 11) ?
+                            (RouteTimings[this.state.dialogindex].FirstDestinationName.substring(0,10)) + '...' :
+                            (RouteTimings[this.state.dialogindex].FirstDestinationName)
+                    }</Text>
+                </View>
+
+                {/*when secondbusfare > 0, fourth view - secondarrivaltime, start image, . with color white*/}
+                {(RouteTimings[this.state.dialogindex].SecondBusFare > 0) &&
+                <View style={{flexDirection: "row"}}>
+                    <Text style={{flex: 2}}>{RouteTimings[this.state.dialogindex].SecondArrivalTime}</Text>
+                    <Image source={require('../Images/pin_icon.png')} style={{flex: 1, width: 10, height: 50}}/>
+                    <Text  style={{flex: 3, color:'#FFFFFF'}}>..............</Text>
+                </View>
+                }
+                {/*when secondbusfare > 0, fifth view - ., middle image, secondbusnumber*/}
+                {(RouteTimings[this.state.dialogindex].SecondBusFare > 0) &&
+                <View style={{flexDirection: "row"}}>
+                    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
+                    <Image source={require('../Images/line_icon.png')} style={{flex: 1, width: 8, height: 50}}/>
+                    <Text style={{flex: 3}}>{RouteTimings[this.state.dialogindex].SecondBusNumber}</Text>
+                </View>
+                }
+                {/*when secondbusfare > 0, sixth view - seconddestinationtime, stop image, seconddestinationname*/}
+                {(RouteTimings[this.state.dialogindex].SecondBusFare > 0) &&
+                <View style={{flexDirection: "row"}}>
+                    <Text style={{flex: 2}}>{RouteTimings[this.state.dialogindex].SecondDestinationTime}</Text>
+                    <Image source={require('../Images/pin.png')} style={{flex: 1, width: 10, height: 50}}/>
+                    <Text style={{flex: 3}}>{
+                        (RouteTimings[this.state.dialogindex].SecondDestinationName.length > 11) ?
+                            (RouteTimings[this.state.dialogindex].SecondDestinationName.substring(0,10)) + '...' :
+                            (RouteTimings[this.state.dialogindex].SecondDestinationName)
+                    }</Text>
+                </View>
+                }
+                {/*seventh view - increment/decrement, BUY, CLOSE*/}
+                <View style={{flexDirection:'row',marginTop:10}}>
+                    <Text  style={{flex: 1.4, color:'#FFFFFF'}}>.</Text>
+                    <View style={{flex: 2,flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1
+                        ,marginLeft:5,marginRight:2,marginBottom:15}}>
+                        <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
+                        }}
+                                onPress={this.decrement}>
+                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                ,textAlign:'center'}}>-</Text>
+                        </Button>
+                        <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>
+                        {/*{this.state.count}*/}
+                        <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
+                        }}
+                                onPress={this.increment}>
+                            <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
+                                ,textAlign:'center'}}>+</Text>
+                        </Button>
+                    </View>
+                    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
+                </View>
+                <Button style={{height:50,width:width-80,backgroundColor: '#2eacde',
+                    marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}
+                        onPress={() => {(this.openDialog(false)),
+                                Actions.paymentScreen(params)}} >
+                    {/*onPress={() => Actions.paymentScreen(params)}>*/}
+                    <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
+                        <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
+                            height: 25,alignItems:'center'}}/>
+                        <Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'
+                            ,textAlign:'center',paddingLeft:10}}>BUY</Text>
+                        <Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF'
+                            ,textAlign:'right',paddingLeft:70}}>&#8377;{this.state.totalfare}/-</Text>
+                    </View>
+                </Button>
+                <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
+                }}
+                        onPress={() => {(this.openDialog(false))}} >
+                    <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
+                        ,textAlign:'center'}}>Close</Text>
+                </Button>
+            </View>
+
+        </Dialog>
+            )};
+    });
+
+        routelistarr = RouteTimings.map((currentroutetiming, index) => {
+
+            if((this.state.bustype==='All Buses') || ((this.state.bustype==='A/C Buses') &&(currentroutetiming.acroute))
+                ||((this.state.bustype==='Non A/C Buses') && (!currentroutetiming.acroute))) {
+                return (
+                    <View>
+                        <TouchableOpacity onPress={() => {
+                            this.setState({
+                                dialogindex: index,
+                                totalfare: (currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare),
+                                firstbusfare: currentroutetiming.FirstBusFare,
+                                secondbusfare: currentroutetiming.SecondBusFare
+                            }),
+                                (this.openDialog(true))
+                        }}>
+                            <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop: 5}}>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/live_icon.png')}
+                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'left',
+                                        marginLeft: 2,
+                                    }}>{currentroutetiming.FirstArrivalTime}</Text>
+                                </View>
+
+                                <View style={{
+                                    flexDirection: "column",
+                                    justifyContent: 'space-evenly',
+                                    marginLeft: 40,
+                                    marginTop: 8
+                                }}>
+
+                                    {(currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    }
+                                    {(!currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    }
+                                    <Text note style={{
+                                        fontSize: 12, color: '#000', textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                        flex: 5
+                                    }}>{currentroutetiming.FirstBusNumber}</Text>
+                                </View>
+
+                                {(currentroutetiming.SecondBusFare > 0) &&
+                                <View style={{
+                                    flexDirection: "column",
+                                    justifyContent: 'space-evenly',
+                                    marginLeft: 18,
+                                    marginTop: 8
+                                }}>
+                                    {(currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    }
+                                    {(!currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    }
+
+                                    <Text note style={{
+                                        color: '#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
+                                    }}>{currentroutetiming.SecondBusNumber}</Text>
+                                </View>
+                                }
+
+                                {(currentroutetiming.SecondBusFare === 0) &&
+                                <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginLeft: 45}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 120,
+                                        marginRight: 2
+                                    }}>&#8377;{(currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare)}/-</Text>
+                                </View>
+                                }
+
+                                {(currentroutetiming.SecondBusFare > 0) &&
+                                <View style={{flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 115,
+                                        marginRight: 2
+                                    }}>&#8377;{(currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare)}/-</Text>
+                                </View>
+                                }
+
+                            </View>
+                            {/*}*/}
+                        </TouchableOpacity>
+
+                    </View>
+                );
+            }
+            });
+
         return (
 
             <View style={styles.container}>
@@ -908,7 +634,9 @@ export default class SearchScreen extends Component {
                             {/*/!*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF',flex:2*!/*/}
                                 {/*/!*,textAlign:'center'}}>All</Text>*!/*/}
                         {/*</Button>*/}
-                        <TouchableOpacity onPress={() => this.setState({dummy: 1})}>
+                        {/*,
+                                Actions.searchScreen(params)*/}
+                        <TouchableOpacity onPress={() => Actions.searchScreen(params)}>
                             <Icoons type='SimpleLineIcons' name='refresh' size={24} color="#FFFFFF"/>
                         </TouchableOpacity>
 
@@ -962,36 +690,10 @@ export default class SearchScreen extends Component {
                                 onCancel={this._hideDateTimePicker}
                             />
 
-                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-
-                            {/*<Text note style={{fontSize:16,color:'#000',textAlign:'center'}} > {*/}
-                            {/*Moment(this.state.date).format('DD MMM YYYY')} </Text>*/}
-                            {/*/!*<Text note style={{fontSize:16,color:'#2eacde',textAlign:'center',fontWeight:'bold'}} > {*!/*/}
-                            {/*/!*Moment(this.state.date).format('h:mm A')} </Text>*!/*/}
-                            {/*<Text note style={{fontSize:16,color:'#000',textAlign:'right'}} > {*/}
-                            {/*Moment(this.state.date).format('  ')} </Text>*/}
-                            {/*</View>*/}
                         </TouchableOpacity>
-
-                        {/*<TouchableOpacity onPress={() => Actions.searchScreen()} style={{alignItems:'flex-end'}}>*/}
-                        {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                        {/*<Image source={require('../Images/magnifier.png')} style={{height: 35, width: 35}}*/}
-                        {/*/>*/}
-                        {/*</View>*/}
-                        {/*</TouchableOpacity>*/}
 
                     </View>
 
-                    {/*<ScrollView>*/}
-                        {/*<Card  styles={{width: 100,height:300,borderWidth: 3,*/}
-                            {/*borderColor: '#999999', alignItems: 'center',*/}
-                            {/*borderRadius: 5,*/}
-                            {/*overflow: 'hidden',*/}
-                            {/*elevation: 1}}>*/}
-                            {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                {/*<Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {*/}
-                                    {/*Moment(this.props.tripdte).format('DD MMMM')} </Text>*/}
-                            {/*</View>*/}
                     <View style={{flexDirection:"row",justifyContent:'flex-start',backgroundColor:'#FFFFFF', marginRight:2,
                         marginLeft:2,borderRadius:2, marginBottom:10,marginTop:5}}>
                             <View style={{flexDirection:"column",justifyContent:'flex-start',marginBottom:5}}>
@@ -1011,556 +713,14 @@ export default class SearchScreen extends Component {
                                 <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5}} > : {this.props.toLoc}
                                 </Text>
                             </View>
-                            {/*<TouchableOpacity onPress={this._showDateTimePicker} style={{alignItems:'center'}}>*/}
-                            {/*<Image source={require('../Images/calendar_icon.png')} style={{height: 25, width: 25,marginLeft:18}}*/}
-                            {/*/>*/}
-
-                            {/*</TouchableOpacity>*/}
-                            {/*<Text note style={{fontSize:20,textAlign:'center',color:'#FFFFFF',marginTop:10}} > {*/}
-                            {/*Moment(this.props.tripdte).format('DD MMM')} </Text>*/}
-                        </View>
+                       </View>
 
                     </View>
-                            {/*<View style={{*/}
-                                {/*flex: 1,*/}
-                                {/*borderBottomColor: 'black',*/}
-                                {/*borderBottomWidth: 1,*/}
-                                {/*width: width - 10,}}>*/}
-                            {/*</View>*/}
-                            {/*<View style={{flexDirection:"row",justifyContent:'center'}}>*/}
-
-                                {/*<MultiToggleSwitch defaultActiveIndex={2}*/}
-                                                   {/*activeContainerStyle={size=20}*/}
-                                                   {/*itemsContainer={size=20}*/}
-                                {/*>*/}
-                                    {/*<MultiToggleSwitch.Item  primaryColor={'#2EACDE'}  onPress={() => this.setState({shownonacview: false, showacview: true})}>*/}
-                                        {/*<Iccons type='FontAwesome' name={'snowflake-o'} size={20}  />*/}
-                                    {/*</MultiToggleSwitch.Item>*/}
-                                    {/*<MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => this.setState({shownonacview: true, showacview: false})}>*/}
-                                        {/*<Icoons type='SimpleLineIcons' name={'ban'} size={20} />*/}
-                                    {/*</MultiToggleSwitch.Item>*/}
-                                    {/*<MultiToggleSwitch.Item  primaryColor={'#2EACDE'} onPress={() => this.setState({shownonacview: true, showacview: true})}>*/}
-                                        {/*<Icon type='MaterialIcons' name={'done-all'} size={20}/>*/}
-                                    {/*</MultiToggleSwitch.Item>*/}
-                                {/*</MultiToggleSwitch>*/}
-                            {/*</View>*/}
-                            {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} >A/C</Text>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} >Non A/C</Text>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} >ALL</Text>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
-                                {/*<Text note style={{fontSize:14,textAlign:'center'}} > </Text>*/}
-                            {/*</View>*/}
-
-
-
-                        {/*</Card>*/}
-                        {/*<View  style={{flexDirection:'row',justifyContent:'center'}} >*/}
                         <Card>
-                            <TouchableOpacity  onPress={() => {(this.openDialog('first'))}}>
-                            {(this.state.showacview) && (RouteTimings[0].FirstBusNumber === '625M') &&
-                            <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/live_icon.png')}
-                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'left',
-                                        marginLeft:2,
-                                        // justifyContent:'flex-start'
-                                    }}>{RouteTimings[0].FirstArrivalTime}</Text>
-                                </View>
-                                {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                                    <Text note style={{
-                                        fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                        flex:5
-                                    }}>{RouteTimings[0].FirstBusNumber}</Text>
-
-                                </View>
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'right',
-                                        marginLeft: 120,
-                                        marginRight:2
-
-                                        //    justifyContent:'flex-end'
-                                    }}>{RouteTimings[0].FirstBusFare}</Text>
-                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                                    {/*,marginLeft:65,marginRight:2}}>*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                                    {/*/!*{this.state.count}*!/*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*</View>*/}
-                                </View>
-
-                            </View>
-                            }
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => {(this.openDialog('second'))}}>
-                            {(this.state.shownonacview) && (RouteTimings[1].FirstBusNumber === '635MA') &&
-                            <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/live_icon.png')}
-                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'left',
-                                        marginLeft:2
-                                        // justifyContent:'flex-start'
-                                    }}>{RouteTimings[1].FirstArrivalTime}</Text>
-                                </View>
-                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                                    <Text note style={{color:'#000',
-                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{RouteTimings[1].FirstBusNumber}</Text>
-
-                                </View>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 12,marginTop:2}}>
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-
-                                    <Text note style={{color:'#000',
-                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{RouteTimings[1].SecondBusNumber}</Text>
-                                </View>
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'right',
-                                        marginLeft: 120,
-                                        marginRight:2
-
-                                        //    justifyContent:'flex-end'
-                                    }}>{RouteTimings[1].FirstBusFare}</Text>
-                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                                    {/*,marginLeft:65,marginRight:2}}>*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                                    {/*/!*{this.state.count}*!/*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*</View>*/}
-                                </View>
-                            </View>
-                            }
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => {(this.openDialog('third'))}}>
-                            {(this.state.shownonacview) && (RouteTimings[2].FirstBusNumber === '645TA') &&
-                            <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/live_icon.png')}
-                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'left',
-                                        marginLeft:2
-                                        // justifyContent:'flex-start'
-                                    }}>{RouteTimings[2].FirstArrivalTime}</Text>
-                                </View>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:40}}>
-                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                                    <Text note style={{color:'#000',
-                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{RouteTimings[2].FirstBusNumber}</Text>
-                                </View>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 15,marginTop:2}}>
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-
-                                    <Text note style={{color:'#000',
-                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{RouteTimings[2].SecondBusNumber}</Text>
-                                </View>
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'right',
-                                        marginLeft: 115,
-                                        marginRight:2
-
-                                        //    justifyContent:'flex-end'
-                                    }}>{RouteTimings[2].FirstBusFare}</Text>
-                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                                    {/*,marginLeft:60,marginRight:6}}>*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                                    {/*/!*{this.state.count}*!/*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*</View>*/}
-                                </View>
-                            </View>
-                            }
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => {(this.openDialog('fourth'))}}>
-                            {(this.state.showacview) && (RouteTimings[3].FirstBusNumber === '650N') &&
-                            <View style={{flexDirection: "row", justifyContent: 'flex-start'}}>
-
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/live_icon.png')}
-                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'left',
-                                        marginLeft:2
-                                        // justifyContent:'flex-start'
-                                    }}>{RouteTimings[3].FirstArrivalTime}</Text>
-                                </View>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40}}>
-                                    {/*<View style={{flexDirection:"column",justifyContent:'space-evenly'}}>*/}
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                                    <Text note style={{color:'#000',
-                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                    }}>{RouteTimings[3].FirstBusNumber}</Text>
-
-                                </View>
-                                <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 18,marginTop:2}}>
-                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                                    {/*<Image source={require('../Images/school_bus.png')}*/}
-                                    {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-
-                                    <Text note style={{color:'#000',
-                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
-                                    }}>{RouteTimings[3].SecondBusNumber}</Text>
-                                </View>
-                                <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                                    <Text style={{
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                        color: '#000',
-                                        textAlign: 'right',
-                                        marginLeft:120,
-                                        marginRight:2
-                                        //    justifyContent:'flex-end'
-                                    }}>{RouteTimings[3].FirstBusFare}</Text>
-                                    {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                                    {/*,marginLeft:65,marginRight:2}}>*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                                    {/*/!*{this.state.count}*!/*/}
-                                    {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                    {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                                    {/*</Button>*/}
-                                    {/*</View>*/}
-                                </View>
-
-
-                            </View>
-                            }
-                            </TouchableOpacity>
-                            <TouchableOpacity  onPress={() => {(this.openDialog('fifth'))}}>
-                                {(this.state.showacview) && (RouteTimings[4].FirstBusNumber === '625M') &&
-                                <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
-                                    <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                                        <Image source={require('../Images/live_icon.png')}
-                                               style={{width: 20, height: 20, paddingLeft: 5}}/>
-                                        <Text style={{
-                                            fontSize: 14,
-                                            fontWeight: 'bold',
-                                            color: '#000',
-                                            textAlign: 'left',
-                                            marginLeft:2,
-                                            // justifyContent:'flex-start'
-                                        }}>{RouteTimings[4].FirstArrivalTime}</Text>
-                                    </View>
-                                    {/*borderColor: 'grey', borderRadius: 1, borderWidth: 1,*/}
-                                    <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
-                                        <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                                        {/*<Image source={require('../Images/school_bus.png')}*/}
-                                        {/*style={{width: 25, height: 25, paddingLeft: 5}}/>*/}
-                                        <Text note style={{
-                                            fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                            flex:5
-                                        }}>{RouteTimings[4].FirstBusNumber}</Text>
-
-                                    </View>
-                                    <View style={{flexDirection:'column',justifyContent:'space-evenly',marginLeft:45}}>
-                                        <Text style={{
-                                            fontSize: 14,
-                                            fontWeight: 'bold',
-                                            color: '#000',
-                                            textAlign: 'right',
-                                            marginLeft: 120,
-                                            marginRight:2
-
-                                            //    justifyContent:'flex-end'
-                                        }}>{RouteTimings[4].FirstBusFare}</Text>
-                                        {/*<View style={{flexDirection:'row',justifyContent:'flex-end',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                                        {/*,marginLeft:65,marginRight:2}}>*/}
-                                        {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                        {/*}}*/}
-                                        {/*onPress={this.decrement}>*/}
-                                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                        {/*,textAlign:'center'}}>-</Text>*/}
-                                        {/*</Button>*/}
-                                        {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                                        {/*/!*{this.state.count}*!/*/}
-                                        {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                                        {/*}}*/}
-                                        {/*onPress={this.increment}>*/}
-                                        {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                        {/*,textAlign:'center'}}>+</Text>*/}
-                                        {/*</Button>*/}
-                                        {/*</View>*/}
-                                    </View>
-
-                                </View>
-                                }
-                            </TouchableOpacity>
-
-                            {/*</View>*/}
+                            {routelistarr}
+                            {dialogarr}
                         </Card>
 
-                    <Dialog
-                        visible={this.state.showDialog}
-                        title="Bus Route Details"
-                        onTouchOutside={() => this.openDialog('done')}
-                        contentStyle={{ justifyContent: 'center', alignItems: 'center' ,width:'100%' }}
-                        animationType="fade">
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft:10,marginRight:10}}>
-
-                            <View style={{flexDirection: "row"}}>
-                                <Text style={{flex: 2}}>{RouteTimings[this.state.routetimeindex].FirstArrivalTime}</Text>
-                                <Image source={require('../Images/from_icon.png')} style={{flex: 1, width: 15, height: 50}}/>
-                                <Text style={{flex: 3}}>{
-                                    (RouteTimings[this.state.routetimeindex].FirstOriginName.length > 15) ?
-                                        (RouteTimings[this.state.routetimeindex].FirstOriginName.substring(0,14)) + '...' :
-                                        (RouteTimings[this.state.routetimeindex].FirstOriginName)
-                                }</Text>
-                            </View>
-
-                            <View style={{flexDirection: "row"}}>
-                                <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
-                                <Image source={require('../Images/line_coloricon.png')} style={{flex:1,width: 15, height: 50}}/>
-                                <Text  style={{flex: 3}}>{RouteTimings[this.state.routetimeindex].FirstBusNumber}</Text>
-                            </View>
-                            <View style={{flexDirection: "row"}}>
-                                <Text  style={{flex: 2}}>{RouteTimings[this.state.routetimeindex].FirstDestinationTime}</Text>
-                                <Image source={require('../Images/to_icon.png')} style={{flex:1,width: 15, height: 50}}/>
-                                <Text  style={{flex: 3}}>{
-                                    (RouteTimings[this.state.routetimeindex].FirstDestinationName.length > 15) ?
-                                        (RouteTimings[this.state.routetimeindex].FirstDestinationName.substring(0,14)) + '...' :
-                                        (RouteTimings[this.state.routetimeindex].FirstDestinationName)
-                                }</Text>
-                            </View>
-
-<View style={{flexDirection:'row'}}>
-    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
-                            <View style={{flex: 2,flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1
-                                ,marginLeft:5,marginRight:2,marginBottom:15}}>
-                                <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                                }}
-                                        onPress={this.decrement}>
-                                    <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                        ,textAlign:'center'}}>-</Text>
-                                </Button>
-                                <Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>
-                                {/*{this.state.count}*/}
-                                <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
-                                }}
-                                        onPress={this.increment}>
-                                    <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
-                                        ,textAlign:'center'}}>+</Text>
-                                </Button>
-                            </View>
-    <Text  style={{flex: 2, color:'#FFFFFF'}}>.</Text>
-</View>
-                            <Button style={{height:50,width:width-80,backgroundColor: '#2eacde',
-                                marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}
-                                    onPress={() => {(this.openDialog(false)),Actions.paymentScreen(params)}} >
-                                {/*onPress={() => Actions.paymentScreen(params)}>*/}
-                                <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                                    <Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,
-                                        height: 25,alignItems:'center'}}/>
-                                    <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
-                                        ,textAlign:'center',paddingLeft:10}}>Buy</Text>
-                                    <Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'
-                                        ,textAlign:'center',paddingLeft:10}}>&#8377;{this.state.totalfare}/-</Text>
-                                </View>
-                            </Button>
-                            <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
-                            }}
-                                    onPress={() => {(this.openDialog(false)),Actions.searchScreen(params)}} >
-                                <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
-                                    ,textAlign:'center'}}>Close</Text>
-                            </Button>
-                        </View>
-                            {/*/!*<Text>{section.content}</Text>*!/*/}
-                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                            {/*{(this.state.showsecondroute) &&*/}
-                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
-                                {/*<Text>{SECTIONS[1].content}</Text>*/}
-                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-
-                                {/*</View>*/}
-                                {/*<Text>{SECTIONS[1].content1}</Text>*/}
-                            {/*</View>*/}
-                            {/*}*/}
-                        {/*</View>*/}
-                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                            {/*{(this.state.showthirdroute) &&*/}
-                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
-                                {/*<Text>{SECTIONS[2].content}</Text>*/}
-                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-
-                                {/*</View>*/}
-                                {/*<Text>{SECTIONS[2].content1}</Text>*/}
-                            {/*</View>*/}
-                            {/*}*/}
-                        {/*</View>*/}
-                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                            {/*{(this.state.showfourthroute) &&*/}
-                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
-                                {/*<Text>{SECTIONS[3].content}</Text>*/}
-                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-
-                                {/*</View>*/}
-                                {/*<Text>{SECTIONS[3].content1}</Text>*/}
-                            {/*</View>*/}
-                            {/*}*/}
-                        {/*</View>*/}
-                        {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                            {/*{(this.state.showfifthroute) &&*/}
-                            {/*<View style={{flexDirection: "row",justifyContent:'space-evenly'}}>*/}
-                                {/*<Text>{SECTIONS[4].content}</Text>*/}
-                                {/*<View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>*/}
-                                    {/*<Image source={require('../Images/from_icon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/line_coloricon.png')} style={{width: 25, height: 35}}/>*/}
-                                    {/*<Image source={require('../Images/to_icon.png')} style={{width: 25, height: 35}}/>*/}
-
-                                {/*</View>*/}
-                                {/*<Text>{SECTIONS[4].content1}</Text>*/}
-                            {/*</View>*/}
-                            {/*}*/}
-                        {/*</View>*/}
-                        {/*<View style={{flexDirection:'row',justifyContent:'space-around',borderColor:'#2eacde',borderWidth:1,borderRadius:1*/}
-                            {/*,marginLeft:5,marginRight:2,marginBottom:15}}>*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.decrement}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>-</Text>*/}
-                            {/*</Button>*/}
-                            {/*<Text note style={{ fontSize: 16, textAlign: 'center'}}>{this.state.count}</Text>*/}
-                            {/*/!*{this.state.count}*!/*/}
-                            {/*<Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',*/}
-                            {/*}}*/}
-                                    {/*onPress={this.increment}>*/}
-                                {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'*/}
-                                    {/*,textAlign:'center'}}>+</Text>*/}
-                            {/*</Button>*/}
-                        {/*</View>*/}
-
-                            {/*<Button style={{height:50,width:width-80,backgroundColor: '#2eacde',*/}
-                                {/*marginTop:5,marginBottom:15,justifyContent:'space-evenly'}}*/}
-                                    {/*onPress={() => {(this.openDialog(false)),Actions.paymentScreen(params)}} >*/}
-                                    {/*/!*onPress={() => Actions.paymentScreen(params)}>*!/*/}
-                                {/*<View style={{flexDirection:"row",justifyContent:'space-evenly'}}>*/}
-                                    {/*<Image source={require('../Images/rupees_symbol.png')} style = {{ width: 25,*/}
-                                        {/*height: 25,alignItems:'center'}}/>*/}
-                                    {/*<Text style={{fontWeight: "bold",fontSize:14,color:'#FFFFFF'*/}
-                                        {/*,textAlign:'center',paddingLeft:10}}>Buy</Text>*/}
-
-                                {/*</View>*/}
-                            {/*</Button>*/}
-
-                        {/*</View>*/}
-
-                        {/*<Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10*/}
-                        {/*}}*/}
-                                {/*onPress={() => {(this.openDialog(false)),Actions.searchScreen(params)}} >*/}
-                            {/*<Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2*/}
-                                {/*,textAlign:'center'}}>Close</Text>*/}
-                        {/*</Button>*/}
-
-                        {/*<Button onPress={() => this.openDialog(false)}  title="CLOSE" />*/}
-                    </Dialog>
 
                     {/*<View  style={{flexDirection:'row',justifyContent:'center'}} >*/}
                         {/*<Text note style={{fontSize:14,textAlign:'center',color:'#FFFFFF'}} >Number of passengers</Text>*/}
