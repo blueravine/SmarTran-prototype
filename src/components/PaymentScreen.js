@@ -15,7 +15,10 @@ const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 const MARGIN = 40;
 import { BottomNavigation } from 'react-native-material-ui';
+import RadioGroup from 'react-native-radio-buttons-group';
 import { Dialog } from 'react-native-simple-dialogs';
+import { TextField } from 'react-native-material-textfield';
+import { Dropdown } from 'react-native-material-dropdown';
 const card      = {card: {width: 100,height:300,borderWidth: 3,
         borderRadius: 3,
         borderColor: '#FFFFFF',
@@ -35,21 +38,19 @@ import Moment from "moment/moment";
 const SECTIONS = [
     {
         title: 'Credit Card',
-        content:   '  ',
-        content1:  '  ',
-        content2:  '  '
+        content:   'Card Number',
+        content1:  'MM',
+        content2:  'YY',
+        content3:  'CVV',
+        content4:  'Account Holder Name  '
     },
     {
         title: 'Debit Card',
-        content:   '  ',
-        content1:  '  ',
-        content2:  '  '
-    },
-    {
-        title: 'Net Banking',
-        content:   '  ',
-        content1:  '  ',
-        content2:  '  '
+        content:   'Card Number',
+        content1:  'MM',
+        content2:  'YY',
+        content3:  'CVV',
+        content4:  'Account Holder Name  '
     },
     {
         title: 'Wallets',
@@ -72,7 +73,7 @@ export default class PaymentScreen extends Component {
         };
         this.state={
             value:"",
-        };
+            };
 
     }
 
@@ -109,49 +110,37 @@ export default class PaymentScreen extends Component {
         return (
             <View style={styles.content}>
 
-                <View style={{flexDirection:"row"}}>
                     {(section.title === 'Credit Card') &&
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity >
-                                <Text>{section.content}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Text>{section.content1}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Text>{section.content2}</Text>
-                            </TouchableOpacity>
-                        </View></View>
+                    <View style={{flexDirection: "column"}}>
+                        <Text>Please enter card information below:</Text>
+                        <View style={{flexDirection: "row", width:200}}>
+                            <TextField label={section.content}
+                            containerStyle={{width:150}}/>
+                            <TextField label={section.content1}
+                                       containerStyle={{width:30,marginLeft:20}}/>
+                            <TextField label={section.content2}
+                                       containerStyle={{width:30,marginLeft:20}}/>
+                            <TextField label={section.content3}
+                                       containerStyle={{width:30,marginLeft:20}}/>
+                        </View>
+                        <TextField label={section.content4}/>
+                    </View>
                     }
                     {(section.title === 'Debit Card') &&
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity >
-                                <Text>{section.content}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Text>{section.content1}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Text>{section.content2}</Text>
-                            </TouchableOpacity>
-                        </View></View>
-                    }
-
-                    {(section.title === 'Net Banking') &&
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{flexDirection: "column"}}>
-                            <TouchableOpacity >
-                                <Text>{section.content}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Text>{section.content1}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Text>{section.content2}</Text>
-                            </TouchableOpacity>
-                        </View></View>
+                    <View style={{flexDirection: "column"}}>
+                        <Text>Please enter card information below:</Text>
+                        <View style={{flexDirection: "row", width:200}}>
+                            <TextField label={section.content}
+                                       containerStyle={{width:150}}/>
+                            <TextField label={section.content1}
+                                       containerStyle={{width:30,marginLeft:20}}/>
+                            <TextField label={section.content2}
+                                       containerStyle={{width:30,marginLeft:20}}/>
+                            <TextField label={section.content3}
+                                       containerStyle={{width:30,marginLeft:20}}/>
+                        </View>
+                        <TextField label={section.content4}/>
+                    </View>
                     }
                     {(section.title === 'Wallets') &&
                     <View style={{flexDirection: "row"}}>
@@ -189,8 +178,6 @@ export default class PaymentScreen extends Component {
                     </View>
                     }
                 </View>
-
-            </View>
         );
     }
 
@@ -216,14 +203,16 @@ export default class PaymentScreen extends Component {
             fromLoc:this.props.fromLoc,
             toLoc:this.props.toLoc,
             tripdte:this.props.tripdte,
+            totalfare:this.props.totalfare,
+            count:this.props.count,
         };
 
         temptickets = {
             "Authority":"TSRTC",
             "Date":Moment(this.props.tripdte).format('DD/MM/YYYY'),
             "Ticket Number":"1001000000001",
-            "Price":"\u20B9 45/-",
-            "Number of Riders":"1",
+            "Price":this.props.totalfare,
+            "Number of Riders":this.props.count,
             "From":this.props.fromLoc,
             "To":this.props.toLoc,
             "Route(s)":"650N,625H",
@@ -250,65 +239,45 @@ export default class PaymentScreen extends Component {
 
 
                     </View>
+                    <View style={{flexDirection:"row",backgroundColor:'#0c71b7',paddingRight:5,
+                        paddingLeft:5}}>
+                        <Text note style={{fontSize:16,textAlign:'left',color:'#FFFFFF'}} > {
+                            Moment(this.props.tripdte).format('DD MMM').toUpperCase()} </Text>
+
+                        <Text note style={{textAlign:'right',fontSize:16,color:'#FFFFFF',fontWeight:'bold',flex:1
+                        }} > &#8377;{this.props.totalfare}/-
+                        </Text>
+                        {/*onPress={() => Actions.homeScreen(params)}*/}
+                        {/*<TouchableOpacity style={{marginTop:10}} onPress={() => this.setState({dummy: 1})}>*/}
+                        {/*<Icoons type='SimpleLineIcons' name='refresh' size={24} color="#FFFFFF"/>*/}
+                        {/*</TouchableOpacity>*/}
+                    </View>
+
                     {/*<ScrollView>*/}
-                    <Card  styles={{width: 100,height:300, borderWidth: 1.5,
-                        borderRadius:10,
-                        borderColor:'#2eacde', alignItems: 'center',
-                        overflow: 'hidden',
-                        backgroundColor: 'white',
-                        elevation: 1,
-                        padding: 10}}>
-
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}>
-                            {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60, width: 60}}/>*/}
-                            <Text  style={{marginTop:20,fontSize:18,color:'#000',fontWeight:'bold',
-                            }} >Payment
-                            </Text>
-                            {/*<Image source={require('../Images/wind_chime.png')} style={{height: 60,width: 60}}/>*/}
-                        </View>
-
-                        <View style={{flexDirection:"row",justifyContent:'space-evenly'}}
-                              onPress={this._showDateTimePicker}>
-                            <Text note style={{fontSize:12,textAlign:'left',color:'#000'}} > {
-                                Moment(this.props.tripdte).format('DD MMMM')} </Text>
-
-                            <Text note style={{textAlign:'right',fontSize:14,color:'#000',fontWeight:'bold',flex:1
-                            }} > &#8377;45/-
-                            </Text>
-                        </View>
-                        <View style={{flexDirection:"row",justifyContent:'flex-start',marginBottom:10}}>
-                            <View style={{flexDirection:"column",justifyContent:'flex-start'}}>
+                    <View style={{flexDirection:"row",justifyContent:'flex-start',backgroundColor:'#FFFFFF', marginRight:2,
+                        marginLeft:2,borderRadius:2, marginBottom:10,marginTop:5}}>
+                        <View style={{flexDirection:"column",justifyContent:'flex-start',marginBottom:5}}>
                             {/*<Image source={require('../Images/smartranlogo.png')} style={{height: 200, width: null, flex: 1}}/>*/}
-                                <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5,marginLeft: 5}} >From
-                                </Text>
+                            <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5,marginLeft: 5}} >From
+                            </Text>
 
-                                <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5,marginLeft: 5}} >To
-                                </Text>
-                            {/*/!*<Image source={require('../Images/right_arrow.png')} style = {{ width: 25, height: 25,alignItems:'center',marginTop:10 }}/>*!/*/}
-                            {/*<Text  style={{textAlign:'center',fontSize:16,color:'#000',marginTop:10}} > {this.props.toLoc}*/}
-                            {/*</Text>*/}
-
-                            </View>
-                            <View style={{flexDirection:"row",justifyContent:'flex-start'}}>
-                                <View styl={{flexDirection:"column",justifyContent:'flex-start'}}>
-                                    <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5}} > : {this.props.fromLoc}
-                                    </Text>
-
-                                    <Text style={{justifyContent:'flex-start',fontSize:16,color:'#000',marginTop:5}} > : {this.props.toLoc}
-                                    </Text>
-                                </View>
-                            </View>
-
-                        </View>
-
-                        {/*</CardItem>*/}
-                        <View style={{flexDirection:"row"}}>
-                            <Text  style={{marginLeft:20,marginTop:20,fontSize:18,fontWeight:'bold',color:'#000',justifyContent:'flex-start'
-                            }} >Select Payment Method
+                            <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5,marginLeft: 5}} >To
                             </Text>
                         </View>
-                        {/*<ScrollView>*/}
 
+                        <View style={{flexDirection:"row",justifyContent:'flex-start',marginBottom:5}}>
+                            <View styl={{flexDirection:"column",justifyContent:'flex-start'}}>
+                                <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5}} > : {this.props.fromLoc}
+                                </Text>
+
+                                <Text style={{justifyContent:'flex-start',fontSize:15,color:'#000',marginTop:5}} > : {this.props.toLoc}
+                                </Text>
+                            </View>
+                        </View>
+
+                    </View>
+
+                    <Card>
 
                         <Accordion
                             sections={SECTIONS}
@@ -391,10 +360,10 @@ export default class PaymentScreen extends Component {
                                     }} >: 100100000001
                                     </Text>
                                     <Text note style={{color:'#000',fontSize:14,marginTop:5,
-                                    }} >: &#8377;45/-
+                                    }} >: &#8377;{this.props.totalfare}/-
                                     </Text>
                                     <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
-                                    }} >: 1
+                                    }} >: {this.props.count}
                                     </Text>
                                     <Text note style={{fontSize:14,color:'#000',marginTop:5,justifyContent:'flex-end'
                                     }} >: {this.props.fromLoc}
@@ -466,7 +435,7 @@ const styles = StyleSheet.create({
         // borderBottomColor: 'black',
         // borderBottomWidth: 1,
         borderTopColor: 'black',
-        borderTopWidth: 1,
+        borderTopWidth: 0.8,
         width: width - 20,
         borderColor:'#4d6bcb',
         // borderBottomColor:'#FFFFFF',
@@ -525,6 +494,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-end'
     },
     content: {
+        marginTop:0,
         padding: 20,
         backgroundColor: '#FFFFFF',
         color:'#669999',

@@ -83,6 +83,7 @@ export default class SearchScreen extends Component {
             secondbusfare:0,
             totalfare: 0,
             dialogindex: 0,
+            bustype:'All Buses',
         };
 
         this.onChangeTextPress=this.onChangeTextPress.bind(this);
@@ -250,22 +251,22 @@ export default class SearchScreen extends Component {
 
     onChangeTextPress(value){
 
-        this.setState({selectedvalue: value});
-
-        switch(value) {
-            case 'All Buses':
-                this.setState({shownonacview: true, showacview: true});
-                break;
-            case 'A/C Buses':
-                this.setState({shownonacview: false, showacview: true});
-                break;
-            case 'Non A/C Buses':
-                this.setState({shownonacview: true, showacview: false});
-                break;
-            default:
-                this.setState({shownonacview: true, showacview: true});
-                break;
-        }
+        // this.setState({selectedvalue: value});
+        this.setState({bustype: value});
+        // switch(value) {
+        //     case 'All Buses':
+        //         this.setState({bustype: value});
+        //         break;
+        //     case 'A/C Buses':
+        //         this.setState({bustype: value});
+        //         break;
+        //     case 'Non A/C Buses':
+        //         this.setState({bustype: value});
+        //         break;
+        //     default:
+        //         this.setState({bustype: value});
+        //         break;
+        // }
     }
     render() {
         params = {};
@@ -273,6 +274,8 @@ export default class SearchScreen extends Component {
             fromLoc:this.props.fromLoc,
             toLoc:this.props.toLoc,
             tripdte:this.state.date,
+            totalfare:this.state.totalfare,
+            count:this.state.count,
         };
         rupesstitile=[
 
@@ -460,11 +463,7 @@ export default class SearchScreen extends Component {
                         {/*{this.state.count}*/}
                         <Button transparent style={{height: 18,width:width-880,backgroundColor: '#FFFFFF',
                         }}
-                                onPress={ () => {
-                                    this.setState({ firstbusfare: currentroutetiming.FirstBusFare }),
-                                    this.setState({ secondbusfare: currentroutetiming.SecondBusFare }),
-                                    this.increment
-                                }}>
+                                onPress={this.increment}>
                             <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde'
                                 ,textAlign:'center'}}>+</Text>
                         </Button>
@@ -487,8 +486,7 @@ export default class SearchScreen extends Component {
                 </Button>
                 <Button transparent style={{height: 25,width:width-880,backgroundColor: '#FFFFFF',marginBottom:10
                 }}
-                        onPress={() => {(this.openDialog(false)),
-                                Actions.searchScreen(params)}} >
+                        onPress={() => {(this.openDialog(false))}} >
                     <Text style={{fontWeight: "bold",fontSize:16,color:'#2eacde',flex:2
                         ,textAlign:'center'}}>Close</Text>
                 </Button>
@@ -500,92 +498,105 @@ export default class SearchScreen extends Component {
 
         routelistarr = RouteTimings.map((currentroutetiming, index) => {
 
-            return(
-                <View>
-                <TouchableOpacity  onPress={() => {
-                    this.setState({ dialogindex: index }),
-                        (this.openDialog(true))}}>
-                    <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop:5}}>
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly'}}>
-                            <Image source={require('../Images/live_icon.png')}
-                                   style={{width: 20, height: 20, paddingLeft: 5}}/>
-                            <Text style={{
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                color: '#000',
-                                textAlign: 'left',
-                                marginLeft:2,
-                            }}>{currentroutetiming.FirstArrivalTime}</Text>
-                        </View>
-
-                        <View style={{flexDirection:"column",justifyContent:'space-evenly',marginLeft: 40,marginTop: 8}}>
-
-                            {(currentroutetiming.acroute) &&
-                                <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                            }
-                            {(!currentroutetiming.acroute) &&
-                                <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                            }
-                            <Text note style={{
-                                fontSize: 12, color:'#000',textAlign: 'center', marginTop: 2, marginBottom: 2,
-                                flex:5
-                            }}>{currentroutetiming.FirstBusNumber}</Text>
-                        </View>
-
-                        {(currentroutetiming.SecondBusFare > 0) &&
-                        <View style={{
-                            flexDirection: "column",
-                            justifyContent: 'space-evenly',
-                            marginLeft: 18,
-                            marginTop: 8
+            if((this.state.bustype==='All Buses') || ((this.state.bustype==='A/C Buses') &&(currentroutetiming.acroute))
+                ||((this.state.bustype==='Non A/C Buses') && (!currentroutetiming.acroute))) {
+                return (
+                    <View>
+                        <TouchableOpacity onPress={() => {
+                            this.setState({
+                                dialogindex: index,
+                                totalfare: (currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare),
+                                firstbusfare: currentroutetiming.FirstBusFare,
+                                secondbusfare: currentroutetiming.SecondBusFare
+                            }),
+                                (this.openDialog(true))
                         }}>
-                            {(currentroutetiming.acroute) &&
-                            <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
-                            }
-                            {(!currentroutetiming.acroute) &&
-                            <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
-                            }
+                            <View style={{flexDirection: "row", justifyContent: 'flex-start', marginTop: 5}}>
+                                <View style={{flexDirection: "column", justifyContent: 'space-evenly'}}>
+                                    <Image source={require('../Images/live_icon.png')}
+                                           style={{width: 20, height: 20, paddingLeft: 5}}/>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'left',
+                                        marginLeft: 2,
+                                    }}>{currentroutetiming.FirstArrivalTime}</Text>
+                                </View>
 
-                            <Text note style={{
-                                color: '#000',
-                                fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
-                            }}>{currentroutetiming.SecondBusNumber}</Text>
-                        </View>
-                        }
+                                <View style={{
+                                    flexDirection: "column",
+                                    justifyContent: 'space-evenly',
+                                    marginLeft: 40,
+                                    marginTop: 8
+                                }}>
 
-                        {(currentroutetiming.SecondBusFare === 0) &&
-                        <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginLeft: 45}}>
-                            <Text style={{
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                color: '#000',
-                                textAlign: 'right',
-                                marginLeft: 120,
-                                marginRight: 2
-                            }}>&#8377;{(currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare)}/-</Text>
-                        </View>
-                        }
+                                    {(currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    }
+                                    {(!currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    }
+                                    <Text note style={{
+                                        fontSize: 12, color: '#000', textAlign: 'center', marginTop: 2, marginBottom: 2,
+                                        flex: 5
+                                    }}>{currentroutetiming.FirstBusNumber}</Text>
+                                </View>
 
-                        {(currentroutetiming.SecondBusFare > 0) &&
-                        <View style={{flexDirection: 'column', justifyContent: 'space-evenly'}}>
-                            <Text style={{
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                color: '#000',
-                                textAlign: 'right',
-                                marginLeft: 115,
-                                marginRight: 2
-                            }}>&#8377;{(currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare)}/-</Text>
-                        </View>
-                        }
+                                {(currentroutetiming.SecondBusFare > 0) &&
+                                <View style={{
+                                    flexDirection: "column",
+                                    justifyContent: 'space-evenly',
+                                    marginLeft: 18,
+                                    marginTop: 8
+                                }}>
+                                    {(currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="#2eacde"/>
+                                    }
+                                    {(!currentroutetiming.acroute) &&
+                                    <Icons type='FontAwesome5' name='bus-alt' size={12} color="grey"/>
+                                    }
+
+                                    <Text note style={{
+                                        color: '#000',
+                                        fontSize: 12, textAlign: 'center', marginTop: 2, marginBottom: 2
+                                    }}>{currentroutetiming.SecondBusNumber}</Text>
+                                </View>
+                                }
+
+                                {(currentroutetiming.SecondBusFare === 0) &&
+                                <View style={{flexDirection: 'column', justifyContent: 'space-evenly', marginLeft: 45}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 120,
+                                        marginRight: 2
+                                    }}>&#8377;{(currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare)}/-</Text>
+                                </View>
+                                }
+
+                                {(currentroutetiming.SecondBusFare > 0) &&
+                                <View style={{flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                                    <Text style={{
+                                        fontSize: 14,
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        textAlign: 'right',
+                                        marginLeft: 115,
+                                        marginRight: 2
+                                    }}>&#8377;{(currentroutetiming.FirstBusFare) + (currentroutetiming.SecondBusFare)}/-</Text>
+                                </View>
+                                }
+
+                            </View>
+                            {/*}*/}
+                        </TouchableOpacity>
 
                     </View>
-                    {/*}*/}
-                </TouchableOpacity>
-
-                </View>
-        );
-
+                );
+            }
             });
 
         return (
@@ -623,7 +634,9 @@ export default class SearchScreen extends Component {
                             {/*/!*<Text style={{fontWeight: "bold",fontSize:16,color:'#FFFFFF',flex:2*!/*/}
                                 {/*/!*,textAlign:'center'}}>All</Text>*!/*/}
                         {/*</Button>*/}
-                        <TouchableOpacity onPress={() => this.setState({dummy: 1})}>
+                        {/*,
+                                Actions.searchScreen(params)*/}
+                        <TouchableOpacity onPress={() => Actions.searchScreen(params)}>
                             <Icoons type='SimpleLineIcons' name='refresh' size={24} color="#FFFFFF"/>
                         </TouchableOpacity>
 
