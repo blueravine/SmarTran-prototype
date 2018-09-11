@@ -13,7 +13,7 @@ import { Dialog } from 'react-native-simple-dialogs';
 import { Actions } from 'react-native-router-flux'; // 4.0.0-beta.31
 import SmartPicker from 'react-native-smart-picker'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Icons from 'react-native-vector-icons/FontAwesome5';
+import Icons from 'react-native-vector-icons/SimpleLineIcons';
 import Iccon from 'react-native-vector-icons/MaterialIcons';
 import Iccons from 'react-native-vector-icons/Foundation'
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -380,7 +380,7 @@ export default class TicketScreen extends Component {
                 {/*</View>*/}
                 {/*</View>*/}
                 <ScrollView ref={ (c) => {this.scroll = c}} >
-
+                    {/*style={{ flexGrow: 0.05, backgroundColor: '#FFFFFF'}} */}
                     <View style={{flexDirection:"row",backgroundColor:'#4d6bcb',paddingRight:10,
                         paddingLeft:10,}}>
                         <TouchableOpacity onPress={() => Actions.homeScreen()} >
@@ -423,8 +423,8 @@ export default class TicketScreen extends Component {
                     style={{ backgroundColor: '#2CA8DB' }}
                     position="bottomRight"
                     onPress={this.onButtonPress}>
-                    <Image  source={require('../Images/menu_symbol.png')} />
-
+                    {/*<Image  source={require('../Images/menu_symbol.png')} />*/}
+                    <Icons type='SimpleLineIcons' name='arrow-up' size={30} color="#FFFFFF"/>
                 </Fab>
 
                 <View style={[styles.footer]}>
